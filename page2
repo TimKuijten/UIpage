@@ -73,7 +73,10 @@
     .hero-visual .photo{
       position:absolute; inset:12%; border-radius:50%; overflow:hidden; box-shadow:var(--shadow); z-index:1;
     }
-    .hero-visual .photo img{width:100%;height:100%;object-fit:cover}
+    .hero-visual .photo img{
+      position:absolute; inset:0; width:100%; height:100%; object-fit:cover; opacity:0; transition:opacity .6s ease;
+    }
+    .hero-visual .photo img.is-active{opacity:1}
     .hero-visual .badge{
       position:absolute; right:8%; bottom:10%; z-index:2;
       background:#fff; border:1px solid var(--line); border-radius:12px;
@@ -173,8 +176,9 @@
       <div class="hero-visual">
         <div class="ring" aria-hidden="true"></div>
         <div class="photo">
-          <!-- Replace with your own photo -->
-          <img src="https://kovacictalent.com/wp-content/uploads/2025/05/AdobeStock_641731816-scaled.jpeg" alt="Senior professional meeting in modern office">
+          <img class="is-active" src="https://kovacictalent.com/wp-content/uploads/2025/05/AdobeStock_641731816-scaled.jpeg" alt="Senior professional meeting in modern office">
+          <img src="https://images.unsplash.com/photo-1551836022-4c4c79ecde51?q=80&w=1200&auto=format&fit=crop" alt="Executive handshake in office">
+          <img src="https://images.unsplash.com/photo-1542744094-24638eff58bb?q=80&w=1200&auto=format&fit=crop" alt="Team collaboration at work">
         </div>
         <div class="badge">⭐ Trusted by 120+ clients</div>
       </div>
@@ -300,6 +304,22 @@
 
   <script>
     document.getElementById('y').textContent = new Date().getFullYear();
+
+    (function(){
+      const slides = document.querySelectorAll('.hero-visual .photo img');
+      const dots = document.querySelectorAll('.slider-dots .dot');
+      let idx = 0;
+      function show(n){
+        slides[idx].classList.remove('is-active');
+        dots[idx].classList.remove('is-active');
+        idx = n;
+        slides[idx].classList.add('is-active');
+        dots[idx].classList.add('is-active');
+      }
+      function next(){ show((idx + 1) % slides.length); }
+      let timer = setInterval(next, 15000);
+      dots.forEach((dot,i)=>dot.addEventListener('click',()=>{show(i); clearInterval(timer); timer=setInterval(next,15000);}));
+    })();
   </script>
 </body>
 </html>
