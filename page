@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Rocket — AI-Enhanced Recruiting</title>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg:#f6f8fb;
+      --card:#ffffff;
+      --ink:#101828;
+      --muted:#667085;
+      --brand:#3B82F6; /* primary */
+      --brand-ink:#0B4FD6;
+      --ring: rgba(59,130,246,.35);
+    }
+    *{box-sizing:border-box}
+    html,body{margin:0;height:100%;scroll-behavior:smooth}
+    body{font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,"Helvetica Neue",Arial,"Apple Color Emoji","Segoe UI Emoji"; color:var(--ink); background:var(--bg)}
+    a{color:inherit;text-decoration:none}
+    .container{max-width:1120px;margin-inline:auto;padding:0 20px}
+    .btn{display:inline-flex;align-items:center;gap:.5rem;background:var(--brand);color:#fff;border:none;border-radius:12px;padding:.9rem 1.15rem;font-weight:600;box-shadow:0 8px 20px rgba(59,130,246,.25);transition:.2s}
+    .btn:hover{transform:translateY(-1px);filter:saturate(1.05)}
+    .btn.alt{background:#fff;color:var(--brand);border:1px solid rgba(16,24,40,.08)}
+    .chip{display:inline-flex;align-items:center;gap:.5rem;background:#eef2ff;color:#4338ca;font-weight:600;border-radius:999px;padding:.35rem .7rem;font-size:.75rem}
+    /* NAV */
+    .nav{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.7);backdrop-filter:saturate(180%) blur(8px);border-bottom:1px solid rgba(16,24,40,.06)}
+    .nav-inner{display:flex;align-items:center;justify-content:space-between;height:72px}
+    .nav ul{display:flex;gap:24px;list-style:none;margin:0;padding:0}
+    .nav a{color:#334155;font-weight:600}
+    .nav a:hover{color:var(--brand)}
+    .logo{display:flex;align-items:center;gap:.6rem;font-weight:800}
+    .logo-mark{height:34px;width:34px;border-radius:9px;background:conic-gradient(from 210deg at 50% 50%, #f97316, #ef4444 35%, #3b82f6 70%, #22c55e 100%);position:relative}
+    .logo-mark:after{content:"";position:absolute;inset:5px;border-radius:7px;background:#fff}
+    /* HERO */
+    .hero{padding:72px 0 32px;background:linear-gradient(180deg,#ffffff, #f7fbff 60%, #f6f8fb)}
+    .hero-grid{display:grid;grid-template-columns:1.2fr 1fr;gap:48px;align-items:center}
+    .eyebrow{letter-spacing:.12em;text-transform:uppercase;color:#6366f1;font-weight:800;font-size:.78rem}
+    .h1{font-size:clamp(2rem,4vw,3.2rem);line-height:1.1;margin:.35rem 0 1rem;font-weight:800}
+    .sub{color:var(--muted);font-size:1.05rem;max-width:55ch}
+    .cta-row{display:flex;gap:12px;flex-wrap:wrap;margin-top:22px}
+    .stats{display:flex;gap:24px;margin-top:28px;color:#334155}
+    .stat{background:var(--card);padding:14px 16px;border-radius:14px;border:1px solid rgba(16,24,40,.06)}
+    /* Illustration */
+    .illu-wrap{position:relative}
+    .blob{position:absolute;inset:-30px -40px -40px -30px;z-index:0;filter:blur(0.5px)}
+    .card{position:relative;z-index:1;background:var(--card);border:1px solid rgba(16,24,40,.06);border-radius:20px;box-shadow:0 12px 40px rgba(2,6,23,.06);padding:18px}
+    /* Sections */
+    section{padding:72px 0}
+    h2{font-size:clamp(1.25rem,2.2vw,1.9rem);margin:0 0 18px}
+    .lead{color:var(--muted);max-width:62ch}
+    .grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+    .service{background:var(--card);border:1px solid rgba(16,24,40,.06);border-radius:18px;padding:22px}
+    .service h3{margin:6px 0 8px}
+    .service p{color:var(--muted);margin:0}
+    .how{display:grid;grid-template-columns:repeat(4,1fr);gap:22px}
+    .step{background:var(--card);border:1px solid rgba(16,24,40,.06);border-radius:18px;padding:22px}
+    .step .num{font-weight:800;color:var(--brand)}
+    .logos{display:grid;grid-template-columns:repeat(6,1fr);gap:18px;opacity:.85}
+    .logo-box{background:#fff;border:1px dashed rgba(16,24,40,.08);border-radius:14px;height:64px;display:grid;place-items:center;font-weight:700;color:#64748b}
+    .cta{background:linear-gradient(180deg,#fff,#eef6ff)}
+    .cta-card{display:grid;grid-template-columns:1.2fr .8fr;gap:22px;align-items:center;background:#0b1220;color:#e5edff;border-radius:22px;padding:28px}
+    .cta-card .btn{background:#22c55e}
+    footer{background:#0b1220;color:#cbd5e1;padding:40px 0}
+    footer a{color:#cbd5e1}
+
+    /* --- Full-bleed utility to make footer stretch edge-to-edge --- */
+    .full-bleed{
+      width:100vw;
+      margin-left:calc(50% - 50vw);
+      margin-right:calc(50% - 50vw);
+    }
+    /* Prevent horizontal scrollbar on some mobile browsers */
+    html, body { overflow-x: hidden; }
+
+    /* Responsive */
+    @media (max-width: 980px){
+      .hero-grid{grid-template-columns:1fr}
+      .cta-card{grid-template-columns:1fr}
+      .grid-3{grid-template-columns:1fr 1fr}
+      .how{grid-template-columns:1fr 1fr}
+      .logos{grid-template-columns:1fr 1fr 1fr}
+    }
+    @media (max-width: 560px){
+      .grid-3{grid-template-columns:1fr}
+      .how{grid-template-columns:1fr}
+    }
+  </style>
+</head>
+<body>
+  <!-- NAV -->
+  <nav class="nav">
+    <div class="container nav-inner">
+      <a href="#" class="logo" aria-label="Rocket Home">
+        <span class="logo-mark"></span>
+        <span>rocket</span>
+      </a>
+      <ul>
+        <li><a href="#how">How We Work</a></li>
+        <li><a href="#expertise">Areas of Expertise</a></li>
+        <li><a href="#about">About Us</a></li>
+        <li><a href="#insights">Insights</a></li>
+      </ul>
+      <a class="btn" href="#contact">Book a Call</a>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <header class="hero">
+    <div class="container hero-grid">
+      <div>
+        <div class="eyebrow">Recruiting + AI</div>
+        <h1 class="h1">AI-Enhanced Recruiting<br/>for High-Growth Companies</h1>
+        <p class="sub">We pair seasoned recruiters with advanced AI to help you hit ambitious hiring targets—faster, fairly, and with better long-term outcomes.</p>
+        <div class="cta-row">
+          <a class="btn" href="#contact">Book a Call</a>
+          <a class="btn alt" href="#how">See How We Work</a>
+        </div>
+        <div class="stats">
+          <div class="stat"><strong>2x</strong> faster shortlist</div>
+          <div class="stat"><strong>85%</strong> 12-mo retention</div>
+          <div class="stat"><strong>40+</strong> markets covered</div>
+        </div>
+      </div>
+      <div class="illu-wrap">
+        <svg class="blob" viewBox="0 0 600 480" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <g opacity=".5">
+            <path d="M536 180c0 114-132 248-272 248S24 338 24 224 136 20 276 20s260 46 260 160Z" fill="#E7F0FF"/>
+            <circle cx="431" cy="116" r="18" fill="#DBEAFE"/>
+            <circle cx="150" cy="340" r="10" fill="#DBEAFE"/>
+          </g>
+        </svg>
+        <div class="card">
+          <!-- Astronaut + planet illustration -->
+          <svg viewBox="0 0 680 420" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Astronaut exploring around a planet">
+            <defs>
+              <linearGradient id="grad" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0%" stop-color="#EEF2FF"/>
+                <stop offset="100%" stop-color="#E0F2FE"/>
+              </linearGradient>
+            </defs>
+            <rect x="0" y="0" width="100%" height="100%" rx="18" fill="url(#grad)"/>
+            <g stroke="#94A3B8" stroke-width="3" fill="none">
+              <ellipse cx="480" cy="200" rx="120" ry="48" fill="#F1F5F9"/>
+              <circle cx="480" cy="180" r="64" fill="#F8FAFC"/>
+              <g fill="#E2E8F0">
+                <circle cx="510" cy="168" r="10"/>
+                <circle cx="455" cy="190" r="8"/>
+                <circle cx="500" cy="205" r="7"/>
+              </g>
+              <path d="M210 220c120 60 180 100 260 70" stroke="#38BDF8" stroke-width="6"/>
+            </g>
+            <g transform="translate(100 160)">
+              <circle cx="60" cy="40" r="26" fill="#e2e8f0" stroke="#94a3b8" stroke-width="3"/>
+              <rect x="32" y="66" width="56" height="56" rx="12" fill="#fff" stroke="#94a3b8" stroke-width="3"/>
+              <rect x="44" y="86" width="32" height="10" rx="4" fill="#93c5fd"/>
+              <path d="M32 122c-10 18-18 36-1 44 18 8 30-11 37-24 4-8 8-15 12-22" fill="none" stroke="#94a3b8" stroke-width="3"/>
+              <path d="M88 122c10 18 18 36 1 44-18 8-30-11-37-24" fill="none" stroke="#94a3b8" stroke-width="3"/>
+            </g>
+          </svg>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- HOW WE WORK -->
+  <section id="how">
+    <div class="container">
+      <h2>How We Work</h2>
+      <p class="lead">A transparent, data-assisted search process that keeps you informed from kickoff to signed offer.</p>
+      <div class="how" style="margin-top:18px">
+        <div class="step"><div class="num">01</div><h3>Discovery</h3><p>Define success profile, must-haves, and cultural markers. Align on timeline and milestones.</p></div>
+        <div class="step"><div class="num">02</div><h3>Mapping</h3><p>Market map + longlist using AI for precision matching and human validation to remove bias.</p></div>
+        <div class="step"><div class="num">03</div><h3>Shortlist</h3><p>Top candidates with scorecards, references, and first-round notes inside a live dashboard.</p></div>
+        <div class="step"><div class="num">04</div><h3>Close</h3><p>Offer strategy, expectation alignment, and onboarding support to ensure a strong start.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- EXPERTISE -->
+  <section id="expertise" style="padding-top:0">
+    <div class="container">
+      <h2>Areas of Expertise</h2>
+      <p class="lead">From technology scale-ups to renewable energy leaders—we place critical roles that move the needle.</p>
+      <div class="grid-3" style="margin-top:18px">
+        <div class="service"><div class="chip">Executive & Product</div><h3>Leadership & Product</h3><p>C-level, VP/Director, Product & Delivery leadership for growth and transformation.</p></div>
+        <div class="service"><div class="chip">Data & Engineering</div><h3>Technology</h3><p>Software, Data, Cloud, Security, and Platform roles across EMEA & LATAM.</p></div>
+        <div class="service"><div class="chip">Energy</div><h3>Renewables</h3><p>Solar, Wind, BESS, and Grid roles including Development, EPC, and Operations.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <div class="container">
+      <h2>About Us</h2>
+      <p class="lead">We’re a boutique team of senior recruiters and researchers who combine rigorous search methods with ethical AI tooling. Human judgment first—amplified by technology.</p>
+      <div class="logos" style="margin-top:22px">
+        <div class="logo-box">Client A</div>
+        <div class="logo-box">Client B</div>
+        <div class="logo-box">Client C</div>
+        <div class="logo-box">Client D</div>
+        <div class="logo-box">Client E</div>
+        <div class="logo-box">Client F</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- INSIGHTS -->
+  <section id="insights" style="padding-top:0">
+    <div class="container">
+      <h2>Insights</h2>
+      <p class="lead">Guides, market notes, and case studies.</p>
+      <div class="grid-3" style="margin-top:18px">
+        <article class="service"><h3>Scorecards that predict success</h3><p>How to design role scorecards that correlate with performance in the first 180 days.</p></article>
+        <article class="service"><h3>Hiring Staff+ Engineers</h3><p>Signals that separate Staff/Principal engineers from strong seniors in interviews.</p></article>
+        <article class="service"><h3>LATAM Renewables Talent</h3><p>Where to find world-class Grid, BESS, and Solar experts in competitive markets.</p></article>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section id="contact" class="cta">
+    <div class="container">
+      <div class="cta-card">
+        <div>
+          <h2 style="margin:0 0 8px">Ready to accelerate your next hire?</h2>
+          <p style="margin:0;color:#94a3b8">Tell us what success looks like—we’ll bring you a shortlist you’ll want to hire from.</p>
+        </div>
+        <div style="text-align:right">
+          <a class="btn" href="#">Book a Call</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="full-bleed">
+    <div class="container" style="display:grid;grid-template-columns:1fr auto;gap:18px;align-items:center">
+      <div>&copy; <span id="y"></span> Rocket Recruiting. All rights reserved.</div>
+      <div style="display:flex;gap:16px"><a href="#">Privacy</a><a href="#">Terms</a><a href="#">Contact</a></div>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById('y').textContent = new Date().getFullYear()
+  </script>
+</body>
+</html>
