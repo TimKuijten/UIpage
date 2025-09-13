@@ -58,6 +58,7 @@
     .how{display:grid;grid-template-columns:repeat(4,1fr);gap:22px}
     .step{background:var(--card);border:1px solid rgba(16,24,40,.06);border-radius:18px;padding:22px}
     .step .num{font-weight:800;color:var(--brand)}
+    .step svg{width:40px;height:40px;color:var(--brand);margin-bottom:12px}
     .logos{display:grid;grid-template-columns:repeat(6,1fr);gap:18px;opacity:.85}
     .logo-box{background:#fff;border:1px dashed rgba(16,24,40,.08);border-radius:14px;height:64px;display:grid;place-items:center;font-weight:700;color:#64748b}
     .cta{background:linear-gradient(180deg,#fff,#eef6ff)}
@@ -171,10 +172,10 @@
       <h2>How We Work</h2>
       <p class="lead">A transparent, data-assisted search process that keeps you informed from kickoff to signed offer.</p>
       <div class="how" style="margin-top:18px">
-        <div class="step"><div class="num">01</div><h3>Discovery</h3><p>Define success profile, must-haves, and cultural markers. Align on timeline and milestones.</p></div>
-        <div class="step"><div class="num">02</div><h3>Mapping</h3><p>Market map + longlist using AI for precision matching and human validation to remove bias.</p></div>
-        <div class="step"><div class="num">03</div><h3>Shortlist</h3><p>Top candidates with scorecards, references, and first-round notes inside a live dashboard.</p></div>
-        <div class="step"><div class="num">04</div><h3>Close</h3><p>Offer strategy, expectation alignment, and onboarding support to ensure a strong start.</p></div>
+        <div class="step"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><line x1="16.65" y1="16.65" x2="21" y2="21"/></svg><div class="num">01</div><h3>Discovery</h3><p>Define success profile, must-haves, and cultural markers. Align on timeline and milestones.</p></div>
+        <div class="step"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 6l5-2 6 2 7-2v14l-5 2-6-2-7 2V6z"/><path d="M8 4v14"/><path d="M14 6v14"/></svg><div class="num">02</div><h3>Mapping</h3><p>Market map + longlist using AI for precision matching and human validation to remove bias.</p></div>
+        <div class="step"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 7h11"/><path d="M9 12h11"/><path d="M9 17h11"/><path d="M4 7l2 2 3-3"/><path d="M4 12l2 2 3-3"/><path d="M4 17l2 2 3-3"/></svg><div class="num">03</div><h3>Shortlist</h3><p>Top candidates with scorecards, references, and first-round notes inside a live dashboard.</p></div>
+        <div class="step"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M9 12l2 2 4-4"/></svg><div class="num">04</div><h3>Close</h3><p>Offer strategy, expectation alignment, and onboarding support to ensure a strong start.</p></div>
       </div>
     </div>
   </section>
