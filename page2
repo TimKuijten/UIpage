@@ -95,6 +95,7 @@
     .card{background:#fafafa;border:1px solid var(--line);border-radius:var(--radius);padding:20px}
     .card h3{margin:8px 0 6px}
     .icon{width:36px;height:36px;border-radius:10px;background:linear-gradient(180deg,#eafff9,#fff);border:1px solid #d9f4ee;display:grid;place-items:center}
+    #process .card svg{width:32px;height:32px;color:var(--accent);margin-bottom:12px}
 
     /* Testimonials */
     .testis{background:#f6f8fb;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
@@ -185,28 +186,41 @@
     </div>
   </header>
 
-  <!-- SERVICES -->
-  <section id="services" class="container">
-    <h2 class="section-title">What We Do</h2>
-    <p class="lead">Boutique execution with enterprise-grade rigor—tailored to your hiring context.</p>
-    <div class="grid g-3">
-      <div class="card">
-        <div class="icon">👤</div>
-        <h3>Executive Search</h3>
-        <p>CEO, Country Manager, VP & Director roles delivered through methodical mapping, structured interviews and calibrated scorecards.</p>
-      </div>
-      <div class="card">
-        <div class="icon">🧭</div>
-        <h3>Senior Specialists</h3>
-        <p>Hard-to-find Technical Leads and ICs in Technology, Operations, Finance and Commercial—across EMEA & LATAM.</p>
-      </div>
-      <div class="card">
-        <div class="icon">🧪</div>
-        <h3>Assessment & Advisory</h3>
-        <p>Competency frameworks, interview design, and succession planning to de-risk decisions and lift team performance.</p>
-      </div>
+<!-- SERVICES -->
+<section id="services" class="container">
+  <h2 class="section-title" style="position: relative; display: inline-block; padding-bottom: 8px; margin: 0 auto; text-align: center;">
+    Our Values
+    <span style="position: absolute; left: 0; bottom: 0; width: 100%; height: 4px; background-color: #0A212E;"></span>
+  </h2>
+  <p class="lead" style="text-align: center; max-width: 800px; margin: 20px auto;">
+    At <strong>Kovacic Executive Talent Research</strong>, our values guide everything we do. 
+    They define <strong>how we work</strong>, how we build <strong>relationships</strong>, and how we create 
+    lasting <strong>impact</strong> for our clients and candidates.
+  </p>
+  <div class="grid g-3">
+    <div class="card">
+      <h3>Excellence</h3>
+      <p>We commit to the <strong>highest standards</strong> at every stage of the process, delivering results that generate <strong>real impact</strong> for organizations.</p>
     </div>
-  </section>
+    <div class="card">
+      <h3>Trust</h3>
+      <p>We build <strong>strong and lasting relationships</strong> based on <strong>transparency</strong>, respect, and confidentiality.</p>
+    </div>
+    <div class="card">
+      <h3>Human Vision</h3>
+      <p>We believe in the <strong>transformative power of leadership</strong>. We seek talent that <strong>inspires, mobilizes</strong>, and builds <strong>sustainable cultures</strong>.</p>
+    </div>
+    <div class="card">
+      <h3>Global Perspective</h3>
+      <p>We operate <strong>without borders</strong>, combining an <strong>international outlook</strong> with deep understanding of <strong>local contexts</strong>.</p>
+    </div>
+    <div class="card">
+      <h3>Adaptability</h3>
+      <p>We respond with <strong>agility</strong> to change, recognizing that each organization is <strong>unique</strong> and requires <strong>tailored solutions</strong>.</p>
+    </div>
+  </div>
+</section>
+
 
   <!-- SECTORS -->
   <section id="sectors" class="container">
@@ -225,10 +239,10 @@
     <h2 class="section-title">How We Work</h2>
     <p class="lead">Transparent stages with measurable outcomes, from kickoff to signed offer.</p>
     <div class="grid g-4">
-      <div class="card"><strong>01 • Discovery</strong><p>Success profile, culture signals, timeline and success criteria.</p></div>
-      <div class="card"><strong>02 • Mapping</strong><p>Market map + longlist; human validation layered on ethical AI.</p></div>
-      <div class="card"><strong>03 • Shortlist</strong><p>Structured interviews, scorecards and weekly progress reports.</p></div>
-      <div class="card"><strong>04 • Close</strong><p>Offer strategy, expectation alignment and onboarding support.</p></div>
+      <div class="card"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><line x1="16.65" y1="16.65" x2="21" y2="21"/></svg><strong>01 • Discovery</strong><p>Success profile, culture signals, timeline and success criteria.</p></div>
+      <div class="card"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 6l5-2 6 2 7-2v14l-5 2-6-2-7 2V6z"/><path d="M8 4v14"/><path d="M14 6v14"/></svg><strong>02 • Mapping</strong><p>Market map + longlist; human validation layered on ethical AI.</p></div>
+      <div class="card"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 7h11"/><path d="M9 12h11"/><path d="M9 17h11"/><path d="M4 7l2 2 3-3"/><path d="M4 12l2 2 3-3"/><path d="M4 17l2 2 3-3"/></svg><strong>03 • Shortlist</strong><p>Structured interviews, scorecards and weekly progress reports.</p></div>
+      <div class="card"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M9 12l2 2 4-4"/></svg><strong>04 • Close</strong><p>Offer strategy, expectation alignment and onboarding support.</p></div>
     </div>
   </section>
 
