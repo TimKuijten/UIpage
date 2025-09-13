@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Kovacic Talent — Executive Recruitment</title>
+  <meta name="description" content="Boutique executive search & specialist recruitment for high-growth companies." />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --ink:#101828;
+      --muted:#667085;
+      --bg:#ffffff;
+      --accent:#17D1B6;       /* mint/teal accent (like screenshot) */
+      --accent-dark:#12b39b;
+      --line:#ebedf0;
+      --shadow:0 10px 30px rgba(16,24,40,.08);
+      --radius:14px;
+      --radius-lg:22px;
+      --pad: clamp(16px, 3.2vw, 28px);
+      --w: 1180px;            /* content width */
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{margin:0;font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial; color:var(--ink); background:var(--bg)}
+    a{color:inherit;text-decoration:none}
+    img{max-width:100%;display:block}
+    .container{max-width:var(--w); margin-inline:auto; padding-inline:var(--pad)}
+    .btn{display:inline-flex;align-items:center;gap:.5rem;padding:.9rem 1.3rem;border-radius:999px;font-weight:700;letter-spacing:.01em}
+    .btn-primary{background:#111;color:#fff}
+    .btn-primary:hover{filter:brightness(.95)}
+    .btn-ghost{border:2px solid #111;color:#111}
+    .btn-ghost:hover{background:#111;color:#fff}
+    .pill{display:inline-flex;align-items:center;gap:.5rem;color:#0f172a;background:linear-gradient(90deg,#eafcf8,#fff);border:1px solid #d9f4ee;padding:.35rem .7rem;border-radius:999px;font-weight:700;font-size:.78rem}
+    .dot{width:8px;height:8px;border-radius:999px;background:#d1d5db}
+    .dot.is-active{background:var(--accent)}
+
+    /* Topbar */
+    .topbar{background:#111;color:#fff;font-size:.85rem}
+    .topbar .inner{display:flex;justify-content:space-between;align-items:center;height:40px}
+    .social a{opacity:.85;margin-left:14px}
+    .social a:hover{opacity:1}
+
+    /* Navbar */
+    .nav{position:sticky;top:0;z-index:40;background:#fff;border-bottom:1px solid var(--line)}
+    .nav .inner{display:flex;align-items:center;justify-content:space-between;height:66px}
+    .logo{display:flex;align-items:center;gap:.6rem;font-weight:900;letter-spacing:.02em}
+    .logo-mark{height:36px;width:36px;border-radius:10px;background:
+       conic-gradient(from 210deg,#22d3ee,#22c55e 40%,#17D1B6 70%,#60a5fa)}
+    .menu{display:flex;gap:26px;align-items:center}
+    .menu a{font-weight:600;color:#0f172a}
+    .menu a:hover{color:var(--accent-dark)}
+    .nav-cta{display:flex;gap:10px;align-items:center}
+
+    /* HERO (split layout with large circular crop at right) */
+    .hero{position:relative;overflow:hidden}
+    .hero .inner{display:grid;grid-template-columns:1.12fr .88fr;align-items:center;gap:48px;padding-block: clamp(40px,8vw,90px)}
+    .eyebrow{font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:#475569}
+    h1{font-size:clamp(2rem,4vw,3.2rem);line-height:1.08;margin:.35rem 0 1rem}
+    .hero p.sub{color:var(--muted);font-size:1.08rem;max-width:58ch}
+    .cta-row{display:flex;flex-wrap:wrap;gap:12px;margin-top:22px}
+    .hero-stats{display:flex;gap:18px;align-items:center;margin-top:28px}
+    .hero-stats .card{background:#fff;border:1px solid var(--line);border-radius:12px;padding:10px 14px;box-shadow:var(--shadow);font-weight:700}
+    .slider-dots{display:flex;gap:10px;align-items:center;margin-top:18px}
+
+    .hero-visual{position:relative}
+    .hero-visual .ring{
+      position:absolute; right:-18vw; top:-10vw; width:min(90vw,980px); aspect-ratio:1/1;
+      border-radius:50%;
+      background: radial-gradient(closest-side,#f6f8fb 0 73%, transparent 73%),
+                  conic-gradient(from 0deg,#f1f5f9, #e2e8f0);
+      z-index:0; opacity:.9; filter:drop-shadow(0 30px 60px rgba(2,6,23,.07));
+    }
+    .hero-visual .photo{
+      position:relative; z-index:1; width:min(42vw,520px); margin-left:auto;
+      aspect-ratio: 4/5; border-radius:18px; overflow:hidden; box-shadow:var(--shadow);
+      /* circular reveal on the right side */
+      -webkit-mask-image: radial-gradient(56% 56% at 95% 50%, #000 60%, transparent 61%);
+              mask-image: radial-gradient(56% 56% at 95% 50%, #000 60%, transparent 61%);
+    }
+    .hero-visual .badge{
+      position:absolute; right:8%; bottom:10%; z-index:2;
+      background:#fff; border:1px solid var(--line); border-radius:12px;
+      padding:10px 14px; box-shadow:var(--shadow); display:flex; align-items:center; gap:8px;
+      font-weight:700;
+    }
+    .accent{color:var(--accent)}
+
+    /* Sections */
+    section{padding-block: clamp(48px, 9vw, 88px)}
+    .section-title{text-align:center;margin-bottom:8px;font-size:clamp(1.2rem,2.2vw,1.8rem)}
+    .lead{color:var(--muted);text-align:center;max-width:70ch;margin:0 auto 28px}
+    .grid{display:grid;gap:22px}
+    .g-3{grid-template-columns:repeat(3,1fr)}
+    .g-4{grid-template-columns:repeat(4,1fr)}
+    .card{background:#fafafa;border:1px solid var(--line);border-radius:var(--radius);padding:20px}
+    .card h3{margin:8px 0 6px}
+    .icon{width:36px;height:36px;border-radius:10px;background:linear-gradient(180deg,#eafff9,#fff);border:1px solid #d9f4ee;display:grid;place-items:center}
+
+    /* Testimonials */
+    .testis{background:#f6f8fb;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+    blockquote{max-width:860px;margin:0 auto;padding:0 20px;font-size:1.1rem;line-height:1.6;text-align:center;color:#0f172a}
+    cite{display:block;margin-top:10px;color:#475569;font-style:normal;font-weight:700}
+
+    /* Footer */
+    footer{background:#0b1220;color:#cbd5e1}
+    .footer-inner{display:grid;grid-template-columns:1.2fr .8fr;gap:28px;align-items:center}
+    .newsletter{display:flex;gap:10px}
+    .newsletter input{flex:1;padding:12px 14px;border-radius:999px;border:1px solid #334155;background:#0f172a;color:#e2e8f0}
+    .newsletter button{border:none;background:var(--accent);color:#083c3f;border-radius:999px;padding:12px 18px;font-weight:800}
+    .mini{border-top:1px solid #162036;margin-top:26px;padding-top:16px;text-align:center;color:#94a3b8}
+
+    /* Responsive */
+    @media (max-width: 980px){
+      .menu{display:none}
+      .hero .inner{grid-template-columns:1fr}
+      .hero-visual .ring{right:-40vw; top:-28vw}
+      .hero-visual .photo{margin-inline:auto}
+      .footer-inner{grid-template-columns:1fr}
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Topbar -->
+  <div class="topbar">
+    <div class="container inner">
+      <div>📞 +34 600 123 456 · ✉️ contact@kovacictalent.com</div>
+      <div class="social">
+        <a href="#" aria-label="LinkedIn">in</a>
+        <a href="#" aria-label="Twitter / X">x</a>
+        <a href="#" aria-label="YouTube">yt</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Navigation -->
+  <nav class="nav" aria-label="Primary navigation">
+    <div class="container inner">
+      <a class="logo" href="#"><span class="logo-mark"></span><span>Kovacic Talent</span></a>
+      <div class="menu">
+        <a href="#services">Services</a>
+        <a href="#sectors">Sectors</a>
+        <a href="#process">How We Work</a>
+        <a href="#insights">Insights</a>
+        <a href="#contact">Contact</a>
+      </div>
+      <div class="nav-cta">
+        <a class="btn btn-ghost" href="#cases">Case Studies</a>
+        <a class="btn btn-primary" href="#contact">Book a Call</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <header class="hero">
+    <div class="container inner">
+      <div>
+        <span class="pill">17+ Years of Experience</span>
+        <h1>We Are a <span class="accent">Recruitment Partner</span> for High-Growth Companies</h1>
+        <p class="sub">We help organizations across EMEA & LATAM identify and attract exceptional leaders and senior specialists—combining rigorous search methods with modern, ethical AI to deliver results that endure.</p>
+        <div class="cta-row">
+          <a class="btn btn-primary" href="#contact">Start Your Search</a>
+          <a class="btn btn-ghost" href="#process">See Our Process</a>
+        </div>
+        <div class="hero-stats">
+          <div class="card">85% 12-month retention</div>
+          <div class="card">2x faster shortlists</div>
+          <div class="slider-dots" aria-label="Hero carousel navigation">
+            <span class="dot is-active" aria-hidden="true"></span>
+            <span class="dot" aria-hidden="true"></span>
+            <span class="dot" aria-hidden="true"></span>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero-visual">
+        <div class="ring" aria-hidden="true"></div>
+        <div class="photo">
+          <!-- Replace with your own photo -->
+          <img src="https://images.unsplash.com/photo-1551836022-4c4c79ecde51?q=80&w=1200&auto=format&fit=crop" alt="Senior professional meeting in modern office">
+        </div>
+        <div class="badge">⭐ Trusted by 120+ clients</div>
+      </div>
+    </div>
+  </header>
+
+  <!-- SERVICES -->
+  <section id="services" class="container">
+    <h2 class="section-title">What We Do</h2>
+    <p class="lead">Boutique execution with enterprise-grade rigor—tailored to your hiring context.</p>
+    <div class="grid g-3">
+      <div class="card">
+        <div class="icon">👤</div>
+        <h3>Executive Search</h3>
+        <p>CEO, Country Manager, VP & Director roles delivered through methodical mapping, structured interviews and calibrated scorecards.</p>
+      </div>
+      <div class="card">
+        <div class="icon">🧭</div>
+        <h3>Senior Specialists</h3>
+        <p>Hard-to-find Technical Leads and ICs in Technology, Operations, Finance and Commercial—across EMEA & LATAM.</p>
+      </div>
+      <div class="card">
+        <div class="icon">🧪</div>
+        <h3>Assessment & Advisory</h3>
+        <p>Competency frameworks, interview design, and succession planning to de-risk decisions and lift team performance.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTORS -->
+  <section id="sectors" class="container">
+    <h2 class="section-title">Sectors We Serve</h2>
+    <p class="lead">Deep networks in technology and renewable energy, plus adjacent industries.</p>
+    <div class="grid g-4">
+      <div class="card"><h3>Technology</h3><p>Engineering, Data, Security, Product & Platform.</p></div>
+      <div class="card"><h3>Renewables</h3><p>Solar, Wind, BESS, Grid & Hydrogen.</p></div>
+      <div class="card"><h3>Financial Services</h3><p>PE/VC, project finance, asset management.</p></div>
+      <div class="card"><h3>Industrial & Ops</h3><p>EPC, supply chain, operations leadership.</p></div>
+    </div>
+  </section>
+
+  <!-- PROCESS -->
+  <section id="process" class="container">
+    <h2 class="section-title">How We Work</h2>
+    <p class="lead">Transparent stages with measurable outcomes, from kickoff to signed offer.</p>
+    <div class="grid g-4">
+      <div class="card"><strong>01 • Discovery</strong><p>Success profile, culture signals, timeline and success criteria.</p></div>
+      <div class="card"><strong>02 • Mapping</strong><p>Market map + longlist; human validation layered on ethical AI.</p></div>
+      <div class="card"><strong>03 • Shortlist</strong><p>Structured interviews, scorecards and weekly progress reports.</p></div>
+      <div class="card"><strong>04 • Close</strong><p>Offer strategy, expectation alignment and onboarding support.</p></div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS -->
+  <section class="testis">
+    <div class="container">
+      <h2 class="section-title">Client Testimonials</h2>
+      <blockquote>
+        “Kovacic Talent consistently delivers shortlists we can hire from. Their understanding of our markets and culture is best-in-class.”
+        <cite>— Chief People Officer, Global IPP</cite>
+      </blockquote>
+      <blockquote>
+        “Their search rigor rivals the big firms, but the experience is faster, clearer and far more personal.”
+        <cite>— CTO, Series C SaaS</cite>
+      </blockquote>
+    </div>
+  </section>
+
+  <!-- INSIGHTS -->
+  <section id="insights" class="container">
+    <h2 class="section-title">Insights & Resources</h2>
+    <p class="lead">Practical, research-backed guidance from our search team.</p>
+    <div class="grid g-3">
+      <div class="card"><h3>Scorecards that Predict Success</h3><p>Designing scorecards that correlate with performance at 180 days.</p></div>
+      <div class="card"><h3>Hiring Staff+ Engineers</h3><p>Signals that separate Staff/Principal engineers from strong seniors.</p></div>
+      <div class="card"><h3>LATAM Renewables Talent</h3><p>Where to find world-class Grid & BESS experts in competitive markets.</p></div>
+    </div>
+  </section>
+
+  <!-- CONTACT / CTA -->
+  <section id="contact" class="container">
+    <h2 class="section-title">Ready to Start?</h2>
+    <p class="lead">Tell us what success looks like—we’ll build a search around it.</p>
+    <div class="grid" style="grid-template-columns:1.1fr .9fr; gap:24px;">
+      <form class="card" onsubmit="event.preventDefault(); alert('Thanks! We will get in touch shortly.');">
+        <div style="display:grid;gap:12px">
+          <input required name="name" placeholder="Your name" style="padding:12px 14px;border:1px solid var(--line);border-radius:10px">
+          <input required type="email" name="email" placeholder="Your email" style="padding:12px 14px;border:1px solid var(--line);border-radius:10px">
+          <input name="company" placeholder="Company" style="padding:12px 14px;border:1px solid var(--line);border-radius:10px">
+          <textarea rows="4" name="message" placeholder="Tell us about the role" style="padding:12px 14px;border:1px solid var(--line);border-radius:10px;resize:vertical"></textarea>
+          <button class="btn btn-primary" type="submit">Send Inquiry</button>
+        </div>
+      </form>
+      <div class="card" style="display:grid;gap:10px">
+        <h3>Contact</h3>
+        <p class="muted">📞 +34 600 123 456<br>✉️ contact@kovacictalent.com<br>📍 Madrid · Barcelona · Santiago</p>
+        <div style="display:flex;gap:10px;align-items:center">
+          <span class="pill">Avg shortlist in 12 days</span>
+          <span class="pill">Global reach</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="container footer-inner">
+      <div>
+        <div class="logo" style="margin-bottom:10px"><span class="logo-mark"></span><span style="color:#e5edff">Kovacic Talent</span></div>
+        <p style="color:#94a3b8;max-width:58ch">Executive search and senior specialist recruitment across Technology and Renewable Energy. Boutique service, global reach.</p>
+      </div>
+      <div>
+        <form class="newsletter" onsubmit="event.preventDefault(); alert('Subscribed!');">
+          <input type="email" required placeholder="Subscribe with your email">
+          <button type="submit">Subscribe</button>
+        </form>
+      </div>
+    </div>
+    <div class="container mini">
+      © <span id="y"></span> Kovacic Talent. All rights reserved · <a href="#" style="color:#cbd5e1">Privacy</a> · <a href="#" style="color:#cbd5e1">Terms</a>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById('y').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
