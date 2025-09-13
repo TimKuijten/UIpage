@@ -12,8 +12,8 @@
       --ink:#101828;
       --muted:#667085;
       --bg:#ffffff;
-      --accent:#17D1B6;       /* mint/teal accent (like screenshot) */
-      --accent-dark:#12b39b;
+      --accent:#0A212E;
+      --accent-dark:#0A212E;
       --line:#ebedf0;
       --shadow:0 10px 30px rgba(16,24,40,.08);
       --radius:14px;
@@ -46,8 +46,7 @@
     .nav{position:sticky;top:0;z-index:40;background:#fff;border-bottom:1px solid var(--line)}
     .nav .inner{display:flex;align-items:center;justify-content:space-between;height:66px}
     .logo{display:flex;align-items:center;gap:.6rem;font-weight:900;letter-spacing:.02em}
-    .logo-mark{height:36px;width:36px;border-radius:10px;background:
-       conic-gradient(from 210deg,#22d3ee,#22c55e 40%,#17D1B6 70%,#60a5fa)}
+    .logo-img{height:36px;width:auto}
     .menu{display:flex;gap:26px;align-items:center}
     .menu a{font-weight:600;color:#0f172a}
     .menu a:hover{color:var(--accent-dark)}
@@ -66,7 +65,7 @@
 
     .hero-visual{position:relative}
     .hero-visual .ring{
-      position:absolute; right:-18vw; top:-10vw; width:min(90vw,980px); aspect-ratio:1/1;
+      position:absolute; right:-9vw; top:-5vw; width:min(45vw,490px); aspect-ratio:1/1;
       border-radius:50%;
       background: radial-gradient(closest-side,#f6f8fb 0 73%, transparent 73%),
                   conic-gradient(from 0deg,#f1f5f9, #e2e8f0);
@@ -79,6 +78,7 @@
       -webkit-mask-image: radial-gradient(56% 56% at 95% 50%, #000 60%, transparent 61%);
               mask-image: radial-gradient(56% 56% at 95% 50%, #000 60%, transparent 61%);
     }
+    .hero-visual .photo img{width:100%;height:100%;object-fit:cover}
     .hero-visual .badge{
       position:absolute; right:8%; bottom:10%; z-index:2;
       background:#fff; border:1px solid var(--line); border-radius:12px;
@@ -108,7 +108,7 @@
     .footer-inner{display:grid;grid-template-columns:1.2fr .8fr;gap:28px;align-items:center}
     .newsletter{display:flex;gap:10px}
     .newsletter input{flex:1;padding:12px 14px;border-radius:999px;border:1px solid #334155;background:#0f172a;color:#e2e8f0}
-    .newsletter button{border:none;background:var(--accent);color:#083c3f;border-radius:999px;padding:12px 18px;font-weight:800}
+    .newsletter button{border:none;background:var(--accent);color:#fff;border-radius:999px;padding:12px 18px;font-weight:800}
     .mini{border-top:1px solid #162036;margin-top:26px;padding-top:16px;text-align:center;color:#94a3b8}
 
     /* Responsive */
@@ -138,7 +138,7 @@
   <!-- Navigation -->
   <nav class="nav" aria-label="Primary navigation">
     <div class="container inner">
-      <a class="logo" href="#"><span class="logo-mark"></span><span>Kovacic Talent</span></a>
+      <a class="logo" href="#"><img src="https://kovacictalent.com/wp-content/uploads/2025/08/Logo_Kovacic.png" alt="Kovacic Talent logo" class="logo-img"><span>Kovacic Talent</span></a>
       <div class="menu">
         <a href="#services">Services</a>
         <a href="#sectors">Sectors</a>
@@ -179,7 +179,7 @@
         <div class="ring" aria-hidden="true"></div>
         <div class="photo">
           <!-- Replace with your own photo -->
-          <img src="https://images.unsplash.com/photo-1551836022-4c4c79ecde51?q=80&w=1200&auto=format&fit=crop" alt="Senior professional meeting in modern office">
+          <img src="https://kovacictalent.com/wp-content/uploads/2025/05/AdobeStock_641731816-scaled.jpeg" alt="Senior professional meeting in modern office">
         </div>
         <div class="badge">⭐ Trusted by 120+ clients</div>
       </div>
@@ -288,7 +288,7 @@
   <footer>
     <div class="container footer-inner">
       <div>
-        <div class="logo" style="margin-bottom:10px"><span class="logo-mark"></span><span style="color:#e5edff">Kovacic Talent</span></div>
+        <div class="logo" style="margin-bottom:10px"><img src="https://kovacictalent.com/wp-content/uploads/2025/08/Logo_Kovacic.png" alt="Kovacic Talent logo" class="logo-img"><span style="color:#e5edff">Kovacic Talent</span></div>
         <p style="color:#94a3b8;max-width:58ch">Executive search and senior specialist recruitment across Technology and Renewable Energy. Boutique service, global reach.</p>
       </div>
       <div>
