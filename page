@@ -31,9 +31,8 @@
     .nav ul{display:flex;gap:24px;list-style:none;margin:0;padding:0}
     .nav a{color:#334155;font-weight:600}
     .nav a:hover{color:var(--brand)}
-    .logo{display:flex;align-items:center;gap:.6rem;font-weight:800}
-    .logo-mark{height:34px;width:34px;border-radius:9px;background:conic-gradient(from 210deg at 50% 50%, #f97316, #ef4444 35%, #3b82f6 70%, #22c55e 100%);position:relative}
-    .logo-mark:after{content:"";position:absolute;inset:5px;border-radius:7px;background:#fff}
+      .logo{display:flex;align-items:center}
+      .logo img{height:34px}
     /* HERO */
     .hero{padding:72px 0 32px;background:linear-gradient(180deg,#ffffff, #f7fbff 60%, #f6f8fb)}
     .hero-grid{display:grid;grid-template-columns:1.2fr 1fr;gap:48px;align-items:center}
@@ -96,10 +95,9 @@
   <!-- NAV -->
   <nav class="nav">
     <div class="container nav-inner">
-      <a href="#" class="logo" aria-label="Rocket Home">
-        <span class="logo-mark"></span>
-        <span>rocket</span>
-      </a>
+        <a href="#" class="logo" aria-label="Kovacic Talent Home">
+          <img src="https://kovacictalent.com/wp-content/uploads/2025/08/Logo_Kovacic.png" alt="Kovacic Talent logo">
+        </a>
       <ul>
         <li><a href="#how">How We Work</a></li>
         <li><a href="#expertise">Areas of Expertise</a></li>
@@ -136,33 +134,7 @@
           </g>
         </svg>
         <div class="card">
-          <!-- Astronaut + planet illustration -->
-          <svg viewBox="0 0 680 420" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Astronaut exploring around a planet">
-            <defs>
-              <linearGradient id="grad" x1="0" y1="0" x2="1" y2="1">
-                <stop offset="0%" stop-color="#EEF2FF"/>
-                <stop offset="100%" stop-color="#E0F2FE"/>
-              </linearGradient>
-            </defs>
-            <rect x="0" y="0" width="100%" height="100%" rx="18" fill="url(#grad)"/>
-            <g stroke="#94A3B8" stroke-width="3" fill="none">
-              <ellipse cx="480" cy="200" rx="120" ry="48" fill="#F1F5F9"/>
-              <circle cx="480" cy="180" r="64" fill="#F8FAFC"/>
-              <g fill="#E2E8F0">
-                <circle cx="510" cy="168" r="10"/>
-                <circle cx="455" cy="190" r="8"/>
-                <circle cx="500" cy="205" r="7"/>
-              </g>
-              <path d="M210 220c120 60 180 100 260 70" stroke="#38BDF8" stroke-width="6"/>
-            </g>
-            <g transform="translate(100 160)">
-              <circle cx="60" cy="40" r="26" fill="#e2e8f0" stroke="#94a3b8" stroke-width="3"/>
-              <rect x="32" y="66" width="56" height="56" rx="12" fill="#fff" stroke="#94a3b8" stroke-width="3"/>
-              <rect x="44" y="86" width="32" height="10" rx="4" fill="#93c5fd"/>
-              <path d="M32 122c-10 18-18 36-1 44 18 8 30-11 37-24 4-8 8-15 12-22" fill="none" stroke="#94a3b8" stroke-width="3"/>
-              <path d="M88 122c10 18 18 36 1 44-18 8-30-11-37-24" fill="none" stroke="#94a3b8" stroke-width="3"/>
-            </g>
-          </svg>
+          <img src="https://kovacictalent.com/wp-content/uploads/2025/09/template_21-scaled.png" alt="Astronaut exploring around a planet" style="display:block;width:100%;border-radius:18px">
         </div>
       </div>
     </div>
