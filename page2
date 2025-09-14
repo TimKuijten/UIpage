@@ -263,17 +263,33 @@
         </div>
       </div>
     </div>
-  </section>
+    </section>
 
-  <!-- VALUES -->
-  <section id="Values" class="container">
+    <!-- DIFFERENTIATORS -->
+    <section class="container diff-feature" style="margin-top:40px;">
+      <div class="grid" style="grid-template-columns:1fr 1fr; gap:40px; align-items:center;">
+        <div class="hero-visual" style="margin-left:0">
+          <div class="ring" aria-hidden="true"></div>
+          <div class="photo">
+            <img src="https://kovacictalent.com/wp-content/uploads/2025/05/AdobeStock_641731816-scaled.jpeg" alt="Senior professional meeting in modern office">
+          </div>
+        </div>
+        <div>
+          <h2 class="section-title">We differentiate ourselves</h2>
+          <p>We differentiate ourselves by building lasting relationships and supporting executive recruitment and selection processes specializing in industrial, construction, and energy markets. <br><br>We work with companies that are growing, transforming, or expanding their international presence, helping them identify the right leaders for the challenges ahead.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- VALUES -->
+    <section id="Values" class="container">
     <h2 class="section-title"><span class="values-title">Our Values</span></h2>
     <p class="lead" style="text-align: center; max-width: 800px; margin: 20px auto;">
       At <strong>Kovacic Executive Talent Research</strong>, our values guide everything we do.
       They define <strong>how we work</strong>, how we build <strong>relationships</strong>, and how we create
       lasting <strong>impact</strong> for our clients and candidates.
     </p>
-    <div class="grid values-grid">
+      <div class="grid values-grid">
       <div class="card">
         <h3>Excellence</h3>
         <p>We commit to the <strong>highest standards</strong> at every stage of the process, delivering results that generate <strong>real impact</strong> for organizations.</p>
@@ -295,7 +311,7 @@
         <p>We respond with <strong>agility</strong> to change, recognizing that each organization is <strong>unique</strong> and requires <strong>tailored solutions</strong>.</p>
       </div>
     </div>
-  </section>
+    </section>
 
   <!-- PROCESS -->
   <section id="process" class="section-beige">
@@ -374,17 +390,6 @@
     </div>
   </section>
 
-
-  <!-- TESTIMONIALS -->
-  <section class="testis">
-    <div class="container">
-      <h2 class="section-title">We differentiate ourselves</h2>
-      <blockquote>
-        We differentiate ourselves by building lasting relationships and supporting executive recruitment and selection processes specializing in industrial, construction, and energy markets. <br><br>
-        We work with companies that are growing, transforming, or expanding their international presence, helping them identify the right leaders for the challenges ahead.
-      </blockquote>
-    </div>
-  </section>
 
   <!-- INSIGHTS -->
   <section id="processes" class="container">
