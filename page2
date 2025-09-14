@@ -126,16 +126,27 @@
       height:100%;
       width:100%;
     }
-    .sector-track img{
-      flex:0 0 100%;
-      width:100%;
-      height:100%;
-      object-fit:cover;   /* fill left→right; crop if needed */
-      object-position:center;
-    }
+      .sector-track img{
+        flex:0 0 100%;
+        width:100%;
+        height:100%;
+        object-fit:cover;   /* fill left→right; crop if needed */
+        object-position:center;
+      }
 
-    /* Testimonials */
-    .testis{background:#f6f8fb;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+      /* About */
+      .about-section{overflow:auto}
+      .about-section .about-img{
+        float:left;
+        width:min(45vw,490px);
+        margin-right:40px;
+        margin-bottom:20px;
+        border-radius:var(--radius);
+        box-shadow:var(--shadow);
+      }
+
+      /* Testimonials */
+      .testis{background:#f6f8fb;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
     .section-beige{background:var(--beige);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
     blockquote{max-width:860px;margin:0 auto;padding:0 20px;font-size:1.1rem;line-height:1.6;text-align:center;color:#0f172a}
     cite{display:block;margin-top:10px;color:#475569;font-style:normal;font-weight:700}
@@ -149,13 +160,14 @@
     .mini{border-top:1px solid #162036;margin-top:26px;padding-top:16px;text-align:center;color:#94a3b8}
 
     /* Responsive */
-    @media (max-width: 980px){
-      .menu{display:none}
-      .hero .inner{grid-template-columns:1fr}
-      .hero-visual .ring{right:-40vw; top:-28vw}
-      .hero-visual .photo{margin-inline:auto}
-      .footer-inner{grid-template-columns:1fr}
-    }
+      @media (max-width: 980px){
+        .menu{display:none}
+        .hero .inner{grid-template-columns:1fr}
+        .hero-visual .ring{right:-40vw; top:-28vw}
+        .hero-visual .photo{margin-inline:auto}
+        .footer-inner{grid-template-columns:1fr}
+        .about-section .about-img{float:none;width:100%;margin-right:0}
+      }
   </style>
 </head>
 <body>
@@ -266,19 +278,11 @@
     </div>
     </section>
 
-    <!-- DIFFERENTIATORS -->
-    <section class="container diff-feature" style="margin-top:40px;">
-      <div class="grid" style="grid-template-columns:1fr 1fr; gap:40px; align-items:center;">
-        <div class="hero-visual" style="margin-left:0">
-          <div class="ring" aria-hidden="true"></div>
-          <div class="photo">
-            <img src="https://kovacictalent.com/wp-content/uploads/2025/05/AdobeStock_641731816-scaled.jpeg" alt="Senior professional meeting in modern office">
-          </div>
-        </div>
-        <div>
-    <section id="About" class="container">
-                <h2 class="section-title"><span class="values-title">About us</span></h2>
-          <p>At Kovacic, we are a young firm backed by a team with decades of experience in international executive search. We embrace a boutique model where cutting-edge technology and artificial intelligence enhance our processes with greater precision and agility, always as a complement to what matters most: human insight and close relationships with executives and candidates.<br>
+    <!-- ABOUT -->
+    <section id="About" class="container about-section" style="margin-top:40px;">
+      <img src="https://kovacictalent.com/wp-content/uploads/2025/05/AdobeStock_641731816-scaled.jpeg" alt="Senior professional meeting in modern office" class="about-img">
+      <h2 class="section-title"><span class="values-title">About us</span></h2>
+      <p>At Kovacic, we are a young firm backed by a team with decades of experience in international executive search. We embrace a boutique model where cutting-edge technology and artificial intelligence enhance our processes with greater precision and agility, always as a complement to what matters most: human insight and close relationships with executives and candidates.<br>
 <br>
 Our identity is expressed through two brands:<br>
 Kovacic Talent, focused on technical positions, middle management, and key professionals who sustain growth.<br>
@@ -295,8 +299,6 @@ Within these divisions, we operate across core sectors: finance, infrastructure,
 Our value lies not only in identifying talent but in being a close partner that creates positive impact in the labor market. We work every day on continuous improvement and on delivering a distinctive experience for both candidates and clients, building trust, generating concrete results, and contributing to long-term growth.<br>
 <br>
 Our strengths in talent development are anchored in the world’s most influential business hubs: New York, Paris, Madrid, Barcelona, Berlin, Rome, Amsterdam, Oslo, Stockholm, Mexico City, São Paulo, Santiago de Chile, Lima, Panama, Shanghai, and Hong Kong.</p><br>
-        </div>
-      </div>
     </section>
 
     <!-- VALUES -->
