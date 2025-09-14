@@ -105,8 +105,8 @@
     .values-grid .card:nth-child(5){grid-column:4/span 2}
 
     .sector-slider{position:relative;overflow:hidden;margin-top:30px;height:200px;border-radius:var(--radius);box-shadow:var(--shadow)}
-    .sector-track{display:flex;width:400%;height:100%;transition:transform .6s ease}
-    .sector-track img{flex:0 0 25%;object-fit:contain;width:100%;height:100%}
+    .sector-track{display:flex;height:100%}
+    .sector-track img{width:100%;height:100%;object-fit:contain;flex-shrink:0}
 
     /* Testimonials */
     .testis{background:#f6f8fb;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
@@ -350,13 +350,28 @@ We work with companies that are growing, transforming, or expanding their intern
     })();
 
     (function(){
-      const track = document.querySelector('.sector-track');
-      if(!track) return;
+      const slider = document.querySelector('.sector-slider');
+      if(!slider) return;
+      const track = slider.querySelector('.sector-track');
+      if(!track.children.length) return;
+      const first = track.children[0].cloneNode(true);
+      track.appendChild(first);
       let sIdx = 0;
+      const total = track.children.length;
+      const duration = 600;
       setInterval(()=>{
-        sIdx = (sIdx + 1) % track.children.length;
-        track.style.transform = `translateX(-${sIdx * 100}%)`;
-      },15000);
+        sIdx++;
+        const slideWidth = slider.clientWidth;
+        track.style.transition = 'transform .6s ease';
+        track.style.transform = `translateX(-${sIdx * slideWidth}px)`;
+        if(sIdx === total - 1){
+          setTimeout(()=>{
+            track.style.transition = 'none';
+            track.style.transform = 'translateX(0)';
+            sIdx = 0;
+          }, duration);
+        }
+      },10000);
     })();
   </script>
 </body>
