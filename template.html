@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>{{PAGE_TITLE}}</title>
+  <meta name="description" content="{{PAGE_DESCRIPTION}}" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --ink:#101828;
+      --muted:#667085;
+      --bg:#ffffff;
+      --accent:#0A212E;
+      --accent-dark:#0A212E;
+      --line:#ebedf0;
+      --beige:#E9F0F5;
+      --shadow:0 10px 30px rgba(16,24,40,.08);
+      --radius:14px;
+      --radius-lg:22px;
+      --pad: clamp(16px, 3.2vw, 28px);
+      --w: 1180px;            /* content width */
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{margin:0;font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial; color:var(--ink); background:var(--bg)}
+    a{color:inherit;text-decoration:none}
+    img{max-width:100%;display:block}
+    .container{max-width:var(--w); margin-inline:auto; padding-inline:var(--pad)}
+    .btn{display:inline-flex;align-items:center;gap:.5rem;padding:.9rem 1.3rem;border-radius:999px;font-weight:700;letter-spacing:.01em}
+    .btn-primary{background:#111;color:#fff}
+    .btn-primary:hover{filter:brightness(.95)}
+    .btn-ghost{border:2px solid #111;color:#111}
+    .btn-ghost:hover{background:#111;color:#fff}
+    .pill{display:inline-flex;align-items:center;gap:.5rem;color:#0f172a;background:linear-gradient(90deg,#eafcf8,#fff);border:1px solid #d9f4ee;padding:.35rem .7rem;border-radius:999px;font-weight:700;font-size:.78rem}
+    .dot{width:8px;height:8px;border-radius:999px;background:#d1d5db}
+    .dot.is-active{background:var(--accent)}
+
+    /* Topbar */
+    .topbar{background:#111;color:#fff;font-size:.85rem}
+    .topbar .inner{display:flex;justify-content:space-between;align-items:center;height:40px}
+    .social a{opacity:.85;margin-left:14px}
+    .social a:hover{opacity:1}
+
+    /* Navbar */
+    .nav{position:sticky;top:0;z-index:40;background:#fff;border-bottom:1px solid var(--line)}
+    .nav .inner{display:flex;align-items:center;justify-content:space-between;height:66px}
+    .logo{display:flex;align-items:center;gap:.6rem;font-weight:900;letter-spacing:.02em}
+    .logo-img{height:36px;width:auto}
+    .menu{display:flex;gap:26px;align-items:center}
+    .menu a{font-weight:600;color:#0f172a}
+    .menu a:hover{color:var(--accent-dark)}
+    .nav-cta{display:flex;gap:10px;align-items:center}
+
+    /* HERO */
+    .hero{position:relative;overflow:hidden}
+    .hero .inner{display:grid;grid-template-columns:1.12fr .88fr;align-items:center;gap:48px;padding-block: clamp(20px,4vw,45px)}
+    .eyebrow{font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:#475569}
+    h1{font-size:clamp(2rem,4vw,3.2rem);line-height:1.08;margin:.35rem 0 1rem}
+    .hero p.sub{color:var(--muted);font-size:1.08rem;max-width:58ch}
+    .cta-row{display:flex;flex-wrap:wrap;gap:12px;margin-top:22px}
+    .hero-copy{position:relative}
+    .hero-slide{display:none}
+    .hero-slide.is-active{display:block}
+    .slider-dots{display:flex;gap:10px;align-items:center;margin-top:28px}
+
+    .hero-visual{position:relative; width:min(45vw,490px); aspect-ratio:1/1; margin-left:auto}
+    .hero-visual .ring{
+      position:absolute; inset:0; border-radius:50%;
+      background: radial-gradient(closest-side,#DDE9F0 0 73%, transparent 73%),
+                  conic-gradient(from 0deg,#f1f5f9, #DDE9F0);
+      z-index:0; opacity:.9; filter:drop-shadow(0 30px 60px rgba(2,6,23,.07));
+    }
+    .hero-visual .photo{
+      position:absolute; inset:12%; border-radius:50%; overflow:hidden; box-shadow:var(--shadow); z-index:1;
+    }
+    .hero-visual .photo img{
+      position:absolute; inset:0; width:100%; height:100%; object-fit:cover; opacity:0; transition:opacity .6s ease;
+    }
+    .hero-visual .photo img.is-active{opacity:1}
+    .hero-visual .badge{
+      position:absolute; right:8%; bottom:10%; z-index:2;
+      background:#fff; border:1px solid var(--line); border-radius:12px;
+      padding:10px 14px; box-shadow:var(--shadow); display:flex; align-items:center; gap:8px;
+      font-weight:700;
+    }
+    .accent{color:var(--accent)}
+
+    /* Sections */
+    section{padding-block: clamp(24px, 4.5vw, 44px)}
+    .section-title{text-align:center;margin-bottom:8px;font-size:clamp(1.2rem,2.2vw,1.8rem)}
+    .lead{color:var(--muted);text-align:center;max-width:70ch;margin:0 auto 28px}
+    .lead-lg{font-size:1.2rem}
+    .grid{display:grid;gap:22px}
+    .g-3{grid-template-columns:repeat(3,1fr)}
+    .g-4{grid-template-columns:repeat(4,1fr)}
+    .card{background:#fafafa;border:1px solid var(--line);border-radius:var(--radius);padding:20px}
+    .card h3{margin:8px 0 6px}
+    .icon{width:36px;height:36px;border-radius:10px;background:linear-gradient(180deg,#eafff9,#fff);border:1px solid #d9f4ee;display:grid;place-items:center}
+
+    /* Footer */
+    footer{background:#0b1220;color:#cbd5e1}
+    .footer-inner{display:grid;grid-template-columns:1.2fr .8fr;gap:28px;align-items:center}
+    .newsletter{display:flex;gap:10px}
+    .newsletter input{flex:1;padding:12px 14px;border-radius:999px;border:1px solid #334155;background:#0f172a;color:#e2e8f0}
+    .newsletter button{border:none;background:var(--accent);color:#fff;border-radius:999px;padding:12px 18px;font-weight:800}
+    .mini{border-top:1px solid #162036;margin-top:26px;padding-top:16px;text-align:center;color:#94a3b8}
+
+    /* Responsive */
+    @media (max-width: 980px){
+      .menu{display:none}
+      .hero .inner{grid-template-columns:1fr}
+      .hero-visual .ring{right:-40vw; top:-28vw}
+      .hero-visual .photo{margin-inline:auto}
+      .footer-inner{grid-template-columns:1fr}
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Topbar -->
+  <div class="topbar">
+    <div class="container inner">
+      <div>{{TOPBAR_TEXT}}</div>
+      <div class="social">
+        <!-- Add social links here -->
+      </div>
+    </div>
+  </div>
+
+  <!-- Navigation -->
+  <nav class="nav" aria-label="Primary navigation">
+    <div class="container inner">
+      <a class="logo" href="#"><img src="{{LOGO_SRC}}" alt="{{LOGO_ALT}}" class="logo-img"><span>{{LOGO_TEXT}}</span></a>
+      <div class="menu">
+        <!-- Navigation links -->
+      </div>
+      <div class="nav-cta">
+        <!-- Call-to-action buttons -->
+      </div>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <header class="hero">
+    <div class="container inner">
+      <div class="hero-copy">
+        <div class="hero-slide is-active">
+          <h1>{{HERO_TITLE}}</h1>
+          <span class="pill">{{HERO_PILL}}</span>
+          <p class="sub">{{HERO_SUBTEXT}}</p>
+          <div class="cta-row">
+            <!-- Hero CTAs -->
+          </div>
+        </div>
+      </div>
+      <div class="hero-visual">
+        <div class="ring"></div>
+        <div class="photo"><img src="{{HERO_IMAGE_SRC}}" alt="{{HERO_IMAGE_ALT}}" class="is-active"></div>
+        <div class="badge">{{HERO_BADGE}}</div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main content placeholder -->
+  <main>
+    <!-- Add page sections here -->
+  </main>
+
+  <!-- Footer -->
+  <footer id="contact">
+    <div class="container footer-inner">
+      <!-- Footer content -->
+    </div>
+    <div class="mini">© <span id="y"></span> {{COMPANY_NAME}}. All rights reserved.</div>
+  </footer>
+
+  <script>
+    document.getElementById('y').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
