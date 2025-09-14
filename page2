@@ -90,6 +90,7 @@
     section{padding-block: clamp(24px, 4.5vw, 44px)}
     .section-title{text-align:center;margin-bottom:8px;font-size:clamp(1.2rem,2.2vw,1.8rem)}
     .lead{color:var(--muted);text-align:center;max-width:70ch;margin:0 auto 28px}
+    .lead-lg{font-size:1.2rem}
     .grid{display:grid;gap:22px}
     .g-3{grid-template-columns:repeat(3,1fr)}
     .g-4{grid-template-columns:repeat(4,1fr)}
@@ -105,6 +106,9 @@
     .values-grid .card{grid-column:span 2}
     .values-grid .card:nth-child(4){grid-column:2/span 2}
     .values-grid .card:nth-child(5){grid-column:4/span 2}
+
+    .why-choose{text-align:center}
+    .why-choose ul{display:inline-block;text-align:left;margin:0 auto}
 
     /* Fixed sector slider — 200px tall and each image spans full width */
     .sector-slider{
@@ -286,7 +290,7 @@
   <!-- PROCESS -->
   <section id="process" class="container">
     <h2 class="section-title"><span class="values-title">How We Work</span></h2>
-    <p class="lead"><strong>Classic Executive Search:</strong> Transparent stages with measurable outcomes, from kickoff to signed offer.</p>
+    <p class="lead lead-lg"><strong>Classic Executive Search:</strong> Transparent stages with measurable outcomes, from kickoff to signed offer.</p>
     <div class="grid g-4">
       <div class="card">
         <svg viewBox="0 0 24 24" ...></svg>
@@ -321,7 +325,7 @@
   </section>
 
   <section id="process-ai" class="container">
-    <p class="lead"><strong>AI-Enhanced Search:</strong> Blending human expertise with advanced technology to accelerate results.</p>
+    <p class="lead lead-lg"><strong>AI-Enhanced Search:</strong> Blending human expertise with advanced technology to accelerate results.</p>
     <div class="grid g-4">
       <div class="card">
         <svg viewBox="0 0 24 24" ...></svg>
