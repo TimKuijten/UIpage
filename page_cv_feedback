@@ -171,11 +171,11 @@
 
   <main class="kcvf">
     <div class="kcvf-container">
-      <!-- REGISTRO INICIAL -->
+      <!-- INITIAL REGISTRATION -->
       <section class="kcvf-formwrap" style="margin-top:0">
-        <h3>Registra tu CV para futuras oportunidades</h3>
-        <p>Sube tu CV para que podamos contactarte y mantenerte informado.</p>
-        <button class="kcvf-toggle" id="toggle-cv-form" aria-expanded="false">Registrar CV</button>
+        <h3>Register your CV for future opportunities</h3>
+        <p>Upload your CV so we can contact you and keep you informed.</p>
+        <button class="kcvf-toggle" id="toggle-cv-form" aria-expanded="false">Register CV</button>
         <div class="kcvf-shortcode" id="cv-form">
           <strong>[kovacic_cv_register]</strong>
         </div>
@@ -184,99 +184,99 @@
       <!-- HERO -->
       <header class="kcvf-hero">
         <div>
-          <span class="kcvf-eyebrow">Desarrollado internamente por Kovacic Executive Talent Research</span>
-          <h1 class="kcvf-title">Mejora el impacto de tu CV <span class="accent"></span></h1>
+          <span class="kcvf-eyebrow">Developed in-house by Kovacic Executive Talent Research</span>
+          <h1 class="kcvf-title">Enhance the impact of your CV <span class="accent"></span></h1>
           <p class="kcvf-sub">
-            Nuestro sistema analiza tu CV a partir de <strong>múltiples puntos de evaluación</strong>
-            (estructura, impacto, palabras clave, ATS y más) para ofrecerte un <strong>feedback personalizado</strong>
-            que te ayude a destacar en tus próximas oportunidades.
+            Our system analyzes your CV across <strong>multiple evaluation points</strong>
+            (structure, impact, keywords, ATS and more) to give you <strong>personalized feedback</strong>
+            that helps you stand out in future opportunities.
           </p>
           <div class="kcvf-hero-cta">
             <span class="kcvf-badge">
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M20 7L9 18l-5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-              Feedback claro y accionable
+              Clear, actionable feedback
             </span>
             <span class="kcvf-badge">
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 8v4l3 3" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="2"/></svg>
-              En minutos
+              In minutes
             </span>
             <span class="kcvf-badge">
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 12h16M4 6h16M4 18h10" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
-              Orientado a ATS
+              ATS-ready
             </span>
           </div>
         </div>
         <img src="https://kovacictalent.com/wp-content/uploads/2025/05/AdobeStock_1035652596-scaled.jpeg"
-             alt="Reclutadores profesionales analizando un CV">
+             alt="Professional recruiters analyzing a CV">
       </header>
 
-      <!-- GRID DE VALOR -->
-      <section class="kcvf-grid" aria-label="Puntos de valor">
+      <!-- VALUE GRID -->
+      <section class="kcvf-grid" aria-label="Value points">
         <article class="kcvf-card">
           <div class="kcvf-ico">
             <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><circle cx="12" cy="7" r="4" stroke="currentColor" stroke-width="2"/></svg>
           </div>
-          <h3>Personalizado</h3>
-          <p>El feedback se adapta a tu <strong>rol y sector</strong>, resaltando logros y fortalezas relevantes.</p>
+          <h3>Personalized</h3>
+          <p>The feedback adapts to your <strong>role and sector</strong>, highlighting relevant achievements and strengths.</p>
         </article>
         <article class="kcvf-card">
           <div class="kcvf-ico">
             <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M3 12h18M3 6h18M3 18h12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
           </div>
-          <h3>Listo para ATS</h3>
-          <p>Recomendaciones para mejorar <strong>legibilidad y palabras clave</strong> sin perder estilo profesional.</p>
+          <h3>ATS-ready</h3>
+          <p>Recommendations to improve <strong>readability and keywords</strong> without losing professional style.</p>
         </article>
         <article class="kcvf-card">
           <div class="kcvf-ico">
             <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M12 1v4M12 19v4M4.22 4.22l2.83 2.83M16.95 16.95l2.83 2.83M1 12h4M19 12h4M4.22 19.78l2.83-2.83M16.95 7.05l2.83-2.83" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
           </div>
-          <h3>Desarrollado in-house</h3>
-          <p>Solución creada por <strong>Kovacic Executive Talent Research</strong> para impulsar tu candidatura.</p>
+          <h3>Developed in-house</h3>
+          <p>Solution created by <strong>Kovacic Executive Talent Research</strong> to boost your application.</p>
         </article>
       </section>
 
-      <!-- CÓMO FUNCIONA -->
+      <!-- HOW IT WORKS -->
       <section class="kcvf-steps">
         <div>
-          <h2>Cómo funciona?</h2>
+          <h2>How does it work?</h2>
           <ol>
             <li>
-              <strong>Sube tu CV y cuéntanos tu objetivo.</strong>
-              <p>Indica el rol/área y sector para un análisis más preciso.</p>
+              <strong>Upload your CV and tell us your goal.</strong>
+              <p>Specify the role/area and sector for a more precise analysis.</p>
             </li>
             <li>
-              <strong>Analizamos múltiples puntos de evaluación.</strong>
-              <p>Estructura, cuantificación de logros, keywords, legibilidad y adecuación a ATS.</p>
+              <strong>We analyze multiple evaluation points.</strong>
+              <p>Structure, quantified achievements, keywords, readability, and ATS fit.</p>
             </li>
             <li>
-              <strong>Recibe tu feedback claro y accionable.</strong>
-              <p><em>Top 5 mejoras</em>, consejos de métricas, revisión por secciones y un <em>resumen mejorado</em>.</p>
+              <strong>Receive clear, actionable feedback.</strong>
+              <p><em>Top 5 improvements</em>, metric tips, section-by-section review, and an <em>enhanced summary</em>.</p>
             </li>
           </ol>
         </div>
         <div class="illus">
           <img src="https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&fit=crop&w=900&q=80"
-               alt="Ejecutivo revisando un currículum en la oficina">
+               alt="Executive reviewing a resume in the office">
         </div>
       </section>
 
-      <!-- EXPLICACIÓN OFICIAL -->
+      <!-- OFFICIAL EXPLANATION -->
       <section style="margin-top:36px">
         <div class="kcvf-card" style="padding:24px">
-          <h2 style="margin:.2rem 0 10px">Por qué esta herramienta?</h2>
+          <h2 style="margin:.2rem 0 10px">Why this tool?</h2>
           <p style="color:#475569; max-width:80ch">
-            En <strong>Kovacic Executive Talent Research</strong> hemos desarrollado internamente esta herramienta para ayudarte a
-            <strong>optimizar tu CV</strong> con recomendaciones prácticas. El sistema combina señales que los reclutadores valoran
-            (claridad, impacto, relevancia, palabras clave y cumplimiento ATS) para ofrecerte un <strong>feedback personalizado</strong>
-            que mejore tu presentación y posicione mejor tu candidatura.
+            At <strong>Kovacic Executive Talent Research</strong> we developed this tool internally to help you
+            <strong>optimize your CV</strong> with practical recommendations. The system combines the signals recruiters value
+            (clarity, impact, relevance, keywords, and ATS compliance) to provide <strong>personalized feedback</strong>
+            that improves your presentation and better positions your application.
           </p>
         </div>
       </section>
 
-      <!-- FORMULARIO -->
-      <section class="kcvf-formwrap" id="enviar-cv">
-        <h3>Envía tu CV para feedback</h3>
-        <p>Sube tu documento y recibe recomendaciones en pocos minutos.</p>
+      <!-- FORM -->
+      <section class="kcvf-formwrap" id="submit-cv">
+        <h3>Submit your CV for feedback</h3>
+        <p>Upload your document and receive recommendations in a few minutes.</p>
         <div class="kcvf-shortcode" style="display:block">
           <strong>[kovacic_cv_submit]</strong>
         </div>
@@ -293,7 +293,7 @@
         const open = form.style.display === 'block';
         form.style.display = open ? 'none' : 'block';
         btn.setAttribute('aria-expanded', String(!open));
-        btn.textContent = open ? 'Registrar CV' : 'Ocultar formulario';
+        btn.textContent = open ? 'Register CV' : 'Hide form';
       });
     }
   });
