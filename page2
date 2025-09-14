@@ -15,6 +15,7 @@
       --accent:#0A212E;
       --accent-dark:#0A212E;
       --line:#ebedf0;
+      --beige:#E9F0F5;
       --shadow:0 10px 30px rgba(16,24,40,.08);
       --radius:14px;
       --radius-lg:22px;
@@ -67,8 +68,8 @@
     .hero-visual{position:relative; width:min(45vw,490px); aspect-ratio:1/1; margin-left:auto}
     .hero-visual .ring{
       position:absolute; inset:0; border-radius:50%;
-      background: radial-gradient(closest-side,#f6f8fb 0 73%, transparent 73%),
-                  conic-gradient(from 0deg,#f1f5f9, #e2e8f0);
+      background: radial-gradient(closest-side,#DDE9F0 0 73%, transparent 73%),
+                  conic-gradient(from 0deg,#f1f5f9, #DDE9F0);
       z-index:0; opacity:.9; filter:drop-shadow(0 30px 60px rgba(2,6,23,.07));
     }
     .hero-visual .photo{
@@ -135,6 +136,7 @@
 
     /* Testimonials */
     .testis{background:#f6f8fb;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+    .section-beige{background:var(--beige);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
     blockquote{max-width:860px;margin:0 auto;padding:0 20px;font-size:1.1rem;line-height:1.6;text-align:center;color:#0f172a}
     cite{display:block;margin-top:10px;color:#475569;font-style:normal;font-weight:700}
 
@@ -163,7 +165,10 @@
     <div class="container inner">
       <div>📞 +34 600 123 456 · ✉️ contact@kovacictalent.com</div>
       <div class="social">
-        <a href="https://linkedin.com/company/kovacic-executive-talent" aria-label="LinkedIn">in</a>
+<a href="https://linkedin.com/company/kovacic-executive-talent" 
+   aria-label="LinkedIn" 
+   target="_blank" 
+   rel="noopener noreferrer">in</a>
       </div>
     </div>
   </div>
@@ -191,6 +196,7 @@
     <div class="container inner">
       <div class="hero-copy">
         <div class="hero-slide is-active">
+          <h1>We connect talent with the energy of change</h1>
           <span class="pill">10+ Years of Experience</span>
           <h1>We Are a <span class="accent">Recruitment Partner</span> for High-Growth Companies</h1>
           <p class="sub">We help organizations across EMEA & LATAM identify and attract exceptional leaders and senior specialists—combining rigorous search methods with modern, ethical AI to deliver results that endure.</p>
@@ -200,6 +206,7 @@
           </div>
         </div>
         <div class="hero-slide">
+          <h1>We connect talent with the energy of change</h1>
           <span class="pill">Results That Stick</span>
           <h1>85% 12-Month Retention</h1>
           <p class="sub">Our placements thrive long term, with four out of five leaders still in role after the first year.</p>
@@ -209,6 +216,7 @@
           </div>
         </div>
         <div class="hero-slide">
+          <h1>We connect talent with the energy of change</h1>
           <span class="pill">Improve Your CV</span>
           <h1>Personal, ATS-Friendly CV Feedback</h1>
           <p class="sub">Upload your CV to receive clear, actionable suggestions tailored to your role and sector.</p>
@@ -236,21 +244,23 @@
   </header>
 
   <!-- SECTORS -->
-  <section id="sectors" class="container">
-    <h2 class="section-title"><span class="values-title">Sectors</span></h2>
-    <p class="lead">Deep networks in technology and renewable energy, plus adjacent industries.</p>
-    <div class="grid g-4">
-      <div class="card"><h3>Technology</h3><p>Engineering, Data, Security, Product & Platform.</p></div>
-      <div class="card"><h3>Renewables</h3><p>Solar, Wind, BESS, Grid & Hydrogen.</p></div>
-      <div class="card"><h3>Financial Services</h3><p>PE/VC, project finance, asset management.</p></div>
-      <div class="card"><h3>Industrial & Ops</h3><p>EPC, supply chain, operations leadership.</p></div>
-    </div>
-    <div class="sector-slider">
-      <div class="sector-track">
-        <img src="https://kovacictalent.com/wp-content/uploads/2025/09/8478.jpg" alt="Technology sector">
-        <img src="https://kovacictalent.com/wp-content/uploads/2025/09/landscape-with-windmills-scaled.jpg" alt="Renewable energy sector">
-        <img src="https://kovacictalent.com/wp-content/uploads/2025/09/business-people-discussing-results-successful-teamwork-scaled.jpg" alt="Financial services sector">
-        <img src="https://kovacictalent.com/wp-content/uploads/2025/09/large-vecteezy_confident-factory-worker-using-digital-tablet-in-industrial_47268909_large.jpg" alt="Industrial operations sector">
+  <section id="sectors" class="section-beige">
+    <div class="container">
+      <h2 class="section-title"><span class="values-title">Sectors</span></h2>
+      <p class="lead">Deep networks in technology and renewable energy, plus adjacent industries.</p>
+      <div class="grid g-4">
+        <div class="card"><h3>Technology</h3><p>Engineering, Data, Security, Product & Platform.</p></div>
+        <div class="card"><h3>Renewables</h3><p>Solar, Wind, BESS, Grid & Hydrogen.</p></div>
+        <div class="card"><h3>Financial Services</h3><p>PE/VC, project finance, asset management.</p></div>
+        <div class="card"><h3>Industrial & Ops</h3><p>EPC, supply chain, operations leadership.</p></div>
+      </div>
+      <div class="sector-slider">
+        <div class="sector-track">
+          <img src="https://kovacictalent.com/wp-content/uploads/2025/09/8478.jpg" alt="Technology sector">
+          <img src="https://kovacictalent.com/wp-content/uploads/2025/09/landscape-with-windmills-scaled.jpg" alt="Renewable energy sector">
+          <img src="https://kovacictalent.com/wp-content/uploads/2025/09/business-people-discussing-results-successful-teamwork-scaled.jpg" alt="Financial services sector">
+          <img src="https://kovacictalent.com/wp-content/uploads/2025/09/large-vecteezy_confident-factory-worker-using-digital-tablet-in-industrial_47268909_large.jpg" alt="Industrial operations sector">
+        </div>
       </div>
     </div>
   </section>
@@ -288,74 +298,79 @@
   </section>
 
   <!-- PROCESS -->
-  <section id="process" class="container">
-    <h2 class="section-title"><span class="values-title">How We Work</span></h2>
-    <p class="lead lead-lg"><strong>Classic Executive Search:</strong> Transparent stages with measurable outcomes, from kickoff to signed offer.</p>
-    <div class="grid g-4">
-      <div class="card">
-        <svg viewBox="0 0 24 24" ...></svg>
-        <strong>01 • Discovery</strong>
-        <p>Deep dive into success profile, cultural fit, leadership traits, and role context.</p>
+  <section id="process" class="section-beige">
+    <div class="container">
+      <h2 class="section-title"><span class="values-title">How We Work</span></h2>
+      <p class="lead lead-lg"><strong>Classic Executive Search:</strong> Transparent stages with measurable outcomes, from kickoff to signed offer.</p>
+      <div class="grid g-4">
+        <div class="card">
+          <svg viewBox="0 0 24 24" ...></svg>
+          <strong>01 • Discovery</strong>
+          <p>Deep dive into success profile, cultural fit, leadership traits, and role context.</p>
+        </div>
+        <div class="card">
+          <svg viewBox="0 0 24 24" ...></svg>
+          <strong>02 • Mapping</strong>
+          <p>Manual market research, direct headhunting, and building a validated longlist.</p>
+        </div>
+        <div class="card">
+          <svg viewBox="0 0 24 24" ...></svg>
+          <strong>03 • Shortlist</strong>
+          <p>Structured interviews, detailed candidate assessments, and weekly progress reports.</p>
+        </div>
+        <div class="card">
+          <svg viewBox="0 0 24 24" ...></svg>
+          <strong>04 • Close</strong>
+          <p>Offer strategy, expectation alignment, and onboarding support.</p>
+        </div>
       </div>
-      <div class="card">
-        <svg viewBox="0 0 24 24" ...></svg>
-        <strong>02 • Mapping</strong>
-        <p>Manual market research, direct headhunting, and building a validated longlist.</p>
-      </div>
-      <div class="card">
-        <svg viewBox="0 0 24 24" ...></svg>
-        <strong>03 • Shortlist</strong>
-        <p>Structured interviews, detailed candidate assessments, and weekly progress reports.</p>
-      </div>
-      <div class="card">
-        <svg viewBox="0 0 24 24" ...></svg>
-        <strong>04 • Close</strong>
-        <p>Offer strategy, expectation alignment, and onboarding support.</p>
-      </div>
-    </div>
-    <div class="why-choose">
-      <h3>Why choose the Classic Way?</h3>
-      <ul>
-        ✔️ Best for highly confidential or niche roles where trust and discretion matter most.
-        ✔️ Relies on deep human networks, relationships, and proven headhunting practices.
-        ✔️ Ensures cultural alignment through rigorous personal validation at every stage.
-        ✔️ Ideal when precision, experience, and tailored judgment outweigh speed.
-      </ul>
-    </div>
-  </section>
-
-  <section id="process-ai" class="container">
-    <p class="lead lead-lg"><strong>AI-Enhanced Search:</strong> Blending human expertise with advanced technology to accelerate results.</p>
-    <div class="grid g-4">
-      <div class="card">
-        <svg viewBox="0 0 24 24" ...></svg>
-        <strong>01 • Discovery</strong>
-        <p>Success profile, culture signals, timeline and <strong>AI-based role calibration</strong>.</p>
-      </div>
-      <div class="card">
-        <svg viewBox="0 0 24 24" ...></svg>
-        <strong>02 • Mapping</strong>
-        <p><strong>AI-driven market scanning + human validation</strong>, delivering a smarter longlist faster.</p>
-      </div>
-      <div class="card">
-        <svg viewBox="0 0 24 24" ...></svg>
-        <strong>03 • Shortlist</strong>
-        <p>Structured interviews, predictive scorecards, and live dashboards with <strong>weekly AI-powered insights</strong>.</p>
-      </div>
-      <div class="card">
-        <svg viewBox="0 0 24 24" ...></svg>
-        <strong>04 • Close</strong>
-        <p>Offer strategy, expectation alignment, onboarding support, <strong>plus ongoing data-driven retention insights</strong>.</p>
+      <div class="why-choose">
+        <h3>Why choose the Classic Way?</h3>
+        <ul>
+          ✔️ Best for highly confidential or niche roles where trust and discretion matter most.<br>
+          ✔️ Relies on deep human networks, relationships, and proven headhunting practices.<br>
+          ✔️ Ensures cultural alignment through rigorous personal validation at every stage.<br>
+          ✔️ Ideal when precision, experience, and tailored judgment outweigh speed.
+        </ul>
       </div>
     </div>
-    <div class="why-choose">
-      <h3>Why choose the AI-Enhanced Way?</h3>
-      <ul>
-        ✔️ Speeds up search with real-time data and AI-powered talent mapping.
-        ✔️ Uncovers hidden talent pools across broader geographies and industries.
-        ✔️ Provides measurable insights via scorecards, dashboards, and analytics.
-        ✔️ Perfect when you need scalability, transparency, and faster decision-making.
-      </ul>
+<br>
+<br>
+<br>
+<br>
+    <div class="container">
+      <p class="lead lead-lg"><strong>AI-Enhanced Search:</strong> Blending human expertise with advanced technology to accelerate results.</p>
+      <div class="grid g-4">
+        <div class="card">
+          <svg viewBox="0 0 24 24" ...></svg>
+          <strong>01 • Discovery</strong>
+          <p>Success profile, culture signals, timeline and <strong>AI-based role calibration</strong>.</p>
+        </div>
+        <div class="card">
+          <svg viewBox="0 0 24 24" ...></svg>
+          <strong>02 • Mapping</strong>
+          <p><strong>AI-driven market scanning + human validation</strong>, delivering a smarter longlist faster.</p>
+        </div>
+        <div class="card">
+          <svg viewBox="0 0 24 24" ...></svg>
+          <strong>03 • Shortlist</strong>
+          <p>Structured interviews, predictive scorecards, and live dashboards with <strong>weekly AI-powered insights</strong>.</p>
+        </div>
+        <div class="card">
+          <svg viewBox="0 0 24 24" ...></svg>
+          <strong>04 • Close</strong>
+          <p>Offer strategy, expectation alignment, onboarding support, <strong>plus ongoing data-driven retention insights</strong>.</p>
+        </div>
+      </div>
+      <div class="why-choose">
+        <h3>Why choose the AI-Enhanced Way?</h3>
+        <ul>
+          ✔️ Speeds up search with real-time data and AI-powered talent mapping.<br>
+          ✔️ Uncovers hidden talent pools across broader geographies and industries.<br>
+          ✔️ Provides measurable insights via scorecards, dashboards, and analytics.<br>
+          ✔️ Perfect when you need scalability, transparency, and faster decision-making.
+        </ul>
+      </div>
     </div>
   </section>
 
