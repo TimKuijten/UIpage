@@ -309,12 +309,14 @@
         <p>Offer strategy, expectation alignment, and onboarding support.</p>
       </div>
     </div>
-    <div class="why-choose" style="text-align:center; margin-top:2rem;">
+    <div class="why-choose">
       <h3>Why choose the Classic Way?</h3>
-      <p>Best for highly confidential or niche roles where trust and discretion matter most.</p>
-      <p>Relies on deep human networks, relationships, and proven headhunting practices.</p>
-      <p>Ensures cultural alignment through rigorous personal validation at every stage.</p>
-      <p>Ideal when precision, experience, and tailored judgment outweigh speed.</p>
+      <ul>
+        <li>✔️ Best for highly confidential or niche roles where trust and discretion matter most.</li>
+        <li>✔️ Relies on deep human networks, relationships, and proven headhunting practices.</li>
+        <li>✔️ Ensures cultural alignment through rigorous personal validation at every stage.</li>
+        <li>✔️ Ideal when precision, experience, and tailored judgment outweigh speed.</li>
+      </ul>
     </div>
   </section>
 
@@ -342,15 +344,16 @@
         <p>Offer strategy, expectation alignment, onboarding support, <strong>plus ongoing data-driven retention insights</strong>.</p>
       </div>
     </div>
-    <div class="why-choose" style="text-align:center; margin-top:2rem;">
+    <div class="why-choose">
       <h3>Why choose the AI-Enhanced Way?</h3>
-      <p>Speeds up search with real-time data and AI-powered talent mapping.</p>
-      <p>Uncovers hidden talent pools across broader geographies and industries.</p>
-      <p>Provides measurable insights via scorecards, dashboards, and analytics.</p>
-      <p>Perfect when you need scalability, transparency, and faster decision-making.</p>
+      <ul>
+        <li>✔️ Speeds up search with real-time data and AI-powered talent mapping.</li>
+        <li>✔️ Uncovers hidden talent pools across broader geographies and industries.</li>
+        <li>✔️ Provides measurable insights via scorecards, dashboards, and analytics.</li>
+        <li>✔️ Perfect when you need scalability, transparency, and faster decision-making.</li>
+      </ul>
     </div>
   </section>
-
 
 
   <!-- TESTIMONIALS -->
@@ -368,9 +371,10 @@
   <section id="processes" class="container">
     <h2 class="section-title"><span class="values-title">Latest processes</span></h2>
     <p class="lead">The latest published processes, or view all active processes</p>
-          <div style="margin:1rem 0;">
-            <a class="btn btn-primary" href="https://kovacictalent.com/procesos-activos/">Active Processes</a>
-          </div>
+<div style="margin:1rem 0; text-align:center;">
+  <a class="btn btn-primary" href="https://kovacictalent.com/procesos-activos/">Active Processes</a>
+</div>
+
     <div id="blog-posts" class="grid g-3"></div>
   </section>
 
