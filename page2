@@ -54,7 +54,7 @@
 
     /* HERO */
     .hero{position:relative;overflow:hidden}
-    .hero .inner{display:grid;grid-template-columns:1.12fr .88fr;align-items:center;gap:48px;padding-block: clamp(40px,8vw,90px)}
+    .hero .inner{display:grid;grid-template-columns:1.12fr .88fr;align-items:center;gap:48px;padding-block: clamp(20px,4vw,45px)}
     .eyebrow{font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:#475569}
     h1{font-size:clamp(2rem,4vw,3.2rem);line-height:1.08;margin:.35rem 0 1rem}
     .hero p.sub{color:var(--muted);font-size:1.08rem;max-width:58ch}
@@ -87,7 +87,7 @@
     .accent{color:var(--accent)}
 
     /* Sections */
-    section{padding-block: clamp(48px, 9vw, 88px)}
+    section{padding-block: clamp(24px, 4.5vw, 44px)}
     .section-title{text-align:center;margin-bottom:8px;font-size:clamp(1.2rem,2.2vw,1.8rem)}
     .lead{color:var(--muted);text-align:center;max-width:70ch;margin:0 auto 28px}
     .grid{display:grid;gap:22px}
@@ -168,15 +168,15 @@
     <div class="container inner">
       <a class="logo" href="#"><img src="https://kovacictalent.com/wp-content/uploads/2025/08/Logo_Kovacic.png" alt="Kovacic Talent logo" class="logo-img"><span> </span></a>
       <div class="menu">
-        <a href="#services">Services</a>
         <a href="#sectors">Sectors</a>
+        <a href="#Values">Our Values</a>
         <a href="#process">How We Work</a>
-        <a href="#insights">Insights</a>
+        <a href="#processes">Latest processes</a>
         <a href="#contact">Contact</a>
       </div>
       <div class="nav-cta">
-        <a class="btn btn-ghost" href="#cases">Submit CV</a>
-        <a class="btn btn-primary" href="#contact">Book a Call</a>
+        <a class="btn btn-ghost" href="https://kovacictalent.com/mejoracv">Submit CV</a>
+        <a class="btn btn-primary" href="#contact">Request a Call</a>
       </div>
     </div>
   </nav>
@@ -251,7 +251,7 @@
   </section>
 
   <!-- VALUES -->
-  <section id="services" class="container">
+  <section id="Values" class="container">
     <h2 class="section-title"><span class="values-title">Our Values</span></h2>
     <p class="lead" style="text-align: center; max-width: 800px; margin: 20px auto;">
       At <strong>Kovacic Executive Talent Research</strong>, our values guide everything we do.
@@ -284,7 +284,7 @@
 
   <!-- PROCESS -->
   <section id="process" class="container">
-    <h2 class="section-title">How We Work</h2>
+    <h2 class="section-title"><span class="values-title">How We Work</span></h2>
     <p class="lead">Transparent stages with measurable outcomes, from kickoff to signed offer.</p>
     <div class="grid g-4">
       <div class="card">
@@ -322,16 +322,16 @@
   </section>
 
   <!-- INSIGHTS -->
-  <section id="insights" class="container">
-    <h2 class="section-title">Latest processes</h2>
+  <section id="processes" class="container">
+    <h2 class="section-title"><span class="values-title">Latest processes</span></h2>
     <p class="lead">The latest published processes, or view all active processes</p>
     <div id="blog-posts" class="grid g-3"></div>
   </section>
 
   <!-- CONTACT / CTA -->
   <section id="contact" class="container">
-    <h2 class="section-title">Ready to Start?</h2>
-    <p class="lead">Tell us what success looks like—we’ll build a search around it.</p>
+    <h2 class="section-title"><span class="values-title">Ready to Start?</span></h2>
+    <p class="lead">Tell us what success looks like, we’ll build a search around it.</p>
     <div class="grid" style="grid-template-columns:1.1fr .9fr; gap:24px;">
       <form class="card" onsubmit="event.preventDefault(); alert('Thanks! We will get in touch shortly.');">
         <div style="display:grid;gap:12px">
@@ -449,7 +449,7 @@
             ${img ? `<img src="${img}" alt="${p.title.rendered}" style="width:100%;height:160px;object-fit:cover;border-radius:var(--radius);">` : ''}
             <h3>${p.title.rendered}</h3>
             <p>${excerpt}</p>
-            <a href="${p.link}" style="color:var(--accent);font-weight:600;">Lee más...</a>
+            <a href="${p.link}" style="color:var(--accent);font-weight:600;">Read more..</a>
           `;
           container.appendChild(article);
         });
