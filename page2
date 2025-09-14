@@ -328,11 +328,7 @@
   <section id="insights" class="container">
     <h2 class="section-title">Insights & Resources</h2>
     <p class="lead">Practical, research-backed guidance from our search team.</p>
-    <div class="grid g-3">
-      <div class="card"><h3>Scorecards that Predict Success</h3><p>Designing scorecards that correlate with performance at 180 days.</p></div>
-      <div class="card"><h3>Hiring Staff+ Engineers</h3><p>Signals that separate Staff/Principal engineers from strong seniors.</p></div>
-      <div class="card"><h3>LATAM Renewables Talent</h3><p>Where to find world-class Grid & BESS experts in competitive markets.</p></div>
-    </div>
+    <div id="blog-posts" class="grid g-3"></div>
   </section>
 
   <!-- CONTACT / CTA -->
@@ -439,6 +435,31 @@
         track.style.transition = 'none';
         track.style.transform = `translateX(-${sIdx * slider.clientWidth}px)`;
       });
+    })();
+
+    /* Load latest blog posts */
+    (async function(){
+      const container = document.getElementById('blog-posts');
+      if(!container) return;
+      try{
+        const res = await fetch('https://kovacictalent.com/wp-json/wp/v2/posts?per_page=3&_embed');
+        const posts = await res.json();
+        posts.forEach(p=>{
+          const img = p._embedded && p._embedded['wp:featuredmedia'] ? p._embedded['wp:featuredmedia'][0].source_url : '';
+          const article = document.createElement('article');
+          article.className = 'card';
+          const excerpt = p.excerpt.rendered.replace(/<[^>]+>/g,'').slice(0,140);
+          article.innerHTML = `
+            ${img ? `<img src="${img}" alt="${p.title.rendered}" style="width:100%;height:160px;object-fit:cover;border-radius:var(--radius);">` : ''}
+            <h3>${p.title.rendered}</h3>
+            <p>${excerpt}</p>
+            <a href="${p.link}" style="color:var(--accent);font-weight:600;">Lee más...</a>
+          `;
+          container.appendChild(article);
+        });
+      }catch(err){
+        console.error('Failed to load posts', err);
+      }
     })();
   </script>
 </body>
