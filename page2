@@ -104,9 +104,10 @@
     .values-grid .card:nth-child(4){grid-column:2/span 2}
     .values-grid .card:nth-child(5){grid-column:4/span 2}
 
-    .sector-slider{position:relative;overflow:hidden;margin-top:30px;height:200px;border-radius:var(--radius);box-shadow:var(--shadow)}
-    .sector-track{display:flex;width:400%;height:100%;transition:transform .6s ease}
-    .sector-track img{flex:0 0 100%;object-fit:cover}
+    .sector-slider{position:relative;overflow:hidden;margin-top:30px;border-radius:var(--radius);box-shadow:var(--shadow)}
+    .sector-track{display:flex;width:400%;transition:transform .6s ease}
+    .sector-item{flex:0 0 100%;display:flex;justify-content:center;align-items:center}
+    .sector-item img{max-width:100%;height:auto;display:block}
 
     /* Testimonials */
     .testis{background:#f6f8fb;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
@@ -209,10 +210,10 @@
   </div>
   <div class="sector-slider">
     <div class="sector-track">
-      <img src="https://kovacictalent.com/wp-content/uploads/2025/09/8478.jpg" alt="Technology sector">
-      <img src="https://kovacictalent.com/wp-content/uploads/2025/09/landscape-with-windmills-scaled.jpg" alt="Renewable energy sector">
-      <img src="https://kovacictalent.com/wp-content/uploads/2025/09/business-people-discussing-results-successful-teamwork-scaled.jpg" alt="Financial services sector">
-      <img src="https://kovacictalent.com/wp-content/uploads/2025/09/large-vecteezy_confident-factory-worker-using-digital-tablet-in-industrial_47268909_large.jpg" alt="Industrial operations sector">
+      <div class="sector-item"><img src="https://kovacictalent.com/wp-content/uploads/2025/09/8478.jpg" alt="Technology sector"></div>
+      <div class="sector-item"><img src="https://kovacictalent.com/wp-content/uploads/2025/09/landscape-with-windmills-scaled.jpg" alt="Renewable energy sector"></div>
+      <div class="sector-item"><img src="https://kovacictalent.com/wp-content/uploads/2025/09/business-people-discussing-results-successful-teamwork-scaled.jpg" alt="Financial services sector"></div>
+      <div class="sector-item"><img src="https://kovacictalent.com/wp-content/uploads/2025/09/large-vecteezy_confident-factory-worker-using-digital-tablet-in-industrial_47268909_large.jpg" alt="Industrial operations sector"></div>
     </div>
   </div>
 </section>
