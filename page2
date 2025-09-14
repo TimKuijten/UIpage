@@ -136,13 +136,12 @@
 
       /* About */
       .about-section{overflow:auto}
-      .about-section .about-img{
+      .about-section .about-visual{
         float:left;
         width:min(45vw,490px);
         margin-right:40px;
         margin-bottom:20px;
-        border-radius:var(--radius);
-        box-shadow:var(--shadow);
+        margin-left:0;
       }
 
       /* Testimonials */
@@ -166,7 +165,7 @@
         .hero-visual .ring{right:-40vw; top:-28vw}
         .hero-visual .photo{margin-inline:auto}
         .footer-inner{grid-template-columns:1fr}
-        .about-section .about-img{float:none;width:100%;margin-right:0}
+        .about-section .about-visual{float:none;width:100%;margin-right:0}
       }
   </style>
 </head>
@@ -280,7 +279,12 @@
 
     <!-- ABOUT -->
     <section id="About" class="container about-section" style="margin-top:40px;">
-      <img src="https://kovacictalent.com/wp-content/uploads/2025/05/AdobeStock_641731816-scaled.jpeg" alt="Senior professional meeting in modern office" class="about-img">
+      <div class="hero-visual about-visual">
+        <div class="ring" aria-hidden="true"></div>
+        <div class="photo">
+          <img class="is-active" src="https://kovacictalent.com/wp-content/uploads/2025/05/AdobeStock_641731816-scaled.jpeg" alt="Senior professional meeting in modern office">
+        </div>
+      </div>
       <h2 class="section-title"><span class="values-title">About us</span></h2>
       <p>At Kovacic, we are a young firm backed by a team with decades of experience in international executive search. We embrace a boutique model where cutting-edge technology and artificial intelligence enhance our processes with greater precision and agility, always as a complement to what matters most: human insight and close relationships with executives and candidates.<br>
 <br>
