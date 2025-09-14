@@ -199,7 +199,7 @@
 
 <!-- SECTORS -->
 <section id="sectors" class="container">
-  <h2 class="section-title">Sectors We Serve</h2>
+  <h2 class="section-title"><span class="values-title">Sectors</span></h2>
   <p class="lead">Deep networks in technology and renewable energy, plus adjacent industries.</p>
   <div class="grid g-4">
     <div class="card"><h3>Technology</h3><p>Engineering, Data, Security, Product & Platform.</p></div>
@@ -265,14 +265,12 @@
   <!-- TESTIMONIALS -->
   <section class="testis">
     <div class="container">
-      <h2 class="section-title">Client Testimonials</h2>
+      <h2 class="section-title">We differentiate ourselves</h2>
       <blockquote>
-        “Kovacic Talent consistently delivers shortlists we can hire from. Their understanding of our markets and culture is best-in-class.”
-        <cite>— Chief People Officer, Global IPP</cite>
-      </blockquote>
-      <blockquote>
-        “Their search rigor rivals the big firms, but the experience is faster, clearer and far more personal.”
-        <cite>— CTO, Series C SaaS</cite>
+        We differentiate ourselves by building lasting relationships and supporting executive recruitment and selection processes specializing in industrial, construction, and energy markets. <br> <br>
+
+We work with companies that are growing, transforming, or expanding their international presence, helping them identify the right leaders for the challenges ahead.
+        <cite> Alan Poyanco</cite>
       </blockquote>
     </div>
   </section>
