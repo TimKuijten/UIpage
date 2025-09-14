@@ -179,6 +179,7 @@
       <a class="logo" href="#"><img src="https://kovacictalent.com/wp-content/uploads/2025/08/Logo_Kovacic.png" alt="Kovacic Talent logo" class="logo-img"><span> </span></a>
       <div class="menu">
         <a href="#sectors">Sectors</a>
+        <a href="#About">About us</a>
         <a href="#Values">Our Values</a>
         <a href="#process">How We Work</a>
         <a href="#processes">Latest processes</a>
@@ -275,7 +276,8 @@
           </div>
         </div>
         <div>
-          <h2 class="section-title">We differenAAtiate ourselves</h2>
+    <section id="About" class="container">
+                <h2 class="section-title"><span class="values-title">About us</span></h2>
           <p>At Kovacic, we are a young firm backed by a team with decades of experience in international executive search. We embrace a boutique model where cutting-edge technology and artificial intelligence enhance our processes with greater precision and agility, always as a complement to what matters most: human insight and close relationships with executives and candidates.<br>
 <br>
 Our identity is expressed through two brands:<br>
