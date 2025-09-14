@@ -333,7 +333,13 @@
     <h2 class="section-title"><span class="values-title">Ready to Start?</span></h2>
     <p class="lead">Tell us what success looks like, we’ll build a search around it.</p>
     <div class="grid" style="grid-template-columns:1.1fr .9fr; gap:24px;">
-      <div class="card">[contact-form-7 id="e7e9470" title="Sin título"]</div>
+      <div class="card" style="display:grid;gap:10px">
+        <p class="muted">We'd love to hear from you — expand below to send us a message.</p>
+        <details>
+          <summary style="cursor:pointer;font-weight:600">Open contact form</summary>
+          [contact-form-7 id="e7e9470" title="Sin título"]
+        </details>
+      </div>
       <div class="card" style="display:grid;gap:10px">
         <h3>Contact</h3>
         <p class="muted">📞 +34 600 123 456<br>✉️ contact@kovacictalent.com<br>📍 Madrid · Barcelona · Santiago</p>
