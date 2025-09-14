@@ -54,7 +54,7 @@
 
     /* HERO */
     .hero{position:relative;overflow:hidden}
-    .hero .inner{display:grid;grid-template-columns:1.12fr .88fr;align-items:center;gap:48px;padding-block: clamp(40px,8vw,90px)}
+    .hero .inner{display:grid;grid-template-columns:1.12fr .88fr;align-items:center;gap:48px;padding-block: clamp(20px,4vw,45px)}
     .eyebrow{font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:#475569}
     h1{font-size:clamp(2rem,4vw,3.2rem);line-height:1.08;margin:.35rem 0 1rem}
     .hero p.sub{color:var(--muted);font-size:1.08rem;max-width:58ch}
@@ -87,7 +87,7 @@
     .accent{color:var(--accent)}
 
     /* Sections */
-    section{padding-block: clamp(48px, 9vw, 88px)}
+    section{padding-block: clamp(24px, 4.5vw, 44px)}
     .section-title{text-align:center;margin-bottom:8px;font-size:clamp(1.2rem,2.2vw,1.8rem)}
     .lead{color:var(--muted);text-align:center;max-width:70ch;margin:0 auto 28px}
     .grid{display:grid;gap:22px}
