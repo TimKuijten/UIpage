@@ -106,7 +106,7 @@
 
     .sector-slider{position:relative;overflow:hidden;margin-top:30px;height:200px;border-radius:var(--radius);box-shadow:var(--shadow)}
     .sector-track{display:flex;width:400%;height:100%;transition:transform .6s ease}
-    .sector-track img{flex:0 0 100%;object-fit:cover}
+    .sector-track img{flex:0 0 100%;object-fit:contain;width:100%;height:100%}
 
     /* Testimonials */
     .testis{background:#f6f8fb;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
