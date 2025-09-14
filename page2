@@ -138,10 +138,35 @@
       .about-section{overflow:auto}
       .about-section .about-visual{
         float:left;
+        position:relative;
         width:min(45vw,490px);
+        aspect-ratio:1/1;
         margin-right:40px;
         margin-bottom:20px;
         margin-left:0;
+      }
+      .about-section .about-visual .ring{
+        position:absolute;
+        inset:0;
+        border-radius:50%;
+        background: radial-gradient(closest-side,#DDE9F0 0 73%, transparent 73%),
+                    conic-gradient(from 0deg,#f1f5f9, #DDE9F0);
+        z-index:0;
+        opacity:.9;
+        filter:drop-shadow(0 30px 60px rgba(2,6,23,.07));
+      }
+      .about-section .about-visual .photo{
+        position:absolute;
+        inset:12%;
+        border-radius:50%;
+        overflow:hidden;
+        box-shadow:var(--shadow);
+        z-index:1;
+      }
+      .about-section .about-visual .photo img{
+        width:100%;
+        height:100%;
+        object-fit:cover;
       }
 
       /* Testimonials */
@@ -279,10 +304,10 @@
 
     <!-- ABOUT -->
     <section id="About" class="container about-section" style="margin-top:40px;">
-      <div class="hero-visual about-visual">
+      <div class="about-visual">
         <div class="ring" aria-hidden="true"></div>
         <div class="photo">
-          <img class="is-active" src="https://kovacictalent.com/wp-content/uploads/2025/05/AdobeStock_641731816-scaled.jpeg" alt="Senior professional meeting in modern office">
+          <img src="https://kovacictalent.com/wp-content/uploads/2025/05/AdobeStock_641731816-scaled.jpeg" alt="Senior professional meeting in modern office">
         </div>
       </div>
       <h2 class="section-title"><span class="values-title">About us</span></h2>
