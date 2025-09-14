@@ -190,7 +190,17 @@
         .hero-visual .ring{right:-40vw; top:-28vw}
         .hero-visual .photo{margin-inline:auto}
         .footer-inner{grid-template-columns:1fr}
-        .about-section .about-visual{float:none;width:100%;margin-right:0}
+        .about-section .about-visual{float:none;max-width:320px;width:100%;margin:0 auto 20px}
+      }
+
+      @media (max-width: 640px){
+        .topbar .inner{flex-direction:column;height:auto;padding-block:8px;gap:4px;text-align:center}
+        .nav .inner{flex-direction:column;height:auto;gap:12px}
+        .nav-cta{flex-direction:column;width:100%}
+        .nav-cta .btn{width:100%;text-align:center}
+        .grid{grid-template-columns:1fr !important}
+        .values-grid{grid-template-columns:1fr !important}
+        .values-grid .card{grid-column:auto !important}
       }
   </style>
 </head>
