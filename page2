@@ -60,8 +60,10 @@
     .hero p.sub{color:var(--muted);font-size:1.08rem;max-width:58ch}
     .cta-row{display:flex;flex-wrap:wrap;gap:12px;margin-top:22px}
     .hero-stats{display:flex;gap:18px;align-items:center;margin-top:28px}
-    .hero-stats .card{background:#fff;border:1px solid var(--line);border-radius:12px;padding:10px 14px;box-shadow:var(--shadow);font-weight:700}
+    .hero-stats .card{display:none;background:#fff;border:1px solid var(--line);border-radius:12px;padding:10px 14px;box-shadow:var(--shadow);font-weight:700}
+    .hero-stats .card.is-active{display:block}
     .slider-dots{display:flex;gap:10px;align-items:center;margin-top:18px}
+    .hero-stats .slider-dots{margin-top:0}
 
     .hero-visual{position:relative; width:min(45vw,490px); aspect-ratio:1/1; margin-left:auto}
     .hero-visual .ring{
@@ -175,8 +177,9 @@
           <a class="btn btn-ghost" href="#process">See Our Process</a>
         </div>
         <div class="hero-stats">
-          <div class="card">85% 12-month retention</div>
+          <div class="card is-active">85% 12-month retention</div>
           <div class="card">2x faster shortlists</div>
+          <div class="card">Upload your CV for personalized, ATS-friendly feedback</div>
           <div class="slider-dots" aria-label="Hero carousel navigation">
             <span class="dot is-active" aria-hidden="true"></span>
             <span class="dot" aria-hidden="true"></span>
@@ -336,13 +339,16 @@ We work with companies that are growing, transforming, or expanding their intern
     (function(){
       const slides = document.querySelectorAll('.hero-visual .photo img');
       const dots = document.querySelectorAll('.slider-dots .dot');
+      const cards = document.querySelectorAll('.hero-stats .card');
       let idx = 0;
       function show(n){
         slides[idx].classList.remove('is-active');
         dots[idx].classList.remove('is-active');
+        cards[idx].classList.remove('is-active');
         idx = n;
         slides[idx].classList.add('is-active');
         dots[idx].classList.add('is-active');
+        cards[idx].classList.add('is-active');
       }
       function next(){ show((idx + 1) % slides.length); }
       let timer = setInterval(next, 15000);
