@@ -224,7 +224,7 @@
         <div class="photo">
           <img class="is-active" src="https://kovacictalent.com/wp-content/uploads/2025/05/AdobeStock_641731816-scaled.jpeg" alt="Senior professional meeting in modern office">
           <img src="https://images.unsplash.com/photo-1551836022-4c4c79ecde51?q=80&w=1200&auto=format&fit=crop" alt="Executive handshake in office">
-          <img src="https://images.unsplash.com/photo-1542744094-24638eff58bb?q=80&w=1200&auto=format&fit=crop" alt="Team collaboration at work">
+          <img src="https://kovacictalent.com/wp-content/uploads/2025/05/AdobeStock_1035652596-scaled.jpeg?q=80&w=1200&auto=format&fit=crop" alt="Team collaboration at work">
         </div>
       </div>
     </div>
@@ -325,6 +325,9 @@
   <section id="processes" class="container">
     <h2 class="section-title"><span class="values-title">Latest processes</span></h2>
     <p class="lead">The latest published processes, or view all active processes</p>
+          <div style="margin:1rem 0;">
+            <a class="btn btn-primary" href="https://kovacictalent.com/procesos-activos/">Active Processes</a>
+          </div>
     <div id="blog-posts" class="grid g-3"></div>
   </section>
 
