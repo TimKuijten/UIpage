@@ -263,17 +263,49 @@
         </div>
       </div>
     </div>
-  </section>
+    </section>
 
-  <!-- VALUES -->
-  <section id="Values" class="container">
+    <!-- DIFFERENTIATORS -->
+    <section class="container diff-feature" style="margin-top:40px;">
+      <div class="grid" style="grid-template-columns:1fr 1fr; gap:40px; align-items:center;">
+        <div class="hero-visual" style="margin-left:0">
+          <div class="ring" aria-hidden="true"></div>
+          <div class="photo">
+            <img src="https://kovacictalent.com/wp-content/uploads/2025/05/AdobeStock_641731816-scaled.jpeg" alt="Senior professional meeting in modern office">
+          </div>
+        </div>
+        <div>
+          <h2 class="section-title">We differenAAtiate ourselves</h2>
+          <p>At Kovacic, we are a young firm backed by a team with decades of experience in international executive search. We embrace a boutique model where cutting-edge technology and artificial intelligence enhance our processes with greater precision and agility, always as a complement to what matters most: human insight and close relationships with executives and candidates.<br>
+<br>
+Our identity is expressed through two brands:<br>
+Kovacic Talent, focused on technical positions, middle management, and key professionals who sustain growth.<br>
+Kovacic Executive, specialized in the search for senior leaders, executives, and board members with a global vision.<br>
+<br>
+Our main divisions:<br>
+🔹 Executive Search & Talent Acquisition – Strategic and technical leadership recruitment.<br>
+🔹 Board & Governance – Selection of board members and advisory boards with international experience.<br>
+🔹 Leadership Development – Succession planning, leadership programs, and executive coaching.<br>
+🔹 Market Intelligence – Talent mapping, benchmarking, and market analysis.<br>
+<br>
+Within these divisions, we operate across core sectors: finance, infrastructure, technology, laboratories, hospitality, mining, and energy, with a dedicated team of specialists in each area, ensuring deep industry knowledge and highly effective processes.<br>
+<br>
+Our value lies not only in identifying talent but in being a close partner that creates positive impact in the labor market. We work every day on continuous improvement and on delivering a distinctive experience for both candidates and clients, building trust, generating concrete results, and contributing to long-term growth.<br>
+<br>
+Our strengths in talent development are anchored in the world’s most influential business hubs: New York, Paris, Madrid, Barcelona, Berlin, Rome, Amsterdam, Oslo, Stockholm, Mexico City, São Paulo, Santiago de Chile, Lima, Panama, Shanghai, and Hong Kong.</p><br>
+        </div>
+      </div>
+    </section>
+
+    <!-- VALUES -->
+    <section id="Values" class="container">
     <h2 class="section-title"><span class="values-title">Our Values</span></h2>
     <p class="lead" style="text-align: center; max-width: 800px; margin: 20px auto;">
       At <strong>Kovacic Executive Talent Research</strong>, our values guide everything we do.
       They define <strong>how we work</strong>, how we build <strong>relationships</strong>, and how we create
       lasting <strong>impact</strong> for our clients and candidates.
     </p>
-    <div class="grid values-grid">
+      <div class="grid values-grid">
       <div class="card">
         <h3>Excellence</h3>
         <p>We commit to the <strong>highest standards</strong> at every stage of the process, delivering results that generate <strong>real impact</strong> for organizations.</p>
@@ -295,7 +327,7 @@
         <p>We respond with <strong>agility</strong> to change, recognizing that each organization is <strong>unique</strong> and requires <strong>tailored solutions</strong>.</p>
       </div>
     </div>
-  </section>
+    </section>
 
   <!-- PROCESS -->
   <section id="process" class="section-beige">
@@ -374,17 +406,6 @@
     </div>
   </section>
 
-
-  <!-- TESTIMONIALS -->
-  <section class="testis">
-    <div class="container">
-      <h2 class="section-title">We differentiate ourselves</h2>
-      <blockquote>
-        We differentiate ourselves by building lasting relationships and supporting executive recruitment and selection processes specializing in industrial, construction, and energy markets. <br><br>
-        We work with companies that are growing, transforming, or expanding their international presence, helping them identify the right leaders for the challenges ahead.
-      </blockquote>
-    </div>
-  </section>
 
   <!-- INSIGHTS -->
   <section id="processes" class="container">
