@@ -59,9 +59,10 @@
     h1{font-size:clamp(2rem,4vw,3.2rem);line-height:1.08;margin:.35rem 0 1rem}
     .hero p.sub{color:var(--muted);font-size:1.08rem;max-width:58ch}
     .cta-row{display:flex;flex-wrap:wrap;gap:12px;margin-top:22px}
-    .hero-stats{display:flex;gap:18px;align-items:center;margin-top:28px}
-    .hero-stats .card{background:#fff;border:1px solid var(--line);border-radius:12px;padding:10px 14px;box-shadow:var(--shadow);font-weight:700}
-    .slider-dots{display:flex;gap:10px;align-items:center;margin-top:18px}
+    .hero-copy{position:relative}
+    .hero-slide{display:none}
+    .hero-slide.is-active{display:block}
+    .slider-dots{display:flex;gap:10px;align-items:center;margin-top:28px}
 
     .hero-visual{position:relative; width:min(45vw,490px); aspect-ratio:1/1; margin-left:auto}
     .hero-visual .ring{
@@ -104,9 +105,9 @@
     .values-grid .card:nth-child(4){grid-column:2/span 2}
     .values-grid .card:nth-child(5){grid-column:4/span 2}
 
-    .sector-slider{position:relative;overflow:hidden;margin-top:30px;height:200px;border-radius:var(--radius);box-shadow:var(--shadow)}
-    .sector-track{display:flex;width:400%;height:100%;transition:transform .6s ease}
-    .sector-track img{flex:0 0 100%;object-fit:cover}
+    .sector-slider{position:relative;overflow:hidden;margin-top:30px;border-radius:var(--radius);box-shadow:var(--shadow);height:200px}
+    .sector-track{display:flex;height:100%}
+    .sector-track img{width:100%;height:100%;flex-shrink:0;object-fit:contain}
 
     /* Testimonials */
     .testis{background:#f6f8fb;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
@@ -166,22 +167,38 @@
   <!-- HERO -->
   <header class="hero">
     <div class="container inner">
-      <div>
-        <span class="pill">10+ Years of Experience</span>
-        <h1>We Are a <span class="accent">Recruitment Partner</span> for High-Growth Companies</h1>
-        <p class="sub">We help organizations across EMEA & LATAM identify and attract exceptional leaders and senior specialists—combining rigorous search methods with modern, ethical AI to deliver results that endure.</p>
-        <div class="cta-row">
-          <a class="btn btn-primary" href="#contact">Start Your Search</a>
-          <a class="btn btn-ghost" href="#process">See Our Process</a>
-        </div>
-        <div class="hero-stats">
-          <div class="card">85% 12-month retention</div>
-          <div class="card">2x faster shortlists</div>
-          <div class="slider-dots" aria-label="Hero carousel navigation">
-            <span class="dot is-active" aria-hidden="true"></span>
-            <span class="dot" aria-hidden="true"></span>
-            <span class="dot" aria-hidden="true"></span>
+      <div class="hero-copy">
+        <div class="hero-slide is-active">
+          <span class="pill">10+ Years of Experience</span>
+          <h1>We Are a <span class="accent">Recruitment Partner</span> for High-Growth Companies</h1>
+          <p class="sub">We help organizations across EMEA & LATAM identify and attract exceptional leaders and senior specialists—combining rigorous search methods with modern, ethical AI to deliver results that endure.</p>
+          <div class="cta-row">
+            <a class="btn btn-primary" href="#contact">Start Your Search</a>
+            <a class="btn btn-ghost" href="#process">See Our Process</a>
           </div>
+        </div>
+        <div class="hero-slide">
+          <span class="pill">Results That Stick</span>
+          <h1>85% 12-Month Retention</h1>
+          <p class="sub">Our placements thrive long term, with four out of five leaders still in role after the first year.</p>
+          <div class="cta-row">
+            <a class="btn btn-primary" href="#process">See Our Process</a>
+            <a class="btn btn-ghost" href="#contact">Start Your Search</a>
+          </div>
+        </div>
+        <div class="hero-slide">
+          <span class="pill">Improve Your CV</span>
+          <h1>Personal, ATS-Friendly CV Feedback</h1>
+          <p class="sub">Upload your CV to receive clear, actionable suggestions tailored to your role and sector.</p>
+          <div class="cta-row">
+            <a class="btn btn-primary" href="#cases">Improve My CV</a>
+            <a class="btn btn-ghost" href="#contact">Start Your Search</a>
+          </div>
+        </div>
+        <div class="slider-dots" aria-label="Hero carousel navigation">
+          <span class="dot is-active" aria-hidden="true"></span>
+          <span class="dot" aria-hidden="true"></span>
+          <span class="dot" aria-hidden="true"></span>
         </div>
       </div>
 
@@ -209,10 +226,10 @@
   </div>
   <div class="sector-slider">
     <div class="sector-track">
-      <img src="https://kovacictalent.com/wp-content/uploads/2025/09/8478.jpg" alt="Technology sector">
-      <img src="https://kovacictalent.com/wp-content/uploads/2025/09/landscape-with-windmills-scaled.jpg" alt="Renewable energy sector">
-      <img src="https://kovacictalent.com/wp-content/uploads/2025/09/business-people-discussing-results-successful-teamwork-scaled.jpg" alt="Financial services sector">
-      <img src="https://kovacictalent.com/wp-content/uploads/2025/09/large-vecteezy_confident-factory-worker-using-digital-tablet-in-industrial_47268909_large.jpg" alt="Industrial operations sector">
+      <img src="https://placehold.co/600x400?text=Technology" alt="Technology sector">
+      <img src="https://placehold.co/600x400?text=Renewables" alt="Renewable energy sector">
+      <img src="https://placehold.co/600x400?text=Finance" alt="Financial services sector">
+      <img src="https://placehold.co/600x400?text=Industrial" alt="Industrial operations sector">
     </div>
   </div>
 </section>
@@ -336,13 +353,16 @@ We work with companies that are growing, transforming, or expanding their intern
     (function(){
       const slides = document.querySelectorAll('.hero-visual .photo img');
       const dots = document.querySelectorAll('.slider-dots .dot');
+      const copies = document.querySelectorAll('.hero-slide');
       let idx = 0;
       function show(n){
         slides[idx].classList.remove('is-active');
         dots[idx].classList.remove('is-active');
+        copies[idx].classList.remove('is-active');
         idx = n;
         slides[idx].classList.add('is-active');
         dots[idx].classList.add('is-active');
+        copies[idx].classList.add('is-active');
       }
       function next(){ show((idx + 1) % slides.length); }
       let timer = setInterval(next, 15000);
@@ -350,13 +370,28 @@ We work with companies that are growing, transforming, or expanding their intern
     })();
 
     (function(){
-      const track = document.querySelector('.sector-track');
-      if(!track) return;
+      const slider = document.querySelector('.sector-slider');
+      if(!slider) return;
+      const track = slider.querySelector('.sector-track');
+      if(!track.children.length) return;
+      const first = track.children[0].cloneNode(true);
+      track.appendChild(first);
       let sIdx = 0;
+      const total = track.children.length;
+      const duration = 600;
       setInterval(()=>{
-        sIdx = (sIdx + 1) % track.children.length;
-        track.style.transform = `translateX(-${sIdx * 100}%)`;
-      },15000);
+        sIdx++;
+        const slideWidth = slider.clientWidth;
+        track.style.transition = 'transform .6s ease';
+        track.style.transform = `translateX(-${sIdx * slideWidth}px)`;
+        if(sIdx === total - 1){
+          setTimeout(()=>{
+            track.style.transition = 'none';
+            track.style.transform = 'translateX(0)';
+            sIdx = 0;
+          }, duration);
+        }
+      },10000);
     })();
   </script>
 </body>
