@@ -23,7 +23,7 @@
       --w: 1180px;            /* content width */
     }
     *{box-sizing:border-box}
-    html,body{height:100%}
+    html,body{height:100%;overflow-x:hidden}
     body{margin:0;font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial; color:var(--ink); background:var(--bg)}
     a{color:inherit;text-decoration:none}
     img{max-width:100%;display:block}
@@ -187,6 +187,7 @@
       @media (max-width: 980px){
         .menu{display:none}
         .hero .inner{grid-template-columns:1fr}
+        .hero-visual{margin:0 auto;overflow:hidden}
         .hero-visual .ring{right:-40vw; top:-28vw}
         .hero-visual .photo{margin-inline:auto}
         .footer-inner{grid-template-columns:1fr}
