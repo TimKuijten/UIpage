@@ -96,7 +96,8 @@
     .card{background:#fafafa;border:1px solid var(--line);border-radius:var(--radius);padding:20px}
     .card h3{margin:8px 0 6px}
     .icon{width:36px;height:36px;border-radius:10px;background:linear-gradient(180deg,#eafff9,#fff);border:1px solid #d9f4ee;display:grid;place-items:center}
-    #process .card svg{width:32px;height:32px;color:var(--accent);margin-bottom:12px}
+    #process .card svg,
+    #process-ai .card svg{width:32px;height:32px;color:var(--accent);margin-bottom:12px}
 
     .values-title{position:relative;display:inline-block;padding-bottom:8px}
     .values-title::after{content:"";position:absolute;left:0;bottom:0;width:100%;height:4px;background-color:#0A212E}
@@ -284,28 +285,55 @@
 
   <!-- PROCESS -->
   <section id="process" class="container">
-    <h2 class="section-title"><span class="values-title">How We Work</span></h2>
+    <h2 class="section-title"><span class="values-title">How We Work — Classic Executive Search</span></h2>
     <p class="lead">Transparent stages with measurable outcomes, from kickoff to signed offer.</p>
     <div class="grid g-4">
       <div class="card">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><line x1="16.65" y1="16.65" x2="21" y2="21"/></svg>
         <strong>01 • Discovery</strong>
-        <p>Success profile, culture signals, timeline and success criteria.</p>
+        <p>Deep dive into success profile, cultural fit, leadership traits, and role context.</p>
       </div>
       <div class="card">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 6l5-2 6 2 7-2v14l-5 2-6-2-7 2V6z"/><path d="M8 4v14"/><path d="M14 6v14"/></svg>
         <strong>02 • Mapping</strong>
-        <p>Market map + longlist; human validation layered on ethical AI.</p>
+        <p>Manual market research, direct headhunting, and building a validated longlist.</p>
       </div>
       <div class="card">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 7h11"/><path d="M9 12h11"/><path d="M9 17h11"/><path d="M4 7l2 2 3-3"/><path d="M4 12l2 2 3-3"/><path d="M4 17l2 2 3-3"/></svg>
         <strong>03 • Shortlist</strong>
-        <p>Structured interviews, scorecards and weekly progress reports.</p>
+        <p>Structured interviews, detailed candidate assessments, and weekly progress reports.</p>
       </div>
       <div class="card">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M9 12l2 2 4-4"/></svg>
         <strong>04 • Close</strong>
-        <p>Offer strategy, expectation alignment and onboarding support.</p>
+        <p>Offer strategy, expectation alignment, and onboarding support.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="process-ai" class="container">
+    <h2 class="section-title"><span class="values-title">How We Work — AI-Enhanced Search</span></h2>
+    <p class="lead">Blending human expertise with advanced technology to accelerate results.</p>
+    <div class="grid g-4">
+      <div class="card">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><line x1="16.65" y1="16.65" x2="21" y2="21"/></svg>
+        <strong>01 • Discovery</strong>
+        <p>Success profile, culture signals, timeline and AI-based role calibration.</p>
+      </div>
+      <div class="card">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 6l5-2 6 2 7-2v14l-5 2-6-2-7 2V6z"/><path d="M8 4v14"/><path d="M14 6v14"/></svg>
+        <strong>02 • Mapping</strong>
+        <p>AI-driven market scanning + human validation, delivering a smarter longlist faster.</p>
+      </div>
+      <div class="card">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 7h11"/><path d="M9 12h11"/><path d="M9 17h11"/><path d="M4 7l2 2 3-3"/><path d="M4 12l2 2 3-3"/><path d="M4 17l2 2 3-3"/></svg>
+        <strong>03 • Shortlist</strong>
+        <p>Structured interviews, predictive scorecards, and live dashboards with weekly AI-powered insights.</p>
+      </div>
+      <div class="card">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M9 12l2 2 4-4"/></svg>
+        <strong>04 • Close</strong>
+        <p>Offer strategy, expectation alignment, onboarding support, plus ongoing data-driven retention insights.</p>
       </div>
     </div>
   </section>

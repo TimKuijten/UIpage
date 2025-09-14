@@ -168,13 +168,26 @@
   <!-- HOW WE WORK -->
   <section id="how">
     <div class="container">
-      <h2>How We Work</h2>
-      <p class="lead">A transparent, data-assisted search process that keeps you informed from kickoff to signed offer.</p>
+      <h2>How We Work — Classic Executive Search</h2>
+      <p class="lead">Transparent stages with measurable outcomes, from kickoff to signed offer.</p>
       <div class="how" style="margin-top:18px">
-        <div class="step"><div class="num">01</div><h3>Discovery</h3><p>Define success profile, must-haves, and cultural markers. Align on timeline and milestones.</p></div>
-        <div class="step"><div class="num">02</div><h3>Mapping</h3><p>Market map + longlist using AI for precision matching and human validation to remove bias.</p></div>
-        <div class="step"><div class="num">03</div><h3>Shortlist</h3><p>Top candidates with scorecards, references, and first-round notes inside a live dashboard.</p></div>
-        <div class="step"><div class="num">04</div><h3>Close</h3><p>Offer strategy, expectation alignment, and onboarding support to ensure a strong start.</p></div>
+        <div class="step"><div class="num">01</div><h3>Discovery</h3><p>Deep dive into success profile, cultural fit, leadership traits, and role context.</p></div>
+        <div class="step"><div class="num">02</div><h3>Mapping</h3><p>Manual market research, direct headhunting, and building a validated longlist.</p></div>
+        <div class="step"><div class="num">03</div><h3>Shortlist</h3><p>Structured interviews, detailed candidate assessments, and weekly progress reports.</p></div>
+        <div class="step"><div class="num">04</div><h3>Close</h3><p>Offer strategy, expectation alignment, and onboarding support.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="how-ai">
+    <div class="container">
+      <h2>How We Work — AI-Enhanced Search</h2>
+      <p class="lead">Blending human expertise with advanced technology to accelerate results.</p>
+      <div class="how" style="margin-top:18px">
+        <div class="step"><div class="num">01</div><h3>Discovery</h3><p>Success profile, culture signals, timeline and AI-based role calibration.</p></div>
+        <div class="step"><div class="num">02</div><h3>Mapping</h3><p>AI-driven market scanning + human validation, delivering a smarter longlist faster.</p></div>
+        <div class="step"><div class="num">03</div><h3>Shortlist</h3><p>Structured interviews, predictive scorecards, and live dashboards with weekly AI-powered insights.</p></div>
+        <div class="step"><div class="num">04</div><h3>Close</h3><p>Offer strategy, expectation alignment, onboarding support, plus ongoing data-driven retention insights.</p></div>
       </div>
     </div>
   </section>
