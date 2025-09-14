@@ -158,9 +158,7 @@
     <div class="container inner">
       <div>📞 +34 600 123 456 · ✉️ contact@kovacictalent.com</div>
       <div class="social">
-        <a href="#" aria-label="LinkedIn">in</a>
-        <a href="#" aria-label="Twitter / X">x</a>
-        <a href="#" aria-label="YouTube">yt</a>
+        <a href="https://linkedin.com/company/kovacic-executive-talent" aria-label="LinkedIn">in</a>
       </div>
     </div>
   </div>
@@ -228,7 +226,6 @@
           <img src="https://images.unsplash.com/photo-1551836022-4c4c79ecde51?q=80&w=1200&auto=format&fit=crop" alt="Executive handshake in office">
           <img src="https://images.unsplash.com/photo-1542744094-24638eff58bb?q=80&w=1200&auto=format&fit=crop" alt="Team collaboration at work">
         </div>
-        <div class="badge">⭐ Trusted by 120+ clients</div>
       </div>
     </div>
   </header>
@@ -246,9 +243,9 @@
     <div class="sector-slider">
       <div class="sector-track">
         <img src="https://kovacictalent.com/wp-content/uploads/2025/09/8478.jpg" alt="Technology sector">
-        <img src="https://placehold.co/1200x600?text=Renewables" alt="Renewable energy sector">
-        <img src="https://placehold.co/1200x600?text=Finance" alt="Financial services sector">
-        <img src="https://placehold.co/1200x600?text=Industrial" alt="Industrial operations sector">
+        <img src="https://kovacictalent.com/wp-content/uploads/2025/09/landscape-with-windmills-scaled.jpg" alt="Renewable energy sector">
+        <img src="https://kovacictalent.com/wp-content/uploads/2025/09/business-people-discussing-results-successful-teamwork-scaled.jpg" alt="Financial services sector">
+        <img src="https://kovacictalent.com/wp-content/uploads/2025/09/large-vecteezy_confident-factory-worker-using-digital-tablet-in-industrial_47268909_large.jpg" alt="Industrial operations sector">
       </div>
     </div>
   </section>
@@ -326,13 +323,9 @@
 
   <!-- INSIGHTS -->
   <section id="insights" class="container">
-    <h2 class="section-title">Insights & Resources</h2>
-    <p class="lead">Practical, research-backed guidance from our search team.</p>
-    <div class="grid g-3">
-      <div class="card"><h3>Scorecards that Predict Success</h3><p>Designing scorecards that correlate with performance at 180 days.</p></div>
-      <div class="card"><h3>Hiring Staff+ Engineers</h3><p>Signals that separate Staff/Principal engineers from strong seniors.</p></div>
-      <div class="card"><h3>LATAM Renewables Talent</h3><p>Where to find world-class Grid & BESS experts in competitive markets.</p></div>
-    </div>
+    <h2 class="section-title">Latest processes</h2>
+    <p class="lead">The latest published processes, or view all active processes</p>
+    <div id="blog-posts" class="grid g-3"></div>
   </section>
 
   <!-- CONTACT / CTA -->
@@ -364,7 +357,6 @@
   <footer>
     <div class="container footer-inner">
       <div>
-        <div class="logo" style="margin-bottom:10px"><img src="https://kovacictalent.com/wp-content/uploads/2025/08/Logo_Kovacic.png" alt="Kovacic Talent logo" class="logo-img"><span style="color:#e5edff">Kovacic Talent</span></div>
         <p style="color:#94a3b8;max-width:58ch">Executive search and senior specialist recruitment across Technology and Renewable Energy. Boutique service, global reach.</p>
       </div>
       <div>
@@ -439,6 +431,31 @@
         track.style.transition = 'none';
         track.style.transform = `translateX(-${sIdx * slider.clientWidth}px)`;
       });
+    })();
+
+    /* Load latest blog posts */
+    (async function(){
+      const container = document.getElementById('blog-posts');
+      if(!container) return;
+      try{
+        const res = await fetch('https://kovacictalent.com/wp-json/wp/v2/posts?per_page=3&_embed');
+        const posts = await res.json();
+        posts.forEach(p=>{
+          const img = p._embedded && p._embedded['wp:featuredmedia'] ? p._embedded['wp:featuredmedia'][0].source_url : '';
+          const article = document.createElement('article');
+          article.className = 'card';
+          const excerpt = p.excerpt.rendered.replace(/<[^>]+>/g,'').slice(0,140);
+          article.innerHTML = `
+            ${img ? `<img src="${img}" alt="${p.title.rendered}" style="width:100%;height:160px;object-fit:cover;border-radius:var(--radius);">` : ''}
+            <h3>${p.title.rendered}</h3>
+            <p>${excerpt}</p>
+            <a href="${p.link}" style="color:var(--accent);font-weight:600;">Lee más...</a>
+          `;
+          container.appendChild(article);
+        });
+      }catch(err){
+        console.error('Failed to load posts', err);
+      }
     })();
   </script>
 </body>
