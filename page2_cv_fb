@@ -1,0 +1,594 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Kovacic Talent — Executive Recruitment</title>
+  <meta name="description" content="Boutique executive search & specialist recruitment for high-growth companies." />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --ink:#101828;
+      --muted:#667085;
+      --bg:#ffffff;
+      --accent:#0A212E;
+      --accent-dark:#0A212E;
+      --line:#ebedf0;
+      --beige:#E9F0F5;
+      --shadow:0 10px 30px rgba(16,24,40,.08);
+      --radius:14px;
+      --radius-lg:22px;
+      --pad: clamp(16px, 3.2vw, 28px);
+      --w: 1180px;            /* content width */
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%;overflow-x:hidden}
+    body{margin:0;font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial; color:var(--ink); background:var(--bg)}
+    a{color:inherit;text-decoration:none}
+    img{max-width:100%;display:block}
+    .container{max-width:var(--w); margin-inline:auto; padding-inline:var(--pad)}
+    .btn{display:inline-flex;align-items:center;gap:.5rem;padding:.9rem 1.3rem;border-radius:999px;font-weight:700;letter-spacing:.01em}
+    .btn-primary{background:#111;color:#fff}
+    .btn-primary:hover{filter:brightness(.95)}
+    .btn-ghost{border:2px solid #111;color:#111}
+    .btn-ghost:hover{background:#111;color:#fff}
+    .pill{display:inline-flex;align-items:center;gap:.5rem;color:#0f172a;background:linear-gradient(90deg,#eafcf8,#fff);border:1px solid #d9f4ee;padding:.35rem .7rem;border-radius:999px;font-weight:700;font-size:.78rem}
+    .dot{width:8px;height:8px;border-radius:999px;background:#d1d5db}
+    .dot.is-active{background:var(--accent)}
+
+    /* Topbar */
+    .topbar{background:#111;color:#fff;font-size:.85rem}
+    .topbar .inner{display:flex;justify-content:space-between;align-items:center;height:40px}
+    .social a{opacity:.85;margin-left:14px}
+    .social a:hover{opacity:1}
+
+    /* Navbar */
+    .nav{position:sticky;top:0;z-index:40;background:#fff;border-bottom:1px solid var(--line)}
+    .nav .inner{display:flex;align-items:center;justify-content:space-between;height:66px}
+    .logo{display:flex;align-items:center;gap:.6rem;font-weight:900;letter-spacing:.02em}
+    .logo-img{height:36px;width:auto}
+    .menu{display:flex;gap:26px;align-items:center}
+    .menu a{font-weight:600;color:#0f172a}
+    .menu a:hover{color:var(--accent-dark)}
+    .nav-cta{display:flex;gap:10px;align-items:center}
+
+    /* HERO */
+    .hero{position:relative;overflow:hidden}
+    .hero .inner{display:grid;grid-template-columns:1.12fr .88fr;align-items:center;gap:48px;padding-block: clamp(20px,4vw,45px)}
+    .eyebrow{font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:#475569}
+    h1{font-size:clamp(2rem,4vw,3.2rem);line-height:1.08;margin:.35rem 0 1rem}
+    .hero p.sub{color:var(--muted);font-size:1.08rem;max-width:58ch}
+    .cta-row{display:flex;flex-wrap:wrap;gap:12px;margin-top:22px}
+    .hero-copy{position:relative}
+    .hero-slide{display:none}
+    .hero-slide.is-active{display:block}
+    .slider-dots{display:flex;gap:10px;align-items:center;margin-top:28px}
+
+    .hero-visual{position:relative; width:min(45vw,490px); aspect-ratio:1/1; margin-left:auto}
+    .hero-visual .ring{
+      position:absolute; inset:0; border-radius:50%;
+      background: radial-gradient(closest-side,#DDE9F0 0 73%, transparent 73%),
+                  conic-gradient(from 0deg,#f1f5f9, #DDE9F0);
+      z-index:0; opacity:.9; filter:drop-shadow(0 30px 60px rgba(2,6,23,.07));
+    }
+    .hero-visual .photo{
+      position:absolute; inset:12%; border-radius:50%; overflow:hidden; box-shadow:var(--shadow); z-index:1;
+    }
+    .hero-visual .photo img{
+      position:absolute; inset:0; width:100%; height:100%; object-fit:cover; opacity:0; transition:opacity .6s ease;
+    }
+    .hero-visual .photo img.is-active{opacity:1}
+    .hero-visual .badge{
+      position:absolute; right:8%; bottom:10%; z-index:2;
+      background:#fff; border:1px solid var(--line); border-radius:12px;
+      padding:10px 14px; box-shadow:var(--shadow); display:flex; align-items:center; gap:8px;
+      font-weight:700;
+    }
+    .accent{color:var(--accent)}
+
+    /* Sections */
+    section{padding-block: clamp(24px, 4.5vw, 44px)}
+    .section-title{text-align:center;margin-bottom:8px;font-size:clamp(1.2rem,2.2vw,1.8rem)}
+    .lead{color:var(--muted);text-align:center;max-width:70ch;margin:0 auto 28px}
+    .lead-lg{font-size:1.2rem}
+    .grid{display:grid;gap:22px}
+    .g-3{grid-template-columns:repeat(3,1fr)}
+    .g-4{grid-template-columns:repeat(4,1fr)}
+    .card{background:#fafafa;border:1px solid var(--line);border-radius:var(--radius);padding:20px}
+    .card h3{margin:8px 0 6px}
+    .icon{width:36px;height:36px;border-radius:10px;background:linear-gradient(180deg,#eafff9,#fff);border:1px solid #d9f4ee;display:grid;place-items:center}
+    #process .card svg,
+    #process-ai .card svg{width:32px;height:32px;color:var(--accent);margin-bottom:12px}
+
+    .values-title{position:relative;display:inline-block;padding-bottom:8px}
+    .values-title::after{content:"";position:absolute;left:0;bottom:0;width:100%;height:4px;background-color:#0A212E}
+    .values-grid{grid-template-columns:repeat(6,1fr)}
+    .values-grid .card{grid-column:span 2}
+    .values-grid .card:nth-child(4){grid-column:2/span 2}
+    .values-grid .card:nth-child(5){grid-column:4/span 2}
+
+    .why-choose{text-align:center}
+    .why-choose ul{display:inline-block;text-align:left;margin:0 auto}
+
+    /* Fixed sector slider — 200px tall and each image spans full width */
+    .sector-slider{
+      position:relative;
+      overflow:hidden;
+      margin-top:30px;
+      border-radius:var(--radius);
+      box-shadow:var(--shadow);
+      height:200px;
+      width:100%;
+    }
+    .sector-track{
+      display:flex;
+      height:100%;
+      width:100%;
+    }
+      .sector-track img{
+        flex:0 0 100%;
+        width:100%;
+        height:100%;
+        object-fit:cover;   /* fill left→right; crop if needed */
+        object-position:center;
+      }
+
+      /* About */
+      .about-section{overflow:auto}
+      .about-section .about-visual{
+        float:left;
+        position:relative;
+        width:min(45vw,490px);
+        aspect-ratio:1/1;
+        margin-right:40px;
+        margin-bottom:20px;
+        margin-left:0;
+      }
+      .about-section .about-visual .ring{
+        position:absolute;
+        inset:0;
+        border-radius:50%;
+        background: radial-gradient(closest-side,#DDE9F0 0 73%, transparent 73%),
+                    conic-gradient(from 0deg,#f1f5f9, #DDE9F0);
+        z-index:0;
+        opacity:.9;
+        filter:drop-shadow(0 30px 60px rgba(2,6,23,.07));
+      }
+      .about-section .about-visual .photo{
+        position:absolute;
+        inset:12%;
+        border-radius:50%;
+        overflow:hidden;
+        box-shadow:var(--shadow);
+        z-index:1;
+      }
+      .about-section .about-visual .photo img{
+        width:100%;
+        height:100%;
+        object-fit:cover;
+      }
+
+      /* Testimonials */
+      .testis{background:#f6f8fb;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+    .section-beige{background:var(--beige);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+    blockquote{max-width:860px;margin:0 auto;padding:0 20px;font-size:1.1rem;line-height:1.6;text-align:center;color:#0f172a}
+    cite{display:block;margin-top:10px;color:#475569;font-style:normal;font-weight:700}
+
+    /* Footer */
+    footer{background:#0b1220;color:#cbd5e1}
+    .footer-inner{display:grid;grid-template-columns:1.2fr .8fr;gap:28px;align-items:center}
+    .newsletter{display:flex;gap:10px}
+    .newsletter input{flex:1;padding:12px 14px;border-radius:999px;border:1px solid #334155;background:#0f172a;color:#e2e8f0}
+    .newsletter button{border:none;background:var(--accent);color:#fff;border-radius:999px;padding:12px 18px;font-weight:800}
+    .mini{border-top:1px solid #162036;margin-top:26px;padding-top:16px;text-align:center;color:#94a3b8}
+
+    /* Responsive */
+      @media (max-width: 980px){
+        .menu{display:none}
+        .hero .inner{grid-template-columns:1fr}
+        .hero-visual{margin:0 auto;overflow:hidden}
+        .hero-visual .ring{right:-40vw; top:-28vw}
+        .hero-visual .photo{margin-inline:auto}
+        .footer-inner{grid-template-columns:1fr}
+        .about-section .about-visual{float:none;max-width:320px;width:100%;margin:0 auto 20px}
+      }
+
+      @media (max-width: 640px){
+        .topbar .inner{flex-direction:column;height:auto;padding-block:8px;gap:4px;text-align:center}
+        .nav .inner{flex-direction:column;height:auto;gap:12px}
+        .nav-cta{flex-direction:column;width:100%}
+        .nav-cta .btn{width:100%;text-align:center}
+        .grid{grid-template-columns:1fr !important}
+        .values-grid{grid-template-columns:1fr !important}
+        .values-grid .card{grid-column:auto !important}
+      }
+  </style>
+</head>
+<body>
+
+  <!-- Topbar -->
+  <div class="topbar">
+    <div class="container inner">
+      <div>📞 +34 600 123 456 · ✉️ contact@kovacictalent.com</div>
+      <div class="social">
+<a href="https://linkedin.com/company/kovacic-executive-talent" 
+   aria-label="LinkedIn" 
+   target="_blank" 
+   rel="noopener noreferrer">in</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Navigation -->
+  <nav class="nav" aria-label="Primary navigation">
+    <div class="container inner">
+      <a class="logo" href="#"><img src="https://kovacictalent.com/wp-content/uploads/2025/08/Logo_Kovacic.png" alt="Kovacic Talent logo" class="logo-img"><span> </span></a>
+      <div class="menu">
+        <a href="#sectors">Sectors</a>
+        <a href="#About">About us</a>
+        <a href="#Values">Our Values</a>
+        <a href="#process">How We Work</a>
+        <a href="#processes">Latest processes</a>
+        <a href="#contact">Contact</a>
+      </div>
+      <div class="nav-cta">
+        <a class="btn btn-ghost" href="https://kovacictalent.com/mejoracv">Submit CV</a>
+        <a class="btn btn-primary" href="#contact">Request a Call</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <header class="hero">
+    <div class="container inner">
+      <div class="hero-copy">
+        <div class="hero-slide is-active">
+          <h1>We connect talent with the energy of change</h1>
+          <span class="pill">10+ Years of Experience</span>
+          <h1>We Are a <span class="accent">Recruitment Partner</span> for High-Growth Companies</h1>
+          <p class="sub">We help organizations across EMEA & LATAM identify and attract exceptional leaders and senior specialists—combining rigorous search methods with modern, ethical AI to deliver results that endure.</p>
+          <div class="cta-row">
+            <a class="btn btn-primary" href="#contact">Start Your Search</a>
+            <a class="btn btn-ghost" href="#process">See Our Process</a>
+          </div>
+        </div>
+        <div class="hero-slide">
+          <h1>We connect talent with the energy of change</h1>
+          <span class="pill">Results That Stick</span>
+          <h1>85% 12-Month Retention</h1>
+          <p class="sub">Our placements thrive long term, with four out of five leaders still in role after the first year.</p>
+          <div class="cta-row">
+            <a class="btn btn-primary" href="#process">See Our Process</a>
+            <a class="btn btn-ghost" href="#contact">Start Your Search</a>
+          </div>
+        </div>
+        <div class="hero-slide">
+          <h1>We connect talent with the energy of change</h1>
+          <span class="pill">Improve Your CV</span>
+          <h1>Personal, ATS-Friendly CV Feedback</h1>
+          <p class="sub">Upload your CV to receive clear, actionable suggestions tailored to your role and sector.</p>
+          <div class="cta-row">
+            <a class="btn btn-primary" href="#cases">Improve My CV</a>
+            <a class="btn btn-ghost" href="#contact">Start Your Search</a>
+          </div>
+        </div>
+        <div class="slider-dots" aria-label="Hero carousel navigation">
+          <span class="dot is-active" aria-hidden="true"></span>
+          <span class="dot" aria-hidden="true"></span>
+          <span class="dot" aria-hidden="true"></span>
+        </div>
+      </div>
+
+      <div class="hero-visual">
+        <div class="ring" aria-hidden="true"></div>
+        <div class="photo">
+          <img class="is-active" src="https://kovacictalent.com/wp-content/uploads/2025/05/AdobeStock_641731816-scaled.jpeg" alt="Senior professional meeting in modern office">
+          <img src="https://images.unsplash.com/photo-1551836022-4c4c79ecde51?q=80&w=1200&auto=format&fit=crop" alt="Executive handshake in office">
+          <img src="https://kovacictalent.com/wp-content/uploads/2025/05/AdobeStock_1035652596-scaled.jpeg?q=80&w=1200&auto=format&fit=crop" alt="Team collaboration at work">
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- SECTORS -->
+  <section id="sectors" class="section-beige">
+    <div class="container">
+      <h2 class="section-title"><span class="values-title">Sectors</span></h2>
+      <p class="lead">Deep networks in technology and renewable energy, plus adjacent industries.</p>
+      <div class="grid g-4">
+        <div class="card"><h3>Technology</h3><p>Engineering, Data, Security, Product & Platform.</p></div>
+        <div class="card"><h3>Renewables</h3><p>Solar, Wind, BESS, Grid & Hydrogen.</p></div>
+        <div class="card"><h3>Financial Services</h3><p>PE/VC, project finance, asset management.</p></div>
+        <div class="card"><h3>Industrial & Ops</h3><p>EPC, supply chain, operations leadership.</p></div>
+      </div>
+      <div class="sector-slider">
+        <div class="sector-track">
+          <img src="https://kovacictalent.com/wp-content/uploads/2025/09/8478.jpg" alt="Technology sector">
+          <img src="https://kovacictalent.com/wp-content/uploads/2025/09/landscape-with-windmills-scaled.jpg" alt="Renewable energy sector">
+          <img src="https://kovacictalent.com/wp-content/uploads/2025/09/template_21-scaled.png" alt="Financial services sector">
+          <img src="https://kovacictalent.com/wp-content/uploads/2025/09/large-vecteezy_confident-factory-worker-using-digital-tablet-in-industrial_47268909_large.jpg" alt="Industrial operations sector">
+        </div>
+      </div>
+    </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section id="About" class="container about-section" style="margin-top:40px;">
+      <div class="about-visual">
+        <div class="ring" aria-hidden="true"></div>
+        <div class="photo">
+          <img src="https://kovacictalent.com/wp-content/uploads/2025/09/Alan2.png" alt="Senior professional meeting in modern office">
+        </div>
+      </div>
+      <h2 class="section-title"><span class="values-title">About us</span></h2>
+      <p>At Kovacic, we are a young firm backed by a team with decades of experience in international executive search. We embrace a boutique model where cutting-edge technology and artificial intelligence enhance our processes with greater precision and agility, always as a complement to what matters most: human insight and close relationships with executives and candidates.<br>
+<br>
+Our identity is expressed through two brands:<br>
+Kovacic Talent, focused on technical positions, middle management, and key professionals who sustain growth.<br>
+Kovacic Executive, specialized in the search for senior leaders, executives, and board members with a global vision.<br>
+<br>
+Our main divisions:<br>
+🔹 Executive Search & Talent Acquisition – Strategic and technical leadership recruitment.<br>
+🔹 Board & Governance – Selection of board members and advisory boards with international experience.<br>
+🔹 Leadership Development – Succession planning, leadership programs, and executive coaching.<br>
+🔹 Market Intelligence – Talent mapping, benchmarking, and market analysis.<br>
+<br>
+Within these divisions, we operate across core sectors: finance, infrastructure, technology, laboratories, hospitality, mining, and energy, with a dedicated team of specialists in each area, ensuring deep industry knowledge and highly effective processes.<br>
+<br>
+Our value lies not only in identifying talent but in being a close partner that creates positive impact in the labor market. We work every day on continuous improvement and on delivering a distinctive experience for both candidates and clients, building trust, generating concrete results, and contributing to long-term growth.<br>
+<br>
+Our strengths in talent development are anchored in the world’s most influential business hubs: New York, Paris, Madrid, Barcelona, Berlin, Rome, Amsterdam, Oslo, Stockholm, Mexico City, São Paulo, Santiago de Chile, Lima, Panama, Shanghai, and Hong Kong.</p><br>
+    </section>
+
+    <!-- VALUES -->
+    <section id="Values" class="container">
+    <h2 class="section-title"><span class="values-title">Our Values</span></h2>
+    <p class="lead" style="text-align: center; max-width: 800px; margin: 20px auto;">
+      At <strong>Kovacic Executive Talent Research</strong>, our values guide everything we do.
+      They define <strong>how we work</strong>, how we build <strong>relationships</strong>, and how we create
+      lasting <strong>impact</strong> for our clients and candidates.
+    </p>
+      <div class="grid values-grid">
+      <div class="card">
+        <h3>Excellence</h3>
+        <p>We commit to the <strong>highest standards</strong> at every stage of the process, delivering results that generate <strong>real impact</strong> for organizations.</p>
+      </div>
+      <div class="card">
+        <h3>Trust</h3>
+        <p>We build <strong>strong and lasting relationships</strong> based on <strong>transparency</strong>, respect, and confidentiality.</p>
+      </div>
+      <div class="card">
+        <h3>Human Vision</h3>
+        <p>We believe in the <strong>transformative power of leadership</strong>. We seek talent that <strong>inspires, mobilizes</strong>, and builds <strong>sustainable cultures</strong>.</p>
+      </div>
+      <div class="card">
+        <h3>Global Perspective</h3>
+        <p>We operate <strong>without borders</strong>, combining an <strong>international outlook</strong> with deep understanding of <strong>local contexts</strong>.</p>
+      </div>
+      <div class="card">
+        <h3>Adaptability</h3>
+        <p>We respond with <strong>agility</strong> to change, recognizing that each organization is <strong>unique</strong> and requires <strong>tailored solutions</strong>.</p>
+      </div>
+    </div>
+    </section>
+
+  <!-- PROCESS -->
+  <section id="process" class="section-beige">
+    <div class="container">
+      <h2 class="section-title"><span class="values-title">How We Work</span></h2>
+      <p class="lead lead-lg"><strong>Classic Executive Search:</strong> Transparent stages with measurable outcomes, from kickoff to signed offer.</p>
+      <div class="grid g-4">
+        <div class="card">
+          <svg viewBox="0 0 24 24" ...></svg>
+          <strong>01 • Discovery</strong>
+          <p>Deep dive into success profile, cultural fit, leadership traits, and role context.</p>
+        </div>
+        <div class="card">
+          <svg viewBox="0 0 24 24" ...></svg>
+          <strong>02 • Mapping</strong>
+          <p>Manual market research, direct headhunting, and building a validated longlist.</p>
+        </div>
+        <div class="card">
+          <svg viewBox="0 0 24 24" ...></svg>
+          <strong>03 • Shortlist</strong>
+          <p>Structured interviews, detailed candidate assessments, and weekly progress reports.</p>
+        </div>
+        <div class="card">
+          <svg viewBox="0 0 24 24" ...></svg>
+          <strong>04 • Close</strong>
+          <p>Offer strategy, expectation alignment, and onboarding support.</p>
+        </div>
+      </div>
+      <div class="why-choose">
+        <h3>Why choose the Classic Way?</h3>
+        <ul>
+          ✔️ Best for highly confidential or niche roles where trust and discretion matter most.<br>
+          ✔️ Relies on deep human networks, relationships, and proven headhunting practices.<br>
+          ✔️ Ensures cultural alignment through rigorous personal validation at every stage.<br>
+          ✔️ Ideal when precision, experience, and tailored judgment outweigh speed.
+        </ul>
+      </div>
+    </div>
+<br>
+<br>
+<br>
+<br>
+    <div class="container">
+      <p class="lead lead-lg"><strong>AI-Enhanced Search:</strong> Blending human expertise with advanced technology to accelerate results.</p>
+      <div class="grid g-4">
+        <div class="card">
+          <svg viewBox="0 0 24 24" ...></svg>
+          <strong>01 • Discovery</strong>
+          <p>Success profile, culture signals, timeline and <strong>AI-based role calibration</strong>.</p>
+        </div>
+        <div class="card">
+          <svg viewBox="0 0 24 24" ...></svg>
+          <strong>02 • Mapping</strong>
+          <p><strong>AI-driven market scanning + human validation</strong>, delivering a smarter longlist faster.</p>
+        </div>
+        <div class="card">
+          <svg viewBox="0 0 24 24" ...></svg>
+          <strong>03 • Shortlist</strong>
+          <p>Structured interviews, predictive scorecards, and live dashboards with <strong>weekly AI-powered insights</strong>.</p>
+        </div>
+        <div class="card">
+          <svg viewBox="0 0 24 24" ...></svg>
+          <strong>04 • Close</strong>
+          <p>Offer strategy, expectation alignment, onboarding support, <strong>plus ongoing data-driven retention insights</strong>.</p>
+        </div>
+      </div>
+      <div class="why-choose">
+        <h3>Why choose the AI-Enhanced Way?</h3>
+        <ul>
+          ✔️ Speeds up search with real-time data and AI-powered talent mapping.<br>
+          ✔️ Uncovers hidden talent pools across broader geographies and industries.<br>
+          ✔️ Provides measurable insights via scorecards, dashboards, and analytics.<br>
+          ✔️ Perfect when you need scalability, transparency, and faster decision-making.
+        </ul>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- INSIGHTS -->
+  <section id="processes" class="container">
+    <h2 class="section-title"><span class="values-title">Latest processes</span></h2>
+    <p class="lead">The latest published processes, or view all active processes</p>
+<div style="margin:1rem 0; text-align:center;">
+  <a class="btn btn-primary" href="https://kovacictalent.com/procesos-activos/">Active Processes</a>
+</div>
+
+    <div id="blog-posts" class="grid g-3"></div>
+  </section>
+
+  <!-- CONTACT / CTA -->
+  <section id="contact" class="container">
+    <h2 class="section-title"><span class="values-title">Ready to Start?</span></h2>
+    <p class="lead">Tell us what success looks like, we’ll build a search around it.</p>
+    <div class="grid" style="grid-template-columns:1.1fr .9fr; gap:24px;">
+      <div class="card" style="display:grid;gap:10px">
+        <p class="muted">We'd love to hear from you, expand below to send us a message.</p>
+        <details>
+          <summary style="cursor:pointer;font-weight:600">Open contact form</summary>
+          [contact-form-7 id="e7e9470" title="Sin título"]
+        </details>
+      </div>
+      <div class="card" style="display:grid;gap:10px">
+        <h3>Contact</h3>
+        <p class="muted">📞 +34 600 123 456<br>✉️ contact@kovacictalent.com<br>📍 Madrid · Barcelona · Santiago</p>
+        <div style="display:flex;gap:10px;align-items:center">
+          <span class="pill">Avg shortlist in 12 days</span>
+          <span class="pill">Global reach</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="container footer-inner">
+      <div>
+        <p style="color:#94a3b8;max-width:58ch">Executive search and senior specialist recruitment across Technology and Renewable Energy. Boutique service, global reach.</p>
+      </div>
+      <div>
+        <form class="newsletter" onsubmit="event.preventDefault(); alert('Subscribed!');">
+          <input type="email" required placeholder="Subscribe with your email">
+          <button type="submit">Subscribe</button>
+        </form>
+      </div>
+    </div>
+    <div class="container mini">
+      © <span id="y"></span> Kovacic Talent. All rights reserved · <a href="#" style="color:#cbd5e1">Privacy</a> · <a href="#" style="color:#cbd5e1">Terms</a>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById('y').textContent = new Date().getFullYear();
+
+    /* Hero carousel */
+    (function(){
+      const slides = document.querySelectorAll('.hero-visual .photo img');
+      const dots = document.querySelectorAll('.slider-dots .dot');
+      const copies = document.querySelectorAll('.hero-slide');
+      let idx = 0;
+      function show(n){
+        slides[idx].classList.remove('is-active');
+        dots[idx].classList.remove('is-active');
+        copies[idx].classList.remove('is-active');
+        idx = n;
+        slides[idx].classList.add('is-active');
+        dots[idx].classList.add('is-active');
+        copies[idx].classList.add('is-active');
+      }
+      function next(){ show((idx + 1) % slides.length); }
+      let timer = setInterval(next, 15000);
+      dots.forEach((dot,i)=>dot.addEventListener('click',()=>{show(i); clearInterval(timer); timer=setInterval(next,15000);}));      
+      // Initialize first text slide visible
+      copies[0].classList.add('is-active');
+    })();
+
+    /* Sector slider (each image = full width, 200px tall) */
+    (function(){
+      const slider = document.querySelector('.sector-slider');
+      if(!slider) return;
+      const track = slider.querySelector('.sector-track');
+      if(!track.children.length) return;
+
+      // Clone first slide for smooth loop
+      const first = track.children[0].cloneNode(true);
+      track.appendChild(first);
+
+      let sIdx = 0;
+      const duration = 600;
+      const intervalMs = 10000;
+
+      function step(){
+        sIdx++;
+        const slideWidth = slider.clientWidth;
+        track.style.transition = 'transform .6s ease';
+        track.style.transform = `translateX(-${sIdx * slideWidth}px)`;
+        if(sIdx === track.children.length - 1){
+          setTimeout(()=>{
+            track.style.transition = 'none';
+            track.style.transform = 'translateX(0)';
+            sIdx = 0;
+          }, duration);
+        }
+      }
+
+      let t = setInterval(step, intervalMs);
+      // Reset transform on resize to keep widths perfect
+      window.addEventListener('resize', ()=>{
+        track.style.transition = 'none';
+        track.style.transform = `translateX(-${sIdx * slider.clientWidth}px)`;
+      });
+    })();
+
+    /* Load latest blog posts */
+    (async function(){
+      const container = document.getElementById('blog-posts');
+      if(!container) return;
+      try{
+        const res = await fetch('https://kovacictalent.com/wp-json/wp/v2/posts?per_page=3&_embed');
+        const posts = await res.json();
+        posts.forEach(p=>{
+          const img = p._embedded && p._embedded['wp:featuredmedia'] ? p._embedded['wp:featuredmedia'][0].source_url : '';
+          const article = document.createElement('article');
+          article.className = 'card';
+          const excerpt = p.excerpt.rendered.replace(/<[^>]+>/g,'').slice(0,140);
+          article.innerHTML = `
+            ${img ? `<img src="${img}" alt="${p.title.rendered}" style="width:100%;height:160px;object-fit:cover;border-radius:var(--radius);">` : ''}
+            <h3>${p.title.rendered}</h3>
+            <p>${excerpt}</p>
+            <a href="${p.link}" style="color:var(--accent);font-weight:600;">Read more..</a>
+          `;
+          container.appendChild(article);
+        });
+      }catch(err){
+        console.error('Failed to load posts', err);
+      }
+    })();
+  </script>
+</body>
+</html>
