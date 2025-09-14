@@ -97,6 +97,17 @@
     .icon{width:36px;height:36px;border-radius:10px;background:linear-gradient(180deg,#eafff9,#fff);border:1px solid #d9f4ee;display:grid;place-items:center}
     #process .card svg{width:32px;height:32px;color:var(--accent);margin-bottom:12px}
 
+    .values-title{position:relative;display:inline-block;padding-bottom:8px}
+    .values-title::after{content:"";position:absolute;left:0;bottom:0;width:100%;height:4px;background-color:#0A212E}
+    .values-grid{grid-template-columns:repeat(6,1fr)}
+    .values-grid .card{grid-column:span 2}
+    .values-grid .card:nth-child(4){grid-column:2/span 2}
+    .values-grid .card:nth-child(5){grid-column:4/span 2}
+
+    .sector-slider{position:relative;overflow:hidden;margin-top:30px;height:200px;border-radius:var(--radius);box-shadow:var(--shadow)}
+    .sector-track{display:flex;width:400%;height:100%;transition:transform .6s ease}
+    .sector-track img{flex:0 0 100%;object-fit:cover}
+
     /* Testimonials */
     .testis{background:#f6f8fb;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
     blockquote{max-width:860px;margin:0 auto;padding:0 20px;font-size:1.1rem;line-height:1.6;text-align:center;color:#0f172a}
@@ -186,18 +197,36 @@
     </div>
   </header>
 
-<!-- SERVICES -->
+<!-- SECTORS -->
+<section id="sectors" class="container">
+  <h2 class="section-title">Sectors We Serve</h2>
+  <p class="lead">Deep networks in technology and renewable energy, plus adjacent industries.</p>
+  <div class="grid g-4">
+    <div class="card"><h3>Technology</h3><p>Engineering, Data, Security, Product & Platform.</p></div>
+    <div class="card"><h3>Renewables</h3><p>Solar, Wind, BESS, Grid & Hydrogen.</p></div>
+    <div class="card"><h3>Financial Services</h3><p>PE/VC, project finance, asset management.</p></div>
+    <div class="card"><h3>Industrial & Ops</h3><p>EPC, supply chain, operations leadership.</p></div>
+  </div>
+  <div class="sector-slider">
+    <div class="sector-track">
+      <img src="https://kovacictalent.com/wp-content/uploads/2025/09/8478.jpg" alt="Technology sector">
+      <img src="https://kovacictalent.com/wp-content/uploads/2025/09/landscape-with-windmills-scaled.jpg" alt="Renewable energy sector">
+      <img src="https://kovacictalent.com/wp-content/uploads/2025/09/business-people-discussing-results-successful-teamwork-scaled.jpg" alt="Financial services sector">
+      <img src="https://kovacictalent.com/wp-content/uploads/2025/09/large-vecteezy_confident-factory-worker-using-digital-tablet-in-industrial_47268909_large.jpg" alt="Industrial operations sector">
+    </div>
+  </div>
+</section>
+
+
+<!-- VALUES -->
 <section id="services" class="container">
-  <h2 class="section-title" style="position: relative; display: inline-block; padding-bottom: 8px; margin: 0 auto; text-align: center;">
-    Our Values
-    <span style="position: absolute; left: 0; bottom: 0; width: 100%; height: 4px; background-color: #0A212E;"></span>
-  </h2>
+  <h2 class="section-title"><span class="values-title">Our Values</span></h2>
   <p class="lead" style="text-align: center; max-width: 800px; margin: 20px auto;">
-    At <strong>Kovacic Executive Talent Research</strong>, our values guide everything we do. 
-    They define <strong>how we work</strong>, how we build <strong>relationships</strong>, and how we create 
+    At <strong>Kovacic Executive Talent Research</strong>, our values guide everything we do.
+    They define <strong>how we work</strong>, how we build <strong>relationships</strong>, and how we create
     lasting <strong>impact</strong> for our clients and candidates.
   </p>
-  <div class="grid g-3">
+  <div class="grid values-grid">
     <div class="card">
       <h3>Excellence</h3>
       <p>We commit to the <strong>highest standards</strong> at every stage of the process, delivering results that generate <strong>real impact</strong> for organizations.</p>
@@ -220,19 +249,6 @@
     </div>
   </div>
 </section>
-
-
-  <!-- SECTORS -->
-  <section id="sectors" class="container">
-    <h2 class="section-title">Sectors We Serve</h2>
-    <p class="lead">Deep networks in technology and renewable energy, plus adjacent industries.</p>
-    <div class="grid g-4">
-      <div class="card"><h3>Technology</h3><p>Engineering, Data, Security, Product & Platform.</p></div>
-      <div class="card"><h3>Renewables</h3><p>Solar, Wind, BESS, Grid & Hydrogen.</p></div>
-      <div class="card"><h3>Financial Services</h3><p>PE/VC, project finance, asset management.</p></div>
-      <div class="card"><h3>Industrial & Ops</h3><p>EPC, supply chain, operations leadership.</p></div>
-    </div>
-  </section>
 
   <!-- PROCESS -->
   <section id="process" class="container">
@@ -333,6 +349,16 @@
       function next(){ show((idx + 1) % slides.length); }
       let timer = setInterval(next, 15000);
       dots.forEach((dot,i)=>dot.addEventListener('click',()=>{show(i); clearInterval(timer); timer=setInterval(next,15000);}));
+    })();
+
+    (function(){
+      const track = document.querySelector('.sector-track');
+      if(!track) return;
+      let sIdx = 0;
+      setInterval(()=>{
+        sIdx = (sIdx + 1) % track.children.length;
+        track.style.transform = `translateX(-${sIdx * 100}%)`;
+      },15000);
     })();
   </script>
 </body>
