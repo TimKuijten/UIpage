@@ -37,16 +37,11 @@
     .btn-primary:hover{filter:brightness(.95)}
     .btn-ghost{border:2px solid #111;color:#111}
     .btn-ghost:hover{background:#111;color:#fff}
+    .btn-linkedin{background:#0A66C2;color:#fff}
+    .btn-linkedin:hover{filter:brightness(.95)}
     .pill{display:inline-flex;align-items:center;gap:.5rem;color:#0f172a;background:linear-gradient(90deg,#eafcf8,#fff);border:1px solid #d9f4ee;padding:.35rem .7rem;border-radius:999px;font-weight:700;font-size:.78rem}
     .dot{width:8px;height:8px;border-radius:999px;background:#d1d5db}
     .dot.is-active{background:var(--accent)}
-
-    /* Topbar */
-    .topbar{background:#111;color:#fff;font-size:.85rem}
-    .topbar .inner{display:flex;justify-content:space-between;align-items:center;height:40px}
-    .social a{opacity:.85;margin-left:14px}
-    .social a:hover{opacity:1}
-
     /* Navbar */
     .nav{position:sticky;top:0;z-index:40;background:#fff;border-bottom:1px solid var(--line);backdrop-filter:blur(8px)}
     .nav .inner{display:flex;align-items:center;justify-content:space-between;gap:24px;height:66px;position:relative}
@@ -271,8 +266,6 @@
       }
 
       @media (max-width: 640px){
-        .topbar{display:none}
-        .topbar .inner{flex-direction:column;height:auto;padding-block:8px;gap:4px;text-align:center}
         .hero .hero-slide{text-align:center}
         .hero .hero-slide > *{margin-left:auto;margin-right:auto}
         .cta-row{flex-direction:column}
@@ -342,20 +335,6 @@
   </style>
 </head>
 <body>
-
-  <!-- Topbar -->
-  <div class="topbar">
-    <div class="container inner">
-      <div>📞 +34 611 897 294 · ✉️ info@kovacictalent.com</div>
-      <div class="social">
-<a href="https://linkedin.com/company/kovacic-executive-talent" 
-   aria-label="LinkedIn" 
-   target="_blank" 
-   rel="noopener noreferrer">in</a>
-      </div>
-    </div>
-  </div>
-
   <!-- Navigation -->
   <nav class="nav" aria-label="Primary navigation">
     <div class="container inner">
@@ -376,6 +355,7 @@
         <div class="nav-cta">
           <a class="btn btn-ghost" href="https://kovacictalent.com/mejoracv">Submit CV</a>
           <a class="btn btn-primary" href="#contact">Request a Call</a>
+          <a class="btn btn-linkedin" href="https://www.linkedin.com/company/kovacic-executive-talent/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
         </div>
       </div>
     </div>
