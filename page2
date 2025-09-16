@@ -246,7 +246,11 @@
         <div class="hero-slide is-active">
           <h1>We connect talent with the energy of change</h1>
           <span class="pill">10+ Years of Experience</span>
+          <img src="https://kovacictalent.com/wp-content/uploads/2025/08/Logo_Kovacic.png" alt="Kovacic Talent logo" style="display:block;max-width:100%;height:auto;margin:0 auto 1rem;">
           <h1>We Are a <span class="accent">Recruitment Partner</span> for High-Growth Companies</h1>
+          <div style="margin:1rem 0;">
+            <a class="btn btn-primary" href="https://kovacictalent.com/procesos-activos/">Active Processes</a>
+          </div>
           <p class="sub">We help organizations across EMEA & LATAM identify and attract exceptional leaders and senior specialists—combining rigorous search methods with modern, ethical AI to deliver results that endure.</p>
           <div class="cta-row">
             <a class="btn btn-primary" href="#contact">Start Your Search</a>
