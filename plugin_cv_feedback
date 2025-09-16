@@ -1,7 +1,7 @@
 <?php
 /*
-Plugin Name: Kovacic CV Feedback (ES) + reCAPTCHA v3
-Description: Envío de CV con feedback por IA (PDF/DOCX). Si el PDF no es legible en el servidor, el navegador extrae el texto con PDF.js y, si es escaneado, hace OCR con Tesseract.js; luego envía el texto oculto y el servidor genera un DOCX temporal desde ese texto (flujo fiable).
+Plugin Name: Kovacic CV Feedback + reCAPTCHA v3
+Description: CV submission with AI feedback (PDF/DOCX). If the PDF is unreadable on the server, the browser extracts the text with PDF.js and, if scanned, performs OCR with Tesseract.js; it then sends the hidden text and the server generates a temporary DOCX from it (reliable flow).
 Version: 1.6.0
 Author: Tim Kuijten - Kovacic Executive Talent Research
 */
@@ -37,12 +37,12 @@ class Kovacic_CV_Feedback_ES {
     public function register_cpt() {
         register_post_type('cv_submission', [
             'labels' => [
-                'name' => 'Envíos de CV',
-                'singular_name' => 'Envío de CV',
-                'add_new_item' => 'Añadir nuevo envío',
-                'edit_item' => 'Editar envío',
-                'view_item' => 'Ver envío',
-                'search_items' => 'Buscar envíos',
+                'name' => 'CV Submissions',
+                'singular_name' => 'CV Submission',
+                'add_new_item' => 'Add New Submission',
+                'edit_item' => 'Edit Submission',
+                'view_item' => 'View Submission',
+                'search_items' => 'Search Submissions',
             ],
             'public' => false,
             'show_ui' => true,
@@ -63,10 +63,10 @@ class Kovacic_CV_Feedback_ES {
         register_setting(self::OPT_GROUP, self::OPT_THANKYOU_TEXT);
 
         if (!get_option(self::OPT_GDPR_TEXT)) {
-            update_option(self::OPT_GDPR_TEXT, 'Acepto el tratamiento de mis datos personales con fines de reclutamiento conforme a la Política de Privacidad (RGPD).');
+            update_option(self::OPT_GDPR_TEXT, 'I consent to the processing of my personal data for recruitment purposes in accordance with the Privacy Policy (GDPR).');
         }
         if (!get_option(self::OPT_THANKYOU_TEXT)) {
-            update_option(self::OPT_THANKYOU_TEXT, '¡Gracias! Hemos recibido tu CV. El feedback se encuentra a continuación.');
+            update_option(self::OPT_THANKYOU_TEXT, 'Thank you! We have received your CV. The feedback is below.');
         }
 
         // reCAPTCHA v3
@@ -89,9 +89,9 @@ class Kovacic_CV_Feedback_ES {
         if (empty(trim(@shell_exec('which ocrmypdf'))))  $missing[] = '<code>ocrmypdf</code>';
         if (!class_exists('ZipArchive'))                 $missing[] = '<code>ZipArchive (PHP)</code>';
         if (!empty($missing)) {
-            echo '<div class="notice notice-info"><p><strong>KCVF:</strong> Recomendado en servidor (opcional): '
+            echo '<div class="notice notice-info"><p><strong>KCVF:</strong> Recommended on server (optional): '
                 . implode(', ', $missing)
-                . '. Este plugin también usa PDF.js + Tesseract.js en el navegador para leer PDFs sin estas herramientas.</p></div>';
+                . '. This plugin also uses PDF.js + Tesseract.js in the browser to read PDFs without these tools.</p></div>';
         }
     }
 
@@ -107,27 +107,27 @@ class Kovacic_CV_Feedback_ES {
                         <th scope="row"><label for="<?php echo self::OPT_API_KEY; ?>">OpenAI API Key</label></th>
                         <td>
                             <input type="password" id="<?php echo self::OPT_API_KEY; ?>" name="<?php echo self::OPT_API_KEY; ?>" value="<?php echo esc_attr(get_option(self::OPT_API_KEY)); ?>" class="regular-text" placeholder="sk-..." />
-                            <p class="description">Se usa para generar feedback automático del CV.</p>
+                            <p class="description">Used to generate automatic CV feedback.</p>
                         </td>
                     </tr>
                     <tr>
-                        <th scope="row">Feedback instantáneo</th>
+                        <th scope="row">Instant feedback</th>
                         <td>
                             <label>
                                 <input type="checkbox" name="<?php echo self::OPT_AUTO_FEEDBACK; ?>" value="1" <?php checked(get_option(self::OPT_AUTO_FEEDBACK), '1'); ?> />
-                                Generar feedback inmediatamente tras el envío
+                                Generate feedback immediately after submission
                             </label>
                         </td>
                     </tr>
                     <tr>
-                        <th scope="row"><label for="<?php echo self::OPT_NOTIFY_EMAIL; ?>">Emails de aviso interno</label></th>
+                        <th scope="row"><label for="<?php echo self::OPT_NOTIFY_EMAIL; ?>">Internal notification emails</label></th>
                         <td>
                             <input type="text" id="<?php echo self::OPT_NOTIFY_EMAIL; ?>" name="<?php echo self::OPT_NOTIFY_EMAIL; ?>" value="<?php echo esc_attr(get_option(self::OPT_NOTIFY_EMAIL)); ?>" class="regular-text" placeholder="talent@tudominio.com, rrhh@tudominio.com" />
-                            <p class="description">Opcional. Si se indican varios, sepáralos por comas. Enviaremos un aviso con cada envío.</p>
+                            <p class="description">Optional. If several, separate with commas. We will send a notice with each submission.</p>
                         </td>
                     </tr>
                     <tr>
-                        <th scope="row"><label for="<?php echo self::OPT_GDPR_TEXT; ?>">Texto de consentimiento (RGPD)</label></th>
+                        <th scope="row"><label for="<?php echo self::OPT_GDPR_TEXT; ?>">Consent text (GDPR)</label></th>
                         <td><textarea id="<?php echo self::OPT_GDPR_TEXT; ?>" name="<?php echo self::OPT_GDPR_TEXT; ?>" class="large-text" rows="3"><?php echo esc_textarea(get_option(self::OPT_GDPR_TEXT)); ?></textarea></td>
                     </tr>
                     <tr>
@@ -157,10 +157,10 @@ class Kovacic_CV_Feedback_ES {
                         <td><input type="password" id="<?php echo self::OPT_RECAPTCHA_SECRET; ?>" name="<?php echo self::OPT_RECAPTCHA_SECRET; ?>" value="<?php echo esc_attr(get_option(self::OPT_RECAPTCHA_SECRET)); ?>" class="regular-text" placeholder="6Le..."></td>
                     </tr>
                     <tr>
-                        <th scope="row"><label for="<?php echo self::OPT_RECAPTCHA_THRESH; ?>">Umbral (score mínimo)</label></th>
+                        <th scope="row"><label for="<?php echo self::OPT_RECAPTCHA_THRESH; ?>">Threshold (minimum score)</label></th>
                         <td>
                             <input type="number" step="0.1" min="0" max="1" id="<?php echo self::OPT_RECAPTCHA_THRESH; ?>" name="<?php echo self::OPT_RECAPTCHA_THRESH; ?>" value="<?php echo esc_attr(get_option(self::OPT_RECAPTCHA_THRESH, '0.5')); ?>" class="small-text">
-                            <p class="description">Valores más altos = más estricto. Recomendado 0.5–0.7.</p>
+                            <p class="description">Higher values = more strict. Recommended 0.5–0.7.</p>
                         </td>
                     </tr>
                 </table>
@@ -400,13 +400,13 @@ JS;
         ob_start();
         $gdpr_text = get_option(self::OPT_GDPR_TEXT);
         $recaptcha_on = get_option(self::OPT_RECAPTCHA_ENABLE) === '1';
-        $title = $register_only ? 'Registra tu CV' : 'Envía tu CV para feedback';
-        $btn   = $register_only ? 'Subir CV' : 'Enviar y obtener feedback';
+        $title = $register_only ? 'Register your CV' : 'Submit your CV for feedback';
+        $btn   = $register_only ? 'Upload CV' : 'Submit and get feedback';
         ?>
         <div class="kcvf-wrapper">
             <h2><?php echo esc_html($title); ?></h2>
             <?php if (!empty($errors)): ?>
-                <div class="kcvf-error"><strong>Por favor corrige:</strong><br><?php echo implode('<br>', array_map('esc_html', $errors)); ?></div>
+                <div class="kcvf-error"><strong>Please fix:</strong><br><?php echo implode('<br>', array_map('esc_html', $errors)); ?></div>
             <?php endif; ?>
 
             <form method="post" enctype="multipart/form-data" class="kcvf-form">
@@ -414,36 +414,36 @@ JS;
                 <input type="hidden" name="kcvf_mode" value="<?php echo $register_only ? 'register' : 'submit'; ?>">
 
                 <div class="kcvf-field">
-                    <label for="kcvf_name">Nombre completo</label>
-                    <input class="kcvf-input" type="text" name="kcvf_name" id="kcvf_name" value="<?php echo isset($old['name']) ? esc_attr($old['name']) : ''; ?>" required placeholder="Tu nombre completo">
+                    <label for="kcvf_name">Full name</label>
+                    <input class="kcvf-input" type="text" name="kcvf_name" id="kcvf_name" value="<?php echo isset($old['name']) ? esc_attr($old['name']) : ''; ?>" required placeholder="Your full name">
                 </div>
 
                 <div class="kcvf-field">
-                    <label for="kcvf_email">Correo electrónico</label>
-                    <input class="kcvf-input" type="email" name="kcvf_email" id="kcvf_email" value="<?php echo isset($old['email']) ? esc_attr($old['email']) : ''; ?>" required placeholder="nombre@ejemplo.com">
+                    <label for="kcvf_email">Email address</label>
+                    <input class="kcvf-input" type="email" name="kcvf_email" id="kcvf_email" value="<?php echo isset($old['email']) ? esc_attr($old['email']) : ''; ?>" required placeholder="name@example.com">
                 </div>
 
                 <div class="kcvf-field">
-                    <label for="kcvf_role">Rol / Área objetivo</label>
-                    <input class="kcvf-input" type="text" name="kcvf_role" id="kcvf_role" placeholder="p. ej., Country Manager, Head of Controlling, CFO..." value="<?php echo isset($old['role']) ? esc_attr($old['role']) : ''; ?>">
+                    <label for="kcvf_role">Target role / area</label>
+                    <input class="kcvf-input" type="text" name="kcvf_role" id="kcvf_role" placeholder="e.g., Country Manager, Head of Controlling, CFO..." value="<?php echo isset($old['role']) ? esc_attr($old['role']) : ''; ?>">
                 </div>
 
                 <div class="kcvf-field">
                     <label for="kcvf_sector">Sector</label>
                     <select class="kcvf-select" name="kcvf_sector" id="kcvf_sector">
-                        <option value="">— Seleccionar —</option>
+                        <option value="">— Select —</option>
                         <?php
                         $sectors = [
-                            'Energía renovable',
-                            'Energía térmica',
-                            'Finanzas',
-                            'Tecnología',
-                            'Ingeniería',
-                            'Epc',
-                            'Hr',
-                            'Minería',
+                            'Renewable energy',
+                            'Thermal energy',
+                            'Finance',
+                            'Technology',
+                            'Engineering',
+                            'EPC',
+                            'HR',
+                            'Mining',
                             'Legal',
-                            'Otro',
+                            'Other',
                         ];
                         $old_sector = $old['sector'] ?? '';
                         foreach ($sectors as $sec) {
@@ -454,9 +454,9 @@ JS;
                 </div>
 
                 <div class="kcvf-field">
-                    <label for="kcvf_vacancy">Vacante (opcional)</label>
+                    <label for="kcvf_vacancy">Vacancy (optional)</label>
                     <select class="kcvf-select" name="kcvf_vacancy" id="kcvf_vacancy">
-                        <option value="">— Seleccionar —</option>
+                        <option value="">— Select —</option>
                         <?php
                         $vacancy_old = isset($old['vacancy']) ? intval($old['vacancy']) : 0;
                         $vacancies = get_posts([
@@ -476,18 +476,18 @@ JS;
                 </div>
 
                 <div class="kcvf-field">
-    <label for="kcvf_file">Subir CV (PDF o DOCX, máximo 5 MB)</label>
+    <label for="kcvf_file">Upload CV (PDF or DOCX, max 5 MB)</label>
     <input type="file" name="kcvf_file" id="kcvf_file"
            accept=".pdf,.docx,application/pdf,application/vnd.openxmlformats-officedocument.wordprocessingml.document"
            required>
     <p style="font-size:13px;color:#666;margin-top:6px;">
-        Nota: si tu CV está en PDF escaneado, el sistema puede tardar unos minutos en procesarlo.
+        Note: if your CV is a scanned PDF, the system may take a few minutes to process it.
     </p>
 </div>
 
 
                 <div class="kcvf-field">
-                    <label for="kcvf_notes">Notas (opcional)</label>
+                    <label for="kcvf_notes">Notes (optional)</label>
                     <textarea class="kcvf-textarea" name="kcvf_notes" id="kcvf_notes" rows="4" placeholder="Notas adicionales"></textarea>
                 </div>
 
@@ -502,7 +502,7 @@ JS;
 
                 <button class="kcvf-btn" type="submit"><?php echo esc_html($btn); ?></button>
                 <?php if (!$register_only): ?>
-                    <p style="font-size:13px;color:#666;margin-top:6px;">Nota: la generación de feedback puede tardar hasta un minuto.</p>
+                    <p style="font-size:13px;color:#666;margin-top:6px;">Note: feedback generation may take up to a minute.</p>
                 <?php endif; ?>
             </form>
         </div>
@@ -512,7 +512,7 @@ JS;
 
     private function handle_submission($register_only = false) {
         if (!wp_verify_nonce($_POST['kcvf_es_nonce'], 'kcvf_es_submit')) {
-            return $this->render_form(['Token de formulario inválido. Recarga la página e inténtalo de nuevo.'], [], $register_only);
+            return $this->render_form(['Invalid form token. Reload the page and try again.'], [], $register_only);
         }
 
         $errors = [];
@@ -525,7 +525,7 @@ JS;
         $consent = !empty($_POST['kcvf_consent']);
 
         if (!$name) $errors[] = 'Introduce tu nombre.';
-        if (!$email || !is_email($email)) $errors[] = 'Introduce un correo válido.';
+        if (!$email || !is_email($email)) $errors[] = 'Please enter a valid email.';
         if (!$consent) $errors[] = 'Debes aceptar el consentimiento.';
         if (empty($_FILES['kcvf_file']['name'])) $errors[] = 'Adjunta tu CV en PDF o DOCX.';
 
@@ -538,20 +538,20 @@ JS;
         if ($recaptcha_on && $site_key && $secret) {
             $token = isset($_POST['kcvf_recaptcha_token']) ? sanitize_text_field($_POST['kcvf_recaptcha_token']) : '';
             if (!$token) {
-                $errors[] = 'No se pudo verificar reCAPTCHA. Recarga la página e inténtalo de nuevo.';
+                $errors[] = 'Could not verify reCAPTCHA. Reload the page and try again.';
             } else {
                 $resp = wp_remote_post('https://www.google.com/recaptcha/api/siteverify', [
                     'timeout' => 20,
                     'body' => ['secret' => $secret, 'response' => $token]
                 ]);
                 if (is_wp_error($resp)) {
-                    $errors[] = 'Error al contactar con reCAPTCHA. Inténtalo de nuevo.';
+                    $errors[] = 'Error contacting reCAPTCHA. Please try again.';
                 } else {
                     $data = json_decode(wp_remote_retrieve_body($resp), true);
                     $ok = isset($data['success']) && $data['success'];
                     $score_ok = isset($data['score']) ? floatval($data['score']) >= $threshold : false;
                     $action_ok = !isset($data['action']) || $data['action'] === 'cv_submit';
-                    if (!($ok && $score_ok && $action_ok)) $errors[] = 'Verificación reCAPTCHA fallida. Por favor, vuelve a intentarlo.';
+                    if (!($ok && $score_ok && $action_ok)) $errors[] = 'reCAPTCHA verification failed. Please try again.';
                 }
             }
         }
@@ -568,7 +568,7 @@ JS;
         if (empty($errors) && !empty($_FILES['kcvf_file']['name'])) {
             $file = $_FILES['kcvf_file'];
             if ($file['error'] !== UPLOAD_ERR_OK) {
-                $errors[] = 'Error al subir el archivo. Inténtalo otra vez.';
+                $errors[] = 'Error uploading the file. Try again.';
             } else {
                 $allowed = [
                     'application/pdf' => 'pdf',
@@ -581,7 +581,7 @@ JS;
                 if (!isset($allowed[$mime])) {
                     $errors[] = 'Tipo de archivo no permitido. Usa PDF o DOCX.';
                 } elseif ($file['size'] > 5 * 1024 * 1024) {
-                    $errors[] = 'Archivo demasiado grande (máximo 5 MB).';
+                    $errors[] = 'File too large (max 5 MB).';
                 } else {
                     $upload_dir = wp_upload_dir();
                     $cv_dir = trailingslashit($upload_dir['basedir']) . 'cv-uploads';
@@ -590,7 +590,7 @@ JS;
                     $filename = 'cv_' . time() . '_' . wp_generate_password(6, false) . '.' . $ext;
                     $dest = trailingslashit($cv_dir) . $filename;
                     if (!move_uploaded_file($file['tmp_name'], $dest)) {
-                        $errors[] = 'No se pudo guardar el archivo en el servidor.';
+                        $errors[] = 'Could not save the file on the server.';
                     } else {
                         $stored_path = $dest;
 
@@ -623,8 +623,8 @@ JS;
                         }
 
                         if (!$file_text) {
-                            $file_text = "(No se pudo extraer texto automáticamente del archivo. Puede tratarse de un PDF escaneado o protegido).
-Por favor, sube tu CV en DOCX o en PDF con texto seleccionable (OCR). También puedes pegar el contenido en texto en el campo de notas.";
+                            $file_text = "(Text could not be extracted automatically from the file. It may be a scanned or protected PDF).
+Please upload your CV in DOCX or in a PDF with selectable text (OCR). You can also paste the content as text in the notes field.";
                         }
 
                         $char_count = mb_strlen((string)$file_text);
@@ -718,7 +718,7 @@ Por favor, sube tu CV en DOCX o en PDF con texto seleccionable (OCR). También p
         }
 
         $thankyou = $register_only
-            ? '¡Gracias! Hemos recibido tu CV. Te mantendremos informado.'
+            ? 'Thank you! We have received your CV. We will keep you informed.'
             : get_option(self::OPT_THANKYOU_TEXT);
         $instant = !$register_only && get_option(self::OPT_AUTO_FEEDBACK) === '1';
         $feedback_block = '';
@@ -726,7 +726,7 @@ Por favor, sube tu CV en DOCX o en PDF con texto seleccionable (OCR). También p
         if ($instant) {
             $api_key = trim((string)get_option(self::OPT_API_KEY));
             $cv_excerpt = mb_substr($file_text, 0, 18000);
-            $feedback = $api_key ? $this->generate_ai_feedback($api_key, $cv_excerpt, $role, $sector) : 'Feedback por IA no configurado. Añade tu API key en Ajustes.';
+            $feedback = $api_key ? $this->generate_ai_feedback($api_key, $cv_excerpt, $role, $sector) : 'AI feedback not configured. Add your API key in Settings.';
             if ($post_id) add_post_meta($post_id, '_kcvf_feedback', $feedback);
 
             // Normaliza -> quita <strong> -> sanea HTML
@@ -744,31 +744,31 @@ Por favor, sube tu CV en DOCX o en PDF con texto seleccionable (OCR). También p
             // Email al candidato (HTML)
             if (is_email($email)) {
                 $headers = ['Content-Type: text/html; charset=UTF-8'];
-            $body = '<p>Hola' . ($name ? ' ' . esc_html($name) : '') . '</p>
-            <p>Gracias por compartir tu CV. Aquí tienes tu feedback:</p>'
+            $body = '<p>Hello' . ($name ? ' ' . esc_html($name) : '') . '</p>
+            <p>Thank you for sharing your CV. Here is your feedback:</p>'
                     . $safe_feedback
                     . '<p>Equipo de Kovacic Executive Talent Research</p>';
-                wp_mail($email, 'Tu feedback de CV', $body, $headers);
+                wp_mail($email, 'Your CV feedback', $body, $headers);
             }
 
             // Aviso interno (texto)
             $notify = $this->get_notify_emails();
             if (!empty($notify)) {
-                $body_admin = "Nuevo envío de CV: {$email}\nNombre: {$name}\nRol objetivo: {$role}\nSector: {$sector}\nNotas: {$notes}\nArchivo: {$stored_path}\nConvertido DOCX: " . ($converted_docx ?: '—') . "\n\n--- FEEDBACK (texto plano) ---\n" . wp_strip_all_tags($safe_feedback);
-                wp_mail($notify, 'Nuevo envío de CV + Feedback', $body_admin);
+                $body_admin = "New CV submission: {$email}\nName: {$name}\nTarget role: {$role}\nSector: {$sector}\nNotes: {$notes}\nFile: {$stored_path}\nConverted DOCX: " . ($converted_docx ?: '—') . "\n\n--- FEEDBACK (plain text) ---\n" . wp_strip_all_tags($safe_feedback);
+                wp_mail($notify, 'New CV submission + Feedback', $body_admin);
             }
 
             // Bloque visible + DEBUG solo admin
             $feedback_block = '<div class="kcvf-alert"><strong>' . esc_html($thankyou) . '</strong></div>'
-                            . '<h3>Feedback instantáneo</h3>'
+                            . '<h3>Instant feedback</h3>'
                             . '<div class="kcvf-feedback">' . $safe_feedback . '</div>';
 
             if ( current_user_can('manage_options') ) {
                 $preview = esc_html( mb_substr( (string)$file_text, 0, 400 ) );
-                $feedback_block .= '<div class="kcvf-debug"><strong>DEBUG (solo admin):</strong>'
-                                 . '<br>Método de extracción: ' . esc_html($extract_method)
-                                 . '<br>Caracteres extraídos: ' . intval($char_count)
-                                 . '<br>DOCX convertido: ' . ($converted_docx ? esc_html($converted_docx) : '—')
+                $feedback_block .= '<div class="kcvf-debug"><strong>DEBUG (admin only):</strong>'
+                                 . '<br>Extraction method: ' . esc_html($extract_method)
+                                 . '<br>Extracted characters: ' . intval($char_count)
+                                 . '<br>Converted DOCX: ' . ($converted_docx ? esc_html($converted_docx) : '—')
                                  . '<br><pre style="white-space:pre-wrap;margin:8px 0 0;">' . $preview . '</pre></div>';
             }
 
@@ -776,26 +776,26 @@ Por favor, sube tu CV en DOCX o en PDF con texto seleccionable (OCR). También p
             // Solo aviso interno y/o confirmación de registro
             $notify = $this->get_notify_emails();
             if (!empty($notify)) {
-                $subject = $register_only ? 'Nuevo registro de CV' : 'Nuevo envío de CV';
-                $body_admin = "Nuevo envío de CV: {$email}\nNombre: {$name}\nRol objetivo: {$role}\nSector: {$sector}\nNotas: {$notes}\nArchivo: {$stored_path}\n";
+                $subject = $register_only ? 'New CV registration' : 'New CV submission';
+                $body_admin = "New CV submission: {$email}\nName: {$name}\nTarget role: {$role}\nSector: {$sector}\nNotes: {$notes}\nFile: {$stored_path}\n";
                 if (!$register_only) {
-                    $body_admin .= "(El feedback instantáneo está desactivado.)";
+                    $body_admin .= "(Instant feedback is disabled.)";
                 }
                 wp_mail($notify, $subject, $body_admin);
             }
             if ($register_only && is_email($email)) {
                 $headers = ['Content-Type: text/html; charset=UTF-8'];
-                $body = '<p>Hola ' . ($name ? '' . esc_html($name) : '') . '</p><p>Gracias por compartir tu CV. Te contactaremos para futuras oportunidades.</p><p>Equipo de Kovacic Executive Talent Research</p>';
-                wp_mail($email, 'CV recibido', $body, $headers);
+                $body = '<p>Hello ' . ($name ? '' . esc_html($name) : '') . '</p><p>Thank you for sharing your CV. We will contact you for future opportunities.</p><p>Team Kovacic Executive Talent Research</p>';
+                wp_mail($email, 'CV received', $body, $headers);
             }
             $feedback_block = '<div class="kcvf-alert"><strong>' . esc_html($thankyou) . '</strong></div>';
 
             if ( current_user_can('manage_options') ) {
                 $preview = esc_html( mb_substr( (string)$file_text, 0, 400 ) );
-                $feedback_block .= '<div class="kcvf-debug"><strong>DEBUG (solo admin):</strong>'
-                                 . '<br>Método de extracción: ' . esc_html($extract_method)
-                                 . '<br>Caracteres extraídos: ' . intval($char_count)
-                                 . '<br>DOCX convertido: ' . ($converted_docx ? esc_html($converted_docx) : '—')
+                $feedback_block .= '<div class="kcvf-debug"><strong>DEBUG (admin only):</strong>'
+                                 . '<br>Extraction method: ' . esc_html($extract_method)
+                                 . '<br>Extracted characters: ' . intval($char_count)
+                                 . '<br>Converted DOCX: ' . ($converted_docx ? esc_html($converted_docx) : '—')
                                  . '<br><pre style="white-space:pre-wrap;margin:8px 0 0;">' . $preview . '</pre></div>';
             }
         }
@@ -1056,7 +1056,7 @@ DEVUELVE (en HTML):
     }
 
     public function metabox() {
-        add_meta_box('kcvf_es_details', 'Detalles del envío', [$this, 'metabox_render'], 'cv_submission', 'side', 'high');
+        add_meta_box('kcvf_es_details', 'Submission details', [$this, 'metabox_render'], 'cv_submission', 'side', 'high');
     }
 
     public function metabox_render($post) {
@@ -1097,9 +1097,9 @@ DEVUELVE (en HTML):
             <p><strong>DOCX convertido:</strong><br><?php echo esc_html($converted_docx); ?>
             <?php if ($conv_url): ?><br><a href="<?php echo esc_url($conv_url); ?>" target="_blank" rel="noopener">Descargar DOCX generado</a><?php endif; ?></p>
         <?php endif; ?>
-        <p><strong>Método de extracción:</strong><br><?php echo esc_html($extract_method ?: '—'); ?></p>
-        <p><strong>Nº de caracteres extraídos:</strong><br><?php echo esc_html($char_count ?: 0); ?></p>
-        <p><strong>Extracto de texto (primeros 400):</strong></p>
+        <p><strong>Extraction method:</strong><br><?php echo esc_html($extract_method ?: '—'); ?></p>
+        <p><strong>Number of extracted characters:</strong><br><?php echo esc_html($char_count ?: 0); ?></p>
+        <p><strong>Text excerpt (first 400):</strong></p>
         <textarea readonly style="width:100%;min-height:120px;"><?php echo esc_textarea($text_excerpt); ?></textarea>
         <p><strong>Feedback (editable):</strong></p>
         <textarea name="kcvf_feedback" style="width:100%;min-height:160px;"><?php echo esc_textarea($feedback); ?></textarea>
@@ -1130,7 +1130,7 @@ DEVUELVE (en HTML):
                 if ($ext === 'docx') $text = $this->extract_docx_text($file);
                 if ($ext === 'pdf')  $text = $this->extract_pdf_text_server($file, $extract_method);
             }
-            if (!$text) $text = '(No se extrajo texto automáticamente. Puedes pegar manualmente el contenido del CV en el prompt.)';
+            if (!$text) $text = '(No text was extracted automatically. You can manually paste the CV content into the prompt.)';
 
             $feedback = $this->generate_ai_feedback($api_key, mb_substr($text, 0, 18000), $role, $sector);
             update_post_meta($post_id, '_kcvf_feedback', $feedback);

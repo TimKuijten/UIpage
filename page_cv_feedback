@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>CV Feedback | Kovacic Talent</title>
+  <meta name="description" content="Upload your CV to receive tailored feedback." />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --ink:#101828;
+      --muted:#667085;
+      --bg:#ffffff;
+      --accent:#0A212E;
+      --line:#ebedf0;
+      --beige:#E9F0F5;
+      --shadow:0 10px 30px rgba(16,24,40,.08);
+      --radius:14px;
+      --pad:clamp(16px,3.2vw,28px);
+      --w:1180px;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%;overflow-x:hidden}
+    body{margin:0;font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial;color:var(--ink);background:var(--bg)}
+    a{color:inherit;text-decoration:none}
+    img{max-width:100%;display:block}
+    .container{max-width:var(--w);margin-inline:auto;padding-inline:var(--pad)}
+    .nav{position:sticky;top:0;z-index:40;background:#fff;border-bottom:1px solid var(--line)}
+    .nav .inner{display:flex;align-items:center;justify-content:space-between;height:66px}
+    .logo{display:flex;align-items:center;gap:.6rem;font-weight:900;letter-spacing:.02em}
+    .logo-img{height:36px;width:auto}
+    .btn{display:inline-flex;align-items:center;gap:.5rem;padding:.9rem 1.3rem;border-radius:999px;font-weight:700;letter-spacing:.01em}
+    .btn-primary{background:#111;color:#fff}
+    .btn-primary:hover{filter:brightness(.95)}
+    main{padding-block:clamp(32px,5vw,64px)}
+    h1{font-size:clamp(2rem,4vw,3rem);line-height:1.1;margin-bottom:1rem}
+    p.lead{color:var(--muted);font-size:1.1rem;max-width:60ch;margin-bottom:2rem}
+  </style>
+</head>
+<body>
+  <nav class="nav">
+    <div class="container inner">
+      <a href="/" class="logo"><img class="logo-img" src="https://kovacictalent.com/wp-content/uploads/2024/03/cropped-logo_kovacic.png" alt="">Kovacic Talent</a>
+      <a href="/" class="btn btn-primary">Home</a>
+    </div>
+  </nav>
+  <main class="container">
+    <h1>CV Feedback</h1>
+    <p class="lead">Submit your CV and receive clear, actionable suggestions to improve its impact.</p>
+    [kovacic_cv_submit]
+  </main>
+</body>
+</html>
