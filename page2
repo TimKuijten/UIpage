@@ -278,6 +278,40 @@
         .hero-mobile-visual{display:block}
         .contact-grid{grid-template-columns:1fr !important}
         .about-content .section-title{text-align:center}
+        .about-content,
+        .about-content > *,
+        .about-content ul,
+        .about-content li,
+        .about-content p,
+        .about-content h3{
+          text-align:center;
+        }
+        .grid .card,
+        .grid .card > *,
+        .grid .card h3,
+        .grid .card p,
+        .grid .card strong{
+          text-align:center;
+        }
+        .why-choose,
+        .why-choose h3,
+        .why-choose ul,
+        .why-choose li{
+          text-align:center;
+        }
+        .why-choose ul{justify-items:center}
+        .contact-grid .card,
+        .contact-grid .card > *,
+        #contact .card > div{
+          text-align:center;
+        }
+        #contact .card > div{justify-content:center}
+        footer .footer-inner,
+        footer .footer-inner > *,
+        footer .mini{
+          text-align:center;
+        }
+        .newsletter{justify-content:center}
       }
   </style>
 </head>
