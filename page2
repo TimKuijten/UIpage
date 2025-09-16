@@ -37,8 +37,6 @@
     .btn-primary:hover{filter:brightness(.95)}
     .btn-ghost{border:2px solid #111;color:#111}
     .btn-ghost:hover{background:#111;color:#fff}
-    .btn-linkedin{background:#0A66C2;color:#fff}
-    .btn-linkedin:hover{filter:brightness(.95)}
     .pill{display:inline-flex;align-items:center;gap:.5rem;color:#0f172a;background:linear-gradient(90deg,#eafcf8,#fff);border:1px solid #d9f4ee;padding:.35rem .7rem;border-radius:999px;font-weight:700;font-size:.78rem}
     .dot{width:8px;height:8px;border-radius:999px;background:#d1d5db}
     .dot.is-active{background:var(--accent)}
@@ -53,6 +51,33 @@
     .menu a:hover{color:var(--accent-dark)}
     .nav-cta{display:flex;gap:10px;align-items:center}
     .nav-cta .btn{white-space:nowrap}
+    .nav-cta .nav-linkedin{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      width:34px;
+      height:34px;
+      min-width:34px;
+      border-radius:50%;
+      border:1px solid #0A66C2;
+      color:#0A66C2;
+      font-weight:700;
+      font-size:.82rem;
+      text-transform:lowercase;
+      line-height:1;
+      letter-spacing:.02em;
+      transition:background .2s ease,color .2s ease,border-color .2s ease;
+      justify-self:end;
+    }
+    .nav-cta .nav-linkedin:hover{
+      background:#0A66C2;
+      color:#fff;
+      border-color:#0A66C2;
+    }
+    .nav-cta .nav-linkedin:focus-visible{
+      outline:3px solid rgba(10,102,194,.3);
+      outline-offset:2px;
+    }
     .menu-toggle{display:none;align-items:center;gap:10px;padding:.65rem .9rem;border-radius:12px;border:1px solid var(--line);background:#fff;font-weight:600;color:var(--ink);cursor:pointer;transition:background .2s ease,color .2s ease,border-color .2s ease}
     .menu-toggle:hover{background:var(--beige);border-color:#d0d8dd}
     .menu-toggle:focus-visible{outline:3px solid rgba(10,33,46,.35);outline-offset:3px}
@@ -355,7 +380,7 @@
         <div class="nav-cta">
           <a class="btn btn-ghost" href="https://kovacictalent.com/mejoracv">Submit CV</a>
           <a class="btn btn-primary" href="#contact">Request a Call</a>
-          <a class="btn btn-linkedin" href="https://www.linkedin.com/company/kovacic-executive-talent/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+          <a class="nav-linkedin" href="https://www.linkedin.com/company/kovacic-executive-talent/" target="_blank" rel="noopener noreferrer" aria-label="Kovacic Talent on LinkedIn (opens in a new tab)">in</a>
         </div>
       </div>
     </div>
