@@ -180,7 +180,19 @@
     .about-content li{line-height:1.6}
     .about-content li strong{color:var(--accent)}
     .about-content p{color:var(--muted)}
-    .about-locations{background:var(--beige);padding:16px 18px;border-radius:var(--radius);border:1px solid var(--line);color:var(--ink)}
+    .about-locations{margin:0;font-weight:600;color:var(--ink)}
+    .about-locations strong{color:var(--accent)}
+
+    .mobile-fold-toggle{display:none;align-items:center;gap:10px;padding:.55rem 1rem;border-radius:999px;border:1px solid var(--line);background:#fff;font-weight:600;color:var(--accent);cursor:pointer;margin-top:8px;transition:background .2s ease,border-color .2s ease,color .2s ease}
+    .mobile-fold-toggle.fold-center{justify-content:center}
+    .mobile-fold-toggle:hover{background:var(--beige);border-color:#d0d8dd}
+    .mobile-fold-toggle:focus-visible{outline:3px solid rgba(10,33,46,.3);outline-offset:3px}
+    .mobile-fold-toggle .fold-icon{width:22px;height:22px;border:1px solid currentColor;border-radius:999px;display:grid;place-items:center;font-size:.85rem;font-weight:700;line-height:1}
+    .mobile-fold-toggle .fold-icon::before{content:"+";transform:translateY(-1px)}
+    .mobile-fold-toggle.is-expanded .fold-icon::before{content:"–"}
+    .mobile-fold-toggle.is-expanded{background:var(--accent);color:#fff;border-color:var(--accent)}
+    .mobile-fold-toggle.is-expanded .fold-icon{border-color:#fff}
+    .mobile-fold-content{margin-top:clamp(14px,2vw,20px)}
 
       /* Testimonials */
       .testis{background:#f6f8fb;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
@@ -223,8 +235,15 @@
         .cta-row .btn{width:100%;justify-content:center}
         .slider-dots{justify-content:center}
         .grid{grid-template-columns:1fr !important}
-        .values-grid{grid-template-columns:1fr !important}
-        .values-grid .card{grid-column:auto !important}
+        .mobile-two-cols{grid-template-columns:repeat(2,minmax(0,1fr)) !important;gap:16px}
+        .mobile-two-cols .card{padding:16px;font-size:.92rem}
+        .mobile-two-cols .card h3{font-size:1rem}
+        .mobile-two-cols .card p{font-size:.92rem;line-height:1.55}
+        .mobile-two-cols .card > strong{display:block;font-size:.9rem;margin-bottom:6px}
+        .mobile-fold-toggle{display:inline-flex}
+        .mobile-fold-toggle.fold-center{display:flex;margin-inline:auto}
+        .mobile-fold-content{display:none}
+        .mobile-fold-content.is-open{display:block}
         .contact-grid{grid-template-columns:1fr !important}
         .about-content .section-title{text-align:center}
       }
@@ -356,26 +375,32 @@
           </div>
           <div class="about-content">
             <h2 class="section-title"><span class="values-title">About us</span></h2>
-            <p>At Kovacic, we are a young firm backed by a team with decades of experience in international executive search. We embrace a boutique model where cutting-edge technology and ethical artificial intelligence elevate our precision and agility—always complementing the human insight and close relationships that set us apart.</p>
-            <div>
-              <h3>Two specialized brands</h3>
-              <ul>
-                <li><strong>Kovacic Talent:</strong> Focused on technical positions, middle management, and key professionals who sustain growth.</li>
-                <li><strong>Kovacic Executive:</strong> Specialized in the search for senior leaders, executives, and board members with a global vision.</li>
-              </ul>
+            <p class="about-intro">At Kovacic, we are a young firm backed by a team with decades of experience in international executive search. We embrace a boutique model where cutting-edge technology and ethical artificial intelligence elevate our precision and agility—always complementing the human insight and close relationships that set us apart.</p>
+            <button class="mobile-fold-toggle" type="button" data-fold-target="#about-fold" aria-expanded="false">
+              <span class="fold-label">Read more</span>
+              <span class="fold-icon" aria-hidden="true"></span>
+            </button>
+            <div class="mobile-fold-content" id="about-fold">
+              <div>
+                <h3>Two specialized brands</h3>
+                <ul>
+                  <li><strong>Kovacic Talent:</strong> Focused on technical positions, middle management, and key professionals who sustain growth.</li>
+                  <li><strong>Kovacic Executive:</strong> Specialized in the search for senior leaders, executives, and board members with a global vision.</li>
+                </ul>
+              </div>
+              <div>
+                <h3>Core divisions</h3>
+                <ul>
+                  <li><strong>Executive Search &amp; Talent Acquisition:</strong> Strategic and technical leadership recruitment.</li>
+                  <li><strong>Board &amp; Governance:</strong> Selection of board members and advisory boards with international experience.</li>
+                  <li><strong>Leadership Development:</strong> Succession planning, leadership programs, and executive coaching.</li>
+                  <li><strong>Market Intelligence:</strong> Talent mapping, benchmarking, and market analysis.</li>
+                </ul>
+              </div>
+              <p>Within these divisions, we operate across core sectors including finance, infrastructure, technology, laboratories, hospitality, mining, and energy. Each project is supported by dedicated specialists who bring deep industry knowledge to every engagement.</p>
+              <p>Our value lies not only in identifying talent but in being a close partner who creates positive impact in the labor market. We focus on continuous improvement and deliver a distinctive experience for both candidates and clients—building trust, generating tangible results, and contributing to long-term growth.</p>
+              <p class="about-locations"><strong>Global hubs:</strong> New York, Paris, Madrid, Barcelona, Berlin, Rome, Amsterdam, Oslo, Stockholm, Mexico City, São Paulo, Santiago de Chile, Lima, Panama, Shanghai, and Hong Kong.</p>
             </div>
-            <div>
-              <h3>Core divisions</h3>
-              <ul>
-                <li><strong>Executive Search &amp; Talent Acquisition:</strong> Strategic and technical leadership recruitment.</li>
-                <li><strong>Board &amp; Governance:</strong> Selection of board members and advisory boards with international experience.</li>
-                <li><strong>Leadership Development:</strong> Succession planning, leadership programs, and executive coaching.</li>
-                <li><strong>Market Intelligence:</strong> Talent mapping, benchmarking, and market analysis.</li>
-              </ul>
-            </div>
-            <p>Within these divisions, we operate across core sectors including finance, infrastructure, technology, laboratories, hospitality, mining, and energy. Each project is supported by dedicated specialists who bring deep industry knowledge to every engagement.</p>
-            <p>Our value lies not only in identifying talent but in being a close partner who creates positive impact in the labor market. We focus on continuous improvement and deliver a distinctive experience for both candidates and clients—building trust, generating tangible results, and contributing to long-term growth.</p>
-            <p class="about-locations"><strong>Global hubs:</strong> New York, Paris, Madrid, Barcelona, Berlin, Rome, Amsterdam, Oslo, Stockholm, Mexico City, São Paulo, Santiago de Chile, Lima, Panama, Shanghai, and Hong Kong.</p>
           </div>
         </div>
       </div>
@@ -389,7 +414,12 @@
       They define <strong>how we work</strong>, how we build <strong>relationships</strong>, and how we create
       lasting <strong>impact</strong> for our clients and candidates.
     </p>
-      <div class="grid values-grid">
+    <button class="mobile-fold-toggle fold-center" type="button" data-fold-target="#values-fold" aria-expanded="false">
+      <span class="fold-label">Read more</span>
+      <span class="fold-icon" aria-hidden="true"></span>
+    </button>
+      <div class="mobile-fold-content" id="values-fold">
+      <div class="grid values-grid mobile-two-cols">
       <div class="card">
         <h3>Excellence</h3>
         <p>We commit to the <strong>highest standards</strong> at every stage of the process, delivering results that generate <strong>real impact</strong> for organizations.</p>
@@ -411,6 +441,7 @@
         <p>We respond with <strong>agility</strong> to change, recognizing that each organization is <strong>unique</strong> and requires <strong>tailored solutions</strong>.</p>
       </div>
     </div>
+    </div>
     </section>
 
   <!-- PROCESS -->
@@ -418,70 +449,76 @@
     <div class="container">
       <h2 class="section-title"><span class="values-title">How We Work</span></h2>
       <p class="lead lead-lg"><strong>Classic Executive Search:</strong> Transparent stages with measurable outcomes, from kickoff to signed offer.</p>
-      <div class="grid g-4">
-        <div class="card">
-          <svg viewBox="0 0 24 24" ...></svg>
-          <strong>01 • Discovery</strong>
-          <p>Deep dive into success profile, cultural fit, leadership traits, and role context.</p>
+      <button class="mobile-fold-toggle fold-center" type="button" data-fold-target="#process-fold" aria-expanded="false">
+        <span class="fold-label">Read more</span>
+        <span class="fold-icon" aria-hidden="true"></span>
+      </button>
+      <div class="mobile-fold-content" id="process-fold">
+        <div class="grid g-4 mobile-two-cols">
+          <div class="card">
+            <svg viewBox="0 0 24 24" ...></svg>
+            <strong>01 • Discovery</strong>
+            <p>Deep dive into success profile, cultural fit, leadership traits, and role context.</p>
+          </div>
+          <div class="card">
+            <svg viewBox="0 0 24 24" ...></svg>
+            <strong>02 • Mapping</strong>
+            <p>Manual market research, direct headhunting, and building a validated longlist.</p>
+          </div>
+          <div class="card">
+            <svg viewBox="0 0 24 24" ...></svg>
+            <strong>03 • Shortlist</strong>
+            <p>Structured interviews, detailed candidate assessments, and weekly progress reports.</p>
+          </div>
+          <div class="card">
+            <svg viewBox="0 0 24 24" ...></svg>
+            <strong>04 • Close</strong>
+            <p>Offer strategy, expectation alignment, and onboarding support.</p>
+          </div>
         </div>
-        <div class="card">
-          <svg viewBox="0 0 24 24" ...></svg>
-          <strong>02 • Mapping</strong>
-          <p>Manual market research, direct headhunting, and building a validated longlist.</p>
+        <div class="why-choose">
+          <h3>Why choose the Classic Way?</h3>
+          <ul>
+            <li>Best for highly confidential or niche roles where trust and discretion matter most.</li>
+            <li>Relies on deep human networks, relationships, and proven headhunting practices.</li>
+            <li>Ensures cultural alignment through rigorous personal validation at every stage.</li>
+            <li>Ideal when precision, experience, and tailored judgment outweigh speed.</li>
+          </ul>
         </div>
-        <div class="card">
-          <svg viewBox="0 0 24 24" ...></svg>
-          <strong>03 • Shortlist</strong>
-          <p>Structured interviews, detailed candidate assessments, and weekly progress reports.</p>
+        <div class="process-alt">
+          <p class="lead lead-lg"><strong>AI-Enhanced Search:</strong> Blending human expertise with advanced technology to accelerate results.</p>
+          <div class="grid g-4 mobile-two-cols">
+            <div class="card">
+              <svg viewBox="0 0 24 24" ...></svg>
+              <strong>01 • Discovery</strong>
+              <p>Success profile, culture signals, timeline and <strong>AI-based role calibration</strong>.</p>
+            </div>
+            <div class="card">
+              <svg viewBox="0 0 24 24" ...></svg>
+              <strong>02 • Mapping</strong>
+              <p><strong>AI-driven market scanning + human validation</strong>, delivering a smarter longlist faster.</p>
+            </div>
+            <div class="card">
+              <svg viewBox="0 0 24 24" ...></svg>
+              <strong>03 • Shortlist</strong>
+              <p>Structured interviews, predictive scorecards, and live dashboards with <strong>weekly AI-powered insights</strong>.</p>
+            </div>
+            <div class="card">
+              <svg viewBox="0 0 24 24" ...></svg>
+              <strong>04 • Close</strong>
+              <p>Offer strategy, expectation alignment, onboarding support, <strong>plus ongoing data-driven retention insights</strong>.</p>
+            </div>
+          </div>
+          <div class="why-choose">
+            <h3>Why choose the AI-Enhanced Way?</h3>
+            <ul>
+              <li>Speeds up search with real-time data and AI-powered talent mapping.</li>
+              <li>Uncovers hidden talent pools across broader geographies and industries.</li>
+              <li>Provides measurable insights via scorecards, dashboards, and analytics.</li>
+              <li>Perfect when you need scalability, transparency, and faster decision-making.</li>
+            </ul>
+          </div>
         </div>
-        <div class="card">
-          <svg viewBox="0 0 24 24" ...></svg>
-          <strong>04 • Close</strong>
-          <p>Offer strategy, expectation alignment, and onboarding support.</p>
-        </div>
-      </div>
-      <div class="why-choose">
-        <h3>Why choose the Classic Way?</h3>
-        <ul>
-          <li>Best for highly confidential or niche roles where trust and discretion matter most.</li>
-          <li>Relies on deep human networks, relationships, and proven headhunting practices.</li>
-          <li>Ensures cultural alignment through rigorous personal validation at every stage.</li>
-          <li>Ideal when precision, experience, and tailored judgment outweigh speed.</li>
-        </ul>
-      </div>
-    </div>
-    <div class="container process-alt">
-      <p class="lead lead-lg"><strong>AI-Enhanced Search:</strong> Blending human expertise with advanced technology to accelerate results.</p>
-      <div class="grid g-4">
-        <div class="card">
-          <svg viewBox="0 0 24 24" ...></svg>
-          <strong>01 • Discovery</strong>
-          <p>Success profile, culture signals, timeline and <strong>AI-based role calibration</strong>.</p>
-        </div>
-        <div class="card">
-          <svg viewBox="0 0 24 24" ...></svg>
-          <strong>02 • Mapping</strong>
-          <p><strong>AI-driven market scanning + human validation</strong>, delivering a smarter longlist faster.</p>
-        </div>
-        <div class="card">
-          <svg viewBox="0 0 24 24" ...></svg>
-          <strong>03 • Shortlist</strong>
-          <p>Structured interviews, predictive scorecards, and live dashboards with <strong>weekly AI-powered insights</strong>.</p>
-        </div>
-        <div class="card">
-          <svg viewBox="0 0 24 24" ...></svg>
-          <strong>04 • Close</strong>
-          <p>Offer strategy, expectation alignment, onboarding support, <strong>plus ongoing data-driven retention insights</strong>.</p>
-        </div>
-      </div>
-      <div class="why-choose">
-        <h3>Why choose the AI-Enhanced Way?</h3>
-        <ul>
-          <li>Speeds up search with real-time data and AI-powered talent mapping.</li>
-          <li>Uncovers hidden talent pools across broader geographies and industries.</li>
-          <li>Provides measurable insights via scorecards, dashboards, and analytics.</li>
-          <li>Perfect when you need scalability, transparency, and faster decision-making.</li>
-        </ul>
       </div>
     </div>
   </section>
@@ -627,6 +664,52 @@
         track.style.transition = 'none';
         track.style.transform = `translateX(-${sIdx * slider.clientWidth}px)`;
       });
+    })();
+
+    /* Mobile fold controls */
+    (function(){
+      const toggles = document.querySelectorAll('[data-fold-target]');
+      if(!toggles.length) return;
+      const mobileQuery = window.matchMedia('(max-width: 640px)');
+      const defaultLabel = 'Read more';
+      const expandedLabel = 'Show less';
+
+      const sync = () => {
+        toggles.forEach(btn => {
+          const target = document.querySelector(btn.dataset.foldTarget);
+          if(!target) return;
+          const expanded = btn.getAttribute('aria-expanded') === 'true';
+          const label = btn.querySelector('.fold-label');
+          if(mobileQuery.matches){
+            target.classList.toggle('is-open', expanded);
+            btn.classList.toggle('is-expanded', expanded);
+            if(label) label.textContent = expanded ? expandedLabel : defaultLabel;
+          } else {
+            target.classList.add('is-open');
+            btn.setAttribute('aria-expanded','true');
+            btn.classList.remove('is-expanded');
+            if(label) label.textContent = defaultLabel;
+          }
+        });
+      };
+
+      toggles.forEach(btn => {
+        btn.addEventListener('click', () => {
+          if(!mobileQuery.matches) return;
+          const expanded = btn.getAttribute('aria-expanded') === 'true';
+          btn.setAttribute('aria-expanded', expanded ? 'false' : 'true');
+          sync();
+        });
+      });
+
+      mobileQuery.addEventListener('change', event => {
+        if(event.matches){
+          toggles.forEach(btn => btn.setAttribute('aria-expanded','false'));
+        }
+        sync();
+      });
+
+      sync();
     })();
 
     /* Load latest blog posts */
