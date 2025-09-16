@@ -250,7 +250,10 @@
       }
 
       @media (max-width: 640px){
+        .topbar{display:none}
         .topbar .inner{flex-direction:column;height:auto;padding-block:8px;gap:4px;text-align:center}
+        .hero .hero-slide{text-align:center}
+        .hero .hero-slide > *{margin-left:auto;margin-right:auto}
         .cta-row{flex-direction:column}
         .cta-row .btn{width:100%;justify-content:center}
         .slider-dots{justify-content:center}
