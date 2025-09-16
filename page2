@@ -255,6 +255,8 @@
         .cta-row .btn{width:100%;justify-content:center}
         .slider-dots{justify-content:center}
         .grid{grid-template-columns:1fr !important}
+        .values-grid{grid-template-columns:1fr !important}
+        .values-grid .card{grid-column:auto !important}
         .mobile-two-cols{grid-template-columns:repeat(2,minmax(0,1fr)) !important;gap:16px}
         .mobile-two-cols .card{padding:16px;font-size:.92rem}
         .mobile-two-cols .card h3{font-size:1rem}
@@ -461,7 +463,7 @@
       <span class="fold-icon" aria-hidden="true"></span>
     </button>
       <div class="mobile-fold-content" id="values-fold">
-      <div class="grid values-grid mobile-two-cols">
+      <div class="grid values-grid">
       <div class="card">
         <h3>Excellence</h3>
         <p>We commit to the <strong>highest standards</strong> at every stage of the process, delivering results that generate <strong>real impact</strong> for organizations.</p>
