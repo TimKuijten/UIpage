@@ -179,8 +179,16 @@
 
     /* About */
     .about-section{padding-block:clamp(36px,6vw,86px)}
-    .about-grid{display:grid;grid-template-columns:minmax(0,0.9fr) minmax(0,1.1fr);gap:clamp(28px,6vw,60px);align-items:center}
-    .about-visual{position:relative;width:min(420px,42vw);aspect-ratio:1/1;margin:0 auto 0 0}
+    .about-grid{
+      display:grid;
+      grid-template-columns:minmax(0,0.9fr) minmax(0,1.1fr);
+      gap:clamp(28px,6vw,60px);
+      align-items:start;
+      grid-template-areas:
+        "visual content"
+        "details details";
+    }
+    .about-visual{grid-area:visual;position:relative;width:min(420px,42vw);aspect-ratio:1/1;margin:0 auto 0 0}
     .about-visual .ring{
       position:absolute;
       inset:0;
@@ -193,13 +201,19 @@
     }
     .about-visual .photo{position:absolute;inset:12%;border-radius:50%;overflow:hidden;box-shadow:var(--shadow);z-index:1}
     .about-visual .photo img{width:100%;height:100%;object-fit:cover}
-    .about-content{display:grid;gap:clamp(16px,2.6vw,22px)}
+    .about-content{grid-area:content;display:grid;gap:clamp(16px,2.6vw,22px);align-content:start}
     .about-content .section-title{text-align:left;margin-bottom:4px}
     .about-content h3{margin:0;font-size:1.1rem;color:var(--accent)}
-    .about-content ul{list-style:none;margin:0;padding:0;display:grid;gap:8px;color:var(--ink)}
-    .about-content li{line-height:1.6}
-    .about-content li strong{color:var(--accent)}
-    .about-content p{color:var(--muted)}
+    .about-details{grid-area:details;display:grid;gap:clamp(16px,2.8vw,24px);align-content:start;margin-top:0}
+    .about-content ul,
+    .about-details ul{list-style:none;margin:0;padding:0;display:grid;gap:8px;color:var(--ink)}
+    .about-content li,
+    .about-details li{line-height:1.6}
+    .about-content li strong,
+    .about-details li strong{color:var(--accent)}
+    .about-content p,
+    .about-details p{color:var(--muted)}
+    .about-lead{margin:0;color:var(--ink);font-weight:600}
     .about-locations{margin:0;font-weight:600;color:var(--ink)}
     .about-locations strong{color:var(--accent)}
 
@@ -213,6 +227,7 @@
     .mobile-fold-toggle.is-expanded{background:var(--accent);color:#fff;border-color:var(--accent)}
     .mobile-fold-toggle.is-expanded .fold-icon{border-color:#fff}
     .mobile-fold-content{margin-top:clamp(14px,2vw,20px)}
+    .about-details.mobile-fold-content{margin-top:0}
 
       /* Testimonials */
       .testis{background:#f6f8fb;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
@@ -238,7 +253,13 @@
         .hero-visual .ring{right:-40vw;top:-28vw}
         .hero-visual .photo{margin-inline:auto}
         .footer-inner{grid-template-columns:1fr}
-        .about-grid{grid-template-columns:1fr}
+        .about-grid{
+          grid-template-columns:1fr;
+          grid-template-areas:
+            "visual"
+            "content"
+            "details";
+        }
         .about-visual{margin:0 auto;width:min(320px,80vw)}
         .menu-panel{position:absolute;top:100%;left:0;right:0;background:#fff;display:grid;gap:0;border-bottom:1px solid var(--line);box-shadow:0 20px 40px rgba(15,23,42,.1);border-radius:0 0 var(--radius) var(--radius);transform:translateY(-10px);opacity:0;pointer-events:none;transition:transform .25s ease,opacity .25s ease;margin-left:0;max-height:calc(100vh - 66px);overflow:auto}
         .nav.is-open .menu-panel{transform:translateY(0);opacity:1;pointer-events:auto}
@@ -283,7 +304,12 @@
         .about-content ul,
         .about-content li,
         .about-content p,
-        .about-content h3{
+        .about-content h3,
+        .about-details,
+        .about-details > *,
+        .about-details ul,
+        .about-details li,
+        .about-details p{
           text-align:center;
         }
         .grid .card,
@@ -456,32 +482,28 @@
           </div>
           <div class="about-content">
             <h2 class="section-title"><span class="values-title">About us</span></h2>
-            <p class="about-intro">At Kovacic, we are a young firm backed by a team with decades of experience in international executive search. We embrace a boutique model where cutting-edge technology and ethical artificial intelligence elevate our precision and agility always complementing the human insight and close relationships that set us apart.</p>
+            <p class="about-intro">At Kovacic, we are a young firm backed by a team with decades of experience in international executive search. We embrace a boutique model where cutting-edge technology and artificial intelligence enhance our processes with greater precision and agility, always as a complement to what matters most: human insight and close relationships with executives and candidates.</p>
             <button class="mobile-fold-toggle fold-center" type="button" data-fold-target="#about-fold" aria-expanded="false">
               <span class="fold-label">Read more</span>
               <span class="fold-icon" aria-hidden="true"></span>
             </button>
-            <div class="mobile-fold-content" id="about-fold">
-              <div>
-                <h3>Two specialized brands</h3>
-                <ul>
-                  <li><strong>Kovacic Talent:</strong> Focused on technical positions, middle management, and key professionals who sustain growth.</li>
-                  <li><strong>Kovacic Executive:</strong> Specialized in the search for senior leaders, executives, and board members with a global vision.</li>
-                </ul>
-              </div>
-              <div>
-                <h3>Core divisions</h3>
-                <ul>
-                  <li><strong>Executive Search &amp; Talent Acquisition:</strong> Strategic and technical leadership recruitment.</li>
-                  <li><strong>Board &amp; Governance:</strong> Selection of board members and advisory boards with international experience.</li>
-                  <li><strong>Leadership Development:</strong> Succession planning, leadership programs, and executive coaching.</li>
-                  <li><strong>Market Intelligence:</strong> Talent mapping, benchmarking, and market analysis.</li>
-                </ul>
-              </div>
-              <p>Within these divisions, we operate across core sectors including finance, infrastructure, technology, laboratories, hospitality, mining, and energy. Each project is supported by dedicated specialists who bring deep industry knowledge to every engagement.</p>
-              <p>Our value lies not only in identifying talent but in being a close partner who creates positive impact in the labor market. We focus on continuous improvement and deliver a distinctive experience for both candidates and clients building trust, generating tangible results, and contributing to long-term growth.</p>
-              <p class="about-locations"><strong>Global hubs:</strong> New York, Paris, Madrid, Barcelona, Berlin, Rome, Amsterdam, Oslo, Stockholm, Mexico City, São Paulo, Santiago de Chile, Lima, Panama, Shanghai, and Hong Kong.</p>
-            </div>
+          </div>
+          <div class="about-details mobile-fold-content" id="about-fold">
+            <p class="about-lead">Our identity is expressed through two brands:</p>
+            <ul>
+              <li><strong>Kovacic Talent</strong>, focused on technical positions, middle management, and key professionals who sustain growth.</li>
+              <li><strong>Kovacic Executive</strong>, specialized in the search for senior leaders, executives, and board members with a global vision.</li>
+            </ul>
+            <p class="about-lead">Our main divisions:</p>
+            <ul>
+              <li>🔹 <strong>Executive Search &amp; Talent Acquisition</strong> &ndash; Strategic and technical leadership recruitment.</li>
+              <li>🔹 <strong>Board &amp; Governance</strong> &ndash; Selection of board members and advisory boards with international experience.</li>
+              <li>🔹 <strong>Leadership Development</strong> &ndash; Succession planning, leadership programs, and executive coaching.</li>
+              <li>🔹 <strong>Market Intelligence</strong> &ndash; Talent mapping, benchmarking, and market analysis.</li>
+            </ul>
+            <p>Within these divisions, we operate across core sectors: finance, infrastructure, technology, laboratories, hospitality, mining, and energy, with a dedicated team of specialists in each area, ensuring deep industry knowledge and highly effective processes.</p>
+            <p>Our value lies not only in identifying talent but in being a close partner that creates positive impact in the labor market. We work every day on continuous improvement and on delivering a distinctive experience for both candidates and clients, building trust, generating concrete results, and contributing to long-term growth.</p>
+            <p class="about-locations">Our strengths in talent development are anchored in the world&rsquo;s most influential business hubs: New York, Paris, Madrid, Barcelona, Berlin, Rome, Amsterdam, Oslo, Stockholm, Mexico City, São Paulo, Santiago de Chile, Lima, Panama, Shanghai, and Hong Kong.</p>
           </div>
         </div>
       </div>
