@@ -189,8 +189,8 @@
     .about-locations{margin:0;font-weight:600;color:var(--ink)}
     .about-locations strong{color:var(--accent)}
 
-    .mobile-fold-toggle{display:none;align-items:center;gap:10px;padding:.55rem 1rem;border-radius:999px;border:1px solid var(--line);background:#fff;font-weight:600;color:var(--accent);cursor:pointer;margin-top:8px;transition:background .2s ease,border-color .2s ease,color .2s ease}
-    .mobile-fold-toggle.fold-center{justify-content:center}
+    .mobile-fold-toggle{display:none;align-items:center;justify-content:center;gap:8px;padding:.45rem .85rem;border-radius:999px;border:1px solid var(--line);background:#fff;font-weight:600;font-size:.85rem;color:var(--accent);cursor:pointer;margin-top:8px;transition:background .2s ease,border-color .2s ease,color .2s ease}
+    .mobile-fold-toggle.fold-center{justify-content:center;margin-inline:auto}
     .mobile-fold-toggle:hover{background:var(--beige);border-color:#d0d8dd}
     .mobile-fold-toggle:focus-visible{outline:3px solid rgba(10,33,46,.3);outline-offset:3px}
     .mobile-fold-toggle .fold-icon{width:22px;height:22px;border:1px solid currentColor;border-radius:999px;display:grid;place-items:center;font-size:.85rem;font-weight:700;line-height:1}
@@ -247,11 +247,12 @@
         .mobile-two-cols .card p{font-size:.92rem;line-height:1.55}
         .mobile-two-cols .card > strong{display:block;font-size:.9rem;margin-bottom:6px}
         .mobile-fold-toggle{display:inline-flex}
-        .mobile-fold-toggle.fold-center{display:flex;margin-inline:auto}
+        .mobile-fold-toggle.fold-center{display:flex}
         .mobile-fold-content{display:none}
         .mobile-fold-content.is-open{display:block}
-        .process-header{gap:12px}
-        .process-header .mobile-fold-toggle{width:100%;justify-content:center}
+        .process-header{gap:12px;flex-direction:column;align-items:center;text-align:center}
+        .process-header .lead{flex:unset;text-align:center}
+        .process-header .mobile-fold-toggle{width:auto;align-self:center}
         .hero-visual .ring{display:none}
         .hero-visual .photo{inset:0}
         .contact-grid{grid-template-columns:1fr !important}
@@ -392,7 +393,7 @@
           <div class="about-content">
             <h2 class="section-title"><span class="values-title">About us</span></h2>
             <p class="about-intro">At Kovacic, we are a young firm backed by a team with decades of experience in international executive search. We embrace a boutique model where cutting-edge technology and ethical artificial intelligence elevate our precision and agility—always complementing the human insight and close relationships that set us apart.</p>
-            <button class="mobile-fold-toggle" type="button" data-fold-target="#about-fold" aria-expanded="false">
+            <button class="mobile-fold-toggle fold-center" type="button" data-fold-target="#about-fold" aria-expanded="false">
               <span class="fold-label">Read more</span>
               <span class="fold-icon" aria-hidden="true"></span>
             </button>
@@ -467,7 +468,7 @@
       <div class="process-block">
         <div class="process-header">
           <p class="lead lead-lg"><strong>Classic Executive Search:</strong> Transparent stages with measurable outcomes, from kickoff to signed offer.</p>
-          <button class="mobile-fold-toggle" type="button" data-fold-target="#process-classic" aria-expanded="false">
+          <button class="mobile-fold-toggle fold-center" type="button" data-fold-target="#process-classic" aria-expanded="false">
             <span class="fold-label">Read more</span>
             <span class="fold-icon" aria-hidden="true"></span>
           </button>
@@ -510,7 +511,7 @@
       <div class="process-block">
         <div class="process-header">
           <p class="lead lead-lg"><strong>AI-Enhanced Search:</strong> Blending human expertise with advanced technology to accelerate results.</p>
-          <button class="mobile-fold-toggle" type="button" data-fold-target="#process-ai" aria-expanded="false">
+          <button class="mobile-fold-toggle fold-center" type="button" data-fold-target="#process-ai" aria-expanded="false">
             <span class="fold-label">Read more</span>
             <span class="fold-icon" aria-hidden="true"></span>
           </button>
