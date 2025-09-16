@@ -45,33 +45,32 @@
     .nav-cta{display:flex;gap:10px;align-items:center}
 
     main.article-section{padding-block:clamp(40px,8vw,80px);background:linear-gradient(180deg,#f8fafc,#fff 60%)}
-    .wp-article{background:#fff;border:1px solid var(--line);border-radius:24px;box-shadow:var(--shadow);padding:clamp(24px,5vw,56px);max-width:860px;margin-inline:auto}
-    .wp-article__image{margin-bottom:clamp(20px,3vw,40px);border-radius:20px;overflow:hidden}
-    .wp-article__image img{width:100%;height:auto;display:block}
-    .wp-article h1{font-size:clamp(2rem,4.5vw,3.4rem);line-height:1.1;margin:0 0 clamp(12px,2vw,24px)}
-    .wp-article__meta{color:var(--muted);font-weight:600;margin-bottom:clamp(12px,2vw,24px)}
-    .wp-article__content{font-size:1.05rem;color:#1f2937}
-    .wp-article__content > * + *{margin-top:1.35em}
-    .wp-article__content h2{font-size:1.75rem;margin-top:2.2em}
-    .wp-article__content h3{font-size:1.4rem;margin-top:2em}
-    .wp-article__content h4{font-size:1.2rem;margin-top:1.8em}
-    .wp-article__content img{border-radius:18px}
-    .wp-article__content blockquote{margin:1.8em 0;padding:1.2em 1.4em;border-left:4px solid var(--accent);background:#f8fafc;border-radius:18px;color:#0f172a;font-style:italic}
-    .wp-article__content ul,.wp-article__content ol{padding-left:1.4em}
-    .wp-article__content li + li{margin-top:.6em}
-    .wp-article__content a{color:var(--accent);text-decoration:underline;text-decoration-color:rgba(10,33,46,.3);text-decoration-thickness:2px}
-    .wp-article__content table{width:100%;border-collapse:collapse}
-    .wp-article__content table th,
-    .wp-article__content table td{border:1px solid var(--line);padding:.75em;text-align:left}
-    .wp-article__content figure{margin:1.8em 0;text-align:center}
-    .wp-article__content figure img{margin-inline:auto}
-    .wp-article__content figure figcaption{margin-top:.75em;font-size:.95rem;color:var(--muted)}
-    .wp-article__content .aligncenter{margin:1.5em auto;display:block}
-    .wp-article__content .alignleft{float:left;margin:0 1.4em 1em 0;max-width:50%}
-    .wp-article__content .alignright{float:right;margin:0 0 1em 1.4em;max-width:50%}
-    .wp-article__content iframe{width:100%;min-height:320px;border:none;border-radius:18px}
-
-    .article-status{max-width:860px;margin:0 auto clamp(24px,4vw,40px);background:#f8fafc;border:1px solid var(--line);border-radius:24px;padding:clamp(20px,3vw,32px);text-align:center;color:var(--muted);font-weight:600}
+    .article-frame{background:#fff;border:1px solid var(--line);border-radius:24px;box-shadow:var(--shadow);padding:clamp(24px,5vw,56px);max-width:860px;margin-inline:auto}
+    .article-frame .wp-block-post-title{font-size:clamp(2rem,4.5vw,3.4rem);line-height:1.1;margin:0 0 clamp(12px,2vw,24px)}
+    .article-frame .wp-block-post-title a{color:inherit;text-decoration:none}
+    .article-frame .wp-block-post-featured-image{margin-bottom:clamp(20px,3vw,40px);border-radius:20px;overflow:hidden}
+    .article-frame .wp-block-post-featured-image img{width:100%;height:auto;display:block}
+    .article-frame .wp-block-post-content{font-size:1.05rem;color:#1f2937;margin-top:clamp(20px,3vw,32px)}
+    .article-frame .wp-block-post-content > * + *{margin-top:1.35em}
+    .article-frame .wp-block-post-content h2{font-size:1.75rem;margin-top:2.2em}
+    .article-frame .wp-block-post-content h3{font-size:1.4rem;margin-top:2em}
+    .article-frame .wp-block-post-content h4{font-size:1.2rem;margin-top:1.8em}
+    .article-frame .wp-block-post-content img{border-radius:18px}
+    .article-frame .wp-block-post-content blockquote{margin:1.8em 0;padding:1.2em 1.4em;border-left:4px solid var(--accent);background:#f8fafc;border-radius:18px;color:#0f172a;font-style:italic}
+    .article-frame .wp-block-post-content ul,
+    .article-frame .wp-block-post-content ol{padding-left:1.4em}
+    .article-frame .wp-block-post-content li + li{margin-top:.6em}
+    .article-frame .wp-block-post-content a{color:var(--accent);text-decoration:underline;text-decoration-color:rgba(10,33,46,.3);text-decoration-thickness:2px}
+    .article-frame .wp-block-post-content table{width:100%;border-collapse:collapse}
+    .article-frame .wp-block-post-content table th,
+    .article-frame .wp-block-post-content table td{border:1px solid var(--line);padding:.75em;text-align:left}
+    .article-frame .wp-block-post-content figure{margin:1.8em 0;text-align:center}
+    .article-frame .wp-block-post-content figure img{margin-inline:auto}
+    .article-frame .wp-block-post-content figure figcaption{margin-top:.75em;font-size:.95rem;color:var(--muted)}
+    .article-frame .wp-block-post-content .aligncenter{margin:1.5em auto;display:block}
+    .article-frame .wp-block-post-content .alignleft{float:left;margin:0 1.4em 1em 0;max-width:50%}
+    .article-frame .wp-block-post-content .alignright{float:right;margin:0 0 1em 1.4em;max-width:50%}
+    .article-frame .wp-block-post-content iframe{width:100%;min-height:320px;border:none;border-radius:18px}
 
     footer{background:#0f172a;color:#e2e8f0;padding:40px 0 30px;margin-top:clamp(40px,6vw,80px)}
     .footer-inner{display:grid;grid-template-columns:1.2fr .8fr;gap:28px;align-items:center}
@@ -87,20 +86,19 @@
       .menu{justify-content:center}
       .nav-cta{flex-direction:column;width:100%}
       .nav-cta .btn{width:100%;text-align:center;justify-content:center}
-      .wp-article{padding:clamp(20px,6vw,40px)}
-      .article-status{margin-inline:var(--pad)}
+      .article-frame{padding:clamp(20px,6vw,40px)}
       .footer-inner{grid-template-columns:1fr}
     }
 
     @media (max-width:640px){
       main.article-section{padding-block:clamp(28px,12vw,60px)}
-      .wp-article h1{font-size:clamp(1.8rem,7vw,2.6rem)}
-      .wp-article__image{margin-bottom:20px}
+      .article-frame .wp-block-post-title{font-size:clamp(1.8rem,7vw,2.6rem)}
+      .article-frame .wp-block-post-featured-image{margin-bottom:20px}
       .newsletter{flex-direction:column}
       .newsletter input,.newsletter button{width:100%}
-      .wp-article__content .alignleft,
-      .wp-article__content .alignright{float:none;margin:1.5em auto;max-width:100%}
-      .wp-article__content iframe{min-height:240px}
+      .article-frame .wp-block-post-content .alignleft,
+      .article-frame .wp-block-post-content .alignright{float:none;margin:1.5em auto;max-width:100%}
+      .article-frame .wp-block-post-content iframe{min-height:240px}
     }
   </style>
 </head>
@@ -140,13 +138,15 @@
 
   <main class="article-section">
     <div class="container">
-      <div id="article-status" class="article-status" role="status" aria-live="polite">Loading article…</div>
-      <article class="wp-article" id="wp-article" hidden>
-        <div class="wp-article__image" id="article-image" hidden></div>
-        <h1 id="article-title"></h1>
-        <div class="wp-article__meta" id="article-meta" hidden></div>
-        <div class="wp-article__content" id="article-content"></div>
-      </article>
+      <div class="article-frame">
+
+        <!-- wp:post-title /-->
+
+        <!-- wp:post-featured-image /-->
+
+        <!-- wp:post-content /-->
+
+      </div>
     </div>
   </main>
 
@@ -169,78 +169,10 @@
   </footer>
 
   <script>
-    document.getElementById('y').textContent = new Date().getFullYear();
-
-    (async function(){
-      const statusEl = document.getElementById('article-status');
-      const articleEl = document.getElementById('wp-article');
-      const titleEl = document.getElementById('article-title');
-      const contentEl = document.getElementById('article-content');
-      const imageEl = document.getElementById('article-image');
-      const metaEl = document.getElementById('article-meta');
-
-      const params = new URLSearchParams(window.location.search);
-      const idParam = params.get('id');
-      const slugParam = params.get('slug');
-
-      if(!idParam && !slugParam){
-        statusEl.textContent = 'We could not identify an article to display. Please supply an id or slug parameter in the URL.';
-        return;
-      }
-
-      const buildEndpoint = () => {
-        if(idParam){
-          return `https://kovacictalent.com/wp-json/wp/v2/posts/${encodeURIComponent(idParam)}?_embed`;
-        }
-        return `https://kovacictalent.com/wp-json/wp/v2/posts?slug=${encodeURIComponent(slugParam)}&_embed`;
-      };
-
-      try{
-        const response = await fetch(buildEndpoint());
-        if(!response.ok){
-          throw new Error('Network response was not ok');
-        }
-        const data = await response.json();
-        const post = Array.isArray(data) ? data[0] : data;
-        if(!post){
-          throw new Error('Article not found');
-        }
-
-        const title = post.title && post.title.rendered ? post.title.rendered : 'Untitled';
-        const content = post.content && post.content.rendered ? post.content.rendered : '';
-        const featured = post._embedded && post._embedded['wp:featuredmedia'] ? post._embedded['wp:featuredmedia'][0] : null;
-        const imageUrl = featured && featured.source_url ? featured.source_url : '';
-        const altText = featured && (featured.alt_text || (featured.title && featured.title.rendered)) ? (featured.alt_text || featured.title.rendered) : 'Article featured image';
-
-        if(imageUrl){
-          const safeAlt = altText.replace(/"/g,'&quot;');
-          imageEl.innerHTML = `<img src="${imageUrl}" alt="${safeAlt}" loading="lazy">`;
-          imageEl.hidden = false;
-        }
-
-        titleEl.innerHTML = title;
-        const plainTitle = title.replace(/<[^>]*>/g,'').trim();
-        if(plainTitle){
-          document.title = `${plainTitle} — Kovacic Talent`;
-        }
-
-        if(post.date){
-          const date = new Date(post.date);
-          if(!isNaN(date.getTime())){
-            metaEl.textContent = date.toLocaleDateString(undefined, {year:'numeric', month:'long', day:'numeric'});
-            metaEl.hidden = false;
-          }
-        }
-
-        contentEl.innerHTML = content;
-
-        statusEl.hidden = true;
-        articleEl.hidden = false;
-      }catch(err){
-        console.error(err);
-        statusEl.textContent = 'We could not load this article. Please try again later.';
-      }
-    })();
+    const yearTarget = document.getElementById('y');
+    if(yearTarget){
+      yearTarget.textContent = new Date().getFullYear();
+    }
   </script>
 </body>
 </html>
