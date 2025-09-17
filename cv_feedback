@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Kovacic Talent — Article</title>
-  <meta name="description" content="Insights from Kovacic Talent's executive recruitment team." />
+  <title>Kovacic Talent — Executive Recruitment</title>
+  <meta name="description" content="Boutique executive search & specialist recruitment for high-growth companies." />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
@@ -87,33 +87,46 @@
     .nav.is-open .menu-icon::before{transform:translateY(6px) rotate(45deg)}
     .nav.is-open .menu-icon::after{transform:translateY(-6px) rotate(-45deg)}
 
-    main.article-section{padding-block:clamp(40px,8vw,80px);background:linear-gradient(180deg,#f8fafc,#fff 60%)}
-    .article-frame{background:#fff;border:1px solid var(--line);border-radius:24px;box-shadow:var(--shadow);padding:clamp(24px,5vw,56px);max-width:860px;margin-inline:auto}
-    .article-frame .wp-block-post-title{font-size:clamp(2rem,4.5vw,3.4rem);line-height:1.1;margin:0 0 clamp(12px,2vw,24px)}
-    .article-frame .wp-block-post-title a{color:inherit;text-decoration:none}
-    .article-frame .wp-block-post-featured-image{margin-bottom:clamp(20px,3vw,40px);border-radius:20px;overflow:hidden}
-    .article-frame .wp-block-post-featured-image img{width:100%;height:auto;display:block}
-    .article-frame .wp-block-post-content{font-size:1.05rem;color:#1f2937;margin-top:clamp(20px,3vw,32px)}
-    .article-frame .wp-block-post-content > * + *{margin-top:1.35em}
-    .article-frame .wp-block-post-content h2{font-size:1.75rem;margin-top:2.2em}
-    .article-frame .wp-block-post-content h3{font-size:1.4rem;margin-top:2em}
-    .article-frame .wp-block-post-content h4{font-size:1.2rem;margin-top:1.8em}
-    .article-frame .wp-block-post-content img{border-radius:18px}
-    .article-frame .wp-block-post-content blockquote{margin:1.8em 0;padding:1.2em 1.4em;border-left:4px solid var(--accent);background:#f8fafc;border-radius:18px;color:#0f172a;font-style:italic}
-    .article-frame .wp-block-post-content ul,
-    .article-frame .wp-block-post-content ol{padding-left:1.4em}
-    .article-frame .wp-block-post-content li + li{margin-top:.6em}
-    .article-frame .wp-block-post-content a{color:var(--accent);text-decoration:underline;text-decoration-color:rgba(10,33,46,.3);text-decoration-thickness:2px}
-    .article-frame .wp-block-post-content table{width:100%;border-collapse:collapse}
-    .article-frame .wp-block-post-content table th,
-    .article-frame .wp-block-post-content table td{border:1px solid var(--line);padding:.75em;text-align:left}
-    .article-frame .wp-block-post-content figure{margin:1.8em 0;text-align:center}
-    .article-frame .wp-block-post-content figure img{margin-inline:auto}
-    .article-frame .wp-block-post-content figure figcaption{margin-top:.75em;font-size:.95rem;color:var(--muted)}
-    .article-frame .wp-block-post-content .aligncenter{margin:1.5em auto;display:block}
-    .article-frame .wp-block-post-content .alignleft{float:left;margin:0 1.4em 1em 0;max-width:50%}
-    .article-frame .wp-block-post-content .alignright{float:right;margin:0 0 1em 1.4em;max-width:50%}
-    .article-frame .wp-block-post-content iframe{width:100%;min-height:320px;border:none;border-radius:18px}
+    .topbar{background:#111;color:#fff;font-size:.85rem}
+    .topbar .inner{display:flex;justify-content:space-between;align-items:center;height:40px}
+    .topbar .social a{opacity:.85;margin-left:14px}
+    .topbar .social a:hover{opacity:1}
+
+    .kcvf *{box-sizing:border-box}
+    .kcvf{font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial;color:var(--ink);background:#fff}
+    .kcvf a{color:var(--accent);text-decoration:none}
+    .kcvf a:hover{text-decoration:underline}
+    .kcvf-container{max-width:1100px;margin:0 auto;padding:clamp(20px,4vw,48px)}
+    .kcvf-hero{display:grid;grid-template-columns:1.1fr .9fr;gap:36px;align-items:center;background:linear-gradient(180deg,#fff 0%,#f8fafc 100%);border-radius:var(--radius);box-shadow:0 12px 32px rgba(16,24,40,.1);padding:clamp(24px,3vw,40px);position:relative;overflow:hidden}
+    .kcvf-eyebrow{display:inline-flex;align-items:center;gap:8px;background:rgba(10,33,46,.08);color:#0A212E;padding:6px 12px;border-radius:999px;font-weight:600;letter-spacing:.2px;font-size:.9rem}
+    .kcvf-title{font-size:clamp(28px,4.2vw,44px);line-height:1.05;margin:.4rem 0 1rem}
+    .kcvf-title .accent{color:var(--accent)}
+    .kcvf-sub{color:#475569;font-size:clamp(15px,1.4vw,18px);max-width:52ch}
+    .kcvf-hero-cta{display:flex;gap:14px;align-items:center;margin-top:18px;flex-wrap:wrap}
+    .kcvf-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(10,33,46,.08);color:#0A212E;padding:8px 12px;border-radius:12px;font-weight:600;font-size:.95rem}
+    .kcvf-hero img{width:100%;height:auto;border-radius:var(--radius);box-shadow:var(--shadow)}
+    .kcvf-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:34px}
+    .kcvf-card{background:#fff;border:1px solid #e9eef5;border-radius:var(--radius);padding:20px;box-shadow:0 6px 18px rgba(16,24,40,.06)}
+    .kcvf-card h3{margin:.2rem 0 .4rem;font-size:1.05rem}
+    .kcvf-card p{color:var(--muted);font-size:.98rem;line-height:1.55}
+    .kcvf-ico{width:38px;height:38px;border-radius:12px;display:inline-grid;place-items:center;background:rgba(10,33,46,.08);color:#0A212E;margin-bottom:10px}
+    .kcvf-ico svg{stroke:currentColor}
+    .kcvf-steps{margin-top:42px;display:grid;grid-template-columns:1.1fr .9fr;gap:28px;align-items:center}
+    .kcvf-steps ol{counter-reset:step;list-style:none;padding:0;margin:0}
+    .kcvf-steps li{counter-increment:step;background:#fff;border:1px solid #e9eef5;border-radius:var(--radius);padding:16px 16px 16px 58px;position:relative;margin-bottom:12px;box-shadow:0 8px 20px rgba(16,24,40,.05)}
+    .kcvf-steps li:before{content:counter(step);position:absolute;left:16px;top:50%;transform:translateY(-50%);width:32px;height:32px;border-radius:10px;background:var(--accent);color:#fff;display:grid;place-items:center;font-weight:700}
+    .kcvf-steps p{margin:.2rem 0;color:#475569}
+    .kcvf-steps .illus img{width:100%;border-radius:var(--radius);box-shadow:var(--shadow)}
+    .kcvf-formwrap{margin-top:38px;background:#fff;border:1px solid #e9eef5;border-radius:var(--radius);padding:22px;box-shadow:var(--shadow)}
+    .kcvf-formwrap h3{margin:0 0 8px}
+    .kcvf-formwrap p{color:var(--muted)}
+    .kcvf-toggle{margin-top:10px;padding:8px 14px;background:var(--accent);color:#fff;border:none;border-radius:6px;cursor:pointer;font-weight:600}
+    .kcvf-toggle:hover{filter:brightness(.95)}
+    .kcvf-shortcode{display:none;margin-top:14px;padding:16px;border-radius:12px;background:#f4f6f8;border:1px dashed rgba(10,33,46,.25)}
+    .kcvf-shortcode strong{color:var(--ink)}
+    .kcvf-faq{margin-top:42px;display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
+    .kcvf-faq .q{background:#fff;border:1px solid #e9eef5;border-radius:var(--radius);padding:18px;box-shadow:0 10px 18px rgba(16,24,40,.05)}
+    .kcvf-faq h4{margin:.2rem 0 .3rem}
 
     footer{background:#0b1220;color:#cbd5e1;padding-block:44px 28px;margin-top:clamp(40px,6vw,80px)}
     .footer-inner{display:grid;grid-template-columns:1.2fr .8fr;gap:28px;align-items:center}
@@ -189,20 +202,32 @@
       .newsletter{justify-content:center}
     }
 
+    @media (max-width:900px){
+      .topbar .inner{flex-direction:column;gap:8px;height:auto;padding-block:8px;text-align:center}
+      .kcvf-hero,.kcvf-steps{grid-template-columns:1fr}
+      .kcvf-grid{grid-template-columns:1fr;gap:14px}
+      .kcvf-faq{grid-template-columns:1fr}
+    }
+
     @media (max-width:640px){
-      main.article-section{padding-block:clamp(28px,12vw,60px)}
-      .article-frame .wp-block-post-title{font-size:clamp(1.8rem,7vw,2.6rem)}
-      .article-frame .wp-block-post-featured-image{margin-bottom:20px}
+      .kcvf-hero{padding:20px}
+      .kcvf-hero-cta{flex-direction:column;align-items:flex-start}
       .newsletter{flex-direction:column}
       .newsletter input,
       .newsletter button{width:100%}
-      .article-frame .wp-block-post-content .alignleft,
-      .article-frame .wp-block-post-content .alignright{float:none;margin:1.5em auto;max-width:100%}
-      .article-frame .wp-block-post-content iframe{min-height:240px}
     }
   </style>
 </head>
 <body>
+  <div class="topbar">
+    <div class="container inner">
+      <div>📞 +34 600 123 456 · ✉️ contact@kovacictalent.com</div>
+      <div class="social">
+        <a href="https://linkedin.com/company/kovacic-executive-talent" aria-label="LinkedIn" target="_blank" rel="noopener noreferrer">in</a>
+      </div>
+    </div>
+  </div>
+
   <nav class="nav" aria-label="Primary navigation">
     <div class="container inner">
       <a class="logo" href="https://kovacictalent.com/"><img src="https://kovacictalent.com/wp-content/uploads/2025/08/Logo_Kovacic.png" alt="Kovacic Talent logo" class="logo-img"><span> </span></a>
@@ -232,13 +257,112 @@
     </div>
   </nav>
 
-  <main class="article-section">
-    <div class="container">
-      <div class="article-frame">
-        <!-- wp:post-title /-->
-        <!-- wp:post-featured-image /-->
-        <!-- wp:post-content /-->
-      </div>
+  <main class="kcvf">
+    <div class="kcvf-container">
+      <section class="kcvf-formwrap" style="margin-top:0">
+        <h3>Register your CV for future opportunities</h3>
+        <p>Upload your CV so we can contact you and keep you informed.</p>
+        <button class="kcvf-toggle" id="toggle-cv-form" aria-expanded="false">Register CV</button>
+        <div class="kcvf-shortcode" id="cv-form">
+          <strong>[kovacic_cv_register]</strong>
+        </div>
+      </section>
+
+      <header class="kcvf-hero">
+        <div>
+          <span class="kcvf-eyebrow">Developed in-house by Kovacic Executive Talent Research</span>
+          <h1 class="kcvf-title">Enhance the impact of your CV <span class="accent"></span></h1>
+          <p class="kcvf-sub">
+            Our system analyzes your CV across <strong>multiple evaluation points</strong>
+            (structure, impact, keywords, ATS and more) to give you <strong>personalized feedback</strong>
+            that helps you stand out in future opportunities.
+          </p>
+          <div class="kcvf-hero-cta">
+            <span class="kcvf-badge">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M20 7L9 18l-5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              Clear, actionable feedback
+            </span>
+            <span class="kcvf-badge">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 8v4l3 3" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="2"/></svg>
+              In minutes
+            </span>
+            <span class="kcvf-badge">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 12h16M4 6h16M4 18h10" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+              ATS-ready
+            </span>
+          </div>
+        </div>
+        <img src="https://kovacictalent.com/wp-content/uploads/2025/05/AdobeStock_1035652596-scaled.jpeg"
+             alt="Professional recruiters analyzing a CV">
+      </header>
+
+      <section class="kcvf-grid" aria-label="Value points">
+        <article class="kcvf-card">
+          <div class="kcvf-ico">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><circle cx="12" cy="7" r="4" stroke="currentColor" stroke-width="2"/></svg>
+          </div>
+          <h3>Personalized</h3>
+          <p>The feedback adapts to your <strong>role and sector</strong>, highlighting relevant achievements and strengths.</p>
+        </article>
+        <article class="kcvf-card">
+          <div class="kcvf-ico">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M3 12h18M3 6h18M3 18h12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+          </div>
+          <h3>ATS-ready</h3>
+          <p>Recommendations to improve <strong>readability and keywords</strong> without losing professional style.</p>
+        </article>
+        <article class="kcvf-card">
+          <div class="kcvf-ico">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M12 1v4M12 19v4M4.22 4.22l2.83 2.83M16.95 16.95l2.83 2.83M1 12h4M19 12h4M4.22 19.78l2.83-2.83M16.95 7.05l2.83-2.83" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+          </div>
+          <h3>Developed in-house</h3>
+          <p>Solution created by <strong>Kovacic Executive Talent Research</strong> to boost your application.</p>
+        </article>
+      </section>
+
+      <section class="kcvf-steps">
+        <div>
+          <h2>How does it work?</h2>
+          <ol>
+            <li>
+              <strong>Upload your CV and tell us your goal.</strong>
+              <p>Specify the role/area and sector for a more precise analysis.</p>
+            </li>
+            <li>
+              <strong>We analyze multiple evaluation points.</strong>
+              <p>Structure, quantified achievements, keywords, readability, and ATS fit.</p>
+            </li>
+            <li>
+              <strong>Receive clear, actionable feedback.</strong>
+              <p><em>Top 5 improvements</em>, metric tips, section-by-section review, and an <em>enhanced summary</em>.</p>
+            </li>
+          </ol>
+        </div>
+        <div class="illus">
+          <img src="https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&fit=crop&w=900&q=80"
+               alt="Executive reviewing a resume in the office">
+        </div>
+      </section>
+
+      <section style="margin-top:36px">
+        <div class="kcvf-card" style="padding:24px">
+          <h2 style="margin:.2rem 0 10px">Why this tool?</h2>
+          <p style="color:#475569; max-width:80ch">
+            At <strong>Kovacic Executive Talent Research</strong> we developed this tool internally to help you
+            <strong>optimize your CV</strong> with practical recommendations. The system combines the signals recruiters value
+            (clarity, impact, relevance, keywords, and ATS compliance) to provide <strong>personalized feedback</strong>
+            that improves your presentation and better positions your application.
+          </p>
+        </div>
+      </section>
+
+      <section class="kcvf-formwrap" id="submit-cv">
+        <h3>Submit your CV for feedback</h3>
+        <p>Upload your document and receive recommendations in a few minutes.</p>
+        <div class="kcvf-shortcode" style="display:block">
+          <strong>[kovacic_cv_submit]</strong>
+        </div>
+      </section>
     </div>
   </main>
 
@@ -328,27 +452,39 @@
       const nav = document.querySelector('.nav');
       const toggle = document.querySelector('.menu-toggle');
       const panel = document.getElementById('primary-menu');
-      if(!nav || !toggle || !panel) return;
-      const links = panel.querySelectorAll('a');
+      if(nav && toggle && panel){
+        const links = panel.querySelectorAll('a');
 
-      const closeMenu = () => {
-        nav.classList.remove('is-open');
-        toggle.setAttribute('aria-expanded','false');
-        document.body.classList.remove('nav-open');
-      };
+        const closeMenu = () => {
+          nav.classList.remove('is-open');
+          toggle.setAttribute('aria-expanded','false');
+          document.body.classList.remove('nav-open');
+        };
 
-      toggle.addEventListener('click', () => {
-        const isOpen = nav.classList.toggle('is-open');
-        toggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
-        document.body.classList.toggle('nav-open', isOpen);
-      });
+        toggle.addEventListener('click', () => {
+          const isOpen = nav.classList.toggle('is-open');
+          toggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+          document.body.classList.toggle('nav-open', isOpen);
+        });
 
-      links.forEach(link => link.addEventListener('click', closeMenu));
-      window.addEventListener('resize', () => {
-        if(window.innerWidth > 980){
-          closeMenu();
-        }
-      });
+        links.forEach(link => link.addEventListener('click', closeMenu));
+        window.addEventListener('resize', () => {
+          if(window.innerWidth > 980){
+            closeMenu();
+          }
+        });
+      }
+
+      const registerToggle = document.getElementById('toggle-cv-form');
+      const registerForm = document.getElementById('cv-form');
+      if(registerToggle && registerForm){
+        registerToggle.addEventListener('click', () => {
+          const isOpen = registerForm.style.display === 'block';
+          registerForm.style.display = isOpen ? 'none' : 'block';
+          registerToggle.setAttribute('aria-expanded', String(!isOpen));
+          registerToggle.textContent = isOpen ? 'Register CV' : 'Hide form';
+        });
+      }
     })();
   </script>
   <script>
