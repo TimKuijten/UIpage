@@ -264,6 +264,60 @@
     .newsletter button{border:none;background:var(--accent);color:#fff;border-radius:999px;padding:12px 18px;font-weight:800}
     .mini{border-top:1px solid #162036;margin-top:26px;padding-top:16px;text-align:center;color:#94a3b8}
 
+    /* Cookie consent */
+    .cookie-banner{position:fixed;bottom:24px;right:24px;width:min(440px,calc(100% - 48px));background:#fff;border:1px solid var(--line);border-radius:var(--radius-lg);box-shadow:var(--shadow);padding:18px 20px;display:grid;gap:12px;z-index:60}
+    .cookie-banner[hidden]{display:none !important}
+    .cookie-banner strong{display:block;font-size:1rem;margin-bottom:4px;color:var(--ink)}
+    .cookie-banner p{margin:0;color:var(--muted);font-size:.92rem}
+    .cookie-banner-actions{display:flex;align-items:center;gap:8px;flex-wrap:wrap;justify-content:flex-end}
+    .cookie-btn{font-family:inherit;font-size:.92rem;font-weight:600;border-radius:999px;border:1px solid transparent;padding:.55rem 1.05rem;cursor:pointer;transition:background .2s ease,color .2s ease,border-color .2s ease;display:inline-flex;align-items:center;justify-content:center;gap:.25rem}
+    .cookie-btn-primary{background:var(--accent);color:#fff}
+    .cookie-btn-primary:hover{filter:brightness(.93)}
+    .cookie-btn-secondary{background:#fff;border-color:var(--line);color:var(--accent)}
+    .cookie-btn-secondary:hover{border-color:#cbd5e1;background:#f8fafc}
+    .cookie-btn-link{background:transparent;color:var(--accent);padding:.55rem .75rem;border:none;margin-right:auto;text-decoration:underline;text-underline-offset:3px}
+    .cookie-btn-link:hover{color:var(--accent-dark);background:rgba(10,33,46,.06)}
+
+    .cookie-modal{position:fixed;inset:0;z-index:70;display:flex;align-items:center;justify-content:center;padding:24px}
+    .cookie-modal[hidden]{display:none !important}
+    .cookie-modal-backdrop{position:absolute;inset:0;background:rgba(15,23,42,.45)}
+    .cookie-modal-content{position:relative;z-index:1;width:min(520px,100%);background:#fff;border-radius:var(--radius-lg);box-shadow:var(--shadow);padding:clamp(24px,4vw,32px);display:grid;gap:18px}
+    .cookie-modal-header{display:flex;align-items:flex-start;justify-content:space-between;gap:12px}
+    .cookie-modal-header h2{margin:0;font-size:1.22rem}
+    .cookie-modal-intro{margin:0;color:var(--muted);font-size:.95rem}
+    .cookie-close{border:none;background:transparent;color:var(--muted);font-size:1.6rem;line-height:1;padding:4px;border-radius:8px;cursor:pointer}
+    .cookie-close:hover{color:var(--accent);background:rgba(15,23,42,.08)}
+    .cookie-options{display:grid;gap:10px}
+    .cookie-row{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:14px 0;border-top:1px solid var(--line);cursor:pointer}
+    .cookie-row:first-of-type{border-top:none;padding-top:4px}
+    .cookie-row-text{max-width:360px;display:block}
+    .cookie-row-title{display:block;font-weight:600;color:var(--ink)}
+    .cookie-row-desc{display:block;font-size:.85rem;color:var(--muted);margin-top:4px}
+    .cookie-row-disabled{cursor:default}
+    .cookie-switch{position:relative;width:48px;height:26px;flex-shrink:0}
+    .cookie-switch input{position:absolute;inset:0;margin:0;opacity:0;cursor:pointer}
+    .cookie-switch span{position:absolute;inset:0;background:#d7dce3;border-radius:999px;transition:background .2s ease}
+    .cookie-switch span::after{content:"";position:absolute;width:20px;height:20px;border-radius:50%;background:#fff;top:3px;left:3px;box-shadow:0 2px 6px rgba(15,23,42,.2);transition:transform .2s ease}
+    .cookie-switch input:checked + span{background:var(--accent)}
+    .cookie-switch input:checked + span::after{transform:translateX(20px)}
+    .cookie-switch input:disabled + span{background:#94a3b8;cursor:not-allowed;opacity:.65}
+    .cookie-switch input:focus-visible + span{outline:3px solid rgba(10,33,46,.35);outline-offset:2px}
+    .cookie-modal-actions{display:flex;justify-content:flex-end;gap:10px;flex-wrap:wrap}
+    .cookie-modal-actions .cookie-btn{min-width:150px}
+    body.cookie-modal-open{overflow:hidden}
+
+    @media (max-width:600px){
+      .cookie-banner{left:16px;right:16px;bottom:16px;width:auto;padding:16px 18px}
+      .cookie-banner-actions{flex-direction:column;align-items:stretch}
+      .cookie-btn{width:100%}
+      .cookie-btn-link{margin-right:0;text-align:center}
+      .cookie-modal{padding:12px}
+      .cookie-modal-content{width:100%}
+      .cookie-row{flex-direction:column;align-items:flex-start}
+      .cookie-modal-actions{flex-direction:column;align-items:stretch}
+      .cookie-modal-actions .cookie-btn{width:100%}
+    }
+
     /* Responsive */
       @media (max-width: 980px){
         .menu-toggle{display:inline-flex}
@@ -702,6 +756,65 @@
     </div>
   </footer>
 
+  <div class="cookie-banner" data-cookie-banner role="dialog" aria-labelledby="cookie-banner-title" aria-describedby="cookie-banner-desc">
+    <div class="cookie-banner-text">
+      <strong id="cookie-banner-title">Your privacy matters</strong>
+      <p id="cookie-banner-desc">We use cookies to keep our site reliable, understand performance, and tailor marketing. Adjust your preferences at any time.</p>
+    </div>
+    <div class="cookie-banner-actions">
+      <button type="button" class="cookie-btn cookie-btn-link" data-cookie-open>Preferences</button>
+      <button type="button" class="cookie-btn cookie-btn-secondary" data-cookie-reject>Reject</button>
+      <button type="button" class="cookie-btn cookie-btn-primary" data-cookie-accept>Accept</button>
+    </div>
+  </div>
+
+  <div class="cookie-modal" data-cookie-modal hidden aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="cookie-modal-title">
+    <div class="cookie-modal-backdrop" data-cookie-close></div>
+    <div class="cookie-modal-content" role="document">
+      <header class="cookie-modal-header">
+        <h2 id="cookie-modal-title">Cookie preferences</h2>
+        <button type="button" class="cookie-close" data-cookie-close aria-label="Close cookie preferences"><span aria-hidden="true">&times;</span></button>
+      </header>
+      <p class="cookie-modal-intro">Control how we use optional cookies. Essential cookies are always active so that the site works correctly.</p>
+      <div class="cookie-options">
+        <label class="cookie-row cookie-row-disabled">
+          <span class="cookie-row-text">
+            <span class="cookie-row-title">Essential</span>
+            <span class="cookie-row-desc">Required for things like navigation, security, and saving your choices.</span>
+          </span>
+          <span class="cookie-switch">
+            <input type="checkbox" data-cookie-toggle="essential" checked disabled>
+            <span aria-hidden="true"></span>
+          </span>
+        </label>
+        <label class="cookie-row">
+          <span class="cookie-row-text">
+            <span class="cookie-row-title">Analytics</span>
+            <span class="cookie-row-desc">Helps us understand site traffic so we can make continuous improvements.</span>
+          </span>
+          <span class="cookie-switch">
+            <input type="checkbox" data-cookie-toggle="analytics" data-focus-first>
+            <span aria-hidden="true"></span>
+          </span>
+        </label>
+        <label class="cookie-row">
+          <span class="cookie-row-text">
+            <span class="cookie-row-title">Marketing</span>
+            <span class="cookie-row-desc">Enables personalised content and measures the effectiveness of campaigns.</span>
+          </span>
+          <span class="cookie-switch">
+            <input type="checkbox" data-cookie-toggle="marketing">
+            <span aria-hidden="true"></span>
+          </span>
+        </label>
+      </div>
+      <div class="cookie-modal-actions">
+        <button type="button" class="cookie-btn cookie-btn-secondary" data-cookie-close>Cancel</button>
+        <button type="button" class="cookie-btn cookie-btn-primary" data-cookie-save>Save preferences</button>
+      </div>
+    </div>
+  </div>
+
   <script>
     document.getElementById('y').textContent = new Date().getFullYear();
 
@@ -861,6 +974,164 @@
       }catch(err){
         console.error('Failed to load posts', err);
       }
+    })();
+  </script>
+  <script>
+    (function(){
+      const STORAGE_KEY = 'kt_cookie_preferences';
+      const defaults = { essential:true, analytics:false, marketing:false };
+      const banner = document.querySelector('[data-cookie-banner]');
+      const modal = document.querySelector('[data-cookie-modal]');
+      if(!banner || !modal) return;
+
+      const storage = (() => {
+        try{
+          const key = '__cookie_test__';
+          localStorage.setItem(key,'1');
+          localStorage.removeItem(key);
+          return localStorage;
+        }catch(err){
+          return null;
+        }
+      })();
+
+      const readStored = () => {
+        if(!storage) return null;
+        try{
+          const raw = storage.getItem(STORAGE_KEY);
+          return raw ? JSON.parse(raw) : null;
+        }catch(err){
+          return null;
+        }
+      };
+
+      const persist = prefs => {
+        if(!storage) return;
+        try{
+          storage.setItem(STORAGE_KEY, JSON.stringify(prefs));
+        }catch(err){
+          /* no-op */
+        }
+      };
+
+      const mergePrefs = prefs => Object.assign({}, defaults, (prefs && typeof prefs === 'object') ? prefs : {});
+
+      const runScripts = prefs => {
+        const selector = 'script[type="text/plain"][data-cookiecategory]';
+        document.querySelectorAll(selector).forEach(node => {
+          const categories = node.dataset.cookiecategory.split(',').map(cat => cat.trim().toLowerCase()).filter(Boolean);
+          if(!categories.length) return;
+          const allowed = categories.some(cat => prefs[cat]);
+          if(!allowed) return;
+          const script = document.createElement('script');
+          Array.from(node.attributes).forEach(attr => {
+            if(attr.name === 'type' || attr.name === 'data-cookiecategory') return;
+            script.setAttribute(attr.name, attr.value);
+          });
+          script.textContent = node.textContent;
+          node.parentNode.replaceChild(script, node);
+        });
+      };
+
+      const toggleInputs = modal.querySelectorAll('input[data-cookie-toggle]');
+      const updateToggles = prefs => {
+        toggleInputs.forEach(input => {
+          const cat = input.dataset.cookieToggle;
+          if(!cat) return;
+          if(cat === 'essential'){
+            input.checked = true;
+            return;
+          }
+          input.checked = !!prefs[cat];
+        });
+      };
+
+      const hideBanner = () => {
+        banner.hidden = true;
+        banner.setAttribute('aria-hidden','true');
+      };
+
+      const showBanner = () => {
+        banner.hidden = false;
+        banner.removeAttribute('aria-hidden');
+      };
+
+      let lastFocus = null;
+      const hideModal = () => {
+        modal.hidden = true;
+        modal.setAttribute('aria-hidden','true');
+        document.body.classList.remove('cookie-modal-open');
+        if(lastFocus){
+          lastFocus.focus();
+          lastFocus = null;
+        }
+      };
+
+      const focusModal = () => {
+        const target = modal.querySelector('[data-focus-first]') || modal.querySelector('[data-cookie-close]') || modal;
+        setTimeout(() => target.focus(), 0);
+      };
+
+      const showModal = () => {
+        modal.hidden = false;
+        modal.removeAttribute('aria-hidden');
+        document.body.classList.add('cookie-modal-open');
+        focusModal();
+      };
+
+      const applyPrefs = prefs => {
+        const merged = mergePrefs(prefs);
+        persist(merged);
+        updateToggles(merged);
+        runScripts(merged);
+        hideBanner();
+        hideModal();
+      };
+
+      const acceptBtn = banner.querySelector('[data-cookie-accept]');
+      const rejectBtn = banner.querySelector('[data-cookie-reject]');
+      const openBtns = document.querySelectorAll('[data-cookie-open]');
+      const closeBtns = document.querySelectorAll('[data-cookie-close]');
+      const saveBtn = modal.querySelector('[data-cookie-save]');
+
+      acceptBtn?.addEventListener('click', () => applyPrefs({ analytics:true, marketing:true }));
+      rejectBtn?.addEventListener('click', () => applyPrefs({ analytics:false, marketing:false }));
+
+      openBtns.forEach(btn => btn.addEventListener('click', () => {
+        lastFocus = document.activeElement;
+        updateToggles(mergePrefs(readStored()));
+        showModal();
+      }));
+
+      closeBtns.forEach(btn => btn.addEventListener('click', () => {
+        hideModal();
+      }));
+
+      saveBtn?.addEventListener('click', () => {
+        const prefs = mergePrefs(readStored());
+        toggleInputs.forEach(input => {
+          const cat = input.dataset.cookieToggle;
+          if(!cat || cat === 'essential') return;
+          prefs[cat] = input.checked;
+        });
+        applyPrefs(prefs);
+      });
+
+      document.addEventListener('keydown', event => {
+        if(event.key === 'Escape' && !modal.hidden){
+          hideModal();
+        }
+      });
+
+      const stored = readStored();
+      const initial = mergePrefs(stored);
+      if(stored){
+        hideBanner();
+      } else {
+        showBanner();
+      }
+      updateToggles(initial);
+      runScripts(initial);
     })();
   </script>
 </body>
