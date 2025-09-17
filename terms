@@ -197,15 +197,18 @@
   <!-- Navigation -->
   <nav class="nav" aria-label="Primary navigation">
     <div class="container inner">
-      <a class="logo" href="#top"><img src="https://kovacictalent.com/wp-content/uploads/2025/08/Logo_Kovacic.png" alt="Kovacic Talent logo" class="logo-img"><span></span></a>
+      <a class="logo" href="#"><img src="https://kovacictalent.com/wp-content/uploads/2025/08/Logo_Kovacic.png" alt="Kovacic Talent logo" class="logo-img"><span> </span></a>
       <button class="menu-toggle" type="button" aria-label="Toggle navigation" aria-expanded="false" aria-controls="primary-menu">
         <span class="menu-icon" aria-hidden="true"></span>
         <span class="menu-label">Menu</span>
       </button>
       <div class="menu-panel" id="primary-menu">
         <div class="menu">
-          <a href="#privacy">Privacy Policy</a>
-          <a href="#terms">Terms &amp; Conditions</a>
+          <a href="#sectors">Sectors</a>
+          <a href="#About">About us</a>
+          <a href="#Values">Our Values</a>
+          <a href="#process">How We Work</a>
+          <a href="#processes">Latest processes</a>
           <a href="#contact">Contact</a>
         </div>
         <div class="nav-cta">
