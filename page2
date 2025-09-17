@@ -653,9 +653,9 @@
   <!-- INSIGHTS -->
   <section id="processes" class="container">
     <h2 class="section-title"><span class="values-title">Latest processes</span></h2>
-    <p class="lead">The latest published processes, or view all active processes</p>
+    <p class="lead">The latest published processes</p>
 <div style="margin:1rem 0; text-align:center;">
-  <a class="btn btn-primary" href="https://kovacictalent.com/procesos-activos/">Active Processes</a>
+  <a class="btn btn-primary" href="https://kovacictalent.com/procesos-activos/">More opportunities</a>
 </div>
 
     <div id="blog-posts" class="grid g-3"></div>
