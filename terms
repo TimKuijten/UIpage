@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Kovacic Executive Talent Research — Privacy & Terms</title>
+  <meta name="description" content="Privacy Policy and Terms & Conditions for Kovacic Executive Talent Research." />
+  <style>
+    :root{
+      --ink:#0c1a22; --muted:#5b6b76; --bg:#ffffff; --line:#e6edf2; --accent:#0A212E;
+      --radius:14px; --max:860px;
+    }
+    *{box-sizing:border-box}
+    body{margin:0;font:16px/1.6 system-ui,-apple-system,Segoe UI,Roboto,Inter,Arial,sans-serif;color:var(--ink);background:var(--bg)}
+    .wrap{max-width:var(--max);margin:48px auto;padding:0 20px}
+    h1,h2,h3{line-height:1.25;margin:0 0 .6em}
+    h1{font-size:clamp(26px,3vw,34px);letter-spacing:.2px}
+    h2{font-size:clamp(20px,2.2vw,24px);margin-top:1.6em}
+    h3{font-size:18px;margin-top:1.4em}
+    p,li{color:var(--ink)}
+    .lead{color:var(--muted)}
+    .card{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:24px;margin:18px 0}
+    a{color:var(--accent);text-decoration:none}
+    a:hover{text-decoration:underline}
+    ul{margin:.6em 0 .6em 1.1em}
+    .meta{color:var(--muted);font-size:.95rem}
+    hr{border:0;border-top:1px solid var(--line);margin:28px 0}
+    footer{border-top:1px solid var(--line);margin-top:40px}
+    .footer-inner{max-width:var(--max);margin:0 auto;padding:18px 20px;display:flex;flex-wrap:wrap;gap:12px;justify-content:space-between;align-items:center}
+    .footer-links{display:flex;gap:14px;flex-wrap:wrap}
+    .badge{display:inline-block;border:1px solid var(--line);border-radius:999px;padding:2px 10px;font-size:.85rem;color:var(--muted)}
+    nav.breadcrumb{display:flex;gap:10px;flex-wrap:wrap;margin:6px 0 22px}
+    nav.breadcrumb a{font-size:.95rem}
+  </style>
+</head>
+<body>
+
+  <div class="wrap">
+    <h1>Legal</h1>
+    <p class="lead">Our commitment to privacy, transparency, and fair use of this website and our services.</p>
+
+    <nav class="breadcrumb">
+      <a href="#privacy">Privacy</a> ·
+      <a href="#terms">Terms</a>
+    </nav>
+
+    <!-- PRIVACY -->
+    <section id="privacy" class="card">
+      <h2>Privacy Policy</h2>
+      <p class="meta">Last updated: January 2025</p>
+
+      <p>At <strong>Kovacic Executive Talent Research</strong> (“we”, “our”, “us”), we are committed to protecting your privacy and ensuring the lawful and transparent processing of personal data in compliance with the <strong>General Data Protection Regulation (EU) 2016/679 (GDPR)</strong> and applicable national legislation.</p>
+
+      <h3>1. Data We Collect</h3>
+      <ul>
+        <li><strong>Identification and contact details</strong> (name, email, phone number, address).</li>
+        <li><strong>Professional information</strong> (CVs, career history, skills, education, LinkedIn profiles).</li>
+        <li><strong>Assessment data</strong> (interview notes, references, evaluations).</li>
+        <li><strong>Client data</strong> (organization details, contact persons, recruitment needs).</li>
+        <li><strong>Technical data</strong> (cookies, IP address, device/browser information).</li>
+      </ul>
+
+      <h3>2. How We Use Your Data</h3>
+      <ul>
+        <li>To provide executive search and recruitment services.</li>
+        <li>To evaluate and present candidates to clients (with prior consent).</li>
+        <li>To communicate regarding opportunities, projects, or partnerships.</li>
+        <li>To maintain business relationships with clients and candidates.</li>
+        <li>To comply with legal and regulatory obligations.</li>
+      </ul>
+
+      <h3>3. Legal Basis for Processing</h3>
+      <ul>
+        <li><strong>Consent</strong> (Art. 6(1)(a) GDPR): when you share your CV or professional details.</li>
+        <li><strong>Contract</strong> (Art. 6(1)(b)): to perform obligations under service agreements.</li>
+        <li><strong>Legitimate interests</strong> (Art. 6(1)(f)): to operate and improve services while respecting your rights.</li>
+        <li><strong>Legal obligations</strong> (Art. 6(1)(c)): record-keeping, tax, or employment laws.</li>
+      </ul>
+
+      <h3>4. Data Sharing</h3>
+      <ul>
+        <li>Candidate profiles may be shared with <strong>clients</strong> as part of recruitment processes, with explicit prior consent.</li>
+        <li>We do <strong>not</strong> sell or trade personal data.</li>
+        <li>Service providers (IT hosting, CRM) may process data under written agreements with appropriate safeguards.</li>
+        <li>Transfers outside the EEA occur only with adequate protections (e.g., Standard Contractual Clauses).</li>
+      </ul>
+
+      <h3>5. Data Retention</h3>
+      <ul>
+        <li>Candidate data: retained for up to <strong>5 years</strong> unless deletion is requested earlier.</li>
+        <li>Client/business data: retained for the relationship duration and as required by law.</li>
+        <li>CVs/application materials: may be stored for future opportunities with your consent.</li>
+      </ul>
+
+      <h3>6. Your Rights</h3>
+      <p>Under GDPR you may request: access, rectification, erasure, restriction, objection, and data portability. You may also withdraw consent at any time and lodge a complaint with your local supervisory authority.</p>
+      <p><strong>Contact for requests:</strong> <a href="mailto:info@kovacictalent.com">info@kovacictalent.com</a></p>
+
+      <h3>7. Security Measures</h3>
+      <p>We use technical and organizational safeguards (encryption, access controls, secure hosting) to protect personal data.</p>
+
+      <h3>8. Cookies & Analytics</h3>
+      <p>Our website uses cookies to enhance your experience and may include analytics tools (e.g., Google Analytics). You can manage cookies via your browser settings.</p>
+
+      <h3>9. Changes to This Policy</h3>
+      <p>We may update this Privacy Policy periodically. Updates will be posted here with the revised “Last updated” date.</p>
+    </section>
+
+    <!-- TERMS -->
+    <section id="terms" class="card">
+      <h2>Terms &amp; Conditions</h2>
+      <p class="meta">Last updated: January 2025</p>
+
+      <p>Welcome to <strong>Kovacic Executive Talent Research</strong>. By accessing or using our website and services, you agree to these Terms &amp; Conditions.</p>
+
+      <h3>1. Scope of Services</h3>
+      <p>We provide <strong>executive search, recruitment, and market intelligence</strong> services. Website information is for general purposes and may be updated without prior notice.</p>
+
+      <h3>2. Use of Website</h3>
+      <ul>
+        <li>Use the website only for lawful purposes.</li>
+        <li>No attempts to gain unauthorized access to systems, data, or accounts.</li>
+        <li>We may restrict or terminate access in case of misuse.</li>
+      </ul>
+
+      <h3>3. Intellectual Property</h3>
+      <p>All website content (text, graphics, design, logos, materials) is owned by us or our licensors and may not be reproduced without written consent.</p>
+
+      <h3>4. Confidentiality &amp; Candidate Data</h3>
+      <p>Candidate submissions (e.g., CVs) are treated confidentially. Clients agree to treat any candidate information provided with equal confidentiality.</p>
+
+      <h3>5. Limitation of Liability</h3>
+      <p>While we strive for accuracy, we do not guarantee that website content is error-free or suitable for a particular purpose. To the extent permitted by law, we are not liable for loss or damage arising from the use of our website, services, or external links.</p>
+
+      <h3>6. External Links</h3>
+      <p>Links to third-party websites are provided for convenience. We do not control or endorse their content and disclaim responsibility for their policies and practices.</p>
+
+      <h3>7. Governing Law &amp; Jurisdiction</h3>
+      <p>These Terms are governed by EU law and the laws of Spain. Any disputes are subject to the exclusive jurisdiction of the courts of Barcelona, Spain.</p>
+
+      <h3>8. Changes to Terms</h3>
+      <p>We may update these Terms periodically. Continued use of the site implies acceptance of the updated version.</p>
+    </section>
+  </div>
+
+  <footer>
+    <div class="footer-inner">
+      <span>© 2025 Kovacic Talent. All rights reserved.</span>
+      <div class="footer-links">
+        <a href="#privacy" class="badge">Privacy</a>
+        <a href="#terms" class="badge">Terms</a>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>
