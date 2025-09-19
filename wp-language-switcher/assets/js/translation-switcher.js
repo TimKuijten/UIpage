@@ -276,7 +276,7 @@
     }
 
     function mountSwitcherByLinkedIn(switcher, portal) {
-        var linkedinLink = document.querySelector('a[href*="linkedin.com"]');
+        var linkedinLink = document.querySelector('nav a[href*="linkedin.com"], .menu a[href*="linkedin.com"], a[href*="linkedin.com"]');
         if (!linkedinLink) {
             return false;
         }
@@ -284,24 +284,21 @@
         var originalParent = switcher.parentNode;
         var navItem = linkedinLink.closest('li, .wp-block-navigation-item, .menu-item');
         if (navItem && navItem.parentNode) {
-            var parentList = navItem.parentNode;
             var tagName = navItem.tagName ? navItem.tagName.toLowerCase() : 'div';
             var wrapper = document.createElement(tagName === 'li' ? 'li' : 'div');
 
             if (navItem.classList && navItem.classList.length) {
                 navItem.classList.forEach(function(cls) {
-                    wrapper.classList.add(cls);
+                    if (typeof cls === 'string' && cls.toLowerCase().indexOf('linkedin') === -1) {
+                        wrapper.classList.add(cls);
+                    }
                 });
             }
 
             wrapper.classList.add('kls-switcher__item');
             switcher.classList.add('kls-switcher--nav');
             wrapper.appendChild(switcher);
-            if (navItem.nextSibling) {
-                parentList.insertBefore(wrapper, navItem.nextSibling);
-            } else {
-                parentList.appendChild(wrapper);
-            }
+            navItem.insertAdjacentElement('afterend', wrapper);
 
             if (portal) {
                 portal.hidden = true;
@@ -322,11 +319,7 @@
             parent.classList.add('kls-switcher__item');
         }
 
-        if (linkedinLink.nextSibling) {
-            parent.insertBefore(switcher, linkedinLink.nextSibling);
-        } else {
-            parent.appendChild(switcher);
-        }
+        linkedinLink.insertAdjacentElement('afterend', switcher);
 
         if (portal) {
             portal.hidden = true;
