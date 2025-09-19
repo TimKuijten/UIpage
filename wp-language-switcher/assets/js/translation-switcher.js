@@ -180,8 +180,13 @@
     function injectIntoNavigation() {
         var navigation = document.querySelector('#primary-menu, nav .primary-menu, nav[aria-label*="Primary" i] .menu, nav[aria-label*="Primary" i], .primary-menu');
         if (!navigation) {
+            if (switcherContainer) {
+                switcherContainer.classList.remove('kls-switcher--nav');
+            }
             return;
         }
+
+        switcherContainer.classList.add('kls-switcher--nav');
 
         var linkedInLink = navigation.querySelector('a[href*="linkedin.com" i]');
         var linkedInItem = linkedInLink ? linkedInLink.closest('li') : null;
