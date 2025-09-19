@@ -8,6 +8,7 @@
     var translations = settings.translations || {};
     var normalizedTranslations = {};
     var hasTranslations = false;
+    var STORAGE_KEY = 'klsPreferredLanguage';
 
     function normalize(value) {
         return value.replace(/\s+/g, ' ').trim();
@@ -29,6 +30,27 @@
 
     var language = (settings.defaultLanguage === 'es') ? 'es' : 'en';
     var textNodes = [];
+
+    function getStoredLanguage() {
+        try {
+            return window.localStorage.getItem(STORAGE_KEY);
+        } catch (error) {
+            return null;
+        }
+    }
+
+    function persistLanguage(value) {
+        try {
+            window.localStorage.setItem(STORAGE_KEY, value);
+        } catch (error) {
+            /* noop */
+        }
+    }
+
+    var storedLanguage = getStoredLanguage();
+    if (storedLanguage === 'es' || storedLanguage === 'en') {
+        language = storedLanguage;
+    }
 
     function collectTextNodes() {
         var walker = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT, {
@@ -87,6 +109,10 @@
     }
 
     function setLanguage(nextLanguage) {
+        if (nextLanguage !== 'en' && nextLanguage !== 'es') {
+            return;
+        }
+
         if (language === nextLanguage) {
             return;
         }
@@ -117,12 +143,12 @@
         }
 
         updateButtonStates();
+        persistLanguage(language);
     }
 
     var switcherContainer;
     var englishButton;
     var spanishButton;
-    var switcherIndicator;
 
     function updateButtonStates() {
         if (!englishButton || !spanishButton) {
@@ -135,17 +161,11 @@
             spanishButton.classList.add(activeClass);
             englishButton.setAttribute('aria-pressed', 'false');
             spanishButton.setAttribute('aria-pressed', 'true');
-            if (switcherIndicator) {
-                switcherIndicator.style.transform = 'translateX(100%)';
-            }
         } else {
             spanishButton.classList.remove(activeClass);
             englishButton.classList.add(activeClass);
             spanishButton.setAttribute('aria-pressed', 'false');
             englishButton.setAttribute('aria-pressed', 'true');
-            if (switcherIndicator) {
-                switcherIndicator.style.transform = 'translateX(0)';
-            }
         }
     }
 
@@ -163,7 +183,6 @@
             return false;
         }
 
-        switcherIndicator = switcherContainer.querySelector('.kls-switcher__indicator');
         englishButton = switcherContainer.querySelector('[data-language="en"]');
         spanishButton = switcherContainer.querySelector('[data-language="es"]');
 
@@ -192,7 +211,6 @@
             return;
         }
 
-        updateButtonStates();
         updateLanguage();
     }
 

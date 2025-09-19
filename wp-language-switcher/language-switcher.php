@@ -2,7 +2,7 @@
 /**
  * Plugin Name: Kovacic Language Switcher
  * Description: Adds a lightweight language switcher to individual pages and lets editors provide translations for on-page strings.
- * Version: 2.0.1
+ * Version: 2.1.0
  * Author: Kovacic Talent
  */
 
@@ -26,7 +26,7 @@ class Kovacic_Language_Switcher {
     }
 
     public function register_assets(): void {
-        $version = '2.0.1';
+        $version = '2.1.0';
         $base_url = plugin_dir_url(__FILE__);
 
         wp_register_style(
@@ -77,8 +77,8 @@ class Kovacic_Language_Switcher {
         return [
             'enabled' => !empty($saved['enabled']),
             'default_language' => in_array($saved['default_language'] ?? 'en', ['en', 'es'], true) ? $saved['default_language'] : 'en',
-            'english_label' => $saved['english_label'] ?? __('English', 'kovacic-language-switcher'),
-            'spanish_label' => $saved['spanish_label'] ?? __('Español', 'kovacic-language-switcher'),
+            'english_label' => $saved['english_label'] ?? 'EN',
+            'spanish_label' => $saved['spanish_label'] ?? 'ES',
             'strings' => $strings,
         ];
     }
@@ -87,8 +87,8 @@ class Kovacic_Language_Switcher {
         return [
             'enabled' => !empty($settings['enabled']),
             'default_language' => $settings['default_language'] ?? 'en',
-            'english_label' => $settings['english_label'] ?? __('English', 'kovacic-language-switcher'),
-            'spanish_label' => $settings['spanish_label'] ?? __('Español', 'kovacic-language-switcher'),
+            'english_label' => $settings['english_label'] ?? 'EN',
+            'spanish_label' => $settings['spanish_label'] ?? 'ES',
             'strings' => is_array($settings['strings'] ?? null) ? $settings['strings'] : [],
         ];
     }
@@ -208,8 +208,8 @@ class Kovacic_Language_Switcher {
         $data = [
             'enabled' => $enabled,
             'default_language' => $default_language,
-            'english_label' => sanitize_text_field($raw['english_label'] ?? __('English', 'kovacic-language-switcher')),
-            'spanish_label' => sanitize_text_field($raw['spanish_label'] ?? __('Español', 'kovacic-language-switcher')),
+            'english_label' => sanitize_text_field($raw['english_label'] ?? 'EN'),
+            'spanish_label' => sanitize_text_field($raw['spanish_label'] ?? 'ES'),
             'strings' => $strings,
         ];
 
@@ -329,14 +329,15 @@ class Kovacic_Language_Switcher {
         $english_active = $default === 'en';
         $spanish_active = $default === 'es';
 
-        $english_label = esc_html($this->current_settings['english_label'] ?? __('English', 'kovacic-language-switcher'));
-        $spanish_label = esc_html($this->current_settings['spanish_label'] ?? __('Español', 'kovacic-language-switcher'));
+        $english_setting = $this->current_settings['english_label'] ?? 'EN';
+        $spanish_setting = $this->current_settings['spanish_label'] ?? 'ES';
+        $english_label = esc_html($is_nav ? 'EN' : $english_setting);
+        $spanish_label = esc_html($is_nav ? 'ES' : $spanish_setting);
         $group_label = __('Language selector', 'kovacic-language-switcher');
 
         ob_start();
         ?>
         <div class="kls-switcher<?php echo $is_nav ? ' kls-switcher--nav' : ''; ?>" role="group" aria-label="<?php echo esc_attr($group_label); ?>">
-            <span class="kls-switcher__indicator" aria-hidden="true"></span>
             <button type="button" class="kls-switcher__button<?php echo $english_active ? ' kls-switcher__button--active' : ''; ?>" data-language="en" aria-pressed="<?php echo $english_active ? 'true' : 'false'; ?>"><?php echo $english_label; ?></button>
             <button type="button" class="kls-switcher__button<?php echo $spanish_active ? ' kls-switcher__button--active' : ''; ?>" data-language="es" aria-pressed="<?php echo $spanish_active ? 'true' : 'false'; ?>"><?php echo $spanish_label; ?></button>
         </div>
