@@ -1,4 +1,6 @@
 (function() {
+    var originalDocumentLang = document.documentElement.getAttribute('lang') || 'en';
+
     function createButton(label, lang, controlsId) {
         var button = document.createElement('button');
         button.type = 'button';
@@ -28,23 +30,141 @@
         return fragment;
     }
 
-    function activateLanguage(root, buttonGroup, lang) {
-        root.dataset.activeLang = lang;
-        document.documentElement.setAttribute('data-kls-lang', lang);
+    function isIgnorableText(node) {
+        return node && node.nodeType === Node.TEXT_NODE && !node.textContent.trim();
+    }
 
-        var buttons = buttonGroup ? buttonGroup.querySelectorAll('.kls-switcher__button') : [];
-        buttons.forEach(function(button) {
-            var isActive = button.dataset.lang === lang;
-            button.classList.toggle('is-active', isActive);
-            button.setAttribute('aria-selected', isActive ? 'true' : 'false');
-            button.setAttribute('tabindex', isActive ? '0' : '-1');
+    function mapTextNode(targetNode, sourceNode, textMappings, seenTextNodes) {
+        if (seenTextNodes.has(targetNode)) {
+            return;
+        }
+
+        seenTextNodes.add(targetNode);
+        textMappings.push({
+            node: targetNode,
+            en: targetNode.textContent,
+            es: sourceNode.textContent
+        });
+    }
+
+    function mapAttributes(targetElement, sourceElement, attributeMappings, attributeLookup) {
+        var sourceAttributes = Array.prototype.slice.call(sourceElement.attributes);
+        if (sourceAttributes.length === 0) {
+            return;
+        }
+
+        var stored = attributeLookup.get(targetElement);
+        if (!stored) {
+            stored = {};
+            attributeLookup.set(targetElement, stored);
+        }
+
+        sourceAttributes.forEach(function(attr) {
+            if (/^on/i.test(attr.name)) {
+                return;
+            }
+
+            var currentValue = targetElement.getAttribute(attr.name);
+            if (currentValue === attr.value) {
+                return;
+            }
+
+            if (!stored[attr.name]) {
+                stored[attr.name] = {
+                    element: targetElement,
+                    name: attr.name,
+                    en: currentValue,
+                    es: attr.value
+                };
+                attributeMappings.push(stored[attr.name]);
+            } else {
+                stored[attr.name].es = attr.value;
+            }
+        });
+    }
+
+    function buildMappings(targetParent, sourceParent, textMappings, attributeMappings, seenTextNodes, attributeLookup) {
+        var targetChildren = Array.prototype.slice.call(targetParent.childNodes);
+        var sourceChildren = Array.prototype.slice.call(sourceParent.childNodes);
+        var targetIndex = 0;
+        var sourceIndex = 0;
+
+        while (targetIndex < targetChildren.length && sourceIndex < sourceChildren.length) {
+            var targetChild = targetChildren[targetIndex];
+            var sourceChild = sourceChildren[sourceIndex];
+
+            if (targetChild.nodeType === Node.COMMENT_NODE) {
+                targetIndex++;
+                continue;
+            }
+
+            if (sourceChild.nodeType === Node.COMMENT_NODE) {
+                sourceIndex++;
+                continue;
+            }
+
+            if (isIgnorableText(targetChild) && isIgnorableText(sourceChild)) {
+                targetIndex++;
+                sourceIndex++;
+                continue;
+            }
+
+            if (isIgnorableText(targetChild)) {
+                targetIndex++;
+                continue;
+            }
+
+            if (isIgnorableText(sourceChild)) {
+                sourceIndex++;
+                continue;
+            }
+
+            if (targetChild.nodeType === Node.TEXT_NODE && sourceChild.nodeType === Node.TEXT_NODE) {
+                mapTextNode(targetChild, sourceChild, textMappings, seenTextNodes);
+                targetIndex++;
+                sourceIndex++;
+                continue;
+            }
+
+            if (targetChild.nodeType === Node.ELEMENT_NODE && sourceChild.nodeType === Node.ELEMENT_NODE && targetChild.tagName === sourceChild.tagName) {
+                if (targetChild.tagName === 'SCRIPT' || targetChild.tagName === 'STYLE') {
+                    targetIndex++;
+                    sourceIndex++;
+                    continue;
+                }
+
+                mapAttributes(targetChild, sourceChild, attributeMappings, attributeLookup);
+                buildMappings(targetChild, sourceChild, textMappings, attributeMappings, seenTextNodes, attributeLookup);
+                targetIndex++;
+                sourceIndex++;
+                continue;
+            }
+
+            targetIndex++;
+            sourceIndex++;
+        }
+    }
+
+    function applyLanguage(textMappings, attributeMappings, lang) {
+        var useSpanish = lang === 'es';
+
+        textMappings.forEach(function(entry) {
+            var value = useSpanish ? entry.es : entry.en;
+            if (value !== undefined && entry.node.textContent !== value) {
+                entry.node.textContent = value;
+            }
         });
 
-        var panels = root.querySelectorAll('.kls-switcher__panel');
-        panels.forEach(function(panel) {
-            var isActive = panel.dataset.lang === lang;
-            panel.classList.toggle('is-active', isActive);
-            panel.setAttribute('aria-hidden', isActive ? 'false' : 'true');
+        attributeMappings.forEach(function(entry) {
+            var value = useSpanish ? entry.es : entry.en;
+            if (value === null || value === undefined) {
+                entry.element.removeAttribute(entry.name);
+                return;
+            }
+
+            if (entry.element.getAttribute(entry.name) !== value) {
+                entry.element.setAttribute(entry.name, value);
+            }
         });
     }
 
@@ -88,11 +208,7 @@
 
     function initializePortal() {
         var root = document.getElementById('kls-switcher-root');
-        if (!root) {
-            return;
-        }
-
-        if (root.dataset.initialized) {
+        if (!root || root.dataset.initialized) {
             return;
         }
 
@@ -109,13 +225,11 @@
             });
         }
 
-        var englishPanelId = 'kls-lang-en';
-        var spanishPanelId = 'kls-lang-es';
-
         var buttonGroup = document.createElement('div');
         buttonGroup.className = 'kls-switcher__buttons';
         buttonGroup.setAttribute('role', 'tablist');
         buttonGroup.setAttribute('aria-label', root.dataset.label || 'Language selector');
+
         var controlsWrapper = document.createElement('div');
         controlsWrapper.className = 'kls-switcher';
         controlsWrapper.appendChild(buttonGroup);
@@ -123,75 +237,92 @@
         var panelsWrapper = document.createElement('div');
         panelsWrapper.className = 'kls-switcher__panels';
 
-        var englishPanel = document.createElement('div');
-        englishPanel.className = 'kls-switcher__panel';
-        englishPanel.dataset.lang = 'en';
-        englishPanel.id = englishPanelId;
-        englishPanel.setAttribute('role', 'tabpanel');
-        englishPanel.appendChild(moveNodesIntoFragment(siblings));
+        var contentPanelId = 'kls-lang-content';
+        var contentPanel = document.createElement('div');
+        contentPanel.className = 'kls-switcher__panel is-active';
+        contentPanel.dataset.lang = 'content';
+        contentPanel.id = contentPanelId;
+        contentPanel.setAttribute('role', 'document');
+        contentPanel.appendChild(moveNodesIntoFragment(siblings));
+        panelsWrapper.appendChild(contentPanel);
 
-        var spanishPanel = document.createElement('div');
-        spanishPanel.className = 'kls-switcher__panel';
-        spanishPanel.dataset.lang = 'es';
-        spanishPanel.id = spanishPanelId;
-        spanishPanel.setAttribute('role', 'tabpanel');
-        spanishPanel.innerHTML = template.innerHTML;
-
-        template.remove();
-
-        panelsWrapper.appendChild(englishPanel);
-        panelsWrapper.appendChild(spanishPanel);
-
-        var englishButton = createButton(root.dataset.englishLabel || 'English', 'en', englishPanelId);
-        var spanishButton = createButton(root.dataset.spanishLabel || 'Español', 'es', spanishPanelId);
-
+        var englishButton = createButton(root.dataset.englishLabel || 'English', 'en', contentPanelId);
+        var spanishButton = createButton(root.dataset.spanishLabel || 'Español', 'es', contentPanelId);
         buttonGroup.appendChild(englishButton);
         buttonGroup.appendChild(spanishButton);
+
+        var textMappings = [];
+        var attributeMappings = [];
+        var seenTextNodes = new WeakSet();
+        var attributeLookup = new WeakMap();
+
+        var translationContainer = document.createElement('div');
+        translationContainer.innerHTML = template.innerHTML;
+        buildMappings(contentPanel, translationContainer, textMappings, attributeMappings, seenTextNodes, attributeLookup);
+        template.remove();
+
+        function activateLanguage(lang) {
+            root.dataset.activeLang = lang;
+            document.documentElement.setAttribute('data-kls-lang', lang);
+            document.documentElement.setAttribute('lang', lang === 'es' ? 'es' : originalDocumentLang);
+
+            var buttons = buttonGroup.querySelectorAll('.kls-switcher__button');
+            buttons.forEach(function(button) {
+                var isActive = button.dataset.lang === lang;
+                button.classList.toggle('is-active', isActive);
+                button.setAttribute('aria-selected', isActive ? 'true' : 'false');
+                button.setAttribute('tabindex', isActive ? '0' : '-1');
+            });
+
+            if (lang === 'es' || lang === 'en') {
+                applyLanguage(textMappings, attributeMappings, lang);
+            }
+        }
 
         function finalizeMount() {
             root.appendChild(panelsWrapper);
 
             buttonGroup.addEventListener('click', function(event) {
-            var target = event.target instanceof HTMLElement ? event.target.closest('.kls-switcher__button') : null;
-            if (!target) {
-                return;
-            }
+                var target = event.target instanceof HTMLElement ? event.target.closest('.kls-switcher__button') : null;
+                if (!target) {
+                    return;
+                }
 
-            event.preventDefault();
-            var lang = target.dataset.lang;
-            if (!lang) {
-                return;
-            }
+                event.preventDefault();
+                var lang = target.dataset.lang;
+                if (!lang) {
+                    return;
+                }
 
-            activateLanguage(root, buttonGroup, lang);
-        });
+                activateLanguage(lang);
+            });
 
             buttonGroup.addEventListener('keydown', function(event) {
-            var target = event.target instanceof HTMLElement ? event.target.closest('.kls-switcher__button') : null;
-            if (!target) {
-                return;
-            }
+                var target = event.target instanceof HTMLElement ? event.target.closest('.kls-switcher__button') : null;
+                if (!target) {
+                    return;
+                }
 
-            var key = event.key;
-            if (key !== 'ArrowRight' && key !== 'ArrowLeft') {
-                return;
-            }
+                var key = event.key;
+                if (key !== 'ArrowRight' && key !== 'ArrowLeft') {
+                    return;
+                }
 
-            event.preventDefault();
-            var buttons = Array.prototype.slice.call(buttonGroup.querySelectorAll('.kls-switcher__button'));
-            var index = buttons.indexOf(target);
-            if (index === -1) {
-                return;
-            }
+                event.preventDefault();
+                var buttons = Array.prototype.slice.call(buttonGroup.querySelectorAll('.kls-switcher__button'));
+                var index = buttons.indexOf(target);
+                if (index === -1) {
+                    return;
+                }
 
-            var offset = key === 'ArrowRight' ? 1 : -1;
-            var nextIndex = (index + offset + buttons.length) % buttons.length;
-            var nextButton = buttons[nextIndex];
-            nextButton.focus();
-            if (nextButton.dataset.lang) {
-                activateLanguage(root, buttonGroup, nextButton.dataset.lang);
-            }
-        });
+                var offset = key === 'ArrowRight' ? 1 : -1;
+                var nextIndex = (index + offset + buttons.length) % buttons.length;
+                var nextButton = buttons[nextIndex];
+                nextButton.focus();
+                if (nextButton.dataset.lang) {
+                    activateLanguage(nextButton.dataset.lang);
+                }
+            });
 
             root.dataset.initialized = '1';
 
@@ -200,7 +331,7 @@
                 defaultLang = 'en';
             }
 
-            activateLanguage(root, buttonGroup, defaultLang);
+            activateLanguage(defaultLang);
         }
 
         var attempts = 0;
