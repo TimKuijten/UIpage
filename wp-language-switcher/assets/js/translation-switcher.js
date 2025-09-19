@@ -183,6 +183,73 @@
         return null;
     }
 
+    function lockLogoSize(logoElement) {
+        if (!logoElement) {
+            return;
+        }
+
+        var image = logoElement;
+        if (!image.tagName || image.tagName.toLowerCase() !== 'img') {
+            image = logoElement.querySelector('img');
+        }
+
+        if (!image || image.dataset.klsLogoLocked === 'true') {
+            return;
+        }
+
+        function applyMeasurements(attempt) {
+            if (attempt === void 0) {
+                attempt = 0;
+            }
+
+            var rect = image.getBoundingClientRect();
+            var width = rect.width || image.width || image.naturalWidth;
+            var height = rect.height || image.height || image.naturalHeight;
+
+            if (!width && attempt < 10) {
+                window.requestAnimationFrame(function() {
+                    applyMeasurements(attempt + 1);
+                });
+                return;
+            }
+
+            if (!width) {
+                return;
+            }
+
+            var widthValue = width + 'px';
+
+            image.style.setProperty('--kls-logo-min-width', widthValue);
+            image.style.minWidth = widthValue;
+            image.style.maxWidth = widthValue;
+            image.style.width = widthValue;
+            image.style.flexShrink = '0';
+            image.style.height = height ? height + 'px' : 'auto';
+
+            if (logoElement !== image) {
+                logoElement.style.setProperty('--kls-logo-min-width', widthValue);
+                logoElement.style.minWidth = widthValue;
+                logoElement.style.maxWidth = widthValue;
+                logoElement.style.width = widthValue;
+                logoElement.style.flexShrink = '0';
+                if (logoElement.dataset) {
+                    logoElement.dataset.klsLogoLocked = 'true';
+                }
+            }
+
+            image.dataset.klsLogoLocked = 'true';
+        }
+
+        if (image.complete || image.readyState === 'complete') {
+            applyMeasurements();
+        } else {
+            image.addEventListener('load', function handleLoad() {
+                image.removeEventListener('load', handleLoad);
+                applyMeasurements();
+            });
+        }
+    }
+
     function removeEmptyWrapper(originalParent, portal) {
         if (!originalParent || originalParent === portal) {
             return;
@@ -308,10 +375,12 @@
         }
 
         if (mountSwitcherByLinkedIn(switcher, portal)) {
+            lockLogoSize(findLogoElement());
             return true;
         }
 
         if (allowFallback && mountSwitcherNearLogo(switcher, portal)) {
+            lockLogoSize(findLogoElement());
             return true;
         }
 
@@ -404,6 +473,8 @@
                 initialized = true;
                 updateLanguage();
             }
+
+            lockLogoSize(findLogoElement());
 
             if (document.querySelector('.kls-switcher--logo, .kls-switcher--nav')) {
                 return;

@@ -88,18 +88,26 @@
 }
 
 .site-header .custom-logo-link,
-.site-header .custom-logo-link img,
 .site-header .wp-block-site-logo,
-.site-header .wp-block-site-logo img,
 .site-header .site-logo,
-.site-header .site-logo img,
 .nav .custom-logo-link,
-.nav .custom-logo-link img,
 .nav .wp-block-site-logo,
+.nav .site-logo {
+    flex: 0 0 auto !important;
+    width: auto !important;
+    min-width: var(--kls-logo-min-width, auto);
+}
+
+.site-header .custom-logo-link img,
+.site-header .wp-block-site-logo img,
+.site-header .site-logo img,
+.nav .custom-logo-link img,
 .nav .wp-block-site-logo img,
-.nav .site-logo,
 .nav .site-logo img {
-    flex-shrink: 0;
-    max-width: none;
+    flex: 0 0 auto !important;
+    width: auto !important;
+    height: auto !important;
+    min-width: var(--kls-logo-min-width, auto);
+    max-width: none !important;
 }
 
