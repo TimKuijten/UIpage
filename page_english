@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Kovacic Talent - Executive Recruitment</title>
-  <meta name="description" content="Boutique executive search & specialist recruitment for high-growth companies." />
+  <title>Kovacic Talent - Reclutamiento Ejecutivo</title>
+  <meta name="description" content="Búsqueda ejecutiva boutique y reclutamiento especializado para empresas de alto crecimiento." />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <style>
@@ -417,26 +417,26 @@
 </head>
 <body>
   <!-- Navigation -->
-  <nav class="nav" aria-label="Primary navigation">
+  <nav class="nav" aria-label="Navegación principal">
     <div class="container inner">
       <a class="logo" href="#"><img src="https://kovacictalent.com/wp-content/uploads/2025/08/Logo_Kovacic.png" alt="Kovacic Talent logo" class="logo-img"><span> </span></a>
-      <button class="menu-toggle" type="button" aria-label="Toggle navigation" aria-expanded="false" aria-controls="primary-menu">
+      <button class="menu-toggle" type="button" aria-label="Alternar la navegación" aria-expanded="false" aria-controls="primary-menu">
         <span class="menu-icon" aria-hidden="true"></span>
-        <span class="menu-label">Menu</span>
+        <span class="menu-label">Menú</span>
       </button>
       <div class="menu-panel" id="primary-menu">
         <div class="menu">
-          <a href="#sectors">Sectors</a>
-          <a href="#About">About us</a>
-          <a href="#Values">Our Values</a>
-          <a href="#process">How We Work</a>
-          <a href="#processes">Processes</a>
-          <a href="#contact">Contact</a>
+          <a href="#sectors">Sectores</a>
+          <a href="#About">Sobre nosotros</a>
+          <a href="#Values">Nuestros valores</a>
+          <a href="#process">Cómo trabajamos</a>
+          <a href="#processes">Procesos</a>
+          <a href="#contact">Contacto</a>
         </div>
         <div class="nav-cta">
-          <a class="btn btn-ghost" href="https://kovacictalent.com/mejoracv">Submit CV</a>
-          <a class="btn btn-primary" href="#contact">Request a Call</a>
-          <a class="nav-linkedin" href="https://www.linkedin.com/company/kovacic-executive-talent/" target="_blank" rel="noopener noreferrer" aria-label="Kovacic Talent on LinkedIn (opens in a new tab)">
+          <a class="btn btn-ghost" href="https://kovacictalent.com/mejoracv">Enviar CV</a>
+          <a class="btn btn-primary" href="#contact">Solicitar una llamada</a>
+          <a class="nav-linkedin" href="https://www.linkedin.com/company/kovacic-executive-talent/" target="_blank" rel="noopener noreferrer" aria-label="Kovacic Talent en LinkedIn (se abre en una nueva pestaña)">
             <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
               <path fill="currentColor" d="M22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.226.792 24 1.771 24h20.451C23.2 24 24 23.226 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003zM6.615 20.452H3.558V9h3.057v11.452zM5.087 7.633a1.773 1.773 0 110-3.546 1.773 1.773 0 010 3.546zm15.36 12.819h-3.054v-5.569c0-1.329-.026-3.036-1.851-3.036-1.851 0-2.136 1.446-2.136 2.94v5.665H10.35V9h2.93v1.561h.041c.408-.77 1.405-1.584 2.894-1.584 3.094 0 3.663 2.039 3.663 4.689v6.786z" />
             </svg>
@@ -451,45 +451,45 @@
     <div class="container inner">
       <div class="hero-copy">
         <div class="hero-slide is-active">
-          <h1>We connect talent with the energy of change</h1>
+          <h1>Conectamos el talento con la energía del cambio</h1>
           <div class="hero-mobile-visual">
-            <img src="https://kovacictalent.com/wp-content/uploads/2025/05/AdobeStock_641731816-scaled.jpeg" alt="Senior professional meeting in modern office">
+            <img src="https://kovacictalent.com/wp-content/uploads/2025/05/AdobeStock_641731816-scaled.jpeg" alt="Reunión de profesionales sénior en una oficina moderna">
           </div>
-          <span class="pill">10+ Years of Experience</span>
-          <h1>We Are a <span class="accent">Recruitment Partner</span> for High-Growth Companies</h1>
-          <p class="sub">We help organizations across EMEA & LATAM identify and attract exceptional leaders and senior specialists, combining rigorous search methods with modern, ethical AI to deliver results that endure.</p>
+          <span class="pill">Más de 10 años de experiencia</span>
+          <h1>Somos un <span class="accent">socio de reclutamiento</span> para compañías de alto crecimiento</h1>
+          <p class="sub">Ayudamos a las organizaciones de EMEA y LATAM a identificar y atraer líderes excepcionales y especialistas sénior, combinando métodos de búsqueda rigurosos con una IA moderna y ética para ofrecer resultados que perduran.</p>
           <div class="cta-row">
-            <a class="btn btn-primary" href="#contact">Start Your Search</a>
-            <a class="btn btn-ghost" href="#process">See Our Process</a>
+            <a class="btn btn-primary" href="#contact">Comienza tu búsqueda</a>
+            <a class="btn btn-ghost" href="#process">Conoce nuestro proceso</a>
           </div>
         </div>
         <div class="hero-slide">
-          <h1>We connect talent with the energy of change</h1>
+          <h1>Conectamos el talento con la energía del cambio</h1>
           <div class="hero-mobile-visual">
-            <img src="https://images.unsplash.com/photo-1551836022-4c4c79ecde51?q=80&w=1200&auto=format&fit=crop" alt="Executive handshake in office">
+            <img src="https://images.unsplash.com/photo-1551836022-4c4c79ecde51?q=80&w=1200&auto=format&fit=crop" alt="Apretón de manos ejecutivo en oficina">
           </div>
-          <span class="pill">Results That Stick</span>
-          <h1>85% 12-Month Retention</h1>
-          <p class="sub">Our placements thrive long term, with four out of five leaders still in role after the first year.</p>
+          <span class="pill">Resultados que perduran</span>
+          <h1>85% de retención a 12 meses</h1>
+          <p class="sub">Nuestras incorporaciones prosperan a largo plazo, con cuatro de cada cinco líderes permaneciendo en el puesto tras el primer año.</p>
           <div class="cta-row">
-            <a class="btn btn-primary" href="#process">See Our Process</a>
-            <a class="btn btn-ghost" href="#contact">Start Your Search</a>
+            <a class="btn btn-primary" href="#process">Conoce nuestro proceso</a>
+            <a class="btn btn-ghost" href="#contact">Comienza tu búsqueda</a>
           </div>
         </div>
         <div class="hero-slide">
-          <h1>We connect talent with the energy of change</h1>
+          <h1>Conectamos el talento con la energía del cambio</h1>
           <div class="hero-mobile-visual">
-            <img src="https://kovacictalent.com/wp-content/uploads/2025/05/AdobeStock_1035652596-scaled.jpeg?q=80&w=1200&auto=format&fit=crop" alt="Team collaboration at work">
+            <img src="https://kovacictalent.com/wp-content/uploads/2025/05/AdobeStock_1035652596-scaled.jpeg?q=80&w=1200&auto=format&fit=crop" alt="Colaboración de equipo en el trabajo">
           </div>
-          <span class="pill">Improve Your CV</span>
-          <h1>Personal, ATS-Friendly CV Feedback</h1>
-          <p class="sub">Upload your CV to receive clear, actionable suggestions tailored to your role and sector.</p>
+          <span class="pill">Mejora tu CV</span>
+          <h1>Retroalimentación personal de CV compatible con ATS</h1>
+          <p class="sub">Sube tu CV para recibir sugerencias claras y accionables adaptadas a tu rol y sector.</p>
           <div class="cta-row">
-            <a class="btn btn-primary" href="http://www.kovacictalent.com/mejoracv">Improve My CV</a>
-            <a class="btn btn-ghost" href="#contact">Start Your Search</a>
+            <a class="btn btn-primary" href="http://www.kovacictalent.com/mejoracv">Mejorar mi CV</a>
+            <a class="btn btn-ghost" href="#contact">Comienza tu búsqueda</a>
           </div>
         </div>
-        <div class="slider-dots" aria-label="Hero carousel navigation">
+        <div class="slider-dots" aria-label="Navegación del carrusel principal">
           <span class="dot is-active" aria-hidden="true"></span>
           <span class="dot" aria-hidden="true"></span>
           <span class="dot" aria-hidden="true"></span>
@@ -499,9 +499,9 @@
       <div class="hero-visual">
         <div class="ring" aria-hidden="true"></div>
         <div class="photo">
-          <img class="is-active" src="https://kovacictalent.com/wp-content/uploads/2025/05/AdobeStock_641731816-scaled.jpeg" alt="Senior professional meeting in modern office">
-          <img src="https://images.unsplash.com/photo-1551836022-4c4c79ecde51?q=80&w=1200&auto=format&fit=crop" alt="Executive handshake in office">
-          <img src="https://kovacictalent.com/wp-content/uploads/2025/05/AdobeStock_1035652596-scaled.jpeg?q=80&w=1200&auto=format&fit=crop" alt="Team collaboration at work">
+          <img class="is-active" src="https://kovacictalent.com/wp-content/uploads/2025/05/AdobeStock_641731816-scaled.jpeg" alt="Reunión de profesionales sénior en una oficina moderna">
+          <img src="https://images.unsplash.com/photo-1551836022-4c4c79ecde51?q=80&w=1200&auto=format&fit=crop" alt="Apretón de manos ejecutivo en oficina">
+          <img src="https://kovacictalent.com/wp-content/uploads/2025/05/AdobeStock_1035652596-scaled.jpeg?q=80&w=1200&auto=format&fit=crop" alt="Colaboración de equipo en el trabajo">
         </div>
       </div>
     </div>
@@ -510,25 +510,25 @@
   <!-- SECTORS -->
   <section id="sectors" class="section-beige">
     <div class="container">
-      <h2 class="section-title"><span class="values-title">Sectors</span></h2>
-      <p class="lead">Deep networks in technology and renewable energy, plus adjacent industries.</p>
+      <h2 class="section-title"><span class="values-title">Sectores</span></h2>
+      <p class="lead">Redes profundas en tecnología y energías renovables, además de industrias afines.</p>
       <button class="mobile-fold-toggle fold-center" type="button" data-fold-target="#sectors-fold" aria-expanded="false">
-        <span class="fold-label">Read more</span>
+        <span class="fold-label">Leer más</span>
         <span class="fold-icon" aria-hidden="true"></span>
       </button>
       <div class="mobile-fold-content" id="sectors-fold">
         <div class="grid g-4">
-          <div class="card"><h3>Technology</h3><p>Engineering, Data, Security, Product & Platform.</p></div>
-          <div class="card"><h3>Renewables</h3><p>Solar, Wind, BESS, Grid & Hydrogen.</p></div>
-          <div class="card"><h3>Financial Services</h3><p>PE/VC, project finance, asset management.</p></div>
-          <div class="card"><h3>Industrial & Ops</h3><p>EPC, supply chain, operations leadership.</p></div>
+          <div class="card"><h3>Tecnología</h3><p>Ingeniería, datos, seguridad, producto y plataforma.</p></div>
+          <div class="card"><h3>Energías renovables</h3><p>Solar, eólica, BESS, red e hidrógeno.</p></div>
+          <div class="card"><h3>Servicios financieros</h3><p>PE/VC, project finance, gestión de activos.</p></div>
+          <div class="card"><h3>Industrial y Operaciones</h3><p>EPC, cadena de suministro, liderazgo operativo.</p></div>
         </div>
         <div class="sector-slider">
           <div class="sector-track">
-            <img src="https://kovacictalent.com/wp-content/uploads/2025/09/8478.jpg" alt="Technology sector">
-            <img src="https://kovacictalent.com/wp-content/uploads/2025/09/landscape-with-windmills-scaled.jpg" alt="Renewable energy sector">
-            <img src="https://kovacictalent.com/wp-content/uploads/2025/09/template_21-scaled.png" alt="Financial services sector">
-            <img src="https://kovacictalent.com/wp-content/uploads/2025/09/large-vecteezy_confident-factory-worker-using-digital-tablet-in-industrial_47268909_large.jpg" alt="Industrial operations sector">
+            <img src="https://kovacictalent.com/wp-content/uploads/2025/09/8478.jpg" alt="Sector tecnológico">
+            <img src="https://kovacictalent.com/wp-content/uploads/2025/09/landscape-with-windmills-scaled.jpg" alt="Sector de energías renovables">
+            <img src="https://kovacictalent.com/wp-content/uploads/2025/09/template_21-scaled.png" alt="Sector de servicios financieros">
+            <img src="https://kovacictalent.com/wp-content/uploads/2025/09/large-vecteezy_confident-factory-worker-using-digital-tablet-in-industrial_47268909_large.jpg" alt="Sector de operaciones industriales">
           </div>
         </div>
       </div>
@@ -542,34 +542,34 @@
           <div class="about-visual">
             <div class="ring" aria-hidden="true"></div>
             <div class="photo">
-              <img src="https://kovacictalent.com/wp-content/uploads/2025/09/Alan2.png" alt="Senior professional meeting in modern office">
+              <img src="https://kovacictalent.com/wp-content/uploads/2025/09/Alan2.png" alt="Reunión de profesionales sénior en una oficina moderna">
             </div>
           </div>
           <div class="about-content">
-            <h2 class="section-title"><span class="values-title">About us</span></h2>
-            <p class="about-intro">At Kovacic, we are a young firm backed by a team with decades of experience in international executive search. We embrace a boutique model where cutting-edge technology and artificial intelligence enhance our processes with greater precision and agility, always as a complement to what matters most: human insight and close relationships with executives and candidates.</p>
-            <p class="about-lead">Our identity is expressed through two brands:</p>
+            <h2 class="section-title"><span class="values-title">Sobre nosotros</span></h2>
+            <p class="about-intro">En Kovacic somos una firma joven respaldada por un equipo con décadas de experiencia en la búsqueda ejecutiva internacional. Adoptamos un modelo boutique en el que la tecnología de vanguardia y la inteligencia artificial potencian nuestros procesos con mayor precisión y agilidad, siempre como complemento de lo que más importa: el criterio humano y la relación cercana con directivos y candidatos.</p>
+            <p class="about-lead">Nuestra identidad se expresa a través de dos marcas:</p>
             <ul>
-              <li><strong>Kovacic Talent</strong>, focused on technical positions, middle management, and key professionals who sustain growth.</li>
-              <li><strong>Kovacic Executive</strong>, specialized in the search for senior leaders, executives, and board members with a global vision.</li>
+              <li><strong>Kovacic Talent</strong>, enfocada en posiciones técnicas, mandos intermedios y profesionales clave que sostienen el crecimiento.</li>
+              <li><strong>Kovacic Executive</strong>, especializada en la búsqueda de líderes sénior, ejecutivos y miembros de consejo con visión global.</li>
             </ul>
             <button class="mobile-fold-toggle fold-center" type="button" data-fold-target="#about-fold" aria-expanded="false">
-              <span class="fold-label">Read more</span>
+              <span class="fold-label">Leer más</span>
               <span class="fold-icon" aria-hidden="true"></span>
             </button>
           </div>
           <div class="about-details mobile-fold-content" id="about-fold">
 
-            <p class="about-lead">Our main divisions:</p>
+            <p class="about-lead">Nuestras principales divisiones:</p>
             <ul>
-              <li>🔹 <strong>Executive Search &amp; Talent Acquisition</strong> &ndash; Strategic and technical leadership recruitment.</li>
-              <li>🔹 <strong>Board &amp; Governance</strong> &ndash; Selection of board members and advisory boards with international experience.</li>
-              <li>🔹 <strong>Leadership Development</strong> &ndash; Succession planning, leadership programs, and executive coaching.</li>
-              <li>🔹 <strong>Market Intelligence</strong> &ndash; Talent mapping, benchmarking, and market analysis.</li>
+              <li>🔹 <strong>Executive Search &amp; Talent Acquisition</strong> &ndash; Reclutamiento de liderazgo estratégico y técnico.</li>
+              <li>🔹 <strong>Board &amp; Governance</strong> &ndash; Selección de miembros de consejo y advisory boards con experiencia internacional.</li>
+              <li>🔹 <strong>Leadership Development</strong> &ndash; Planificación de sucesión, programas de liderazgo y coaching ejecutivo.</li>
+              <li>🔹 <strong>Market Intelligence</strong> &ndash; Mapeo de talento, benchmarking y análisis de mercado.</li>
             </ul>
-            <p>Within these divisions, we operate across core sectors: finance, infrastructure, technology, laboratories, hospitality, mining, and energy, with a dedicated team of specialists in each area, ensuring deep industry knowledge and highly effective processes.</p>
-            <p>Our value lies not only in identifying talent but in being a close partner that creates positive impact in the labor market. We work every day on continuous improvement and on delivering a distinctive experience for both candidates and clients, building trust, generating concrete results, and contributing to long-term growth.</p>
-            <p class="about-locations">Our strengths in talent development are anchored in the world&rsquo;s most influential business hubs: New York, Paris, Madrid, Barcelona, Berlin, Rome, Amsterdam, Oslo, Stockholm, Mexico City, São Paulo, Santiago de Chile, Lima, Panama, Shanghai, and Hong Kong.</p>
+            <p>Dentro de estas divisiones operamos en sectores clave como finanzas, infraestructura, tecnología, laboratorios, hostelería, minería y energía, con un equipo especializado en cada área que garantiza un conocimiento profundo de la industria y procesos altamente efectivos.</p>
+            <p>Nuestro valor radica no solo en identificar talento, sino en ser un socio cercano que genera un impacto positivo en el mercado laboral. Trabajamos cada día en la mejora continua y en ofrecer una experiencia diferencial tanto para candidatos como para clientes, construyendo confianza, generando resultados concretos y contribuyendo al crecimiento a largo plazo.</p>
+            <p class="about-locations">Nuestras fortalezas en desarrollo de talento se apoyan en los centros de negocios más influyentes del mundo: Nueva York, París, Madrid, Barcelona, Berlín, Roma, Ámsterdam, Oslo, Estocolmo, Ciudad de México, São Paulo, Santiago de Chile, Lima, Panamá, Shanghái y Hong Kong.</p>
           </div>
         </div>
       </div>
@@ -577,37 +577,36 @@
 
     <!-- VALUES -->
     <section id="Values" class="container">
-    <h2 class="section-title"><span class="values-title">Our Values</span></h2>
+    <h2 class="section-title"><span class="values-title">Nuestros valores</span></h2>
     <p class="lead" style="text-align: center; max-width: 800px; margin: 20px auto;">
-      At <strong>Kovacic Executive Talent Research</strong>, our values guide everything we do.
-      They define <strong>how we work</strong>, how we build <strong>relationships</strong>, and how we create
-      lasting <strong>impact</strong> for our clients and candidates.
+      En <strong>Kovacic Executive Talent Research</strong>, nuestros valores guían todo lo que hacemos.
+      Definen <strong>cómo trabajamos</strong>, cómo construimos <strong>relaciones</strong> y cómo generamos un <strong>impacto</strong> duradero para nuestros clientes y candidatos.
     </p>
     <button class="mobile-fold-toggle fold-center" type="button" data-fold-target="#values-fold" aria-expanded="false">
-      <span class="fold-label">Read more</span>
+      <span class="fold-label">Leer más</span>
       <span class="fold-icon" aria-hidden="true"></span>
     </button>
       <div class="mobile-fold-content" id="values-fold">
       <div class="grid values-grid">
       <div class="card">
-        <h3>Excellence</h3>
-        <p>We commit to the <strong>highest standards</strong> at every stage of the process, delivering results that generate <strong>real impact</strong> for organizations.</p>
+        <h3>Excelencia</h3>
+        <p>Nos comprometemos con los <strong>estándares más altos</strong> en cada etapa del proceso, entregando resultados que generan un <strong>impacto real</strong> en las organizaciones.</p>
       </div>
       <div class="card">
-        <h3>Trust</h3>
-        <p>We build <strong>strong and lasting relationships</strong> based on <strong>transparency</strong>, respect, and confidentiality.</p>
+        <h3>Confianza</h3>
+        <p>Construimos <strong>relaciones sólidas y duraderas</strong> basadas en la <strong>transparencia</strong>, el respeto y la confidencialidad.</p>
       </div>
       <div class="card">
-        <h3>Human Vision</h3>
-        <p>We believe in the <strong>transformative power of leadership</strong>. We seek talent that <strong>inspires, mobilizes</strong>, and builds <strong>sustainable cultures</strong>.</p>
+        <h3>Visión humana</h3>
+        <p>Creemos en el <strong>poder transformador del liderazgo</strong>. Buscamos talento que <strong>inspire, movilice</strong> y construya <strong>culturas sostenibles</strong>.</p>
       </div>
       <div class="card">
-        <h3>Global Perspective</h3>
-        <p>We operate <strong>without borders</strong>, combining an <strong>international outlook</strong> with deep understanding of <strong>local contexts</strong>.</p>
+        <h3>Perspectiva global</h3>
+        <p>Operamos <strong>sin fronteras</strong>, combinando una <strong>visión internacional</strong> con un profundo entendimiento de los <strong>contextos locales</strong>.</p>
       </div>
       <div class="card">
-        <h3>Adaptability</h3>
-        <p>We respond with <strong>agility</strong> to change, recognizing that each organization is <strong>unique</strong> and requires <strong>tailored solutions</strong>.</p>
+        <h3>Adaptabilidad</h3>
+        <p>Respondemos con <strong>agilidad</strong> al cambio, reconociendo que cada organización es <strong>única</strong> y requiere <strong>soluciones a medida</strong>.</p>
       </div>
     </div>
     </div>
@@ -616,12 +615,12 @@
   <!-- PROCESS -->
   <section id="process" class="section-beige">
     <div class="container">
-      <h2 class="section-title"><span class="values-title">How We Work</span></h2>
+      <h2 class="section-title"><span class="values-title">Cómo trabajamos</span></h2>
       <div class="process-block">
         <div class="process-header">
-          <p class="lead lead-lg"><strong>Classic Executive Search:</strong> Transparent stages with measurable outcomes, from kickoff to signed offer.</p>
+          <p class="lead lead-lg"><strong>Búsqueda ejecutiva clásica:</strong> etapas transparentes con resultados medibles, desde el arranque hasta la oferta firmada.</p>
           <button class="mobile-fold-toggle fold-center" type="button" data-fold-target="#process-classic" aria-expanded="false">
-            <span class="fold-label">Read more</span>
+            <span class="fold-label">Leer más</span>
             <span class="fold-icon" aria-hidden="true"></span>
           </button>
         </div>
@@ -629,32 +628,32 @@
           <div class="grid g-4 mobile-two-cols">
             <div class="card">
               <svg viewBox="0 0 24 24" ...></svg>
-              <strong>01 • Discovery</strong>
-              <p>Deep dive into success profile, cultural fit, leadership traits, and role context.</p>
+              <strong>01 • Descubrimiento</strong>
+              <p>Análisis profundo del perfil de éxito, el encaje cultural, las competencias de liderazgo y el contexto del puesto.</p>
             </div>
             <div class="card">
               <svg viewBox="0 0 24 24" ...></svg>
-              <strong>02 • Mapping</strong>
-              <p>Manual market research, direct headhunting, and building a validated longlist.</p>
+              <strong>02 • Mapeo</strong>
+              <p>Investigación de mercado manual, headhunting directo y construcción de una longlist validada.</p>
             </div>
             <div class="card">
               <svg viewBox="0 0 24 24" ...></svg>
-              <strong>03 • Shortlist</strong>
-              <p>Structured interviews, detailed candidate assessments, and weekly progress reports.</p>
+              <strong>03 • Lista corta</strong>
+              <p>Entrevistas estructuradas, evaluaciones detalladas de candidatos e informes de progreso semanales.</p>
             </div>
             <div class="card">
               <svg viewBox="0 0 24 24" ...></svg>
-              <strong>04 • Close</strong>
-              <p>Offer strategy, expectation alignment, and onboarding support.</p>
+              <strong>04 • Cierre</strong>
+              <p>Estrategia de oferta, alineación de expectativas y acompañamiento en la incorporación.</p>
             </div>
           </div>
           <div class="why-choose">
-            <h3>Why choose the Classic Way?</h3>
+            <h3>¿Por qué elegir el enfoque clásico?</h3>
             <ul>
-              <li>Best for highly confidential or niche roles where trust and discretion matter most.</li>
-              <li>Relies on deep human networks, relationships, and proven headhunting practices.</li>
-              <li>Ensures cultural alignment through rigorous personal validation at every stage.</li>
-              <li>Ideal when precision, experience, and tailored judgment outweigh speed.</li>
+              <li>Ideal para roles altamente confidenciales o de nicho donde la confianza y la discreción son fundamentales.</li>
+              <li>Se apoya en redes humanas profundas, relaciones y prácticas de headhunting probadas.</li>
+              <li>Asegura el alineamiento cultural mediante una validación personal rigurosa en cada etapa.</li>
+              <li>Perfecto cuando la precisión, la experiencia y el criterio a medida pesan más que la velocidad.</li>
             </ul>
           </div>
         </div>
@@ -662,9 +661,9 @@
 
       <div class="process-block">
         <div class="process-header">
-          <p class="lead lead-lg"><strong>AI-Enhanced Search:</strong> Blending human expertise with advanced technology to accelerate results.</p>
+          <p class="lead lead-lg"><strong>Búsqueda potenciada con IA:</strong> combinamos la experiencia humana con tecnología avanzada para acelerar los resultados.</p>
           <button class="mobile-fold-toggle fold-center" type="button" data-fold-target="#process-ai" aria-expanded="false">
-            <span class="fold-label">Read more</span>
+            <span class="fold-label">Leer más</span>
             <span class="fold-icon" aria-hidden="true"></span>
           </button>
         </div>
@@ -672,32 +671,32 @@
           <div class="grid g-4 mobile-two-cols">
             <div class="card">
               <svg viewBox="0 0 24 24" ...></svg>
-              <strong>01 • Discovery</strong>
-              <p>Success profile, culture signals, timeline and <strong>AI-based role calibration</strong>.</p>
+              <strong>01 • Descubrimiento</strong>
+              <p>Perfil de éxito, señales culturales, calendario y <strong>calibración del puesto basada en IA</strong>.</p>
             </div>
             <div class="card">
               <svg viewBox="0 0 24 24" ...></svg>
-              <strong>02 • Mapping</strong>
-              <p><strong>AI-driven market scanning + human validation</strong>, delivering a smarter longlist faster.</p>
+              <strong>02 • Mapeo</strong>
+              <p><strong>Exploración de mercado impulsada por IA + validación humana</strong>, entregando una longlist más inteligente con mayor rapidez.</p>
             </div>
             <div class="card">
               <svg viewBox="0 0 24 24" ...></svg>
-              <strong>03 • Shortlist</strong>
-              <p>Structured interviews, predictive scorecards, and live dashboards with <strong>weekly AI-powered insights</strong>.</p>
+              <strong>03 • Lista corta</strong>
+              <p>Entrevistas estructuradas, scorecards predictivos y paneles en vivo con <strong>insights semanales potenciados por IA</strong>.</p>
             </div>
             <div class="card">
               <svg viewBox="0 0 24 24" ...></svg>
-              <strong>04 • Close</strong>
-              <p>Offer strategy, expectation alignment, onboarding support, <strong>plus ongoing data-driven retention insights</strong>.</p>
+              <strong>04 • Cierre</strong>
+              <p>Estrategia de oferta, alineación de expectativas, acompañamiento en la incorporación y <strong>seguimiento continuo con insights de retención basados en datos</strong>.</p>
             </div>
           </div>
           <div class="why-choose">
-            <h3>Why choose the AI-Enhanced Way?</h3>
+            <h3>¿Por qué elegir el enfoque potenciado con IA?</h3>
             <ul>
-              <li>Speeds up search with real-time data and AI-powered talent mapping.</li>
-              <li>Uncovers hidden talent pools across broader geographies and industries.</li>
-              <li>Provides measurable insights via scorecards, dashboards, and analytics.</li>
-              <li>Perfect when you need scalability, transparency, and faster decision-making.</li>
+              <li>Acelera la búsqueda con datos en tiempo real y mapeo de talento potenciado por IA.</li>
+              <li>Revela bolsas de talento ocultas en geografías e industrias más amplias.</li>
+              <li>Aporta insights medibles mediante scorecards, paneles y analíticas.</li>
+              <li>Perfecto cuando necesitas escalabilidad, transparencia y decisiones más rápidas.</li>
             </ul>
           </div>
         </div>
@@ -707,10 +706,10 @@
 
   <!-- INSIGHTS -->
   <section id="processes" class="container">
-    <h2 class="section-title"><span class="values-title">Latest processes</span></h2>
-    <p class="lead">The latest published processes</p>
+    <h2 class="section-title"><span class="values-title">Procesos más recientes</span></h2>
+    <p class="lead">Los procesos publicados más recientes</p>
 <div style="margin:1rem 0; text-align:center;">
-  <a class="btn btn-primary" href="https://kovacictalent.com/procesos-activos/">More opportunities</a>
+  <a class="btn btn-primary" href="https://kovacictalent.com/procesos-activos/">Más oportunidades</a>
 </div>
 
     <div id="blog-posts" class="grid g-3"></div>
@@ -718,22 +717,22 @@
 
   <!-- CONTACT / CTA -->
   <section id="contact" class="container">
-    <h2 class="section-title"><span class="values-title">Ready to Start?</span></h2>
-    <p class="lead">Tell us what success looks like, we’ll build a search around it.</p>
+    <h2 class="section-title"><span class="values-title">¿Listo para comenzar?</span></h2>
+    <p class="lead">Cuéntanos cómo luce el éxito y construiremos una búsqueda a su medida.</p>
     <div class="grid contact-grid">
       <div class="card" style="display:grid;gap:10px">
-        <p class="muted">We'd love to hear from you, expand below to send us a message.</p>
+        <p class="muted">Nos encantaría saber de ti; despliega a continuación para enviarnos un mensaje.</p>
         <details>
-          <summary style="cursor:pointer;font-weight:600">Open contact form</summary>
+          <summary style="cursor:pointer;font-weight:600">Abrir formulario de contacto</summary>
           [contact-form-7 id="e7e9470" title="Sin título"]
         </details>
       </div>
       <div class="card" style="display:grid;gap:10px">
-        <h3>Contact</h3>
+        <h3>Contacto</h3>
         <p class="muted">📞 +34 611 897 294<br>✉️ info@kovacictalent.com<br>📍 Madrid · Barcelona · Santiago</p>
         <div style="display:flex;gap:10px;align-items:center">
-          <span class="pill">Avg shortlist in 12 days</span>
-          <span class="pill">Global reach</span>
+          <span class="pill">Lista corta promedio en 12 días</span>
+          <span class="pill">Alcance global</span>
         </div>
       </div>
     </div>
@@ -743,29 +742,29 @@
   <footer>
     <div class="container footer-inner">
       <div>
-        <p style="color:#94a3b8;max-width:58ch">Executive search and senior specialist recruitment across Technology and Renewable Energy. Boutique service, global reach.</p>
+        <p style="color:#94a3b8;max-width:58ch">Búsqueda ejecutiva y reclutamiento de especialistas sénior en Tecnología y Energías Renovables. Servicio boutique, alcance global.</p>
       </div>
       <div>
-        <form class="newsletter" onsubmit="event.preventDefault(); alert('Subscribed!');">
-          <input type="email" required placeholder="Subscribe with your email">
-          <button type="submit">Subscribe</button>
+        <form class="newsletter" onsubmit="event.preventDefault(); alert('¡Suscripción completada!');">
+          <input type="email" required placeholder="Suscríbete con tu correo electrónico">
+          <button type="submit">Suscribirme</button>
         </form>
       </div>
     </div>
     <div class="container mini">
-      © <span id="y"></span> Kovacic Talent. All rights reserved · <a href="https://kovacictalent.com/privacy-terms/#privacy" style="color:#cbd5e1">Privacy</a> · <a href="https://kovacictalent.com/privacy-terms/#terms" style="color:#cbd5e1">Terms</a>
+      © <span id="y"></span> Kovacic Talent. Todos los derechos reservados · <a href="https://kovacictalent.com/privacy-terms/#privacy" style="color:#cbd5e1">Privacidad</a> · <a href="https://kovacictalent.com/privacy-terms/#terms" style="color:#cbd5e1">Términos</a>
     </div>
   </footer>
 
   <div class="cookie-banner" data-cookie-banner role="dialog" aria-labelledby="cookie-banner-title" aria-describedby="cookie-banner-desc">
     <div class="cookie-banner-text">
-      <strong id="cookie-banner-title">Your privacy matters</strong>
-      <p id="cookie-banner-desc">We use cookies to keep our site reliable, understand performance, and tailor marketing. Adjust your preferences at any time.</p>
+      <strong id="cookie-banner-title">Tu privacidad importa</strong>
+      <p id="cookie-banner-desc">Utilizamos cookies para mantener nuestro sitio confiable, comprender el rendimiento y personalizar el marketing. Ajusta tus preferencias en cualquier momento.</p>
     </div>
     <div class="cookie-banner-actions">
-      <button type="button" class="cookie-btn cookie-btn-link" data-cookie-open>Preferences</button>
-      <button type="button" class="cookie-btn cookie-btn-secondary" data-cookie-reject>Reject</button>
-      <button type="button" class="cookie-btn cookie-btn-primary" data-cookie-accept>Accept</button>
+      <button type="button" class="cookie-btn cookie-btn-link" data-cookie-open>Preferencias</button>
+      <button type="button" class="cookie-btn cookie-btn-secondary" data-cookie-reject>Rechazar</button>
+      <button type="button" class="cookie-btn cookie-btn-primary" data-cookie-accept>Aceptar</button>
     </div>
   </div>
 
@@ -773,15 +772,15 @@
     <div class="cookie-modal-backdrop" data-cookie-close></div>
     <div class="cookie-modal-content" role="document">
       <header class="cookie-modal-header">
-        <h2 id="cookie-modal-title">Cookie preferences</h2>
-        <button type="button" class="cookie-close" data-cookie-close aria-label="Close cookie preferences"><span aria-hidden="true">&times;</span></button>
+        <h2 id="cookie-modal-title">Preferencias de cookies</h2>
+        <button type="button" class="cookie-close" data-cookie-close aria-label="Cerrar preferencias de cookies"><span aria-hidden="true">&times;</span></button>
       </header>
-      <p class="cookie-modal-intro">Control how we use optional cookies. Essential cookies are always active so that the site works correctly.</p>
+      <p class="cookie-modal-intro">Controla cómo usamos las cookies opcionales. Las cookies esenciales siempre están activas para que el sitio funcione correctamente.</p>
       <div class="cookie-options">
         <label class="cookie-row cookie-row-disabled">
           <span class="cookie-row-text">
-            <span class="cookie-row-title">Essential</span>
-            <span class="cookie-row-desc">Required for things like navigation, security, and saving your choices.</span>
+            <span class="cookie-row-title">Esenciales</span>
+            <span class="cookie-row-desc">Necesarias para aspectos como la navegación, la seguridad y guardar tus elecciones.</span>
           </span>
           <span class="cookie-switch">
             <input type="checkbox" data-cookie-toggle="essential" checked disabled>
@@ -790,8 +789,8 @@
         </label>
         <label class="cookie-row">
           <span class="cookie-row-text">
-            <span class="cookie-row-title">Analytics</span>
-            <span class="cookie-row-desc">Helps us understand site traffic so we can make continuous improvements.</span>
+            <span class="cookie-row-title">Analíticas</span>
+            <span class="cookie-row-desc">Nos ayudan a entender el tráfico del sitio para aplicar mejoras continuas.</span>
           </span>
           <span class="cookie-switch">
             <input type="checkbox" data-cookie-toggle="analytics" data-focus-first>
@@ -801,7 +800,7 @@
         <label class="cookie-row">
           <span class="cookie-row-text">
             <span class="cookie-row-title">Marketing</span>
-            <span class="cookie-row-desc">Enables personalised content and measures the effectiveness of campaigns.</span>
+            <span class="cookie-row-desc">Permiten contenido personalizado y miden la efectividad de las campañas.</span>
           </span>
           <span class="cookie-switch">
             <input type="checkbox" data-cookie-toggle="marketing">
@@ -810,8 +809,8 @@
         </label>
       </div>
       <div class="cookie-modal-actions">
-        <button type="button" class="cookie-btn cookie-btn-secondary" data-cookie-close>Cancel</button>
-        <button type="button" class="cookie-btn cookie-btn-primary" data-cookie-save>Save preferences</button>
+        <button type="button" class="cookie-btn cookie-btn-secondary" data-cookie-close>Cancelar</button>
+        <button type="button" class="cookie-btn cookie-btn-primary" data-cookie-save>Guardar preferencias</button>
       </div>
     </div>
   </div>
@@ -911,8 +910,8 @@
       const toggles = document.querySelectorAll('[data-fold-target]');
       if(!toggles.length) return;
       const mobileQuery = window.matchMedia('(max-width: 640px)');
-      const defaultLabel = 'Read more';
-      const expandedLabel = 'Show less';
+      const defaultLabel = 'Leer más';
+      const expandedLabel = 'Mostrar menos';
 
       const sync = () => {
         toggles.forEach(btn => {
@@ -968,7 +967,7 @@
             ${img ? `<img src="${img}" alt="${p.title.rendered}" style="width:100%;height:160px;object-fit:cover;border-radius:var(--radius);">` : ''}
             <h3>${p.title.rendered}</h3>
             <p>${excerpt}</p>
-            <a href="${p.link}" style="color:var(--accent);font-weight:600;">Read more..</a>
+            <a href="${p.link}" style="color:var(--accent);font-weight:600;">Leer más..</a>
           `;
           container.appendChild(article);
         });
