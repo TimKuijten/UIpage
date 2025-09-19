@@ -122,6 +122,9 @@
     var switcherContainer;
     var englishButton;
     var spanishButton;
+    var navigationWrapper = null;
+    var navigationInterval = null;
+    var navigationObserver = null;
 
     function updateButtonStates() {
         if (!englishButton || !spanishButton) {
@@ -173,38 +176,166 @@
             fallback.appendChild(switcherContainer);
         }
 
-        injectIntoNavigation();
+        ensureNavigationInjection();
         updateButtonStates();
     }
 
-    function injectIntoNavigation() {
-        var navigation = document.querySelector('#primary-menu, nav .primary-menu, nav[aria-label*="Primary" i] .menu, nav[aria-label*="Primary" i], .primary-menu');
-        if (!navigation) {
-            if (switcherContainer) {
-                switcherContainer.classList.remove('kls-switcher--nav');
-            }
+    function ensureNavigationInjection() {
+        if (!switcherContainer) {
             return;
         }
 
-        switcherContainer.classList.add('kls-switcher--nav');
-
-        var linkedInLink = navigation.querySelector('a[href*="linkedin.com" i]');
-        var linkedInItem = linkedInLink ? linkedInLink.closest('li') : null;
-        var containerWrapper;
-
-        if (linkedInItem && linkedInItem.parentNode) {
-            containerWrapper = document.createElement(linkedInItem.nodeName || 'li');
-            containerWrapper.className = (linkedInItem.className ? linkedInItem.className + ' ' : '') + 'kls-switcher__item';
-            containerWrapper.appendChild(switcherContainer);
-            linkedInItem.parentNode.insertBefore(containerWrapper, linkedInItem);
-        } else if (navigation.tagName && navigation.tagName.toLowerCase() === 'ul') {
-            containerWrapper = document.createElement('li');
-            containerWrapper.className = 'menu-item kls-switcher__item';
-            containerWrapper.appendChild(switcherContainer);
-            navigation.appendChild(containerWrapper);
-        } else {
-            navigation.appendChild(switcherContainer);
+        if (injectIntoNavigation()) {
+            return;
         }
+
+        if (!navigationObserver) {
+            try {
+                navigationObserver = new MutationObserver(function() {
+                    if (injectIntoNavigation()) {
+                        stopNavigationWatchers();
+                    }
+                });
+
+                navigationObserver.observe(document.body, { childList: true, subtree: true });
+            } catch (error) {
+                navigationObserver = null;
+            }
+        }
+
+        if (!navigationInterval) {
+            var attempts = 0;
+            navigationInterval = window.setInterval(function() {
+                attempts += 1;
+                if (injectIntoNavigation() || attempts >= 40) {
+                    stopNavigationWatchers();
+                }
+            }, 250);
+        }
+    }
+
+    function stopNavigationWatchers() {
+        if (navigationObserver) {
+            navigationObserver.disconnect();
+            navigationObserver = null;
+        }
+
+        if (navigationInterval) {
+            window.clearInterval(navigationInterval);
+            navigationInterval = null;
+        }
+    }
+
+    function ensureNavigationWrapper(tagName, additionalClasses) {
+        var normalizedTag = (tagName || '').toLowerCase() || 'div';
+
+        if (navigationWrapper && navigationWrapper.tagName.toLowerCase() !== normalizedTag) {
+            if (navigationWrapper.parentNode) {
+                navigationWrapper.parentNode.removeChild(navigationWrapper);
+            }
+            navigationWrapper = null;
+        }
+
+        if (!navigationWrapper) {
+            navigationWrapper = document.createElement(normalizedTag);
+            navigationWrapper.className = 'kls-switcher__item';
+        }
+
+        if (additionalClasses) {
+            additionalClasses.split(/\s+/).forEach(function(className) {
+                if (!className) {
+                    return;
+                }
+
+                if (!navigationWrapper.classList.contains(className)) {
+                    navigationWrapper.classList.add(className);
+                }
+            });
+        }
+
+        if (!navigationWrapper.classList.contains('kls-switcher__item')) {
+            navigationWrapper.classList.add('kls-switcher__item');
+        }
+
+        return navigationWrapper;
+    }
+
+    function injectIntoNavigation() {
+        if (!switcherContainer) {
+            return false;
+        }
+
+        var linkedInLink = document.querySelector('a[href*="linkedin.com" i]');
+        var referenceItem = linkedInLink ? linkedInLink.closest('li, .menu-item, .wp-block-navigation-item') : null;
+        var referenceParent = referenceItem && referenceItem.parentNode ? referenceItem.parentNode : null;
+
+        if (!referenceParent && linkedInLink && linkedInLink.parentNode) {
+            referenceParent = linkedInLink.parentNode;
+        }
+
+        if (referenceParent && document.body.contains(referenceParent)) {
+            var wrapperTag;
+            var wrapperClasses = '';
+
+            if (referenceItem && referenceItem.nodeName) {
+                wrapperTag = referenceItem.nodeName;
+                wrapperClasses = referenceItem.className || '';
+            } else if (referenceParent.nodeName) {
+                wrapperTag = referenceParent.nodeName;
+                wrapperClasses = referenceParent.className || '';
+            }
+
+            var wrapper = ensureNavigationWrapper(wrapperTag, wrapperClasses);
+
+            if (referenceItem && referenceItem.parentNode === referenceParent) {
+                if (wrapper.parentNode !== referenceParent || wrapper.nextSibling !== referenceItem) {
+                    referenceParent.insertBefore(wrapper, referenceItem);
+                }
+            } else if (referenceParent.firstChild) {
+                if (wrapper.parentNode !== referenceParent || wrapper !== referenceParent.firstChild) {
+                    referenceParent.insertBefore(wrapper, referenceParent.firstChild);
+                }
+            } else if (wrapper.parentNode !== referenceParent) {
+                referenceParent.appendChild(wrapper);
+            }
+
+            if (switcherContainer.parentNode !== wrapper) {
+                wrapper.appendChild(switcherContainer);
+            }
+
+            switcherContainer.classList.add('kls-switcher--nav');
+            return true;
+        }
+
+        var navigation = document.querySelector('#primary-menu, nav .primary-menu, nav[aria-label*="primary" i] ul, nav[aria-label*="primary" i] .menu, nav[aria-label*="navigation" i] ul, .primary-menu, .main-header-menu, .menu');
+
+        if (navigation && document.body.contains(navigation)) {
+            var fallbackWrapper;
+            if (navigation.tagName && navigation.tagName.toLowerCase() === 'ul') {
+                fallbackWrapper = ensureNavigationWrapper('li', 'menu-item');
+                if (fallbackWrapper.parentNode !== navigation) {
+                    navigation.appendChild(fallbackWrapper);
+                }
+            } else {
+                fallbackWrapper = ensureNavigationWrapper(navigation.nodeName, navigation.className || '');
+                if (fallbackWrapper.parentNode !== navigation) {
+                    navigation.appendChild(fallbackWrapper);
+                }
+            }
+
+            if (switcherContainer.parentNode !== fallbackWrapper) {
+                fallbackWrapper.appendChild(switcherContainer);
+            }
+
+            switcherContainer.classList.add('kls-switcher--nav');
+            return true;
+        }
+
+        if (switcherContainer) {
+            switcherContainer.classList.remove('kls-switcher--nav');
+        }
+
+        return false;
     }
 
     function init() {
