@@ -297,7 +297,11 @@
             wrapper.classList.add('kls-switcher__item');
             switcher.classList.add('kls-switcher--nav');
             wrapper.appendChild(switcher);
-            parentList.insertBefore(wrapper, navItem);
+            if (navItem.nextSibling) {
+                parentList.insertBefore(wrapper, navItem.nextSibling);
+            } else {
+                parentList.appendChild(wrapper);
+            }
 
             if (portal) {
                 portal.hidden = true;
@@ -318,7 +322,11 @@
             parent.classList.add('kls-switcher__item');
         }
 
-        parent.insertBefore(switcher, linkedinLink);
+        if (linkedinLink.nextSibling) {
+            parent.insertBefore(switcher, linkedinLink.nextSibling);
+        } else {
+            parent.appendChild(switcher);
+        }
 
         if (portal) {
             portal.hidden = true;
