@@ -70,8 +70,8 @@
 }
 
 .kls-switcher__item--logo {
-    margin-left: clamp(0.5rem, 1vw + 0.25rem, 1.25rem);
-    flex-shrink: 0;
+    margin-right: clamp(0.5rem, 1vw + 0.25rem, 1.25rem);
+    flex: 0 0 auto;
 }
 
 .nav .kls-switcher__item--logo {

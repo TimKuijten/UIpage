@@ -288,11 +288,7 @@
             switcher.classList.add('kls-switcher--nav', 'kls-switcher--logo');
             wrapper.appendChild(switcher);
 
-            if (logoElement.nextSibling) {
-                parent.insertBefore(wrapper, logoElement.nextSibling);
-            } else {
-                parent.appendChild(wrapper);
-            }
+            parent.insertBefore(wrapper, logoElement);
 
             if (portal) {
                 portal.hidden = true;

@@ -331,8 +331,8 @@ class Kovacic_Language_Switcher {
 
         $english_setting = $this->current_settings['english_label'] ?? 'EN';
         $spanish_setting = $this->current_settings['spanish_label'] ?? 'ES';
-        $english_label = esc_html($is_nav ? 'EN' : $english_setting);
-        $spanish_label = esc_html($is_nav ? 'ES' : $spanish_setting);
+        $english_label = esc_html($this->get_switcher_label($english_setting, 'EN', 'en'));
+        $spanish_label = esc_html($this->get_switcher_label($spanish_setting, 'ES', 'es'));
         $group_label = __('Language selector', 'kovacic-language-switcher');
 
         ob_start();
@@ -344,6 +344,26 @@ class Kovacic_Language_Switcher {
         <?php
 
         return trim((string) ob_get_clean());
+    }
+
+    private function get_switcher_label($value, string $fallback, string $language_code): string {
+        $label = is_string($value) ? trim($value) : '';
+        if ($label === '') {
+            return $fallback;
+        }
+
+        if (function_exists('mb_strtoupper')) {
+            $label = mb_strtoupper($label, 'UTF-8');
+        } else {
+            $label = strtoupper($label);
+        }
+
+        $length = function_exists('mb_strlen') ? mb_strlen($label, 'UTF-8') : strlen($label);
+        if ($length > 3) {
+            $label = function_exists('mb_strtoupper') ? mb_strtoupper($language_code, 'UTF-8') : strtoupper($language_code);
+        }
+
+        return $label === '' ? $fallback : $label;
     }
 
     private function collect_page_strings(\WP_Post $post): array {
