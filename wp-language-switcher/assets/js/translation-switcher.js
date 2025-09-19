@@ -122,6 +122,7 @@
     var switcherContainer;
     var englishButton;
     var spanishButton;
+    var switcherIndicator;
     var navigationWrapper = null;
     var navigationInterval = null;
     var navigationObserver = null;
@@ -137,11 +138,17 @@
             spanishButton.classList.add(activeClass);
             englishButton.setAttribute('aria-pressed', 'false');
             spanishButton.setAttribute('aria-pressed', 'true');
+            if (switcherIndicator) {
+                switcherIndicator.style.transform = 'translateX(100%)';
+            }
         } else {
             spanishButton.classList.remove(activeClass);
             englishButton.classList.add(activeClass);
             spanishButton.setAttribute('aria-pressed', 'false');
             englishButton.setAttribute('aria-pressed', 'true');
+            if (switcherIndicator) {
+                switcherIndicator.style.transform = 'translateX(0)';
+            }
         }
     }
 
@@ -150,6 +157,10 @@
         switcherContainer.className = 'kls-switcher';
         switcherContainer.setAttribute('role', 'group');
         switcherContainer.setAttribute('aria-label', 'Language selector');
+
+        switcherIndicator = document.createElement('span');
+        switcherIndicator.className = 'kls-switcher__indicator';
+        switcherContainer.appendChild(switcherIndicator);
 
         englishButton = document.createElement('button');
         englishButton.type = 'button';
