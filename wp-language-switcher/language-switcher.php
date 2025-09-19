@@ -2,7 +2,7 @@
 /**
  * Plugin Name: Kovacic Language Switcher
  * Description: Adds a lightweight language switcher to individual pages and lets editors provide translations for on-page strings.
- * Version: 2.1.1
+ * Version: 2.1.2
  * Author: Kovacic Talent
  */
 
@@ -26,7 +26,7 @@ class Kovacic_Language_Switcher {
     }
 
     public function register_assets(): void {
-        $version = '2.1.1';
+        $version = '2.1.2';
         $base_url = plugin_dir_url(__FILE__);
 
         wp_register_style(

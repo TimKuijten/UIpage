@@ -83,3 +83,19 @@
     margin: 0;
 }
 
+.site-header .custom-logo-link,
+.site-header .custom-logo-link img,
+.site-header .wp-block-site-logo,
+.site-header .wp-block-site-logo img,
+.site-header .site-logo,
+.site-header .site-logo img,
+.nav .custom-logo-link,
+.nav .custom-logo-link img,
+.nav .wp-block-site-logo,
+.nav .wp-block-site-logo img,
+.nav .site-logo,
+.nav .site-logo img {
+    flex-shrink: 0;
+    max-width: none;
+}
+
