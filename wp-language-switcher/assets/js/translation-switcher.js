@@ -28,11 +28,11 @@
         return fragment;
     }
 
-    function activateLanguage(root, lang) {
+    function activateLanguage(root, buttonGroup, lang) {
         root.dataset.activeLang = lang;
         document.documentElement.setAttribute('data-kls-lang', lang);
 
-        var buttons = root.querySelectorAll('.kls-switcher__button');
+        var buttons = buttonGroup ? buttonGroup.querySelectorAll('.kls-switcher__button') : [];
         buttons.forEach(function(button) {
             var isActive = button.dataset.lang === lang;
             button.classList.toggle('is-active', isActive);
@@ -74,13 +74,12 @@
         var englishPanelId = 'kls-lang-en';
         var spanishPanelId = 'kls-lang-es';
 
-        var controlsWrapper = document.createElement('div');
-        controlsWrapper.className = 'kls-switcher';
-
         var buttonGroup = document.createElement('div');
         buttonGroup.className = 'kls-switcher__buttons';
         buttonGroup.setAttribute('role', 'tablist');
         buttonGroup.setAttribute('aria-label', root.dataset.label || 'Language selector');
+        var controlsWrapper = document.createElement('div');
+        controlsWrapper.className = 'kls-switcher';
         controlsWrapper.appendChild(buttonGroup);
 
         var panelsWrapper = document.createElement('div');
@@ -111,7 +110,20 @@
         buttonGroup.appendChild(englishButton);
         buttonGroup.appendChild(spanishButton);
 
-        root.appendChild(controlsWrapper);
+        var navCta = document.querySelector('.nav-cta');
+        if (navCta) {
+            controlsWrapper.classList.add('kls-switcher--nav');
+            var linkedIn = navCta.querySelector('.nav-linkedin');
+            if (linkedIn && linkedIn.parentNode === navCta) {
+                linkedIn.insertAdjacentElement('beforebegin', controlsWrapper);
+            } else {
+                navCta.appendChild(controlsWrapper);
+            }
+        } else {
+            controlsWrapper.classList.add('kls-switcher--fallback');
+            root.appendChild(controlsWrapper);
+        }
+
         root.appendChild(panelsWrapper);
 
         buttonGroup.addEventListener('click', function(event) {
@@ -126,7 +138,7 @@
                 return;
             }
 
-            activateLanguage(root, lang);
+            activateLanguage(root, buttonGroup, lang);
         });
 
         buttonGroup.addEventListener('keydown', function(event) {
@@ -152,7 +164,7 @@
             var nextButton = buttons[nextIndex];
             nextButton.focus();
             if (nextButton.dataset.lang) {
-                activateLanguage(root, nextButton.dataset.lang);
+                activateLanguage(root, buttonGroup, nextButton.dataset.lang);
             }
         });
 
@@ -163,7 +175,7 @@
             defaultLang = 'en';
         }
 
-        activateLanguage(root, defaultLang);
+        activateLanguage(root, buttonGroup, defaultLang);
     }
 
     if (document.readyState === 'loading') {

@@ -1,3 +1,4 @@
+
 .kls-switcher-portal {
     display: block;
     width: 100%;
@@ -6,6 +7,10 @@
 .kls-switcher {
     display: flex;
     justify-content: flex-start;
+    margin: 0;
+}
+
+.kls-switcher--fallback {
     margin: 1.5rem 0;
 }
 
@@ -18,6 +23,30 @@
     border-radius: 999px;
     box-shadow: 0 12px 30px rgba(15, 23, 42, 0.12);
     border: 1px solid rgba(15, 23, 42, 0.08);
+}
+
+.kls-switcher--nav {
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.kls-switcher--nav .kls-switcher__buttons {
+    background: rgba(15, 23, 42, 0.08);
+    padding: 0.25rem;
+    box-shadow: none;
+    border: 1px solid rgba(15, 23, 42, 0.14);
+}
+
+.kls-switcher--nav .kls-switcher__button {
+    font-size: 0.85rem;
+    padding: 0.35rem 0.9rem;
+    color: #0f172a;
+}
+
+.kls-switcher--nav .kls-switcher__button:hover,
+.kls-switcher--nav .kls-switcher__button:focus-visible {
+    background: rgba(10, 33, 46, 0.12);
+    color: #0f172a;
 }
 
 .kls-switcher__panels {
