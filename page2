@@ -173,6 +173,7 @@
     .process-block:first-of-type{margin-top:clamp(18px,3.5vw,32px)}
     .process-header{display:flex;align-items:center;justify-content:space-between;gap:18px;flex-wrap:wrap}
     .process-header .lead{margin:0;text-align:left;flex:1 1 260px}
+    .process-header .lead.lead--center{text-align:center;margin-left:auto;margin-right:auto}
     .process-header .mobile-fold-toggle{margin-top:0}
 
     /* Fixed sector slider — 200px tall and each image spans full width */
@@ -619,7 +620,7 @@
       <h2 class="section-title"><span class="values-title">How We Work</span></h2>
       <div class="process-block">
         <div class="process-header">
-          <p class="lead lead-lg"><strong>Classic Executive Search:</strong> Transparent stages with measurable outcomes, from kickoff to signed offer.</p>
+          <p class="lead lead-lg lead--center"><strong>Classic Executive Search:</strong> Transparent stages with measurable outcomes, from kickoff to signed offer.</p>
           <button class="mobile-fold-toggle fold-center" type="button" data-fold-target="#process-classic" aria-expanded="false">
             <span class="fold-label">Read more</span>
             <span class="fold-icon" aria-hidden="true"></span>
@@ -662,7 +663,7 @@
 
       <div class="process-block">
         <div class="process-header">
-          <p class="lead lead-lg"><strong>AI-Enhanced Search:</strong> Blending human expertise with advanced technology to accelerate results.</p>
+          <p class="lead lead-lg lead--center"><strong>AI-Enhanced Search:</strong> Blending human expertise with advanced technology to accelerate results.</p>
           <button class="mobile-fold-toggle fold-center" type="button" data-fold-target="#process-ai" aria-expanded="false">
             <span class="fold-label">Read more</span>
             <span class="fold-icon" aria-hidden="true"></span>
