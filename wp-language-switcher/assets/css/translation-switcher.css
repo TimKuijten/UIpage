@@ -65,6 +65,10 @@
     padding: 0;
 }
 
+.nav .kls-switcher__item {
+    flex: 0 0 auto;
+}
+
 .kls-switcher__item > .kls-switcher {
     flex-shrink: 0;
 }

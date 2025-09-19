@@ -262,16 +262,9 @@
         return true;
     }
 
-    function mountSwitcherNearLogo() {
+    function mountSwitcherNearLogo(switcher, portal) {
         if (document.querySelector('.kls-switcher--logo')) {
             return true;
-        }
-
-        var portal = document.getElementById('kls-switcher-root');
-        var switcher = portal ? portal.querySelector('.kls-switcher') : null;
-
-        if (!switcher) {
-            switcher = document.querySelector('.kls-switcher');
         }
 
         if (!switcher) {
@@ -299,7 +292,30 @@
             return true;
         }
 
-        return mountSwitcherByLinkedIn(switcher, portal);
+        return false;
+    }
+
+    function mountPreferredSwitcherLocation(allowFallback) {
+        var portal = document.getElementById('kls-switcher-root');
+        var switcher = portal ? portal.querySelector('.kls-switcher') : null;
+
+        if (!switcher) {
+            switcher = document.querySelector('.kls-switcher');
+        }
+
+        if (!switcher) {
+            return false;
+        }
+
+        if (mountSwitcherByLinkedIn(switcher, portal)) {
+            return true;
+        }
+
+        if (allowFallback && mountSwitcherNearLogo(switcher, portal)) {
+            return true;
+        }
+
+        return false;
     }
 
     function updateButtonStates() {
@@ -322,7 +338,7 @@
     }
 
     function findSwitcherElements(allowFallback) {
-        if (!mountSwitcherNearLogo() && allowFallback) {
+        if (!mountPreferredSwitcherLocation(allowFallback) && allowFallback) {
             var portal = document.getElementById('kls-switcher-root');
             if (portal) {
                 portal.removeAttribute('hidden');
@@ -389,7 +405,7 @@
                 updateLanguage();
             }
 
-            if (document.querySelector('.kls-switcher--logo')) {
+            if (document.querySelector('.kls-switcher--logo, .kls-switcher--nav')) {
                 return;
             }
 
