@@ -151,28 +151,70 @@
     var spanishButton;
     var initialized = false;
 
-    function mountSwitcherInNav() {
-        var existingNavSwitcher = document.querySelector('.kls-switcher--nav');
-        if (existingNavSwitcher) {
-            return true;
+    function findLogoElement() {
+        var selectors = [
+            '.nav .logo',
+            '.site-header .logo',
+            '.wp-block-site-logo',
+            '.site-branding .custom-logo-link',
+            '.site-branding',
+            '.custom-logo-link',
+            '.site-logo a',
+            '.site-logo'
+        ];
+
+        for (var i = 0; i < selectors.length; i += 1) {
+            var element = document.querySelector(selectors[i]);
+            if (!element) {
+                continue;
+            }
+
+            if (element.tagName && element.tagName.toLowerCase() === 'img' && element.parentElement) {
+                element = element.parentElement;
+            }
+
+            if (element.classList && element.classList.contains('custom-logo-link') && element.parentElement && element.parentElement.classList && element.parentElement.classList.contains('wp-block-site-logo')) {
+                element = element.parentElement;
+            }
+
+            return element;
         }
 
-        var portal = document.getElementById('kls-switcher-root');
-        var switcher = portal ? portal.querySelector('.kls-switcher') : null;
+        return null;
+    }
 
-        if (!switcher) {
-            switcher = document.querySelector('.kls-switcher');
+    function removeEmptyWrapper(originalParent, portal) {
+        if (!originalParent || originalParent === portal) {
+            return;
         }
 
-        if (!switcher) {
-            return false;
+        if (!originalParent.classList || !originalParent.classList.contains('kls-switcher__item')) {
+            return;
         }
 
+        var child = originalParent.firstChild;
+        while (child) {
+            if (child.nodeType === 1) {
+                return;
+            }
+
+            if (child.nodeType === 3 && child.nodeValue && child.nodeValue.trim()) {
+                return;
+            }
+
+            child = child.nextSibling;
+        }
+
+        originalParent.remove();
+    }
+
+    function mountSwitcherByLinkedIn(switcher, portal) {
         var linkedinLink = document.querySelector('a[href*="linkedin.com"]');
         if (!linkedinLink) {
             return false;
         }
 
+        var originalParent = switcher.parentNode;
         var navItem = linkedinLink.closest('li, .wp-block-navigation-item, .menu-item');
         if (navItem && navItem.parentNode) {
             var parentList = navItem.parentNode;
@@ -194,6 +236,8 @@
                 portal.hidden = true;
             }
 
+            removeEmptyWrapper(originalParent, portal);
+
             return true;
         }
 
@@ -206,13 +250,60 @@
         if (parent.classList) {
             parent.classList.add('kls-switcher__item');
         }
+
         parent.insertBefore(switcher, linkedinLink);
 
         if (portal) {
             portal.hidden = true;
         }
 
+        removeEmptyWrapper(originalParent, portal);
+
         return true;
+    }
+
+    function mountSwitcherNearLogo() {
+        if (document.querySelector('.kls-switcher--logo')) {
+            return true;
+        }
+
+        var portal = document.getElementById('kls-switcher-root');
+        var switcher = portal ? portal.querySelector('.kls-switcher') : null;
+
+        if (!switcher) {
+            switcher = document.querySelector('.kls-switcher');
+        }
+
+        if (!switcher) {
+            return false;
+        }
+
+        var logoElement = findLogoElement();
+        if (logoElement && logoElement.parentNode) {
+            var parent = logoElement.parentNode;
+            var wrapper = document.createElement('div');
+            wrapper.classList.add('kls-switcher__item', 'kls-switcher__item--logo');
+
+            var originalParent = switcher.parentNode;
+            switcher.classList.add('kls-switcher--nav', 'kls-switcher--logo');
+            wrapper.appendChild(switcher);
+
+            if (logoElement.nextSibling) {
+                parent.insertBefore(wrapper, logoElement.nextSibling);
+            } else {
+                parent.appendChild(wrapper);
+            }
+
+            if (portal) {
+                portal.hidden = true;
+            }
+
+            removeEmptyWrapper(originalParent, portal);
+
+            return true;
+        }
+
+        return mountSwitcherByLinkedIn(switcher, portal);
     }
 
     function updateButtonStates() {
@@ -235,14 +326,14 @@
     }
 
     function findSwitcherElements(allowFallback) {
-        if (!mountSwitcherInNav() && allowFallback) {
+        if (!mountSwitcherNearLogo() && allowFallback) {
             var portal = document.getElementById('kls-switcher-root');
             if (portal) {
                 portal.removeAttribute('hidden');
             }
         }
 
-        switcherContainer = document.querySelector('.kls-switcher--nav');
+        switcherContainer = document.querySelector('.kls-switcher--logo, .kls-switcher--nav');
 
         if (!switcherContainer && allowFallback) {
             var fallbackPortal = document.getElementById('kls-switcher-root');
@@ -302,7 +393,7 @@
                 updateLanguage();
             }
 
-            if (document.querySelector('.kls-switcher--nav')) {
+            if (document.querySelector('.kls-switcher--logo')) {
                 return;
             }
 

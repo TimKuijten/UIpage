@@ -67,3 +67,17 @@
     flex-shrink: 0;
 }
 
+.kls-switcher__item--logo {
+    margin-left: clamp(0.5rem, 1vw + 0.25rem, 1.25rem);
+    flex-shrink: 0;
+}
+
+.nav .kls-switcher__item--logo {
+    display: inline-flex;
+    align-items: center;
+}
+
+.nav .kls-switcher--logo {
+    margin: 0;
+}
+
