@@ -91,10 +91,3 @@
     padding-inline: 0.85rem;
 }
 
-.kls-switcher-portal {
-    display: none;
-}
-
-.kls-switcher-portal[hidden] {
-    display: none !important;
-}

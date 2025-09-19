@@ -15,12 +15,14 @@ class Kovacic_Language_Switcher {
 
     private ?array $current_settings = null;
     private bool $portal_rendered = false;
+    private bool $nav_switcher_added = false;
 
     public function __construct() {
         add_action('init', [$this, 'register_assets']);
         add_action('add_meta_boxes', [$this, 'register_meta_box']);
         add_action('save_post_page', [$this, 'save_meta_box']);
         add_action('template_redirect', [$this, 'prepare_frontend']);
+        add_filter('wp_nav_menu_items', [$this, 'inject_into_nav_menu'], 10, 2);
     }
 
     public function register_assets(): void {
@@ -235,6 +237,8 @@ class Kovacic_Language_Switcher {
         }
 
         $this->current_settings = $settings;
+        $this->nav_switcher_added = false;
+        $this->portal_rendered = false;
 
         wp_enqueue_style('kls-switcher');
         wp_enqueue_script('kls-switcher');
@@ -251,14 +255,94 @@ class Kovacic_Language_Switcher {
     }
 
     public function render_switcher_portal(): void {
-        if ($this->portal_rendered || empty($this->current_settings)) {
+        if ($this->portal_rendered || empty($this->current_settings) || $this->nav_switcher_added) {
             return;
         }
 
         $this->portal_rendered = true;
         ?>
-        <div id="kls-switcher-root" class="kls-switcher-portal" hidden></div>
+        <div id="kls-switcher-root" class="kls-switcher-portal" hidden>
+            <?php echo $this->get_switcher_markup(false); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
+        </div>
         <?php
+    }
+
+    public function inject_into_nav_menu(string $items, $args): string {
+        if (is_admin() || empty($this->current_settings) || empty($this->current_settings['enabled']) || empty($this->current_settings['strings'])) {
+            return $items;
+        }
+
+        $theme_location = $args->theme_location ?? '';
+        if ($theme_location) {
+            if (strtolower((string) $theme_location) !== 'primary') {
+                return $items;
+            }
+        } else {
+            $menu_id = strtolower((string) ($args->menu_id ?? ''));
+            $menu_class = strtolower((string) ($args->menu_class ?? ''));
+            $identifier = trim($menu_id . ' ' . $menu_class);
+
+            if ($identifier !== '' && strpos($identifier, 'primary') === false) {
+                return $items;
+            }
+        }
+
+        if ($this->nav_switcher_added) {
+            return $items;
+        }
+
+        $markup = $this->get_nav_item_markup();
+        if ($markup === '') {
+            return $items;
+        }
+
+        $pattern = '/(<li[^>]*><a[^>]*href="[^"]*linkedin\.com[^"]*"[^>]*>.*?<\/a>.*?<\/li>)/i';
+        if (preg_match($pattern, $items, $matches)) {
+            $items = str_replace($matches[0], $markup . $matches[0], $items);
+        } else {
+            $items .= $markup;
+        }
+
+        $this->nav_switcher_added = true;
+
+        return $items;
+    }
+
+    private function get_nav_item_markup(): string {
+        $switcher = $this->get_switcher_markup(true);
+        if ($switcher === '') {
+            return '';
+        }
+
+        $classes = apply_filters('kls_nav_item_classes', ['menu-item', 'menu-item-type-custom', 'menu-item-object-custom', 'kls-switcher__item']);
+        $class_attribute = esc_attr(implode(' ', array_unique(array_filter(array_map('sanitize_html_class', $classes)))));
+
+        return sprintf('<li class="%s">%s</li>', $class_attribute, $switcher);
+    }
+
+    private function get_switcher_markup(bool $is_nav): string {
+        if (empty($this->current_settings)) {
+            return '';
+        }
+
+        $default = $this->current_settings['default_language'] ?? 'en';
+        $english_active = $default === 'en';
+        $spanish_active = $default === 'es';
+
+        $english_label = esc_html($this->current_settings['english_label'] ?? __('English', 'kovacic-language-switcher'));
+        $spanish_label = esc_html($this->current_settings['spanish_label'] ?? __('Español', 'kovacic-language-switcher'));
+        $group_label = __('Language selector', 'kovacic-language-switcher');
+
+        ob_start();
+        ?>
+        <div class="kls-switcher<?php echo $is_nav ? ' kls-switcher--nav' : ''; ?>" role="group" aria-label="<?php echo esc_attr($group_label); ?>">
+            <span class="kls-switcher__indicator" aria-hidden="true"></span>
+            <button type="button" class="kls-switcher__button<?php echo $english_active ? ' kls-switcher__button--active' : ''; ?>" data-language="en" aria-pressed="<?php echo $english_active ? 'true' : 'false'; ?>"><?php echo $english_label; ?></button>
+            <button type="button" class="kls-switcher__button<?php echo $spanish_active ? ' kls-switcher__button--active' : ''; ?>" data-language="es" aria-pressed="<?php echo $spanish_active ? 'true' : 'false'; ?>"><?php echo $spanish_label; ?></button>
+        </div>
+        <?php
+
+        return trim((string) ob_get_clean());
     }
 
     private function collect_page_strings(\WP_Post $post): array {
