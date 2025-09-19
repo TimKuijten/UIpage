@@ -1,20 +1,27 @@
+.kls-switcher-portal {
+    display: block;
+    width: 100%;
+}
+
 .kls-switcher {
-    border: 1px solid rgba(15, 23, 42, 0.08);
-    border-radius: 16px;
-    padding: 1.5rem;
-    margin-block: 1.5rem;
-    background: #ffffff;
-    box-shadow: 0 8px 32px rgba(15, 23, 42, 0.06);
+    display: flex;
+    justify-content: flex-start;
+    margin: 1.5rem 0;
 }
 
 .kls-switcher__buttons {
     display: inline-flex;
     align-items: center;
     gap: 0.5rem;
-    background: rgba(15, 23, 42, 0.04);
-    padding: 0.35rem;
+    background: rgba(15, 23, 42, 0.05);
+    padding: 0.4rem;
     border-radius: 999px;
-    margin-bottom: 1.25rem;
+    box-shadow: 0 12px 30px rgba(15, 23, 42, 0.12);
+    border: 1px solid rgba(15, 23, 42, 0.08);
+}
+
+.kls-switcher__panels {
+    width: 100%;
 }
 
 .kls-switcher__button {
@@ -40,10 +47,6 @@
     background: #0a212e;
     color: #ffffff;
     box-shadow: 0 6px 18px rgba(10, 33, 46, 0.25);
-}
-
-.kls-switcher__panels {
-    position: relative;
 }
 
 .kls-switcher__panel {

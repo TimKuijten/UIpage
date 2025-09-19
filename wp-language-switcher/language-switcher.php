@@ -2,7 +2,7 @@
 /**
  * Plugin Name: Kovacic Language Switcher
  * Description: Adds a lightweight language switcher to individual pages and lets editors provide a translated HTML version of the content.
- * Version: 1.0.0
+ * Version: 1.1.0
  * Author: Kovacic Talent
  */
 
@@ -12,16 +12,19 @@ if (!defined('ABSPATH')) {
 
 class Kovacic_Language_Switcher {
     private const META_KEY = '_kls_translations';
+    private ?array $current_settings = null;
+    private bool $portal_rendered = false;
 
     public function __construct() {
         add_action('init', [$this, 'register_assets']);
         add_action('add_meta_boxes', [$this, 'register_meta_box']);
         add_action('save_post_page', [$this, 'save_meta_box']);
-        add_filter('the_content', [$this, 'inject_language_switcher'], 20);
+        add_action('admin_menu', [$this, 'register_admin_page']);
+        add_action('template_redirect', [$this, 'prepare_frontend']);
     }
 
     public function register_assets(): void {
-        $version = '1.0.0';
+        $version = '1.1.0';
         $base_url = plugin_dir_url(__FILE__);
 
         wp_register_style(
@@ -51,15 +54,33 @@ class Kovacic_Language_Switcher {
         );
     }
 
-    public function render_meta_box(\WP_Post $post): void {
-        $saved = get_post_meta($post->ID, self::META_KEY, true);
-        $defaults = [
-            'enabled' => !empty($saved['spanish_content']) || !empty($saved['enabled']),
-            'default_language' => $saved['default_language'] ?? 'en',
+    private function get_page_settings(int $post_id): array {
+        $saved = get_post_meta($post_id, self::META_KEY, true);
+        if (!is_array($saved) || empty($saved['spanish_content'])) {
+            return [];
+        }
+
+        return [
+            'enabled' => !empty($saved['enabled']),
+            'default_language' => in_array($saved['default_language'] ?? 'en', ['en', 'es'], true) ? $saved['default_language'] : 'en',
             'english_label' => $saved['english_label'] ?? __('English', 'kovacic-language-switcher'),
             'spanish_label' => $saved['spanish_label'] ?? __('Español', 'kovacic-language-switcher'),
-            'spanish_content' => $saved['spanish_content'] ?? '',
+            'spanish_content' => $saved['spanish_content'],
         ];
+    }
+
+    private function build_defaults(array $settings = []): array {
+        return [
+            'enabled' => !empty($settings['spanish_content']) || !empty($settings['enabled']),
+            'default_language' => $settings['default_language'] ?? 'en',
+            'english_label' => $settings['english_label'] ?? __('English', 'kovacic-language-switcher'),
+            'spanish_label' => $settings['spanish_label'] ?? __('Español', 'kovacic-language-switcher'),
+            'spanish_content' => $settings['spanish_content'] ?? '',
+        ];
+    }
+
+    public function render_meta_box(\WP_Post $post): void {
+        $defaults = $this->build_defaults($this->get_page_settings($post->ID));
 
         wp_nonce_field('kls_translation_box', 'kls_translation_nonce');
         ?>
@@ -115,18 +136,30 @@ class Kovacic_Language_Switcher {
             return;
         }
 
+        $this->persist_page_settings($post_id, $raw);
+    }
+
+    private function prepare_spanish_content(string $content): string {
+        if (current_user_can('unfiltered_html')) {
+            return $content;
+        }
+
+        return wp_kses_post($content);
+    }
+
+    private function persist_page_settings(int $post_id, array $raw): void {
+        $raw = wp_unslash($raw);
+
         $enabled = !empty($raw['enabled']);
+        $default_language = in_array($raw['default_language'] ?? 'en', ['en', 'es'], true) ? $raw['default_language'] : 'en';
+
         $data = [
             'enabled' => $enabled,
-            'default_language' => in_array($raw['default_language'] ?? 'en', ['en', 'es'], true) ? $raw['default_language'] : 'en',
+            'default_language' => $default_language,
             'english_label' => sanitize_text_field($raw['english_label'] ?? __('English', 'kovacic-language-switcher')),
             'spanish_label' => sanitize_text_field($raw['spanish_label'] ?? __('Español', 'kovacic-language-switcher')),
-            'spanish_content' => $this->prepare_spanish_content($raw['spanish_content'] ?? ''),
+            'spanish_content' => $enabled ? $this->prepare_spanish_content($raw['spanish_content'] ?? '') : '',
         ];
-
-        if (!$enabled) {
-            $data['spanish_content'] = '';
-        }
 
         if (!$data['enabled'] || empty($data['spanish_content'])) {
             delete_post_meta($post_id, self::META_KEY);
@@ -136,61 +169,159 @@ class Kovacic_Language_Switcher {
         update_post_meta($post_id, self::META_KEY, $data);
     }
 
-    private function prepare_spanish_content(string $content): string {
-        $content = wp_unslash($content);
-
-        if (current_user_can('unfiltered_html')) {
-            return $content;
-        }
-
-        return wp_kses_post($content);
+    public function register_admin_page(): void {
+        add_options_page(
+            __('Language Switcher', 'kovacic-language-switcher'),
+            __('Language Switcher', 'kovacic-language-switcher'),
+            'manage_options',
+            'kls-language-switcher',
+            [$this, 'render_admin_page']
+        );
     }
 
-    public function inject_language_switcher(string $content): string {
-        if (!is_singular('page') || !in_the_loop() || !is_main_query()) {
-            return $content;
+    public function render_admin_page(): void {
+        if (!current_user_can('manage_options')) {
+            return;
         }
 
-        $post_id = get_the_ID();
-        $settings = get_post_meta($post_id, self::META_KEY, true);
+        if ('POST' === $_SERVER['REQUEST_METHOD']) {
+            check_admin_referer('kls_save_translations', 'kls_nonce');
 
-        if (empty($settings) || empty($settings['spanish_content'])) {
-            return $content;
+            $payload = $_POST['kls_switcher'] ?? [];
+            $saved = 0;
+
+            foreach ($payload as $page_id => $data) {
+                $page_id = (int) $page_id;
+
+                if ($page_id <= 0 || !current_user_can('edit_page', $page_id)) {
+                    continue;
+                }
+
+                $this->persist_page_settings($page_id, (array) $data);
+                $saved++;
+            }
+
+            if ($saved > 0) {
+                add_settings_error('kls_switcher', 'kls_switcher_saved', sprintf(_n('%d translation updated.', '%d translations updated.', $saved, 'kovacic-language-switcher'), $saved), 'updated');
+            } else {
+                add_settings_error('kls_switcher', 'kls_switcher_none', __('No translations were changed.', 'kovacic-language-switcher'), 'notice-info');
+            }
         }
+
+        settings_errors('kls_switcher');
+
+        $pages = get_pages([
+            'sort_column' => 'post_title',
+            'sort_order' => 'ASC',
+        ]);
+
+        ?>
+        <div class="wrap">
+            <h1><?php esc_html_e('Language Switcher', 'kovacic-language-switcher'); ?></h1>
+            <p><?php esc_html_e('Provide Spanish HTML versions for pages built in the Site Editor.', 'kovacic-language-switcher'); ?></p>
+            <form method="post">
+                <?php wp_nonce_field('kls_save_translations', 'kls_nonce'); ?>
+                <table class="widefat fixed striped">
+                    <thead>
+                        <tr>
+                            <th><?php esc_html_e('Page', 'kovacic-language-switcher'); ?></th>
+                            <th><?php esc_html_e('Settings', 'kovacic-language-switcher'); ?></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    <?php
+                    if (empty($pages)) :
+                        ?>
+                        <tr>
+                            <td colspan="2"><?php esc_html_e('No pages found.', 'kovacic-language-switcher'); ?></td>
+                        </tr>
+                        <?php
+                    else :
+                        foreach ($pages as $page) :
+                            $defaults = $this->build_defaults($this->get_page_settings($page->ID));
+                            ?>
+                            <tr>
+                                <td>
+                                    <strong><?php echo esc_html(get_the_title($page)); ?></strong>
+                                    <p class="description"><?php echo esc_html(get_permalink($page)); ?></p>
+                                </td>
+                                <td>
+                                    <fieldset>
+                                        <label>
+                                            <input type="checkbox" name="kls_switcher[<?php echo esc_attr($page->ID); ?>][enabled]" value="1" <?php checked($defaults['enabled']); ?> />
+                                            <?php esc_html_e('Enable translation', 'kovacic-language-switcher'); ?>
+                                        </label>
+                                    </fieldset>
+                                    <p>
+                                        <label for="kls_default_language_<?php echo esc_attr($page->ID); ?>"><strong><?php esc_html_e('Default language', 'kovacic-language-switcher'); ?></strong></label><br />
+                                        <select id="kls_default_language_<?php echo esc_attr($page->ID); ?>" name="kls_switcher[<?php echo esc_attr($page->ID); ?>][default_language]">
+                                            <option value="en" <?php selected($defaults['default_language'], 'en'); ?>><?php echo esc_html($defaults['english_label']); ?></option>
+                                            <option value="es" <?php selected($defaults['default_language'], 'es'); ?>><?php echo esc_html($defaults['spanish_label']); ?></option>
+                                        </select>
+                                    </p>
+                                    <p>
+                                        <label for="kls_english_label_<?php echo esc_attr($page->ID); ?>"><?php esc_html_e('English label', 'kovacic-language-switcher'); ?></label><br />
+                                        <input type="text" class="regular-text" id="kls_english_label_<?php echo esc_attr($page->ID); ?>" name="kls_switcher[<?php echo esc_attr($page->ID); ?>][english_label]" value="<?php echo esc_attr($defaults['english_label']); ?>" />
+                                    </p>
+                                    <p>
+                                        <label for="kls_spanish_label_<?php echo esc_attr($page->ID); ?>"><?php esc_html_e('Spanish label', 'kovacic-language-switcher'); ?></label><br />
+                                        <input type="text" class="regular-text" id="kls_spanish_label_<?php echo esc_attr($page->ID); ?>" name="kls_switcher[<?php echo esc_attr($page->ID); ?>][spanish_label]" value="<?php echo esc_attr($defaults['spanish_label']); ?>" />
+                                    </p>
+                                    <p>
+                                        <label for="kls_spanish_content_<?php echo esc_attr($page->ID); ?>"><?php esc_html_e('Spanish HTML', 'kovacic-language-switcher'); ?></label>
+                                        <textarea class="large-text code" rows="10" id="kls_spanish_content_<?php echo esc_attr($page->ID); ?>" name="kls_switcher[<?php echo esc_attr($page->ID); ?>][spanish_content]"><?php echo esc_textarea($defaults['spanish_content']); ?></textarea>
+                                    </p>
+                                </td>
+                            </tr>
+                            <?php
+                        endforeach;
+                    endif;
+                    ?>
+                    </tbody>
+                </table>
+                <?php submit_button(__('Save translations', 'kovacic-language-switcher')); ?>
+            </form>
+        </div>
+        <?php
+    }
+
+    public function prepare_frontend(): void {
+        if (!is_singular('page')) {
+            return;
+        }
+
+        $post_id = get_queried_object_id();
+        if (!$post_id) {
+            return;
+        }
+
+        $settings = $this->get_page_settings($post_id);
+        if (empty($settings) || empty($settings['enabled'])) {
+            return;
+        }
+
+        $this->current_settings = $settings;
 
         wp_enqueue_style('kls-switcher');
         wp_enqueue_script('kls-switcher');
 
-        $english_label = $settings['english_label'] ?? __('English', 'kovacic-language-switcher');
-        $spanish_label = $settings['spanish_label'] ?? __('Español', 'kovacic-language-switcher');
-        $default = $settings['default_language'] ?? 'en';
+        add_action('wp_body_open', [$this, 'render_switcher_portal'], 5);
+    }
+
+    public function render_switcher_portal(): void {
+        if ($this->portal_rendered || empty($this->current_settings)) {
+            return;
+        }
+
+        $this->portal_rendered = true;
+
+        $default = $this->current_settings['default_language'] ?? 'en';
         $default = in_array($default, ['en', 'es'], true) ? $default : 'en';
-
-        $english_active = $default === 'en' ? ' is-active' : '';
-        $spanish_active = $default === 'es' ? ' is-active' : '';
-
-        ob_start();
         ?>
-        <div class="kls-switcher" data-default="<?php echo esc_attr($default); ?>">
-            <div class="kls-switcher__buttons" role="tablist" aria-label="<?php echo esc_attr__('Language selector', 'kovacic-language-switcher'); ?>">
-                <button type="button" class="kls-switcher__button<?php echo esc_attr($english_active); ?>" data-lang="en" role="tab" aria-selected="<?php echo $default === 'en' ? 'true' : 'false'; ?>" aria-controls="kls-lang-en">
-                    <?php echo esc_html($english_label); ?>
-                </button>
-                <button type="button" class="kls-switcher__button<?php echo esc_attr($spanish_active); ?>" data-lang="es" role="tab" aria-selected="<?php echo $default === 'es' ? 'true' : 'false'; ?>" aria-controls="kls-lang-es">
-                    <?php echo esc_html($spanish_label); ?>
-                </button>
-            </div>
-            <div class="kls-switcher__panels">
-                <div id="kls-lang-en" class="kls-switcher__panel<?php echo esc_attr($english_active); ?>" role="tabpanel" data-lang="en">
-                    <?php echo $content; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
-                </div>
-                <div id="kls-lang-es" class="kls-switcher__panel<?php echo esc_attr($spanish_active); ?>" role="tabpanel" data-lang="es">
-                    <?php echo $settings['spanish_content']; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
-                </div>
-            </div>
+        <div id="kls-switcher-root" class="kls-switcher-portal" data-default="<?php echo esc_attr($default); ?>" data-english-label="<?php echo esc_attr($this->current_settings['english_label']); ?>" data-spanish-label="<?php echo esc_attr($this->current_settings['spanish_label']); ?>" data-label="<?php echo esc_attr__('Language selector', 'kovacic-language-switcher'); ?>">
+            <template><?php echo $this->current_settings['spanish_content']; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?></template>
         </div>
         <?php
-        return ob_get_clean();
     }
 }
 
