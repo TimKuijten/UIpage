@@ -2,7 +2,7 @@
 /**
  * Plugin Name: Kovacic Language Switcher
  * Description: Adds a lightweight language switcher to individual pages and lets editors provide translations for on-page strings.
- * Version: 2.0.0
+ * Version: 2.0.1
  * Author: Kovacic Talent
  */
 
@@ -24,7 +24,7 @@ class Kovacic_Language_Switcher {
     }
 
     public function register_assets(): void {
-        $version = '2.0.0';
+        $version = '2.0.1';
         $base_url = plugin_dir_url(__FILE__);
 
         wp_register_style(
@@ -220,7 +220,7 @@ class Kovacic_Language_Switcher {
     }
 
     public function prepare_frontend(): void {
-        if (!is_singular('page')) {
+        if (!is_singular('page') || isset($_GET['kls_admin_preview'])) {
             return;
         }
 
@@ -262,7 +262,10 @@ class Kovacic_Language_Switcher {
     }
 
     private function collect_page_strings(\WP_Post $post): array {
-        $content = $this->render_post_content($post);
+        $content = $this->fetch_frontend_html($post);
+        if ($content === '') {
+            $content = $this->render_post_content($post);
+        }
         if ($content === '') {
             return [];
         }
@@ -321,6 +324,38 @@ class Kovacic_Language_Switcher {
         }
 
         return array_values($strings);
+    }
+
+    private function fetch_frontend_html(\WP_Post $post): string {
+        $permalink = get_permalink($post);
+        if (!is_string($permalink) || $permalink === '') {
+            return '';
+        }
+
+        $url = add_query_arg('kls_admin_preview', '1', $permalink);
+        $response = wp_remote_get($url, [
+            'timeout' => 15,
+            'redirection' => 3,
+            'headers' => [
+                'Cache-Control' => 'no-cache',
+            ],
+        ]);
+
+        if (is_wp_error($response)) {
+            return '';
+        }
+
+        $code = wp_remote_retrieve_response_code($response);
+        if ((int) $code !== 200) {
+            return '';
+        }
+
+        $body = wp_remote_retrieve_body($response);
+        if (!is_string($body) || $body === '') {
+            return '';
+        }
+
+        return $body;
     }
 
     private function render_post_content(\WP_Post $post): string {
