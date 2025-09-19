@@ -48,6 +48,44 @@
         });
     }
 
+    function mountControls(root, controlsWrapper) {
+        var navLinkedIn = document.querySelector('.nav-cta .nav-linkedin');
+        if (navLinkedIn && navLinkedIn.parentNode) {
+            controlsWrapper.classList.add('kls-switcher--nav');
+            navLinkedIn.insertAdjacentElement('beforebegin', controlsWrapper);
+            return true;
+        }
+
+        var navCta = document.querySelector('.nav-cta');
+        if (navCta) {
+            controlsWrapper.classList.add('kls-switcher--nav');
+            navCta.appendChild(controlsWrapper);
+            return true;
+        }
+
+        var linkedIn = document.querySelector('.nav-linkedin, a[href*="linkedin.com" i]');
+        if (linkedIn) {
+            controlsWrapper.classList.add('kls-switcher--nav');
+
+            var navItem = linkedIn.closest('li');
+            if (navItem && navItem.parentNode) {
+                var item = document.createElement(navItem.tagName.toLowerCase());
+                if (navItem.className) {
+                    item.className = navItem.className;
+                }
+                item.classList.add('kls-switcher-nav-item');
+                item.appendChild(controlsWrapper);
+                navItem.parentNode.insertBefore(item, navItem);
+                return true;
+            }
+
+            linkedIn.insertAdjacentElement('beforebegin', controlsWrapper);
+            return true;
+        }
+
+        return false;
+    }
+
     function initializePortal() {
         var root = document.getElementById('kls-switcher-root');
         if (!root) {
@@ -110,23 +148,10 @@
         buttonGroup.appendChild(englishButton);
         buttonGroup.appendChild(spanishButton);
 
-        var navCta = document.querySelector('.nav-cta');
-        if (navCta) {
-            controlsWrapper.classList.add('kls-switcher--nav');
-            var linkedIn = navCta.querySelector('.nav-linkedin');
-            if (linkedIn && linkedIn.parentNode === navCta) {
-                linkedIn.insertAdjacentElement('beforebegin', controlsWrapper);
-            } else {
-                navCta.appendChild(controlsWrapper);
-            }
-        } else {
-            controlsWrapper.classList.add('kls-switcher--fallback');
-            root.appendChild(controlsWrapper);
-        }
+        function finalizeMount() {
+            root.appendChild(panelsWrapper);
 
-        root.appendChild(panelsWrapper);
-
-        buttonGroup.addEventListener('click', function(event) {
+            buttonGroup.addEventListener('click', function(event) {
             var target = event.target instanceof HTMLElement ? event.target.closest('.kls-switcher__button') : null;
             if (!target) {
                 return;
@@ -141,7 +166,7 @@
             activateLanguage(root, buttonGroup, lang);
         });
 
-        buttonGroup.addEventListener('keydown', function(event) {
+            buttonGroup.addEventListener('keydown', function(event) {
             var target = event.target instanceof HTMLElement ? event.target.closest('.kls-switcher__button') : null;
             if (!target) {
                 return;
@@ -168,14 +193,34 @@
             }
         });
 
-        root.dataset.initialized = '1';
+            root.dataset.initialized = '1';
 
-        var defaultLang = root.dataset.default || 'en';
-        if (defaultLang !== 'en' && defaultLang !== 'es') {
-            defaultLang = 'en';
+            var defaultLang = root.dataset.default || 'en';
+            if (defaultLang !== 'en' && defaultLang !== 'es') {
+                defaultLang = 'en';
+            }
+
+            activateLanguage(root, buttonGroup, defaultLang);
         }
 
-        activateLanguage(root, buttonGroup, defaultLang);
+        var attempts = 0;
+
+        (function attemptMount() {
+            if (mountControls(root, controlsWrapper)) {
+                finalizeMount();
+                return;
+            }
+
+            if (attempts < 10) {
+                attempts++;
+                window.setTimeout(attemptMount, 150);
+                return;
+            }
+
+            controlsWrapper.classList.add('kls-switcher--fallback');
+            root.appendChild(controlsWrapper);
+            finalizeMount();
+        })();
     }
 
     if (document.readyState === 'loading') {

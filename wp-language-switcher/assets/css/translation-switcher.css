@@ -30,6 +30,14 @@
     gap: 0.5rem;
 }
 
+.kls-switcher-nav-item {
+    list-style: none;
+}
+
+.kls-switcher-nav-item > .kls-switcher {
+    margin: 0;
+}
+
 .kls-switcher--nav .kls-switcher__buttons {
     background: rgba(15, 23, 42, 0.08);
     padding: 0.25rem;
