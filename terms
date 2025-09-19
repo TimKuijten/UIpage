@@ -252,7 +252,7 @@
   <!-- Navigation -->
   <nav class="nav" aria-label="Primary navigation">
     <div class="container inner">
-      <a class="logo" href="#"><img src="https://kovacictalent.com/wp-content/uploads/2025/08/Logo_Kovacic.png" alt="Kovacic Talent logo" class="logo-img"><span> </span></a>
+      <a class="logo" href="http://www.kovacictalent.com"><img src="https://kovacictalent.com/wp-content/uploads/2025/08/Logo_Kovacic.png" alt="Kovacic Talent logo" class="logo-img"><span> </span></a>
       <button class="menu-toggle" type="button" aria-label="Toggle navigation" aria-expanded="false" aria-controls="primary-menu">
         <span class="menu-icon" aria-hidden="true"></span>
         <span class="menu-label">Menu</span>
