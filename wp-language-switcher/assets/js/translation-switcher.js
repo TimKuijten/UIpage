@@ -149,6 +149,71 @@
     var switcherContainer;
     var englishButton;
     var spanishButton;
+    var initialized = false;
+
+    function mountSwitcherInNav() {
+        var existingNavSwitcher = document.querySelector('.kls-switcher--nav');
+        if (existingNavSwitcher) {
+            return true;
+        }
+
+        var portal = document.getElementById('kls-switcher-root');
+        var switcher = portal ? portal.querySelector('.kls-switcher') : null;
+
+        if (!switcher) {
+            switcher = document.querySelector('.kls-switcher');
+        }
+
+        if (!switcher) {
+            return false;
+        }
+
+        var linkedinLink = document.querySelector('a[href*="linkedin.com"]');
+        if (!linkedinLink) {
+            return false;
+        }
+
+        var navItem = linkedinLink.closest('li, .wp-block-navigation-item, .menu-item');
+        if (navItem && navItem.parentNode) {
+            var parentList = navItem.parentNode;
+            var tagName = navItem.tagName ? navItem.tagName.toLowerCase() : 'div';
+            var wrapper = document.createElement(tagName === 'li' ? 'li' : 'div');
+
+            if (navItem.classList && navItem.classList.length) {
+                navItem.classList.forEach(function(cls) {
+                    wrapper.classList.add(cls);
+                });
+            }
+
+            wrapper.classList.add('kls-switcher__item');
+            switcher.classList.add('kls-switcher--nav');
+            wrapper.appendChild(switcher);
+            parentList.insertBefore(wrapper, navItem);
+
+            if (portal) {
+                portal.hidden = true;
+            }
+
+            return true;
+        }
+
+        var parent = linkedinLink.parentNode;
+        if (!parent) {
+            return false;
+        }
+
+        switcher.classList.add('kls-switcher--nav');
+        if (parent.classList) {
+            parent.classList.add('kls-switcher__item');
+        }
+        parent.insertBefore(switcher, linkedinLink);
+
+        if (portal) {
+            portal.hidden = true;
+        }
+
+        return true;
+    }
 
     function updateButtonStates() {
         if (!englishButton || !spanishButton) {
@@ -169,13 +234,23 @@
         }
     }
 
-    function findSwitcherElements() {
-        switcherContainer = document.querySelector('.kls-switcher');
-        if (!switcherContainer) {
+    function findSwitcherElements(allowFallback) {
+        if (!mountSwitcherInNav() && allowFallback) {
             var portal = document.getElementById('kls-switcher-root');
             if (portal) {
                 portal.removeAttribute('hidden');
-                switcherContainer = portal.querySelector('.kls-switcher');
+            }
+        }
+
+        switcherContainer = document.querySelector('.kls-switcher--nav');
+
+        if (!switcherContainer && allowFallback) {
+            var fallbackPortal = document.getElementById('kls-switcher-root');
+            if (fallbackPortal) {
+                var fallbackSwitcher = fallbackPortal.querySelector('.kls-switcher');
+                if (fallbackSwitcher) {
+                    switcherContainer = fallbackSwitcher;
+                }
             }
         }
 
@@ -190,13 +265,19 @@
             return false;
         }
 
-        englishButton.addEventListener('click', function() {
-            setLanguage('en');
-        });
+        if (!englishButton.dataset.klsBound) {
+            englishButton.addEventListener('click', function() {
+                setLanguage('en');
+            });
+            englishButton.dataset.klsBound = 'true';
+        }
 
-        spanishButton.addEventListener('click', function() {
-            setLanguage('es');
-        });
+        if (!spanishButton.dataset.klsBound) {
+            spanishButton.addEventListener('click', function() {
+                setLanguage('es');
+            });
+            spanishButton.dataset.klsBound = 'true';
+        }
 
         return true;
     }
@@ -207,11 +288,31 @@
             return;
         }
 
-        if (!findSwitcherElements()) {
-            return;
+        var attempts = 0;
+        var fallbackThreshold = 10;
+        var maxAttempts = 150;
+        var attemptDelay = 200;
+
+        function attemptMount() {
+            var allowFallback = attempts >= fallbackThreshold;
+            var found = findSwitcherElements(allowFallback);
+
+            if (found && !initialized) {
+                initialized = true;
+                updateLanguage();
+            }
+
+            if (document.querySelector('.kls-switcher--nav')) {
+                return;
+            }
+
+            if (attempts < maxAttempts) {
+                attempts += 1;
+                window.setTimeout(attemptMount, attemptDelay);
+            }
         }
 
-        updateLanguage();
+        attemptMount();
     }
 
     if (document.readyState === 'loading') {
